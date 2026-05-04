@@ -1,0 +1,11 @@
+# Force HTTPS dan redirect www ke non-www (lebih SEO-friendly)
+http://salutetambetuah.co.id/* https://salutetambetuah.co.id/:splat 301!
+http://www.salutetambetuah.co.id/* https://salutetambetuah.co.id/:splat 301!
+https://www.salutetambetuah.co.id/* https://salutetambetuah.co.id/:splat 301!
+
+# Redirect old Netlify URL ke domain baru (preserve SEO juice)
+https://salutetambetuah.netlify.app/* https://salutetambetuah.co.id/:splat 301!
+
+# Common typo / kemungkinan URL alternatif
+/home / 301
+/index.html / 301

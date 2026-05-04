@@ -1,0 +1,40 @@
+# ----- Default security headers untuk semua file -----
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), autoplay=(self)
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+# ----- HTML: jangan di-cache (selalu fresh, untuk SEO) -----
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# ----- Gambar: cache 1 tahun (immutable) -----
+/assets/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# ----- Audio (musik latar): cache 1 tahun + range request -----
+/assets/audio/*
+  Cache-Control: public, max-age=31536000, immutable
+  Accept-Ranges: bytes
+
+/assets/audio/*.mp3
+  Content-Type: audio/mpeg
+
+# ----- Video kegiatan: cache + range request -----
+/assets/videos/*
+  Cache-Control: public, max-age=31536000, immutable
+  Accept-Ranges: bytes
+
+/assets/videos/*.mp4
+  Content-Type: video/mp4
+
+# ----- XML & robots.txt -----
+/sitemap.xml
+  Content-Type: application/xml
+  Cache-Control: public, max-age=3600
+
+/robots.txt
+  Content-Type: text/plain
+  Cache-Control: public, max-age=86400

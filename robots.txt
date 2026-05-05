@@ -1,34 +1,16 @@
+# robots.txt untuk salutetambetuah.id
+# Sentra Layanan UT Etam Betuah - Samarinda, Kalimantan Timur
+
 User-agent: *
 Allow: /
 
-# Block crawler dari mengakses asset besar untuk hemat crawl budget
-User-agent: Googlebot-Image
-Allow: /assets/images/
-Disallow:
+# Disallow folder yang tidak perlu di-index
+Disallow: /assets/raw/
+Disallow: /_headers
+Disallow: /_redirects
 
-User-agent: Googlebot-Video
-Allow: /assets/videos/
-Disallow:
+# Sitemap
+Sitemap: https://salutetambetuah.id/sitemap.xml
 
-# Allow SEO-friendly bots
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: DuckDuckBot
-Allow: /
-
-# Block AI scrapers yang tidak memberikan nilai SEO
-User-agent: GPTBot
-Disallow: /
-
-User-agent: ClaudeBot
-Disallow: /
-
-User-agent: CCBot
-Disallow: /
-
-# Sitemap location
-Sitemap: https://salutetambetuah.co.id/sitemap.xml
+# Crawl delay (opsional, untuk meringankan beban server)
+Crawl-delay: 1

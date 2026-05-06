@@ -292,23 +292,15 @@
         .chat-typing span:nth-child(3) { animation-delay: 0.32s; }
         @keyframes bounce { 0%, 80%, 100% { transform: translateY(0); opacity: 0.4; } 40% { transform: translateY(-6px); opacity: 1; } }
 
-        <section class="bg-slate-50 py-16">
-  <div class="max-w-4xl mx-auto px-6 text-center">
-    <span class="text-sm text-blue-600 font-semibold uppercase">Artikel Pilihan</span>
-    <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4">
-      Bingung Cara Lulus UT Tepat Waktu?
-    </h2>
-    <p class="text-lg text-slate-600 mb-6">
-      Kami sudah rangkum 7 tips praktis berdasarkan pengalaman 5000+ mahasiswa
-      SALUT Etam Betuah yang berhasil lulus dalam 4 tahun.
-    </p>
-    <a href="/blog/tips-lulus-ut-tepat-waktu-fresh-graduate.html"
-       class="inline-block bg-blue-600 text-white px-8 py-3 rounded-full font-bold hover:bg-blue-700">
-      Baca Tipsnya Sekarang →
-    </a>
-  </div>
-</section>
-        
+        /* ===== Visitor chart ===== */
+        .visitor-stat { background: linear-gradient(135deg, rgba(30,58,138,0.05), rgba(245,158,11,0.05)); }
+        .bar-chart { display:flex; align-items:flex-end; gap:0.5rem; height:200px; padding-top:1rem; }
+        .bar-chart .bar { flex:1; background: linear-gradient(180deg,#3B82F6 0%,#1E3A8A 100%); border-radius:0.5rem 0.5rem 0 0; position:relative; transition: all 0.6s cubic-bezier(0.34,1.56,0.64,1); min-height:4px; }
+        .bar-chart .bar.highlight { background: linear-gradient(180deg,#FBBF24 0%,#F59E0B 100%); }
+        .bar-chart .bar:hover { transform: translateY(-4px); }
+        .bar-chart .bar .bar-label { position:absolute; top:-1.5rem; left:50%; transform:translateX(-50%); font-size:0.7rem; font-weight:700; color:#1E3A8A; white-space:nowrap; }
+        .bar-chart .bar .bar-month { position:absolute; bottom:-1.5rem; left:50%; transform:translateX(-50%); font-size:0.7rem; color:#64748B; font-weight:500; }
+    </style>
 <!-- ============================================ -->
   <!-- ===== SEO META TAGS - SALUT ETAM BETUAH ===== -->
   <!-- ============================================ -->
@@ -2164,14 +2156,38 @@
             counters.forEach(c => counterObs.observe(c));
         })();
     </script>
-        /* ===== Visitor chart ===== */
-        .visitor-stat { background: linear-gradient(135deg, rgba(30,58,138,0.05), rgba(245,158,11,0.05)); }
-        .bar-chart { display:flex; align-items:flex-end; gap:0.5rem; height:200px; padding-top:1rem; }
-        .bar-chart .bar { flex:1; background: linear-gradient(180deg,#3B82F6 0%,#1E3A8A 100%); border-radius:0.5rem 0.5rem 0 0; position:relative; transition: all 0.6s cubic-bezier(0.34,1.56,0.64,1); min-height:4px; }
-        .bar-chart .bar.highlight { background: linear-gradient(180deg,#FBBF24 0%,#F59E0B 100%); }
-        .bar-chart .bar:hover { transform: translateY(-4px); }
-        .bar-chart .bar .bar-label { position:absolute; top:-1.5rem; left:50%; transform:translateX(-50%); font-size:0.7rem; font-weight:700; color:#1E3A8A; white-space:nowrap; }
-        .bar-chart .bar .bar-month { position:absolute; bottom:-1.5rem; left:50%; transform:translateX(-50%); font-size:0.7rem; color:#64748B; font-weight:500; }
-    </style>
 </body>
 </html>
+<section id="blog" class="py-16">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-8">Artikel Terbaru</h2>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- Artikel 1 -->
+      <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition">
+        <img src="/assets/blog/tips-lulus-ut.jpg"
+             alt="Tips lulus UT tepat waktu untuk fresh graduate"
+             class="w-full h-48 object-cover"
+             loading="lazy">
+        <div class="p-6">
+          <span class="text-xs text-blue-600 font-semibold uppercase">Tips Kuliah</span>
+          <h3 class="text-xl font-bold mt-2 mb-3">
+            <a href="/blog/tips-lulus-ut-tepat-waktu-fresh-graduate.html"
+               class="hover:text-blue-600">
+              7 Tips Lulus Kuliah UT Tepat Waktu untuk Fresh Graduate
+            </a>
+          </h3>
+          <p class="text-slate-600 text-sm mb-4">
+            Panduan lengkap fresh graduate SMA/SMK lulus UT dalam 4 tahun.
+            Dari pengalaman 5000+ mahasiswa SALUT Etam Betuah.
+          </p>
+          <div class="flex items-center justify-between text-xs text-slate-500">
+            <span>📅 6 Mei 2026</span>
+            <span>⏱️ 12 menit baca</span>
+          </div>
+          <a href="/blog/tips-lulus-ut-tepat-waktu-fresh-graduate.html"
+             class="inline-block mt-4 text-blue-600 font-semibold hover:underline">
+            Baca Selengkapnya →
+          </a>
+        </div>
+      </article>

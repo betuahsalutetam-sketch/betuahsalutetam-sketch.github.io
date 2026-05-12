@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KTA Salut Etam Betuah — Kartu Tanda Anggota</title>
+<meta name="description" content="Download Kartu Tanda Anggota (KTA) Salut Etam Betuah UT Samarinda. Isi nama, NIM, foto, dan bukti pembayaran untuk mendapatkan KTA digital.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="assets/images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<!-- html2canvas -->
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<!-- jsPDF -->
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Poppins',sans-serif;background:#F0F4F8;min-height:100vh;color:#0F172A}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+button{font-family:'Poppins',sans-serif;cursor:pointer}
+input,select,textarea{font-family:'Poppins',sans-serif}
+
+/* ===== NAVBAR ===== */
+.topbar{background:white;border-bottom:1px solid #E2E8F0;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(30,58,138,.06)}
+.topbar-logo{display:flex;align-items:center;gap:10px}
+.topbar-logo img{width:36px;height:36px;object-fit:contain}
+.topbar-logo .tl-name{font-size:13px;font-weight:700;color:#1E3A8A;line-height:1.2}
+.topbar-logo .tl-sub{font-size:10px;color:#94A3B8;font-weight:500}
+.topbar-back{display:inline-flex;align-items:center;gap:6px;background:#EFF6FF;color:#1E3A8A;font-size:12px;font-weight:600;padding:8px 14px;border-radius:99px;border:none;transition:.2s}
+.topbar-back:hover{background:#1E3A8A;color:white}
+
+/* ===== PAGE HEADER ===== */
+.page-hero{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 50%,#2563EB 100%);padding:40px 20px;text-align:center;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px);background-size:24px 24px}
+.page-hero h1{font-size:clamp(22px,5vw,36px);font-weight:900;color:#fff;line-height:1.1;position:relative;z-index:1}
+.page-hero p{font-size:13px;color:rgba(191,219,254,.8);margin-top:8px;max-width:480px;margin-left:auto;margin-right:auto;position:relative;z-index:1;line-height:1.6}
+.page-hero .hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(245,158,11,.2);border:1px solid rgba(245,158,11,.4);border-radius:99px;padding:5px 14px;margin-bottom:16px;position:relative;z-index:1}
+.page-hero .hero-badge span{font-size:11px;font-weight:700;color:#FCD34D;text-transform:uppercase;letter-spacing:.05em}
+
+/* ===== TABS ===== */
+.tabs{display:flex;background:white;border-bottom:1px solid #E2E8F0;overflow-x:auto;scrollbar-width:none;position:sticky;top:64px;z-index:40}
+.tabs::-webkit-scrollbar{display:none}
+.tab-btn{flex:1;min-width:120px;padding:14px 16px;border:none;background:transparent;font-size:13px;font-weight:600;color:#94A3B8;cursor:pointer;border-bottom:3px solid transparent;transition:.2s;white-space:nowrap}
+.tab-btn.active{color:#1E3A8A;border-bottom-color:#F59E0B}
+.tab-btn:hover:not(.active){color:#1E3A8A}
+
+/* ===== MAIN CONTAINER ===== */
+.main{max-width:1000px;margin:0 auto;padding:28px 16px 60px}
+
+/* ===== PANELS ===== */
+.panel{display:none}
+.panel.active{display:block}
+
+/* ===== STEP FORM ===== */
+.form-card{background:white;border-radius:20px;padding:28px;border:1px solid #E2E8F0;box-shadow:0 4px 20px rgba(30,58,138,.06);margin-bottom:16px}
+.form-card h2{font-size:17px;font-weight:800;color:#1E3A8A;margin-bottom:5px}
+.form-card .sub{font-size:12px;color:#94A3B8;margin-bottom:20px}
+.form-row{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:640px){.form-row.two{grid-template-columns:1fr 1fr}}
+.form-group label{display:block;font-size:12px;font-weight:700;color:#475569;margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em}
+.form-group label .req{color:#EF4444;margin-left:2px}
+.form-group input,.form-group select{width:100%;border:1.5px solid #E2E8F0;border-radius:12px;padding:12px 16px;font-size:14px;color:#0F172A;font-family:'Poppins',sans-serif;outline:none;transition:.2s;background:white}
+.form-group input:focus,.form-group select:focus{border-color:#2563EB;box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+.form-group .hint{font-size:11px;color:#94A3B8;margin-top:5px}
+
+/* Upload area */
+.upload-area{border:2px dashed #CBD5E1;border-radius:14px;padding:24px;text-align:center;cursor:pointer;transition:.25s;position:relative;overflow:hidden}
+.upload-area:hover{border-color:#2563EB;background:#EFF6FF}
+.upload-area.has-file{border-color:#10B981;background:#ECFDF5;border-style:solid}
+.upload-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.upload-area .ua-icon{font-size:28px;margin-bottom:8px}
+.upload-area .ua-text{font-size:13px;font-weight:600;color:#475569}
+.upload-area .ua-sub{font-size:11px;color:#94A3B8;margin-top:4px}
+.upload-area .ua-preview{width:80px;height:80px;border-radius:12px;object-fit:cover;margin:0 auto 8px;display:none}
+.upload-area.has-file .ua-preview{display:block}
+
+/* Checklist */
+.requirements{background:#FEF9EC;border:1px solid #FCD34D;border-radius:14px;padding:16px 20px;margin-bottom:20px}
+.requirements h4{font-size:13px;font-weight:700;color:#92400E;margin-bottom:10px}
+.requirements ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.requirements ul li{font-size:12px;color:#78350F;display:flex;align-items:center;gap:8px}
+.requirements ul li .chk{width:18px;height:18px;border-radius:50%;border:2px solid #FCD34D;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.requirements ul li.ok .chk{background:#10B981;border-color:#10B981;color:white;font-size:10px}
+
+/* Buttons */
+.btn-primary{background:linear-gradient(135deg,#F59E0B,#FBBF24);color:#0F172A;font-weight:700;font-size:14px;padding:14px 28px;border-radius:14px;border:none;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;transition:.2s;box-shadow:0 4px 16px rgba(245,158,11,.3)}
+.btn-primary:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 24px rgba(245,158,11,.4)}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.btn-secondary{background:white;color:#1E3A8A;font-weight:600;font-size:13px;padding:12px 20px;border-radius:12px;border:1.5px solid #1E3A8A;display:inline-flex;align-items:center;gap:6px;transition:.2s}
+.btn-secondary:hover{background:#EFF6FF}
+.btn-navy{background:#1E3A8A;color:white;font-weight:700;font-size:14px;padding:14px 28px;border-radius:14px;border:none;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;transition:.2s;box-shadow:0 4px 16px rgba(30,58,138,.3)}
+.btn-navy:hover{background:#1D4ED8;transform:translateY(-2px)}
+.btn-green{background:linear-gradient(135deg,#10B981,#059669);color:white;font-weight:700;font-size:14px;padding:14px 28px;border-radius:14px;border:none;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;transition:.2s;box-shadow:0 4px 16px rgba(16,185,129,.3)}
+.btn-green:hover{transform:translateY(-2px)}
+
+/* ===== KTA PREVIEW ===== */
+.kta-preview-wrap{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
+.kta-container{position:relative}
+.kta-label{font-size:11px;font-weight:700;color:#94A3B8;text-align:center;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+
+/* KTA CARD FRONT */
+#kta-front{
+  width:350px;height:560px;position:relative;overflow:hidden;
+  background:white;border-radius:16px;
+  box-shadow:0 16px 48px rgba(30,58,138,.2);
+  font-family:'Poppins',sans-serif;
+}
+.kta-bg-top{position:absolute;top:0;left:0;right:0;height:86px;background:#ffffff;border-bottom:3px solid #1E3A8A}
+.kta-corner-tl{position:absolute;top:0;left:0;width:80px;height:80px;background:#F59E0B;clip-path:polygon(0 0,100% 0,0 100%)}
+.kta-corner-br{position:absolute;bottom:0;right:0;width:80px;height:80px;background:#F59E0B;clip-path:polygon(100% 0,100% 100%,0 100%)}
+.kta-navy-bar{position:absolute;top:86px;left:0;right:0;height:30px;background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 60%,#2563EB 100%);display:flex;align-items:center;justify-content:center}
+.kta-wave{position:absolute;bottom:0;left:0;right:0;height:50px;background:linear-gradient(135deg,#0F172A,#1E3A8A)}
+.kta-logo-row{position:absolute;top:12px;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:10px;z-index:2}
+.kta-logo-row img{height:36px;width:auto;object-fit:contain;filter:brightness(0) invert(1)}
+.kta-photo-ring{position:absolute;top:105px;left:50%;transform:translateX(-50%);z-index:3}
+.kta-logo-sep{width:1px;height:30px;background:rgba(255,255,255,.3)}
+.kta-title-row{position:absolute;top:88px;left:0;right:0;text-align:center;z-index:4;padding:0 12px}
+.kta-title-row .kt2{font-size:10px;font-weight:900;color:#FCD34D;letter-spacing:.06em;line-height:1.4}
+.kta-photo-ring{position:absolute;top:108px;left:50%;transform:translateX(-50%);width:116px;height:116px;z-index:3}
+.kta-photo-outer{position:absolute;inset:0;border-radius:50%;border:4px solid #F59E0B;box-shadow:0 0 0 3px #1E3A8A,0 8px 24px rgba(30,58,138,.3)}
+.kta-photo-inner{position:absolute;inset:8px;border-radius:50%;overflow:hidden;background:#E2E8F0;display:flex;align-items:center;justify-content:center}
+.kta-photo-inner img{width:100%;height:100%;object-fit:cover;object-position:top}
+.kta-deco-ring{position:absolute;inset:-8px;border-radius:50%;border:2px dashed rgba(245,158,11,.4);animation:spin-slow 20s linear infinite}
+@keyframes spin-slow{to{transform:rotate(360deg)}}
+.kta-deco-dot{width:8px;height:8px;background:#2563EB;border-radius:50%;position:absolute}
+.kta-body{position:absolute;top:240px;left:0;right:0;bottom:50px;display:flex;flex-direction:column;align-items:center;padding:0 20px}
+.kta-name-badge{background:linear-gradient(135deg,#0F172A,#1E3A8A);border-radius:14px;padding:12px 24px;text-align:center;width:100%;margin-bottom:8px;border:1px solid rgba(255,255,255,.1)}
+.kta-name-badge .knb-name{font-size:16px;font-weight:800;color:#ffffff;letter-spacing:.02em;text-transform:uppercase}
+.kta-name-badge .knb-nim{font-size:12px;color:#BFDBFE;font-weight:500;margin-top:2px}
+.kta-salut{font-size:12px;font-weight:900;color:#1E3A8A;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.kta-validity{font-size:10px;color:#64748B;font-weight:500}
+.kta-validity span{font-weight:700;color:#059669}
+.kta-bottom-text{position:absolute;bottom:12px;left:0;right:0;text-align:center}
+.kta-bottom-text span{font-size:8px;color:rgba(255,255,255,.7);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+
+/* KTA CARD BACK */
+#kta-back{
+  width:350px;height:560px;position:relative;overflow:hidden;
+  background:white;border-radius:16px;
+  box-shadow:0 16px 48px rgba(30,58,138,.2);
+  font-family:'Poppins',sans-serif;
+}
+.kta-back-header{height:80px;background:linear-gradient(135deg,#0F172A,#1E3A8A);display:flex;align-items:center;justify-content:center;position:relative}
+.kta-back-header .kb-title{font-size:13px;font-weight:900;color:#FCD34D;letter-spacing:.06em;text-transform:uppercase}
+.kta-back-corner-tl{position:absolute;top:0;left:0;width:50px;height:50px;background:#F59E0B;clip-path:polygon(0 0,100% 0,0 100%)}
+.kta-back-corner-tr{position:absolute;top:0;right:0;width:50px;height:50px;background:rgba(255,255,255,.1);clip-path:polygon(0 0,100% 0,100% 100%)}
+.kta-back-body{padding:16px 20px}
+.kta-partners-grid{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;margin-bottom:14px;padding:12px;background:#F8FAFC;border-radius:12px;border:1px solid #E2E8F0}
+.kta-partners-grid img{height:28px;width:auto;object-fit:contain;mix-blend-mode:multiply;filter:contrast(1.1)}
+.kta-terms{margin-bottom:12px}
+.kta-terms .kt-head{font-size:10px;font-weight:800;color:#1E3A8A;letter-spacing:.06em;text-transform:uppercase;text-align:center;margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid #FCD34D}
+.kta-terms ul{list-style:none;display:flex;flex-direction:column;gap:4px}
+.kta-terms ul li{font-size:9.5px;color:#374151;line-height:1.5;padding-left:14px;position:relative}
+.kta-terms ul li::before{content:'•';position:absolute;left:0;color:#F59E0B;font-weight:900}
+.kta-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.kta-info-item{font-size:9px;color:#374151;display:flex;align-items:center;gap:4px;line-height:1.4}
+.kta-info-item .ki-icon{font-size:11px;flex-shrink:0}
+.kta-back-footer{position:absolute;bottom:0;left:0;right:0;height:38px;background:linear-gradient(135deg,#0F172A,#1E3A8A);display:flex;align-items:center;justify-content:center;gap:10px;padding:0 36px 0 12px}
+.kta-back-footer a{display:flex;align-items:center;gap:3px;text-decoration:none}
+.kta-back-footer .sep{width:1px;height:10px;background:rgba(255,255,255,.2)}
+.kta-back-footer-corner{position:absolute;bottom:0;right:0;width:36px;height:36px;background:#F59E0B;clip-path:polygon(100% 0,100% 100%,0 100%)}
+
+/* ===== SUCCESS STATE ===== */
+.success-banner{background:linear-gradient(135deg,#065F46,#10B981);border-radius:16px;padding:20px;text-align:center;color:white;margin-bottom:20px}
+.success-banner .sb-icon{font-size:40px;margin-bottom:8px}
+.success-banner h3{font-size:18px;font-weight:800;margin-bottom:4px}
+.success-banner p{font-size:12px;opacity:.8}
+.validity-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.2);border-radius:99px;padding:5px 14px;margin-top:10px;font-size:11px;font-weight:600}
+
+/* ===== REPRINT SECTION ===== */
+.reprint-card{background:white;border-radius:20px;padding:28px;border:1px solid #E2E8F0;box-shadow:0 4px 20px rgba(30,58,138,.06)}
+.reprint-card h2{font-size:17px;font-weight:800;color:#1E3A8A;margin-bottom:5px}
+.reprint-result{background:#F8FAFC;border:1px solid #E2E8F0;border-radius:14px;padding:20px;margin-top:16px;display:none}
+.reprint-result.show{display:block}
+.reprint-info{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.ri-item{font-size:12px;color:#475569}
+.ri-item strong{display:block;color:#0F172A;font-weight:600;font-size:13px}
+
+/* ===== INFO CARDS ===== */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:16px}
+.info-card{background:white;border-radius:14px;padding:16px;border:1px solid #E2E8F0;display:flex;gap:12px;align-items:flex-start}
+.info-card .ic-icon{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.info-card .ic-title{font-size:12px;font-weight:700;color:#0F172A;margin-bottom:2px}
+.info-card .ic-text{font-size:11px;color:#64748B;line-height:1.5}
+
+/* ===== MODAL ===== */
+.modal-bg{position:fixed;inset:0;z-index:200;background:rgba(15,23,42,.8);display:none;align-items:center;justify-content:center;padding:20px}
+.modal-bg.show{display:flex}
+.modal{background:white;border-radius:20px;padding:24px;max-width:400px;width:100%;text-align:center}
+.modal h3{font-size:18px;font-weight:800;color:#1E3A8A;margin-bottom:8px}
+.modal p{font-size:13px;color:#64748B;line-height:1.6;margin-bottom:20px}
+.modal-btns{display:flex;gap:10px}
+.modal-btns button{flex:1;padding:12px;border-radius:12px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:.2s}
+
+/* ===== GENERATING OVERLAY ===== */
+.gen-overlay{position:fixed;inset:0;z-index:300;background:rgba(15,23,42,.9);display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+.gen-overlay.show{display:flex}
+.gen-spinner{width:56px;height:56px;border:4px solid rgba(255,255,255,.2);border-top-color:#F59E0B;border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.gen-text{font-size:14px;font-weight:600;color:white}
+.gen-sub{font-size:12px;color:rgba(255,255,255,.6)}
+
+/* ===== TOAST ===== */
+.toast-kta{position:fixed;bottom:24px;right:24px;z-index:400;background:#1E3A8A;color:white;padding:12px 18px;border-radius:14px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px;box-shadow:0 8px 24px rgba(30,58,138,.4);transform:translateY(80px);opacity:0;transition:.4s;max-width:320px}
+.toast-kta.show{transform:translateY(0);opacity:1}
+.toast-kta.success{background:#059669}
+.toast-kta.error{background:#DC2626}
+</style>
+</head>
+
+<body>
+
+<!-- GENERATING OVERLAY -->
+<div class="gen-overlay" id="genOverlay">
+  <div class="gen-spinner"></div>
+  <div class="gen-text">Membuat KTA Anda...</div>
+  <div class="gen-sub">Mohon tunggu, sedang memproses</div>
+</div>
+
+<!-- TOAST -->
+<div class="toast-kta" id="toastKta"></div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-logo">
+    <img src="assets/images/logo.png" alt="Logo" onerror="this.style.display='none'">
+    <div>
+      <div class="tl-name">SALUT ETAM BETUAH</div>
+      <div class="tl-sub">Kartu Tanda Anggota</div>
+    </div>
+  </div>
+  <a href="/" class="topbar-back">← Beranda</a>
+</div>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="hero-badge"><span>🪪 KTA Digital 2026</span></div>
+  <h1>Kartu Tanda Anggota<br>Salut Etam Betuah</h1>
+  <p>Isi data, upload foto & bukti pembayaran — KTA langsung bisa didownload. Berlaku 6 bulan.</p>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab('buat')">📋 Buat KTA Baru</button>
+  <button class="tab-btn" onclick="switchTab('cetak')">🖨️ Cetak Ulang KTA</button>
+  <button class="tab-btn" onclick="switchTab('info')">ℹ️ Cara & Info</button>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+  <!-- ===== TAB: BUAT KTA ===== -->
+  <div class="panel active" id="panel-buat">
+
+    <div class="form-card">
+      <h2>📝 Data Mahasiswa</h2>
+      <div class="sub">Lengkapi semua data dengan benar sesuai data UT Anda</div>
+
+      <div class="form-row two" style="margin-bottom:14px">
+        <div class="form-group">
+          <label>Nama Lengkap <span class="req">*</span></label>
+          <input type="text" id="input-nama" placeholder="Sesuai data KTP/UT" oninput="validateForm()">
+        </div>
+        <div class="form-group">
+          <label>NIM UT <span class="req">*</span></label>
+          <input type="text" id="input-nim" placeholder="Contoh: 041234567" oninput="validateForm()">
+        </div>
+      </div>
+      <div class="form-row two" style="margin-bottom:14px">
+        <div class="form-group">
+          <label>Program Studi <span class="req">*</span></label>
+          <select id="input-prodi" onchange="validateForm()">
+            <option value="">Pilih prodi</option>
+            <option>Manajemen</option>
+            <option>Akuntansi</option>
+            <option>Ilmu Hukum</option>
+            <option>PGSD</option>
+            <option>PG-PAUD</option>
+            <option>Ilmu Administrasi Negara</option>
+            <option>Ilmu Administrasi Bisnis</option>
+            <option>Agribisnis</option>
+            <option>Teknik Informatika</option>
+            <option>Sistem Informasi</option>
+            <option>Lainnya</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tahun Masuk <span class="req">*</span></label>
+          <select id="input-tahun" onchange="validateForm()">
+            <option value="">Pilih tahun</option>
+            <option>2026</option><option>2025</option><option>2024</option>
+            <option>2023</option><option>2022</option><option>2021</option>
+            <option>2020 ke bawah</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <h2>📸 Upload Dokumen</h2>
+      <div class="sub">Pas foto formal & bukti pembayaran keanggotaan Salut</div>
+
+      <div class="form-row two">
+        <div class="form-group">
+          <label>Pas Foto <span class="req">*</span></label>
+          <div class="upload-area" id="ua-foto" onclick="document.getElementById('file-foto').click()">
+            <img class="ua-preview" id="prev-foto" src="" alt="Preview foto">
+            <div class="ua-icon">🤳</div>
+            <div class="ua-text">Klik untuk upload foto</div>
+            <div class="ua-sub">Format: JPG/PNG · Max 5MB · Foto formal</div>
+            <input type="file" id="file-foto" accept="image/*" style="display:none" onchange="handleFoto(this)">
+          </div>
+          <div class="hint">📌 Foto formal, background bebas, tampak wajah jelas</div>
+        </div>
+        <div class="form-group">
+          <label>Bukti Transfer Keanggotaan <span class="req">*</span></label>
+          <div class="upload-area" id="ua-tf" onclick="document.getElementById('file-tf').click()">
+            <img class="ua-preview" id="prev-tf" src="" alt="Preview bukti TF">
+            <div class="ua-icon">💳</div>
+            <div class="ua-text">Klik untuk upload bukti TF</div>
+            <div class="ua-sub">Format: JPG/PNG/PDF · Max 10MB</div>
+            <input type="file" id="file-tf" accept="image/*,.pdf" style="display:none" onchange="handleTF(this)">
+          </div>
+          <div class="hint">📌 Rp 500.000/semester — Transfer ke rekening Salut Etam Betuah</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Checklist -->
+    <div class="requirements" id="req-box">
+      <h4>✅ Syarat Kelengkapan</h4>
+      <ul>
+        <li id="req-nama"><div class="chk">1</div> Nama lengkap terisi</li>
+        <li id="req-nim"><div class="chk">2</div> NIM UT terisi</li>
+        <li id="req-prodi"><div class="chk">3</div> Program studi dipilih</li>
+        <li id="req-foto"><div class="chk">4</div> Pas foto sudah diupload</li>
+        <li id="req-tf"><div class="chk">5</div> Bukti transfer sudah diupload</li>
+      </ul>
+    </div>
+
+    <button class="btn-primary" id="btn-generate" disabled onclick="generateKTA()">
+      🪪 Generate & Download KTA
+    </button>
+  </div>
+
+  <!-- ===== TAB: CETAK ULANG ===== -->
+  <div class="panel" id="panel-cetak">
+    <div class="reprint-card">
+      <h2>🖨️ Cetak Ulang KTA</h2>
+      <div class="sub" style="font-size:12px;color:#94A3B8;margin-bottom:20px">Masukkan NIM untuk mengambil data KTA yang pernah didownload di perangkat ini</div>
+
+      <div class="form-group" style="margin-bottom:12px">
+        <label>NIM UT <span class="req">*</span></label>
+        <input type="text" id="reprint-nim" placeholder="Masukkan NIM UT Anda" style="width:100%">
+      </div>
+      <button class="btn-navy" onclick="reprintKTA()" style="width:100%;margin-bottom:16px">
+        🔍 Cari Data KTA
+      </button>
+
+      <div class="reprint-result" id="reprint-result">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+          <div style="width:44px;height:44px;border-radius:50%;overflow:hidden;background:#E2E8F0;flex-shrink:0">
+            <img id="reprint-photo" src="" alt="" style="width:100%;height:100%;object-fit:cover">
+          </div>
+          <div>
+            <div style="font-size:15px;font-weight:800;color:#0F172A" id="reprint-nama-text"></div>
+            <div style="font-size:12px;color:#94A3B8" id="reprint-nim-text"></div>
+          </div>
+        </div>
+        <div class="reprint-info">
+          <div class="ri-item"><strong id="rp-prodi"></strong>Program Studi</div>
+          <div class="ri-item"><strong id="rp-download"></strong>Tgl Download</div>
+          <div class="ri-item"><strong id="rp-expiry"></strong>Masa Berlaku</div>
+          <div class="ri-item"><strong id="rp-status"></strong>Status</div>
+        </div>
+        <button class="btn-green" onclick="downloadReprintKTA()" style="margin-top:16px">
+          ⬇️ Download Ulang KTA
+        </button>
+      </div>
+
+      <!-- Not found state -->
+      <div id="reprint-notfound" style="display:none;text-align:center;padding:24px;background:#FEF2F2;border-radius:14px;border:1px solid #FECACA">
+        <div style="font-size:32px;margin-bottom:8px">❌</div>
+        <div style="font-size:14px;font-weight:700;color:#991B1B">Data KTA Tidak Ditemukan</div>
+        <div style="font-size:12px;color:#EF4444;margin-top:4px">NIM ini belum pernah membuat KTA di perangkat ini, atau data sudah dihapus.</div>
+        <div style="font-size:11px;color:#94A3B8;margin-top:8px">Buat KTA baru di tab "Buat KTA Baru"</div>
+      </div>
+    </div>
+
+    <!-- Stored KTAs list -->
+    <div class="form-card" style="margin-top:16px">
+      <h2>📋 KTA Tersimpan di Perangkat Ini</h2>
+      <div class="sub">Data disimpan di browser (localStorage). Jangan hapus cache browser.</div>
+      <div id="stored-list" style="margin-top:16px"></div>
+    </div>
+  </div>
+
+  <!-- ===== TAB: INFO ===== -->
+  <div class="panel" id="panel-info">
+    <div class="form-card">
+      <h2>📖 Cara Mendapatkan KTA</h2>
+      <div class="sub">Ikuti 5 langkah mudah berikut</div>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:4px">
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <div style="width:36px;height:36px;background:linear-gradient(135deg,#F59E0B,#FBBF24);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#0F172A;flex-shrink:0">1</div>
+          <div><div style="font-size:13px;font-weight:700;color:#0F172A">Daftar Keanggotaan</div><div style="font-size:12px;color:#64748B">Transfer Rp 500.000/semester ke rekening Salut Etam Betuah. Hubungi WA 0822-5063-8289 untuk konfirmasi.</div></div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <div style="width:36px;height:36px;background:linear-gradient(135deg,#F59E0B,#FBBF24);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#0F172A;flex-shrink:0">2</div>
+          <div><div style="font-size:13px;font-weight:700;color:#0F172A">Isi Form KTA</div><div style="font-size:12px;color:#64748B">Isi nama lengkap, NIM UT, dan program studi dengan benar.</div></div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <div style="width:36px;height:36px;background:linear-gradient(135deg,#F59E0B,#FBBF24);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#0F172A;flex-shrink:0">3</div>
+          <div><div style="font-size:13px;font-weight:700;color:#0F172A">Upload Foto & Bukti TF</div><div style="font-size:12px;color:#64748B">Upload pas foto formal (JPG/PNG) dan screenshot/foto bukti transfer.</div></div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <div style="width:36px;height:36px;background:linear-gradient(135deg,#F59E0B,#FBBF24);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#0F172A;flex-shrink:0">4</div>
+          <div><div style="font-size:13px;font-weight:700;color:#0F172A">Generate & Download</div><div style="font-size:12px;color:#64748B">Klik tombol "Generate KTA" — PDF langsung bisa didownload.</div></div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <div style="width:36px;height:36px;background:#1E3A8A;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">✓</div>
+          <div><div style="font-size:13px;font-weight:700;color:#0F172A">Gunakan KTA sebagai Identitas Member</div><div style="font-size:12px;color:#64748B">Tunjukkan KTA di mitra Salut untuk mendapatkan diskon eksklusif.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="ic-icon" style="background:#EFF6FF">🗓️</div>
+        <div><div class="ic-title">Masa Berlaku KTA</div><div class="ic-text">6 bulan sejak tanggal download. Perbarui dengan mendaftar ulang keanggotaan.</div></div>
+      </div>
+      <div class="info-card">
+        <div class="ic-icon" style="background:#FEF3C7">💾</div>
+        <div><div class="ic-title">Data Tersimpan Lokal</div><div class="ic-text">KTA disimpan di browser Anda. Untuk cetak ulang, gunakan perangkat & browser yang sama.</div></div>
+      </div>
+      <div class="info-card">
+        <div class="ic-icon" style="background:#ECFDF5">🎁</div>
+        <div><div class="ic-title">Keuntungan Member</div><div class="ic-text">Diskon hotel, restoran, service mobil, cicil SPP via BTN, dan masih banyak lagi!</div></div>
+      </div>
+      <div class="info-card">
+        <div class="ic-icon" style="background:#FEF2F2">📞</div>
+        <div><div class="ic-title">Bantuan</div><div class="ic-text">Ada masalah dengan KTA? Hubungi WA 0822-5063-8289 atau 0852-5283-4986.</div></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<!-- ===== KTA TEMPLATE (hidden, untuk capture) ===== -->
+<div style="position:fixed;left:-9999px;top:0;z-index:-1">
+
+  <!-- KTA FRONT -->
+  <div id="kta-front">
+    <div class="kta-bg-top"></div>
+    <div class="kta-corner-tl"></div>
+
+    <!-- Landscape logo — mengisi area putih di atas -->
+    <div style="position:absolute;top:6px;left:16px;right:16px;height:74px;z-index:2;display:flex;align-items:center;justify-content:center">
+      <img src="assets/images/logo-landscape.png" alt="Salut Etam Betuah"
+           style="height:68px;width:auto;max-width:310px;object-fit:contain"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <!-- Fallback jika gambar tidak ada -->
+      <div style="display:none;flex-direction:column;align-items:center">
+        <div style="font-size:18px;font-weight:900;color:#1E3A8A;letter-spacing:.06em">SALUT</div>
+        <div style="font-size:9px;font-weight:600;color:#475569;letter-spacing:.04em">ETAM BETUAH</div>
+      </div>
+    </div>
+
+    <!-- Navy bar: KARTU TANDA ANGGOTA -->
+    <div class="kta-navy-bar">
+      <div class="kta-title-row">
+        <div class="kt2">KARTU TANDA ANGGOTA</div>
+      </div>
+    </div>
+
+    <!-- Photo -->
+    <div class="kta-photo-ring">
+      <div class="kta-photo-outer"></div>
+      <div class="kta-photo-inner">
+        <img id="kta-photo-img" src="" alt="Foto" style="width:100%;height:100%;object-fit:cover">
+      </div>
+      <div class="kta-deco-ring"></div>
+      <!-- Decorative dots -->
+      <div class="kta-deco-dot" style="top:-4px;left:30px;width:6px;height:6px;background:#2563EB"></div>
+      <div class="kta-deco-dot" style="bottom:8px;right:-2px;width:5px;height:5px;background:#F59E0B"></div>
+      <div class="kta-deco-dot" style="top:20px;right:-8px;width:4px;height:4px;background:#1E3A8A"></div>
+    </div>
+
+    <!-- Body -->
+    <div class="kta-body">
+      <div class="kta-name-badge">
+        <div class="knb-name" id="kta-nama-text">NAMA LENGKAP</div>
+        <div class="knb-nim" id="kta-nim-text">NIM: 000000000</div>
+        <div style="font-size:10px;color:rgba(147,197,253,.7);margin-top:3px" id="kta-prodi-text">Program Studi</div>
+      </div>
+      <div class="kta-salut">SALUT ETAM BETUAH</div>
+      <div class="kta-validity">Berlaku Hingga: <span id="kta-validity-text">-</span></div>
+    </div>
+
+    <!-- Wave bottom -->
+    <div class="kta-wave"></div>
+    <div class="kta-bottom-text">
+      <span>www.salutetambetuah.id</span>
+    </div>
+  </div>
+
+  <!-- KTA BACK -->
+  <div id="kta-back">
+    <div class="kta-back-header">
+      <div class="kta-back-corner-tl"></div>
+      <div class="kta-back-corner-tr"></div>
+      <div class="kb-title">KEUNTUNGAN MEMBER</div>
+    </div>
+
+    <div class="kta-back-body">
+      <!-- Partner logos — semua 5 mitra -->
+      <div class="kta-partners-grid">
+        <img src="assets/images/partners/hotel-gk.png" alt="Hotel Grand Kartika"
+             style="height:28px;max-width:56px;object-fit:contain;mix-blend-mode:multiply"
+             onerror="this.outerHTML='<div style=\'font-size:7px;font-weight:700;color:#DC2626;text-align:center\'>Grand<br>Kartika</div>'">
+        <img src="assets/images/partners/senyiur.png" alt="Senyiur Group"
+             style="height:28px;max-width:56px;object-fit:contain;mix-blend-mode:multiply"
+             onerror="this.outerHTML='<div style=\'font-size:7px;font-weight:700;color:#D97706;text-align:center\'>Senyiur<br>Hotels</div>'">
+        <img src="assets/images/partners/quest-hotel.png" alt="Quest Hotel"
+             style="height:26px;max-width:60px;object-fit:contain;mix-blend-mode:multiply"
+             onerror="this.outerHTML='<div style=\'font-size:7px;font-weight:700;color:#7C3AED;text-align:center\'>Quest<br>Hotel</div>'">
+        <img src="assets/images/partners/btn.png" alt="Bank BTN"
+             style="height:24px;max-width:52px;object-fit:contain;mix-blend-mode:multiply"
+             onerror="this.outerHTML='<div style=\'font-size:9px;font-weight:900;color:#1D4ED8\'>btn</div>'">
+        <img src="assets/images/partners/tms-daihatsu.png" alt="TMS Daihatsu"
+             style="height:22px;max-width:64px;object-fit:contain;mix-blend-mode:multiply"
+             onerror="this.outerHTML='<div style=\'font-size:7px;font-weight:700;color:#DC2626;text-align:center\'>TMS<br>Daihatsu</div>'">
+      </div>
+
+      <!-- Terms -->
+      <div class="kta-terms">
+        <div class="kt-head">PEMBERITAHUAN</div>
+        <ul>
+          <li>Kartu ini milik Salut Etam Betuah, bila menemukan kartu ini harap dikembalikan.</li>
+          <li>Kartu ini sebagai identitas anggota Salut Etam Betuah UT Samarinda.</li>
+          <li>Kartu ini dapat digunakan sebagai benefit spesial pada mitra Salut Etam Betuah.</li>
+          <li>Kartu tidak dapat dipindahtangankan.</li>
+        </ul>
+      </div>
+
+      <!-- Info -->
+      <div style="background:#F8FAFC;border-radius:10px;padding:10px 12px;margin-bottom:8px">
+        <div style="font-size:9px;font-weight:800;color:#1E3A8A;letter-spacing:.06em;text-transform:uppercase;text-align:center;margin-bottom:8px">INFORMASI</div>
+        <div class="kta-info-grid">
+          <div class="kta-info-item"><span class="ki-icon">📞</span> 0822-5063-8289</div>
+          <div class="kta-info-item"><span class="ki-icon">📞</span> 0852-5283-4986</div>
+          <div class="kta-info-item"><span class="ki-icon">🌐</span> salutetambetuah.id</div>
+          <div class="kta-info-item"><span class="ki-icon">📸</span> @salutetambetuah</div>
+        </div>
+        <div class="kta-info-item" style="margin-top:6px;font-size:8.5px"><span class="ki-icon">📍</span> Jl. HM Kadrie Oening No. 66A, Samarinda Ulu, Kaltim 75124</div>
+      </div>
+    </div>
+
+    <div class="kta-back-footer">
+      <!-- YouTube -->
+      <a href="https://www.youtube.com/@salutetambetuah" target="_blank" style="display:flex;align-items:center;gap:3px">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="rgba(255,255,255,.8)"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        <span style="font-size:7px;color:rgba(255,255,255,.75);font-weight:600">YouTube</span>
+      </a>
+      <div class="sep"></div>
+      <!-- TikTok -->
+      <a href="https://www.tiktok.com/@salutetambetuah" target="_blank" style="display:flex;align-items:center;gap:3px">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="rgba(255,255,255,.8)"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.74z"/></svg>
+        <span style="font-size:7px;color:rgba(255,255,255,.75);font-weight:600">TikTok</span>
+      </a>
+      <div class="sep"></div>
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/salutetambetuah/" target="_blank" style="display:flex;align-items:center;gap:3px">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="rgba(255,255,255,.8)"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        <span style="font-size:7px;color:rgba(255,255,255,.75);font-weight:600">Instagram</span>
+      </a>
+      <div class="sep"></div>
+      <!-- Facebook -->
+      <a href="https://www.facebook.com/SALUTETAMBETUAH/" target="_blank" style="display:flex;align-items:center;gap:3px">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="rgba(255,255,255,.8)"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        <span style="font-size:7px;color:rgba(255,255,255,.75);font-weight:600">Facebook</span>
+      </a>
+      <div class="kta-back-footer-corner"></div>
+    </div>
+  </div>
+
+</div><!-- /hidden KTA templates -->
+
+
+<script>
+// ===== STATE =====
+let state = { foto: null, tf: null };
+
+// ===== TABS =====
+function switchTab(tab) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + tab).classList.add('active');
+  const btns = document.querySelectorAll('.tab-btn');
+  const map = { buat: 0, cetak: 1, info: 2 };
+  btns[map[tab]].classList.add('active');
+  if (tab === 'cetak') loadStoredKTAs();
+}
+
+// ===== FILE HANDLERS =====
+function handleFoto(input) {
+  if (!input.files[0]) return;
+  const file = input.files[0];
+  if (file.size > 5 * 1024 * 1024) { showToast('Ukuran foto maksimal 5MB', 'error'); return; }
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    state.foto = e.target.result;
+    const ua = document.getElementById('ua-foto');
+    ua.classList.add('has-file');
+    const prev = document.getElementById('prev-foto');
+    prev.src = state.foto;
+    prev.style.display = 'block';
+    ua.querySelector('.ua-icon').style.display = 'none';
+    ua.querySelector('.ua-text').textContent = '✅ ' + file.name;
+    ua.querySelector('.ua-sub').textContent = (file.size/1024).toFixed(0) + ' KB — Klik untuk ganti';
+    validateForm();
+  };
+  reader.readAsDataURL(file);
+}
+
+function handleTF(input) {
+  if (!input.files[0]) return;
+  const file = input.files[0];
+  if (file.size > 10 * 1024 * 1024) { showToast('Ukuran file maksimal 10MB', 'error'); return; }
+  state.tf = true; // just need to know it's uploaded
+  const ua = document.getElementById('ua-tf');
+  ua.classList.add('has-file');
+  if (file.type.startsWith('image/')) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const prev = document.getElementById('prev-tf');
+      prev.src = e.target.result;
+      prev.style.display = 'block';
+      ua.querySelector('.ua-icon').style.display = 'none';
+    };
+    reader.readAsDataURL(file);
+  } else {
+    ua.querySelector('.ua-icon').textContent = '📄';
+    ua.querySelector('.ua-icon').style.display = 'block';
+  }
+  ua.querySelector('.ua-text').textContent = '✅ ' + file.name;
+  ua.querySelector('.ua-sub').textContent = (file.size/1024).toFixed(0) + ' KB — Klik untuk ganti';
+  validateForm();
+}
+
+// ===== VALIDATE FORM =====
+function validateForm() {
+  const nama = document.getElementById('input-nama').value.trim();
+  const nim = document.getElementById('input-nim').value.trim();
+  const prodi = document.getElementById('input-prodi').value;
+  const foto = state.foto;
+  const tf = state.tf;
+
+  const mark = (id, ok) => {
+    const el = document.getElementById(id);
+    if (ok) { el.classList.add('ok'); el.querySelector('.chk').textContent = '✓'; }
+    else { el.classList.remove('ok'); el.querySelector('.chk').textContent = id.replace('req-', '').charAt(0).toUpperCase(); }
+  };
+
+  mark('req-nama', nama.length > 2);
+  mark('req-nim', nim.length > 5);
+  mark('req-prodi', !!prodi);
+  mark('req-foto', !!foto);
+  mark('req-tf', !!tf);
+
+  const allOk = nama.length > 2 && nim.length > 5 && prodi && foto && tf;
+  document.getElementById('btn-generate').disabled = !allOk;
+}
+
+// ===== GENERATE KTA =====
+async function generateKTA() {
+  const nama = document.getElementById('input-nama').value.trim().toUpperCase();
+  const nim = document.getElementById('input-nim').value.trim();
+  const prodi = document.getElementById('input-prodi').value;
+
+  // Validity: 6 months from today
+  const now = new Date();
+  const expiry = new Date(now);
+  expiry.setMonth(expiry.getMonth() + 6);
+  const formatDate = (d) => d.toLocaleDateString('id-ID', { day:'2-digit', month:'long', year:'numeric' });
+
+  // Update KTA template
+  document.getElementById('kta-nama-text').textContent = nama;
+  document.getElementById('kta-nim-text').textContent = 'NIM: ' + nim;
+  document.getElementById('kta-prodi-text').textContent = prodi;
+  document.getElementById('kta-validity-text').textContent = formatDate(expiry);
+  document.getElementById('kta-photo-img').src = state.foto;
+
+  // Show generating overlay
+  document.getElementById('genOverlay').classList.add('show');
+
+  // Wait for photo to load
+  await new Promise(res => {
+    const img = document.getElementById('kta-photo-img');
+    if (img.complete) { res(); return; }
+    img.onload = res;
+    img.onerror = res;
+    setTimeout(res, 2000);
+  });
+  await new Promise(res => setTimeout(res, 800));
+
+  try {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: [93.75, 150] });
+
+    // Capture front
+    const frontEl = document.getElementById('kta-front');
+    const frontCanvas = await html2canvas(frontEl, {
+      scale: 2, useCORS: true, allowTaint: true,
+      backgroundColor: '#ffffff', logging: false
+    });
+    doc.addImage(frontCanvas.toDataURL('image/jpeg', 0.95), 'JPEG', 0, 0, 93.75, 150);
+
+    // Add back page
+    doc.addPage([93.75, 150]);
+    const backEl = document.getElementById('kta-back');
+    const backCanvas = await html2canvas(backEl, {
+      scale: 2, useCORS: true, allowTaint: true,
+      backgroundColor: '#ffffff', logging: false
+    });
+    doc.addImage(backCanvas.toDataURL('image/jpeg', 0.95), 'JPEG', 0, 0, 93.75, 150);
+
+    // Save PDF
+    const filename = `KTA_Salut_${nim}_${nama.replace(/\s+/g,'_')}.pdf`;
+    doc.save(filename);
+
+    // Save to localStorage
+    const ktaData = {
+      nim, nama, prodi,
+      foto: state.foto,
+      downloadDate: now.toISOString(),
+      expiryDate: expiry.toISOString()
+    };
+    try { localStorage.setItem('kta_' + nim, JSON.stringify(ktaData)); } catch(e) {}
+
+    document.getElementById('genOverlay').classList.remove('show');
+    showToast('KTA berhasil didownload! Cek folder Downloads Anda.', 'success');
+    setTimeout(() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }, 300);
+
+  } catch(err) {
+    console.error(err);
+    document.getElementById('genOverlay').classList.remove('show');
+    showToast('Gagal generate KTA. Coba lagi atau hubungi admin.', 'error');
+  }
+}
+
+// ===== REPRINT =====
+function reprintKTA() {
+  const nim = document.getElementById('reprint-nim').value.trim();
+  if (!nim) { showToast('Masukkan NIM terlebih dahulu', 'error'); return; }
+
+  document.getElementById('reprint-result').classList.remove('show');
+  document.getElementById('reprint-notfound').style.display = 'none';
+
+  try {
+    const data = JSON.parse(localStorage.getItem('kta_' + nim) || 'null');
+    if (!data) {
+      document.getElementById('reprint-notfound').style.display = 'block';
+      return;
+    }
+    // Show result
+    document.getElementById('reprint-photo').src = data.foto || '';
+    document.getElementById('reprint-nama-text').textContent = data.nama;
+    document.getElementById('reprint-nim-text').textContent = 'NIM: ' + data.nim;
+    document.getElementById('rp-prodi').textContent = data.prodi;
+    document.getElementById('rp-download').textContent = new Date(data.downloadDate).toLocaleDateString('id-ID');
+    document.getElementById('rp-expiry').textContent = new Date(data.expiryDate).toLocaleDateString('id-ID');
+    const expired = new Date(data.expiryDate) < new Date();
+    document.getElementById('rp-status').textContent = expired ? '⚠️ Kadaluarsa' : '✅ Aktif';
+    document.getElementById('rp-status').style.color = expired ? '#EF4444' : '#059669';
+    document.getElementById('reprint-result').classList.add('show');
+    window._reprintData = data;
+  } catch(e) {
+    document.getElementById('reprint-notfound').style.display = 'block';
+  }
+}
+
+async function downloadReprintKTA() {
+  const data = window._reprintData;
+  if (!data) return;
+  // Restore state and generate
+  state.foto = data.foto;
+  document.getElementById('input-nama').value = data.nama;
+  document.getElementById('input-nim').value = data.nim;
+  document.getElementById('input-prodi').value = data.prodi;
+  state.tf = true;
+  validateForm();
+  await generateKTA();
+}
+
+// ===== LOAD STORED KTAs =====
+function loadStoredKTAs() {
+  const container = document.getElementById('stored-list');
+  const keys = Object.keys(localStorage).filter(k => k.startsWith('kta_'));
+  if (keys.length === 0) {
+    container.innerHTML = '<div style="text-align:center;padding:20px;color:#94A3B8;font-size:13px">Belum ada KTA tersimpan di perangkat ini</div>';
+    return;
+  }
+  container.innerHTML = keys.map(k => {
+    try {
+      const d = JSON.parse(localStorage.getItem(k));
+      const expired = new Date(d.expiryDate) < new Date();
+      return `<div style="display:flex;align-items:center;justify-content:space-between;padding:12px;background:#F8FAFC;border-radius:12px;margin-bottom:8px;border:1px solid #E2E8F0">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:36px;height:36px;border-radius:50%;overflow:hidden;background:#E2E8F0">
+            <img src="${d.foto||''}" style="width:100%;height:100%;object-fit:cover">
+          </div>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:#0F172A">${d.nama}</div>
+            <div style="font-size:11px;color:#94A3B8">${d.nim} · ${d.prodi||''}</div>
+          </div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:10px;font-weight:700;color:${expired?'#EF4444':'#059669'}">${expired?'⚠️ Kadaluarsa':'✅ Aktif'}</div>
+          <button onclick="document.getElementById('reprint-nim').value='${d.nim}';switchTab('cetak');reprintKTA()" 
+                  style="font-size:10px;background:#1E3A8A;color:white;border:none;border-radius:8px;padding:4px 10px;margin-top:4px;cursor:pointer;font-family:'Poppins',sans-serif">
+            Cetak Ulang
+          </button>
+        </div>
+      </div>`;
+    } catch(e) { return ''; }
+  }).join('');
+}
+
+// ===== TOAST =====
+function showToast(msg, type = '') {
+  const t = document.getElementById('toastKta');
+  t.textContent = msg;
+  t.className = 'toast-kta show ' + type;
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+</script>
+</body>
+</html>

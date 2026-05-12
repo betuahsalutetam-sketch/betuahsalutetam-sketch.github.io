@@ -410,7 +410,22 @@ body{font-family:'Poppins',sans-serif;background:#F8FAFC;overflow-x:hidden}
 .shadow-card{box-shadow:0 4px 24px rgba(30,58,138,.08)}
 .shadow-card-hover{box-shadow:0 12px 40px rgba(30,58,138,.14)}
 
-/* ===== SCROLLBAR ===== */
+/* ===== HERO PHOTO RESPONSIVE ===== */
+/* Desktop: foto di kanan dalam grid 2 kolom */
+@media(min-width:1024px){
+  #hero-photo{display:block!important}
+  #hero-mobile-photo{display:none!important}
+  .hero-grid{grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+}
+/* Mobile + Tablet: foto strip di atas, 1 kolom */
+@media(max-width:1023px){
+  #hero-photo{display:none!important}
+  #hero-mobile-photo{display:block!important}
+  .hero-grid{grid-template-columns:1fr;gap:0}
+}
+
+/* === HERO GRID === */
+.hero-grid{display:grid;width:100%}
 ::-webkit-scrollbar{width:5px;height:5px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:#94A3B8;border-radius:3px}
@@ -666,8 +681,37 @@ body{font-family:'Poppins',sans-serif;background:#F8FAFC;overflow-x:hidden}
   <div class="absolute top-16 right-8 w-80 h-80 bg-amber-400/15 rounded-full blur-3xl pointer-events-none"></div>
   <div class="absolute bottom-10 left-6 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-  <div class="max-w-7xl mx-auto px-4 lg:px-6 py-32 lg:py-24 relative z-10 w-full">
-    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+  <div class="max-w-7xl mx-auto px-4 lg:px-6 relative z-10 w-full" style="padding-top:6rem;padding-bottom:3rem">
+    <div class="hero-grid">
+
+      <!-- MOBILE PHOTO STRIP (tampil di atas teks, hanya di HP) -->
+      <div id="hero-mobile-photo" style="display:none;position:relative;height:220px;border-radius:20px;overflow:hidden;margin-bottom:8px">
+        <img src="assets/images/wisuda-2.jpg"
+             alt="Wisudawan Universitas Terbuka Kalimantan Timur"
+             style="width:100%;height:100%;object-fit:cover;object-position:center top"
+             onerror="this.parentElement.style.background='linear-gradient(135deg,#1E3A8A,#3B82F6)'">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(15,23,42,0.7) 0%,rgba(15,23,42,0.1) 60%)"></div>
+        <!-- Mini floating stats on mobile photo -->
+        <div style="position:absolute;bottom:12px;left:12px;right:12px;display:flex;gap:8px">
+          <div style="flex:1;background:rgba(15,23,42,0.82);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:8px 12px;backdrop-filter:blur(8px)">
+            <div style="font-size:16px;font-weight:900;color:#FCD34D">5000+</div>
+            <div style="font-size:9px;color:rgba(255,255,255,0.6);font-weight:600">Mahasiswa</div>
+          </div>
+          <div style="flex:1;background:#F59E0B;border-radius:12px;padding:8px 12px">
+            <div style="font-size:16px;font-weight:900;color:#0F172A">5.0★</div>
+            <div style="font-size:9px;color:rgba(15,23,42,0.65);font-weight:600">Google Rating</div>
+          </div>
+          <div style="flex:1;background:rgba(15,23,42,0.82);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:8px 12px;backdrop-filter:blur(8px)">
+            <div style="font-size:16px;font-weight:900;color:#ffffff">Est.</div>
+            <div style="font-size:9px;color:rgba(255,255,255,0.6);font-weight:600">2018</div>
+          </div>
+        </div>
+        <!-- BDO Badge -->
+        <div style="position:absolute;top:12px;right:12px;background:rgba(245,158,11,0.9);border-radius:99px;padding:4px 10px;display:flex;align-items:center;gap:4px">
+          <i data-lucide="shield-check" style="width:12px;height:12px;color:#0F172A"></i>
+          <span style="font-size:10px;font-weight:700;color:#0F172A">Audit BDO ✓</span>
+        </div>
+      </div>
 
       <!-- LEFT -->
       <div>
@@ -723,15 +767,19 @@ body{font-family:'Poppins',sans-serif;background:#F8FAFC;overflow-x:hidden}
         </div>
       </div>
 
-      <!-- RIGHT: Floating cards (desktop) -->
-      <div class="hidden lg:block relative h-[420px]">
-        <!-- Main image placeholder -->
-        <div class="absolute inset-0 rounded-3xl overflow-hidden">
-          <img src="assets/images/wisuda-2.jpg" alt="Wisudawan UT Kalimantan Timur" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/60 to-transparent"></div>
+      <!-- RIGHT: Foto + Floating cards -->
+      <!-- DESKTOP: tampil di kanan, MOBILE: tampil sebagai strip foto di atas teks -->
+      <div id="hero-photo" style="position:relative;height:420px;display:none">
+        <!-- Foto utama -->
+        <div style="position:absolute;inset:0;border-radius:24px;overflow:hidden">
+          <img src="assets/images/wisuda-2.jpg"
+               alt="Wisudawan Universitas Terbuka Kalimantan Timur"
+               style="width:100%;height:100%;object-fit:cover;object-position:center top"
+               onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#1E3A8A,#2563EB)'">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(15,23,42,0.55),transparent)"></div>
         </div>
-        <!-- Floating card 1 -->
-        <div class="float absolute -bottom-4 -left-6 rounded-2xl px-5 py-3" style="background:rgba(15,23,42,0.82);border:1px solid rgba(255,255,255,0.15)">
+        <!-- Floating card 1 — Wisuda 2026 -->
+        <div class="float" style="position:absolute;bottom:-16px;left:-24px;border-radius:16px;padding:12px 20px;background:rgba(15,23,42,0.88);border:1px solid rgba(255,255,255,0.15);backdrop-filter:blur(12px)">
           <div style="display:flex;align-items:center;gap:12px">
             <div style="width:40px;height:40px;background:#F59E0B;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
               <i data-lucide="trophy" style="width:20px;height:20px;color:#0F172A"></i>
@@ -742,15 +790,15 @@ body{font-family:'Poppins',sans-serif;background:#F8FAFC;overflow-x:hidden}
             </div>
           </div>
         </div>
-        <!-- Floating card 2 -->
-        <div class="float-delay absolute -top-4 -right-6 rounded-2xl px-5 py-3" style="background:#F59E0B">
-          <div style="font-size:24px;font-weight:900;color:#0F172A">15+</div>
-          <div style="font-size:10px;font-weight:700;color:rgba(15,23,42,0.65);text-transform:uppercase">Jenis Layanan</div>
+        <!-- Floating card 2 — Layanan -->
+        <div class="float-delay" style="position:absolute;top:-16px;right:-24px;border-radius:16px;padding:12px 20px;background:#F59E0B">
+          <div style="font-size:24px;font-weight:900;color:#0F172A;line-height:1">15+</div>
+          <div style="font-size:10px;font-weight:700;color:rgba(15,23,42,0.65);text-transform:uppercase;letter-spacing:.05em">Jenis Layanan</div>
         </div>
-        <!-- Floating card 3 -->
-        <div class="float absolute -right-4 rounded-2xl px-4 py-3" style="top:50%;transform:translateY(-50%);background:rgba(15,23,42,0.82);border:1px solid rgba(255,255,255,0.15)">
-          <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
-            <span style="width:8px;height:8px;background:#4ADE80;border-radius:50%;display:inline-block"></span>
+        <!-- Floating card 3 — Respons WA -->
+        <div class="float" style="position:absolute;top:50%;right:-16px;transform:translateY(-50%);border-radius:14px;padding:10px 16px;background:rgba(15,23,42,0.88);border:1px solid rgba(255,255,255,0.15);backdrop-filter:blur(12px)">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
+            <span style="width:7px;height:7px;background:#4ADE80;border-radius:50%;display:inline-block"></span>
             <span style="font-size:10px;color:rgba(255,255,255,0.55);font-weight:500">Respons WA</span>
           </div>
           <div style="font-size:14px;font-weight:700;color:#ffffff">&lt; 5 Menit</div>

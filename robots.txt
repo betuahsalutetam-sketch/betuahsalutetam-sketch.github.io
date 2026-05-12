@@ -1,16 +1,47 @@
-# robots.txt untuk salutetambetuah.id
-# Sentra Layanan UT Etam Betuah - Samarinda, Kalimantan Timur
+# ============================================================
+# robots.txt — salutetambetuah.id
+# Sentra Layanan Universitas Terbuka Etam Betuah, Samarinda
+# Update: Mei 2026
+# ============================================================
 
+# ===== Semua crawler: izinkan seluruh website =====
 User-agent: *
 Allow: /
 
-# Disallow folder yang tidak perlu di-index
+# Halaman utama & blog — wajib bisa di-crawl
+Allow: /index.html
+Allow: /blog/
+Allow: /blog/index.html
+Allow: /blog/tips-lulus-ut-tepat-waktu-fresh-graduate.html
+Allow: /blog/cara-daftar-kuliah-ut-samarinda-2026.html
+Allow: /blog/rpl-alih-kredit-universitas-terbuka.html
+Allow: /blog/panduan-registrasi-matkul-ut-2026.html
+Allow: /blog/keuntungan-kuliah-universitas-terbuka.html
+Allow: /blog/wisuda-ut-2026-panduan-lengkap.html
+
+# Assets yang boleh di-crawl (gambar, og-image, logo)
+Allow: /assets/images/
+Allow: /assets/images/og-image.jpg
+Allow: /assets/images/logo.png
+Allow: /assets/images/favicon.png
+
+# ===== Folder yang TIDAK perlu di-index =====
 Disallow: /assets/raw/
+Disallow: /assets/audio/
+Disallow: /assets/videos/
 Disallow: /_headers
 Disallow: /_redirects
+Disallow: /*.log$
+Disallow: /*.md$
 
-# Sitemap
-Sitemap: https://salutetambetuah.id/sitemap.xml
+# ===== Google Image Bot — izinkan foto kegiatan =====
+User-agent: Googlebot-Image
+Allow: /assets/images/
 
-# Crawl delay (opsional, untuk meringankan beban server)
+# ===== Bing =====
+User-agent: Bingbot
+Allow: /
 Crawl-delay: 1
+
+# ===== Sitemap =====
+Sitemap: https://salutetambetuah.id/sitemap.xml

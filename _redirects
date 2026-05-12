@@ -1,11 +1,18 @@
-# Force HTTPS dan redirect www ke non-www (lebih SEO-friendly)
-http://salutetambetuah.co.id/* https://salutetambetuah.co.id/:splat 301!
-http://www.salutetambetuah.co.id/* https://salutetambetuah.co.id/:splat 301!
-https://www.salutetambetuah.co.id/* https://salutetambetuah.co.id/:splat 301!
+# ===== REDIRECTS - salutetambetuah.id =====
+# Force HTTPS dan redirect www ke non-www
+http://salutetambetuah.id/*  https://salutetambetuah.id/:splat  301!
+http://www.salutetambetuah.id/*  https://salutetambetuah.id/:splat  301!
+https://www.salutetambetuah.id/*  https://salutetambetuah.id/:splat  301!
 
-# Redirect old Netlify URL ke domain baru (preserve SEO juice)
-https://salutetambetuah.netlify.app/* https://salutetambetuah.co.id/:splat 301!
+# Redirect Netlify URL lama ke domain baru
+https://salutetambetuah.netlify.app/*  https://salutetambetuah.id/:splat  301!
 
-# Common typo / kemungkinan URL alternatif
-/home / 301
-/index.html / 301
+# Common URL alternatives
+/home  /  301
+/index.html  /  301
+/blog  /blog/  301
+
+# Redirect blog posts pendek
+/blog/tips-lulus  /blog/tips-lulus-ut-tepat-waktu-fresh-graduate.html  301
+/blog/daftar-ut   /blog/cara-daftar-kuliah-ut-samarinda-2026.html  301
+/blog/rpl         /blog/rpl-alih-kredit-universitas-terbuka.html  301

@@ -32,23 +32,369 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://unpkg.com/lucide@latest"></script>
+<!-- Tailwind CDN DIHAPUS: diganti dengan utility CSS murni di bawah (tidak ada warning) -->
+
+
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":["EducationalOrganization","LocalBusiness"],"@id":"https://salutetambetuah.id/#organization","name":"SALUT ETAM BETUAH","alternateName":["Salut Etam Betuah","SALUT UT Samarinda","Sentra Layanan Universitas Terbuka Samarinda"],"description":"Sentra Layanan Universitas Terbuka (SALUT) di Samarinda, Kalimantan Timur. Lolos Audit Independen BDO sejak 2018. 5000+ mahasiswa terlayani.","url":"https://salutetambetuah.id","logo":"https://salutetambetuah.id/assets/images/logo.png","telephone":"+6282250638289","email":"bestuahsalutetam@gmail.com","foundingDate":"2018","address":{"@type":"PostalAddress","streetAddress":"Jl. Kadrie Oening No. 66A","addressLocality":"Samarinda Ulu","addressRegion":"Kalimantan Timur","postalCode":"75124","addressCountry":"ID"},"geo":{"@type":"GeoCoordinates","latitude":-0.4723112,"longitude":117.1277839},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"08:30","closes":"17:00"}],"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"200","bestRating":"5"},"sameAs":["https://www.youtube.com/@salutetambetuah","https://www.tiktok.com/@salutetambetuah","https://www.instagram.com/salutetambetuah/","https://www.facebook.com/SALUTETAMBETUAH/","https://maps.app.goo.gl/tuReCHw3uPCLJzHCA"]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Apa itu Salut Etam Betuah?","acceptedAnswer":{"@type":"Answer","text":"SALUT ETAM BETUAH adalah Sentra Layanan Universitas Terbuka di Samarinda, Kalimantan Timur yang melayani pendaftaran, administrasi, tutorial tatap muka, dan ujian mahasiswa UT sejak 2018."}},{"@type":"Question","name":"Bagaimana cara mendaftar kuliah UT di Samarinda?","acceptedAnswer":{"@type":"Answer","text":"Pendaftaran bisa dilakukan online melalui formulir di website atau datang langsung ke Jl. Kadrie Oening No. 66A, Samarinda Ulu. Tim kami dampingi dari awal hingga NIM aktif."}},{"@type":"Question","name":"Berapa biaya kuliah UT?","acceptedAnswer":{"@type":"Answer","text":"Biaya kuliah UT bervariasi tergantung prodi. Keanggotaan SALUT Etam Betuah Rp 500.000/semester sudah termasuk semua fasilitas. Hubungi 0822 5063 8289 untuk info terkini."}}]}]}
 </script>
-
-<script>
-tailwind.config={theme:{extend:{fontFamily:{sans:['Poppins','sans-serif']},colors:{brand:{blue:'#1E3A8A','blue-mid':'#2563EB','blue-light':'#3B82F6',yellow:'#F59E0B','yellow-light':'#FBBF24','yellow-dark':'#D97706',navy:'#0F172A'}},animation:{'slide-up':'slideUp .5s ease forwards','fade-in':'fadeIn .4s ease forwards'},keyframes:{slideUp:{from:{opacity:'0',transform:'translateY(20px)'},to:{opacity:'1',transform:'translateY(0)'}},fadeIn:{from:{opacity:'0'},to:{opacity:'1'}}}}}}
-</script>
+<!-- Lucide Icons: versi pinned via jsDelivr -->
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.383.0/dist/umd/lucide.min.js"
+        crossorigin="anonymous"
+        onerror="var s=document.createElement('script');s.src='https://unpkg.com/lucide@0.383.0/dist/umd/lucide.min.js';s.onload=function(){if(typeof lucide!=='undefined')lucide.createIcons();};document.head.appendChild(s)"></script>
 
 <style>
+/* ============================================================
+   UTILITY CSS — menggantikan Tailwind CDN sepenuhnya
+   Tidak ada CDN warning. Hanya class yang benar-benar dipakai.
+   ============================================================ */
+
+/* === RESET === */
+*,::before,::after{box-sizing:border-box;border-width:0;border-style:solid;border-color:#E2E8F0}
+html{line-height:1.5;-webkit-text-size-adjust:100%}
+body{margin:0;line-height:inherit}
+img,video,svg{display:block;max-width:100%}
+button{cursor:pointer;background:transparent;border:none;font-family:inherit;font-size:inherit}
+a{color:inherit;text-decoration:none}
+input,textarea,select{font-family:inherit;font-size:100%}
+
+/* === DISPLAY === */
+.block{display:block!important}
+.inline-block{display:inline-block!important}
+.inline-flex{display:inline-flex!important}
+.flex{display:flex!important}
+.grid{display:grid!important}
+.hidden{display:none!important}
+
+/* === FLEX === */
+.flex-col{flex-direction:column}
+.flex-row{flex-direction:row}
+.flex-wrap{flex-wrap:wrap}
+.flex-1{flex:1 1 0%}
+.flex-shrink-0{flex-shrink:0}
+.items-start{align-items:flex-start}
+.items-center{align-items:center}
+.items-end{align-items:flex-end}
+.items-baseline{align-items:baseline}
+.justify-start{justify-content:flex-start}
+.justify-center{justify-content:center}
+.justify-between{justify-content:space-between}
+.justify-end{justify-content:flex-end}
+.self-start{align-self:flex-start}
+.self-center{align-self:center}
+
+/* === GAP === */
+.gap-1{gap:.25rem}.gap-1\.5{gap:.375rem}.gap-2{gap:.5rem}
+.gap-2\.5{gap:.625rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}
+.gap-5{gap:1.25rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.gap-10{gap:2.5rem}
+
+/* === GRID === */
+.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.grid-cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+
+/* === POSITION === */
+.static{position:static}.relative{position:relative}
+.absolute{position:absolute}.fixed{position:fixed}.sticky{position:sticky}
+
+/* === INSET === */
+.inset-0{inset:0}
+.top-0{top:0}.top-3{top:.75rem}.top-4{top:1rem}.top-16{top:4rem}
+.right-0{right:0}.right-4{right:1rem}.right-8{right:2rem}
+.bottom-0{bottom:0}.bottom-8{bottom:2rem}.bottom-10{bottom:2.5rem}.bottom-24{bottom:6rem}
+.left-0{left:0}
+.-top-4{top:-1rem}.-bottom-4{bottom:-1rem}
+.-left-6{left:-1.5rem}.-right-4{right:-1rem}.-right-6{right:-1.5rem}
+
+/* === Z-INDEX === */
+.z-10{z-index:10}.z-50{z-index:50}.z-\[100\]{z-index:100}
+
+/* === SIZING === */
+.w-1\.5{width:.375rem}.w-2{width:.5rem}.w-3{width:.75rem}
+.w-3\.5{width:.875rem}.w-4{width:1rem}.w-5{width:1.25rem}
+.w-6{width:1.5rem}.w-7{width:1.75rem}.w-8{width:2rem}
+.w-9{width:2.25rem}.w-10{width:2.5rem}.w-11{width:2.75rem}
+.w-12{width:3rem}.w-80{width:20rem}.w-96{width:24rem}.w-full{width:100%}
+
+.h-1\.5{height:.375rem}.h-3{height:.75rem}.h-3\.5{height:.875rem}
+.h-4{height:1rem}.h-5{height:1.25rem}.h-6{height:1.5rem}
+.h-7{height:1.75rem}.h-8{height:2rem}.h-9{height:2.25rem}
+.h-10{height:2.5rem}.h-11{height:2.75rem}.h-12{height:3rem}
+.h-40{height:10rem}.h-80{height:20rem}.h-full{height:100%}
+.min-h-screen{min-height:100vh}
+
+.max-w-sm{max-width:24rem}.max-w-lg{max-width:32rem}.max-w-xl{max-width:36rem}
+.max-w-3xl{max-width:48rem}.max-w-7xl{max-width:80rem}.max-w-xs{max-width:20rem}
+
+/* === PADDING === */
+.p-1{padding:.25rem}.p-3\.5{padding:.875rem}.p-4{padding:1rem}
+.p-5{padding:1.25rem}.p-6{padding:1.5rem}
+.px-2{padding-left:.5rem;padding-right:.5rem}
+.px-2\.5{padding-left:.625rem;padding-right:.625rem}
+.px-3\.5{padding-left:.875rem;padding-right:.875rem}
+.px-4{padding-left:1rem;padding-right:1rem}
+.px-5{padding-left:1.25rem;padding-right:1.25rem}
+.px-6{padding-left:1.5rem;padding-right:1.5rem}
+.py-0\.5{padding-top:.125rem;padding-bottom:.125rem}
+.py-1{padding-top:.25rem;padding-bottom:.25rem}
+.py-2{padding-top:.5rem;padding-bottom:.5rem}
+.py-2\.5{padding-top:.625rem;padding-bottom:.625rem}
+.py-3{padding-top:.75rem;padding-bottom:.75rem}
+.py-3\.5{padding-top:.875rem;padding-bottom:.875rem}
+.py-6{padding-top:1.5rem;padding-bottom:1.5rem}
+.py-8{padding-top:2rem;padding-bottom:2rem}
+.py-14{padding-top:3.5rem;padding-bottom:3.5rem}
+.py-32{padding-top:8rem;padding-bottom:8rem}
+.pt-2{padding-top:.5rem}.pt-3{padding-top:.75rem}
+.pb-3{padding-bottom:.75rem}
+
+/* === MARGIN === */
+.m-0{margin:0}.mx-auto{margin-left:auto;margin-right:auto}.ml-auto{margin-left:auto}
+.mt-0\.5{margin-top:.125rem}.mt-1{margin-top:.25rem}.mt-2{margin-top:.5rem}
+.mt-5{margin-top:1.25rem}.mt-6{margin-top:1.5rem}.mt-8{margin-top:2rem}.mt-10{margin-top:2.5rem}
+.mb-1{margin-bottom:.25rem}.mb-2{margin-bottom:.5rem}.mb-3{margin-bottom:.75rem}
+.mb-4{margin-bottom:1rem}.mb-5{margin-bottom:1.25rem}.mb-6{margin-bottom:1.5rem}
+.mb-8{margin-bottom:2rem}.mb-10{margin-bottom:2.5rem}
+
+/* === SPACE === */
+.space-y-2>*+*{margin-top:.5rem}
+.space-y-3>*+*{margin-top:.75rem}
+.space-y-4>*+*{margin-top:1rem}
+
+/* === TYPOGRAPHY === */
+.text-xs{font-size:.75rem;line-height:1rem}
+.text-sm{font-size:.875rem;line-height:1.25rem}
+.text-base{font-size:1rem;line-height:1.5rem}
+.text-lg{font-size:1.125rem;line-height:1.75rem}
+.text-xl{font-size:1.25rem;line-height:1.75rem}
+.text-2xl{font-size:1.5rem;line-height:2rem}
+.text-4xl{font-size:2.25rem;line-height:2.5rem}
+.text-5xl{font-size:3rem;line-height:1}
+.text-6xl{font-size:3.75rem;line-height:1}
+.text-7xl{font-size:4.5rem;line-height:1}
+.text-\[9px\]{font-size:9px}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}
+.font-medium{font-weight:500}.font-semibold{font-weight:600}
+.font-bold{font-weight:700}.font-black{font-weight:900}
+.text-center{text-align:center}.text-left{text-align:left}.text-right{text-align:right}
+.uppercase{text-transform:uppercase}.lowercase{text-transform:lowercase}
+.underline{text-decoration:underline}.no-underline{text-decoration:none}
+.whitespace-nowrap{white-space:nowrap}
+.break-all{word-break:break-all}
+.tracking-tight{letter-spacing:-.025em}.tracking-wide{letter-spacing:.025em}
+.tracking-wider{letter-spacing:.05em}.tracking-widest{letter-spacing:.1em}
+.leading-tight{line-height:1.25}.leading-snug{line-height:1.375}
+.leading-relaxed{line-height:1.625}.leading-none{line-height:1}
+.italic{font-style:italic}
+
+/* === COLORS — TEXT === */
+.text-white{color:#fff}
+.text-white\/30{color:rgba(255,255,255,.3)}
+.text-white\/60{color:rgba(255,255,255,.6)}
+.text-white\/80{color:rgba(255,255,255,.8)}
+.text-slate-400{color:#94A3B8}
+.text-slate-500{color:#64748B}
+.text-slate-600{color:#475569}
+.text-slate-800{color:#1E293B}
+.text-amber-300{color:#FCD34D}
+.text-amber-400{color:#FBBF24}
+.text-amber-600{color:#D97706}
+.text-amber-700{color:#B45309}
+.text-blue-200{color:#BFDBFE}
+.text-blue-200\/60{color:rgba(191,219,254,.6)}
+.text-blue-200\/70{color:rgba(191,219,254,.7)}
+.text-blue-300{color:#93C5FD}
+.text-blue-300\/40{color:rgba(147,197,253,.4)}
+.text-blue-300\/60{color:rgba(147,197,253,.6)}
+.text-blue-200\/60{color:rgba(191,219,254,.6)}
+.text-brand-blue{color:#1E3A8A}
+.text-brand-navy{color:#0F172A}
+.text-brand-navy\/60{color:rgba(15,23,42,.6)}
+.text-brand-navy\/70{color:rgba(15,23,42,.7)}
+.text-emerald-700{color:#047857}
+.text-green-400{color:#4ADE80}
+.text-green-600{color:#16A34A}
+.text-orange-700{color:#C2410C}
+.text-yellow-400{color:#FACC15}
+
+/* === COLORS — BACKGROUND === */
+.bg-white{background-color:#fff}
+.bg-white\/95{background-color:rgba(255,255,255,.95)}
+.bg-white\/06{background-color:rgba(255,255,255,.06)}
+.bg-white\/08{background-color:rgba(255,255,255,.08)}
+.bg-surface,.bg-slate-50{background-color:#F8FAFC}
+.bg-amber-50{background-color:#FFFBEB}
+.bg-amber-400{background-color:#FBBF24}
+.bg-amber-400\/15{background-color:rgba(251,191,36,.15)}
+.bg-amber-400\/20{background-color:rgba(251,191,36,.2)}
+.bg-blue-50{background-color:#EFF6FF}
+.bg-blue-500\/10{background-color:rgba(59,130,246,.1)}
+.bg-brand-blue{background-color:#1E3A8A}
+.bg-brand-navy{background-color:#0F172A}
+.bg-brand-yellow{background-color:#F59E0B}
+.bg-emerald-50{background-color:#ECFDF5}
+.bg-green-400{background-color:#4ADE80}
+.bg-green-500\/20{background-color:rgba(34,197,94,.2)}
+.bg-orange-50{background-color:#FFF7ED}
+.bg-transparent{background-color:transparent}
+
+/* === GRADIENT === */
+.bg-gradient-to-br{background-image:linear-gradient(to bottom right,var(--tw-gradient-stops,#000,#fff))}
+.bg-gradient-to-r{background-image:linear-gradient(to right,var(--tw-gradient-stops,#000,#fff))}
+.bg-gradient-to-t{background-image:linear-gradient(to top,var(--tw-gradient-stops,#000,#fff))}
+.from-brand-navy\/60{--tw-gradient-from:rgba(15,23,42,.6);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to,transparent)}
+.from-amber-400{--tw-gradient-from:#FBBF24;--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to,transparent)}
+.from-amber-500{--tw-gradient-from:#F59E0B;--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to,transparent)}
+.from-blue-500{--tw-gradient-from:#3B82F6;--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to,transparent)}
+.from-cyan-500{--tw-gradient-from:#06B6D4;--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to,transparent)}
+.from-emerald-500{--tw-gradient-from:#10B981;--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to,transparent)}
+.from-purple-500{--tw-gradient-from:#A855F7;--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to,transparent)}
+.from-rose-500{--tw-gradient-from:#F43F5E;--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to,transparent)}
+.to-blue-600{--tw-gradient-to:#2563EB}
+.to-blue-700{--tw-gradient-to:#1D4ED8}
+.to-indigo-600{--tw-gradient-to:#4F46E5}
+.to-orange-600{--tw-gradient-to:#EA580C}
+.to-pink-600{--tw-gradient-to:#DB2777}
+.to-teal-600{--tw-gradient-to:#0D9488}
+.to-transparent{--tw-gradient-to:transparent}
+.to-yellow-300{--tw-gradient-to:#FDE047}
+
+/* === BORDER === */
+.border{border-width:1px}.border-0{border-width:0}
+.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}
+.border-amber-100{border-color:#FEF3C7}
+.border-slate-100{border-color:#F1F5F9}
+.border-slate-100\/80{border-color:rgba(241,245,249,.8)}
+.border-slate-200{border-color:#E2E8F0}
+.border-white\/10{border-color:rgba(255,255,255,.1)}
+.border-white\/12{border-color:rgba(255,255,255,.12)}
+.border-white\/15{border-color:rgba(255,255,255,.15)}
+.border-brand-blue{border-color:#1E3A8A}
+
+/* === BORDER RADIUS === */
+.rounded-full{border-radius:9999px}
+.rounded-xl{border-radius:.75rem}
+.rounded-2xl{border-radius:1rem}
+.rounded-3xl{border-radius:1.5rem}
+
+/* === SHADOW === */
+.shadow-md{box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1)}
+.shadow-xl{box-shadow:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1)}
+
+/* === OVERFLOW & OBJECT === */
+.overflow-hidden{overflow:hidden}
+.overflow-x-auto{overflow-x:auto}
+.object-cover{object-fit:cover}
+.object-contain{object-fit:contain}
+.resize-none{resize:none}
+.outline-none{outline:none}
+.appearance-none{appearance:none;-webkit-appearance:none}
+.pointer-events-none{pointer-events:none}
+.backdrop-blur-xl{backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
+.blur-3xl{filter:blur(64px)}
+.select-none{user-select:none}
+.cursor-pointer{cursor:pointer}
+
+/* === ANIMATION === */
+.animate-bounce{animation:bounce 1s infinite}
+@keyframes bounce{0%,100%{transform:translateY(-25%);animation-timing-function:cubic-bezier(.8,0,1,1)}50%{transform:translateY(0);animation-timing-function:cubic-bezier(0,0,.2,1)}}
+
+/* === TRANSFORM === */
+.-translate-x-1\/2{transform:translateX(-50%)}
+.translate-x-0{transform:translateX(0)}
+
+/* === TRANSITIONS === */
+.transition-all{transition:all .15s cubic-bezier(.4,0,.2,1)}
+.transition-colors{transition:color .15s,background-color .15s,border-color .15s}
+.transition-transform{transition:transform .15s cubic-bezier(.4,0,.2,1)}
+.duration-300{transition-duration:300ms}
+
+/* === MISC === */
+.scroll-smooth{scroll-behavior:smooth}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}
+
+/* === HOVER === */
+.hover\:bg-amber-300:hover{background-color:#FCD34D}
+.hover\:bg-amber-500:hover{background-color:#F59E0B}
+.hover\:bg-blue-900:hover{background-color:#1E3A8A}
+.hover\:bg-slate-50:hover{background-color:#F8FAFC}
+.hover\:bg-white\/12:hover{background-color:rgba(255,255,255,.12)}
+.hover\:bg-white\/15:hover{background-color:rgba(255,255,255,.15)}
+.hover\:bg-white\/20:hover{background-color:rgba(255,255,255,.2)}
+.hover\:border-brand-blue:hover{border-color:#1E3A8A}
+.hover\:text-brand-blue:hover{color:#1E3A8A}
+.hover\:text-white:hover{color:#fff}
+.hover\:translate-x-1:hover{transform:translateX(.25rem)}
+.hover\:underline:hover{text-decoration:underline}
+.group:hover .group-hover\:bg-blue-100{background-color:#DBEAFE}
+.group:hover .group-hover\:translate-x-1{transform:translateX(.25rem)}
+
+/* === FOCUS === */
+.focus\:border-amber-400:focus{border-color:#FBBF24;outline:none}
+
+/* === PLACEHOLDER === */
+.placeholder-blue-300\/50::placeholder{color:rgba(147,197,253,.5)}
+
+/* === RESPONSIVE: SM ≥ 640px === */
+@media(min-width:640px){
+  .sm\:block{display:block!important}
+  .sm\:hidden{display:none!important}
+  .sm\:inline-flex{display:inline-flex!important}
+  .sm\:flex-row{flex-direction:row}
+  .sm\:grid-cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .sm\:text-6xl{font-size:3.75rem;line-height:1}
+}
+
+/* === RESPONSIVE: MD ≥ 768px === */
+@media(min-width:768px){
+  .md\:flex-row{flex-direction:row}
+  .md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .md\:hidden{display:none!important}
+  .md\:block{display:block!important}
+  .md\:items-center{align-items:center}
+  .md\:justify-between{justify-content:space-between}
+  .md\:text-center{text-align:center}
+}
+
+/* === RESPONSIVE: LG ≥ 1024px === */
+@media(min-width:1024px){
+  .lg\:block{display:block!important}
+  .lg\:hidden{display:none!important}
+  .lg\:flex{display:flex!important}
+  .lg\:inline-flex{display:inline-flex!important}
+  .lg\:flex-row{flex-direction:row}
+  .lg\:flex-col{flex-direction:column}
+  .lg\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .lg\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .lg\:col-span-2{grid-column:span 2/span 2}
+  .lg\:py-20{padding-top:5rem;padding-bottom:5rem}
+  .lg\:py-24{padding-top:6rem;padding-bottom:6rem}
+  .lg\:px-6{padding-left:1.5rem;padding-right:1.5rem}
+  .lg\:text-4xl{font-size:2.25rem;line-height:2.5rem}
+  .lg\:text-7xl{font-size:4.5rem;line-height:1}
+  .lg\:text-6xl{font-size:3.75rem;line-height:1}
+  .lg\:p-8{padding:2rem}.lg\:p-9{padding:2.25rem}
+  .lg\:p-10{padding:2.5rem}
+  .lg\:gap-8{gap:2rem}.lg\:gap-16{gap:4rem}
+  .lg\:mt-0{margin-top:0}
+  .lg\:mb-0{margin-bottom:0}
+  .lg\:text-right{text-align:right}
+}
+
 *{box-sizing:border-box}
 body{font-family:'Poppins',sans-serif;background:#F8FAFC;overflow-x:hidden}
 ::selection{background:#F59E0B;color:#1E3A8A}
 
-/* ===== VARIABLES ===== */
+/* ===== FORCE HERO BACKGROUND ===== */
+#hero{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 45%,#2563EB 100%)!important}
+.grad-blue{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 45%,#2563EB 100%)!important}
+.glass{background:rgba(255,255,255,.08)!important;backdrop-filter:blur(16px)!important;border:1px solid rgba(255,255,255,.14)!important}
+.glass-dark{background:rgba(15,23,42,.7)!important;backdrop-filter:blur(16px)!important;border:1px solid rgba(255,255,255,.1)!important}
+/* Hero text safety */
+#hero h1,#hero h1 span:not(.grad-text){color:#ffffff!important}
+#hero p{color:rgba(219,234,254,0.8)!important}
+#hero strong{color:#ffffff!important}
 :root{
   --navy:#1E3A8A;--navy-mid:#2563EB;--gold:#F59E0B;--gold-dark:#D97706;
   --dark:#0F172A;--surface:#F8FAFC;--white:#fff;
@@ -315,7 +661,7 @@ body{font-family:'Poppins',sans-serif;background:#F8FAFC;overflow-x:hidden}
 <!-- ================================================================
      HERO
      ================================================================ -->
-<section id="hero" class="relative min-h-screen flex items-center overflow-hidden grad-blue hero-pattern">
+<section id="hero" class="relative min-h-screen flex items-center overflow-hidden" style="background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 45%,#2563EB 100%);background-image:linear-gradient(135deg,#0F172A 0%,#1E3A8A 45%,#2563EB 100%),radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px);background-size:100%,28px 28px">
   <!-- Blobs -->
   <div class="absolute top-16 right-8 w-80 h-80 bg-amber-400/15 rounded-full blur-3xl pointer-events-none"></div>
   <div class="absolute bottom-10 left-6 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -327,52 +673,52 @@ body{font-family:'Poppins',sans-serif;background:#F8FAFC;overflow-x:hidden}
       <div>
         <!-- Badges -->
         <div class="flex flex-wrap gap-2 mb-6">
-          <div class="glass rounded-full px-3 py-1.5 flex items-center gap-1.5">
-            <span class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span>
-            <span class="text-[10px] font-semibold text-white/80 uppercase tracking-wider">Samarinda, Kaltim</span>
+          <div style="background:rgba(255,255,255,0.10);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.18);border-radius:99px;padding:6px 14px;display:inline-flex;align-items:center;gap:6px">
+            <span style="width:6px;height:6px;background:#4ADE80;border-radius:50%;display:inline-block;animation:pulse 2s infinite"></span>
+            <span style="font-size:10px;font-weight:600;color:rgba(255,255,255,0.85);text-transform:uppercase;letter-spacing:.06em">Samarinda, Kaltim</span>
           </div>
-          <div class="bg-amber-400/20 border border-amber-400/40 rounded-full px-3 py-1.5 flex items-center gap-1.5">
-            <i data-lucide="shield-check" class="w-3 h-3 text-amber-300"></i>
-            <span class="text-[10px] font-bold text-amber-300">Audit BDO ✓</span>
+          <div style="background:rgba(245,158,11,0.18);border:1px solid rgba(245,158,11,0.4);border-radius:99px;padding:6px 14px;display:inline-flex;align-items:center;gap:6px">
+            <i data-lucide="shield-check" style="width:12px;height:12px;color:#FCD34D"></i>
+            <span style="font-size:10px;font-weight:700;color:#FCD34D">Audit BDO ✓</span>
           </div>
         </div>
 
         <!-- Headline -->
-        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-[1.02] tracking-tight mb-5">
-          Salut<br>
-          <span class="grad-text">Etam</span><br>
-          Betuah
+        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.02] tracking-tight mb-5" style="color:#ffffff">
+          <span style="color:#ffffff">Salut</span><br>
+          <span style="background:linear-gradient(90deg,#F59E0B,#FBBF24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Etam</span><br>
+          <span style="color:#ffffff">Betuah</span>
         </h1>
-        <p class="text-sm font-semibold text-amber-300 mb-3 tracking-wide uppercase">Sentra Layanan Universitas Terbuka</p>
-        <p class="text-blue-100/70 text-base leading-relaxed max-w-lg mb-8">
-          Mitra terpercaya kuliah <strong class="text-white">Universitas Terbuka</strong> di Samarinda — dari daftar hingga wisuda, kami yang urus.
+        <p class="text-sm font-semibold mb-3 tracking-wide uppercase" style="color:#FCD34D">Sentra Layanan Universitas Terbuka</p>
+        <p class="text-base leading-relaxed max-w-lg mb-8" style="color:rgba(219,234,254,0.75)">
+          Mitra terpercaya kuliah <strong style="color:#ffffff">Universitas Terbuka</strong> di Samarinda — dari daftar hingga wisuda, kami yang urus.
         </p>
 
         <!-- CTAs -->
         <div class="flex flex-wrap gap-3 mb-10">
           <a href="#layanan"
-             class="inline-flex items-center gap-2 bg-amber-400 text-brand-navy text-sm font-bold px-6 py-3.5 rounded-full hover:bg-amber-300 transition-all shadow-lg shadow-amber-500/30">
-            Lihat Layanan <i data-lucide="arrow-right" class="w-4 h-4"></i>
+             style="display:inline-flex;align-items:center;gap:8px;background:#F59E0B;color:#0F172A;font-size:14px;font-weight:700;padding:14px 24px;border-radius:99px;text-decoration:none;box-shadow:0 8px 20px rgba(245,158,11,0.35);transition:all .2s">
+            Lihat Layanan <i data-lucide="arrow-right" style="width:16px;height:16px"></i>
           </a>
           <a href="https://wa.me/6282250638289?text=Halo%20Salut%20Etam%20Betuah%2C%20saya%20ingin%20konsultasi" target="_blank" rel="noopener"
-             class="inline-flex items-center gap-2 glass text-white text-sm font-medium px-6 py-3.5 rounded-full hover:bg-white/15 transition-all">
-            <i data-lucide="message-circle" class="w-4 h-4 text-amber-300"></i> Chat WhatsApp
+             style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1.5px solid rgba(255,255,255,0.3);color:#ffffff;font-size:14px;font-weight:500;padding:14px 24px;border-radius:99px;text-decoration:none;transition:all .2s">
+            <i data-lucide="message-circle" style="width:16px;height:16px;color:#FCD34D"></i> Chat WhatsApp
           </a>
         </div>
 
         <!-- Stats strip -->
         <div class="grid grid-cols-3 gap-3">
-          <div class="stat-card">
-            <div class="text-2xl font-black text-amber-300 counter" data-target="5240">0</div>
-            <div class="text-[10px] text-blue-200/60 mt-1 font-medium">Mahasiswa</div>
+          <div style="background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.18);border-radius:16px;padding:16px 20px;text-align:center">
+            <div class="text-2xl font-black counter" data-target="5240" style="color:#FCD34D">0</div>
+            <div class="text-xs mt-1 font-medium" style="color:rgba(147,197,253,0.7)">Mahasiswa</div>
           </div>
-          <div class="stat-card">
-            <div class="text-2xl font-black text-white">2018</div>
-            <div class="text-[10px] text-blue-200/60 mt-1 font-medium">Berdiri</div>
+          <div style="background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.18);border-radius:16px;padding:16px 20px;text-align:center">
+            <div class="text-2xl font-black" style="color:#ffffff">2018</div>
+            <div class="text-xs mt-1 font-medium" style="color:rgba(147,197,253,0.7)">Berdiri</div>
           </div>
-          <div class="stat-card">
-            <div class="text-2xl font-black text-amber-300">5.0<span class="text-base">★</span></div>
-            <div class="text-[10px] text-blue-200/60 mt-1 font-medium">Rating Google</div>
+          <div style="background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.18);border-radius:16px;padding:16px 20px;text-align:center">
+            <div class="text-2xl font-black" style="color:#FCD34D">5.0<span class="text-base">★</span></div>
+            <div class="text-xs mt-1 font-medium" style="color:rgba(147,197,253,0.7)">Rating Google</div>
           </div>
         </div>
       </div>
@@ -385,29 +731,29 @@ body{font-family:'Poppins',sans-serif;background:#F8FAFC;overflow-x:hidden}
           <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/60 to-transparent"></div>
         </div>
         <!-- Floating card 1 -->
-        <div class="float absolute -bottom-4 -left-6 glass-dark rounded-2xl px-5 py-3 border border-white/10">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-amber-400 rounded-xl flex items-center justify-center flex-shrink-0">
-              <i data-lucide="trophy" class="w-5 h-5 text-brand-navy"></i>
+        <div class="float absolute -bottom-4 -left-6 rounded-2xl px-5 py-3" style="background:rgba(15,23,42,0.82);border:1px solid rgba(255,255,255,0.15)">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:40px;height:40px;background:#F59E0B;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <i data-lucide="trophy" style="width:20px;height:20px;color:#0F172A"></i>
             </div>
             <div>
-              <div class="text-[10px] text-white/60">Wisuda 2026</div>
-              <div class="text-sm font-bold text-white">Sukses Bersama!</div>
+              <div style="font-size:10px;color:rgba(255,255,255,0.55)">Wisuda 2026</div>
+              <div style="font-size:14px;font-weight:700;color:#ffffff">Sukses Bersama!</div>
             </div>
           </div>
         </div>
         <!-- Floating card 2 -->
-        <div class="float-delay absolute -top-4 -right-6 bg-amber-400 rounded-2xl px-5 py-3">
-          <div class="text-2xl font-black text-brand-navy">15+</div>
-          <div class="text-[10px] font-bold text-brand-navy/70 uppercase">Jenis Layanan</div>
+        <div class="float-delay absolute -top-4 -right-6 rounded-2xl px-5 py-3" style="background:#F59E0B">
+          <div style="font-size:24px;font-weight:900;color:#0F172A">15+</div>
+          <div style="font-size:10px;font-weight:700;color:rgba(15,23,42,0.65);text-transform:uppercase">Jenis Layanan</div>
         </div>
         <!-- Floating card 3 -->
-        <div class="float absolute top-1/2 -right-4 transform -translate-y-1/2 glass-dark rounded-2xl px-4 py-3 border border-white/10">
-          <div class="flex items-center gap-2 mb-1">
-            <span class="w-2 h-2 bg-green-400 rounded-full"></span>
-            <span class="text-[10px] text-white/60 font-medium">Respons WA</span>
+        <div class="float absolute -right-4 rounded-2xl px-4 py-3" style="top:50%;transform:translateY(-50%);background:rgba(15,23,42,0.82);border:1px solid rgba(255,255,255,0.15)">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
+            <span style="width:8px;height:8px;background:#4ADE80;border-radius:50%;display:inline-block"></span>
+            <span style="font-size:10px;color:rgba(255,255,255,0.55);font-weight:500">Respons WA</span>
           </div>
-          <div class="text-sm font-bold text-white">&#60; 5 Menit</div>
+          <div style="font-size:14px;font-weight:700;color:#ffffff">&lt; 5 Menit</div>
         </div>
       </div>
 
@@ -1061,8 +1407,26 @@ body{font-family:'Poppins',sans-serif;background:#F8FAFC;overflow-x:hidden}
      JAVASCRIPT
      ================================================================ -->
 <script>
-lucide.createIcons();
-document.getElementById('yr').textContent = new Date().getFullYear();
+// ===== SAFE LUCIDE WRAPPER =====
+function initIcons() {
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  } else {
+    // Fallback: retry setelah 300ms
+    setTimeout(function() {
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }, 300);
+  }
+}
+
+function safeCreateIcons() {
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+}
+
+// Jalankan setelah DOM + scripts selesai
+document.addEventListener('DOMContentLoaded', function() {
+  initIcons();
+  document.getElementById('yr').textContent = new Date().getFullYear();
 
 // ===== UTILS =====
 function showToast(msg) {
@@ -1276,7 +1640,7 @@ document.querySelectorAll('.counter').forEach(el => cntObs.observe(el));
     if (!mpIcon) return;
     mpIcon.setAttribute('data-lucide', playing ? 'pause' : 'play');
     if (playing) mpDisc.classList.add('playing'); else mpDisc.classList.remove('playing');
-    lucide.createIcons();
+    safeCreateIcons();
   }
   function showMP() { if (!userClosed) mp.classList.add('show'); }
 
@@ -1396,16 +1760,18 @@ document.querySelectorAll('.counter').forEach(el => cntObs.observe(el));
   fab.addEventListener('click', () => {
     const open = panel.classList.toggle('open');
     fabIcon.setAttribute('data-lucide', open ? 'x' : 'message-circle');
-    lucide.createIcons();
+    safeCreateIcons();
     if (open) initChat();
   });
   closeBtn.addEventListener('click', () => {
     panel.classList.remove('open');
     fabIcon.setAttribute('data-lucide', 'message-circle');
-    lucide.createIcons();
+    safeCreateIcons();
   });
   form.addEventListener('submit', e => { e.preventDefault(); handleMsg(input.value); });
 })();
+
+}); // end DOMContentLoaded
 </script>
 </body>
 </html>

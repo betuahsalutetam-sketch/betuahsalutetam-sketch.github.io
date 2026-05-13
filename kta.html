@@ -168,8 +168,8 @@ input,select,textarea{font-family:'Poppins',sans-serif}
 .kta-logo-row{position:absolute;top:0;left:0;right:0;height:86px;display:flex;align-items:center;justify-content:center;z-index:2}
 .kta-logo-sep{width:1px;height:30px;background:rgba(30,58,138,.3)}
 
-/* === KTA TITLE ROW === */
-.kta-title-row{position:absolute;top:89px;left:0;right:0;text-align:center;z-index:5;padding:0 12px;height:28px;display:flex;align-items:center;justify-content:center}
+/* === KTA TITLE ROW — posisi dalam kta-navy-bar, bukan absolute lagi === */
+.kta-title-row{display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:0 12px}
 .kta-title-row .kt2{font-size:9px;font-weight:800;color:#FFD700;letter-spacing:.14em;text-transform:uppercase;text-shadow:0 0 12px rgba(255,215,0,.4)}
 
 /* === PHOTO RING — turun ke bawah judul === */
@@ -731,8 +731,8 @@ input,select,textarea{font-family:'Poppins',sans-serif}
 
     <div class="kta-back-body">
 
-      <!-- Partner logos — layer PUTIH agar logo lebih hidup -->
-      <div style="background:#ffffff;border-radius:10px;padding:10px 8px;margin-bottom:8px;border:1px solid rgba(212,175,55,.2);box-shadow:0 2px 12px rgba(0,0,0,.15)">
+      <!-- Partner logos — layer semi-transparan agar natural -->
+      <div style="background:rgba(255,255,255,.82);border-radius:10px;padding:10px 8px;margin-bottom:8px;border:1px solid rgba(212,175,55,.2);box-shadow:0 2px 12px rgba(0,0,0,.15)">
         <div style="font-size:7px;font-weight:700;color:#94A3B8;letter-spacing:.07em;text-transform:uppercase;text-align:center;margin-bottom:8px">Mitra Resmi</div>
         <div style="display:flex;align-items:center;justify-content:space-around;flex-wrap:wrap;gap:6px">
           <img src="assets/images/partners/hotel-gk.png" alt="Hotel Grand Kartika"
@@ -750,29 +750,6 @@ input,select,textarea{font-family:'Poppins',sans-serif}
           <img src="assets/images/partners/tms-daihatsu.png" alt="TMS Daihatsu"
                style="height:18px;max-width:58px;object-fit:contain"
                onerror="this.outerHTML='<span style=\'font-size:7px;font-weight:700;color:#DC2626\'>TMS</span>'">
-        </div>
-      </div>
-
-      <!-- Medsos Salut Etam Betuah -->
-      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(212,175,55,.2);border-radius:8px;padding:7px 10px;margin-bottom:8px">
-        <div style="font-size:7.5px;font-weight:800;color:#FFD700;letter-spacing:.08em;text-transform:uppercase;text-align:center;margin-bottom:6px">Media Sosial</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px">
-          <div style="display:flex;align-items:center;gap:4px;font-size:8px;color:rgba(255,255,255,.75)">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="#FF0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            @salutetambetuah
-          </div>
-          <div style="display:flex;align-items:center;gap:4px;font-size:8px;color:rgba(255,255,255,.75)">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="#010101"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.74z"/></svg>
-            @salutetambetuah
-          </div>
-          <div style="display:flex;align-items:center;gap:4px;font-size:8px;color:rgba(255,255,255,.75)">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="url(#ig)"><defs><linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="25%" stop-color="#e6683c"/><stop offset="50%" stop-color="#dc2743"/><stop offset="75%" stop-color="#cc2366"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm6.406-5.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
-            @salutetambetuah
-          </div>
-          <div style="display:flex;align-items:center;gap:4px;font-size:8px;color:rgba(255,255,255,.75)">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-            Salut Etam Betuah
-          </div>
         </div>
       </div>
 

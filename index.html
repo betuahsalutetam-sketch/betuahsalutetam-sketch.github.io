@@ -411,6 +411,8 @@ body{font-family:'Poppins',sans-serif;background:#F8FAFC;overflow-x:hidden}
 .shadow-card-hover{box-shadow:0 12px 40px rgba(30,58,138,.14)}
 
 /* ===== HERO PHOTO RESPONSIVE ===== */
+#hero-photo{display:none}
+#hero-mobile-photo{display:none}
 /* Desktop: foto di kanan dalam grid 2 kolom */
 @media(min-width:1024px){
   #hero-photo{display:block!important}
@@ -423,7 +425,6 @@ body{font-family:'Poppins',sans-serif;background:#F8FAFC;overflow-x:hidden}
   #hero-mobile-photo{display:block!important}
   .hero-grid{grid-template-columns:1fr;gap:0}
 }
-
 /* === HERO GRID === */
 .hero-grid{display:grid;width:100%}
 ::-webkit-scrollbar{width:5px;height:5px}
@@ -582,6 +583,101 @@ body{font-family:'Poppins',sans-serif;background:#F8FAFC;overflow-x:hidden}
 /* ===== MOBILE SECTION HEADER ===== */
 .sec-header{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:20px}
 .sec-header a{font-size:.72rem;font-weight:700;color:var(--navy);white-space:nowrap}
+
+/* ===== MITRA / PARTNER SECTION ===== */
+.partner-logos-row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:16px}
+.partner-logos-sep{width:1px;height:48px;background:linear-gradient(to bottom,transparent,#E2E8F0,transparent)}
+.partner-logo-item{
+  padding:16px 20px;border-radius:20px;
+  transition:all .35s cubic-bezier(.34,1.56,.64,1);
+  cursor:default;display:flex;align-items:center;justify-content:center;
+  background:white;
+  box-shadow:0 4px 16px rgba(0,0,0,.08), 0 1px 4px rgba(0,0,0,.04);
+  border:1px solid rgba(0,0,0,.04);
+}
+.partner-logo-item:hover{
+  transform:translateY(-10px) scale(1.08);
+  box-shadow:0 20px 48px rgba(0,0,0,.14), 0 8px 20px rgba(0,0,0,.08);
+  border-color:transparent;
+}
+.partner-logo-img{
+  height:52px;width:auto;object-fit:contain;
+  filter:drop-shadow(0 2px 6px rgba(0,0,0,.12)) contrast(1.15) saturate(1.25);
+  transition:all .35s ease;
+}
+.partner-logo-item:hover .partner-logo-img{
+  filter:drop-shadow(0 6px 16px rgba(0,0,0,.2)) contrast(1.2) saturate(1.4) brightness(1.05);
+}
+@media(max-width:640px){
+  .partner-logos-sep{display:none}
+  .partner-logos-row{gap:10px}
+  .partner-logo-img{height:44px}
+  .partner-logo-item{padding:12px 14px;border-radius:14px}
+}
+.benefit-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+@media(min-width:1024px){.benefit-grid{grid-template-columns:repeat(3,1fr)}}
+.benefit-card{background:white;border-radius:20px;padding:24px;border:1px solid #E2E8F0;box-shadow:0 4px 16px rgba(30,58,138,.05);transition:all .25s;position:relative;overflow:hidden}
+.benefit-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--card-accent,#1E3A8A)}
+.benefit-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(30,58,138,.12)}
+.bc-logo-wrap{width:72px;height:72px;border-radius:18px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;padding:10px;box-shadow:0 4px 14px rgba(0,0,0,.08);border:1px solid rgba(0,0,0,.04)}
+.bc-logo{height:44px;width:auto;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,.1)) contrast(1.15) saturate(1.3);transition:filter .3s}
+.bc-badge{font-size:10px;font-weight:700;padding:3px 10px;border-radius:99px;display:inline-block;margin-bottom:8px;letter-spacing:.04em}
+.bc-title{font-size:15px;font-weight:800;color:#0F172A;margin-bottom:8px;line-height:1.3}
+.bc-desc{font-size:12px;color:#64748B;line-height:1.7;margin-bottom:14px}
+.bc-benefit{display:flex;flex-direction:column;gap:5px}
+.cb-item{font-size:12px;color:#374151;line-height:1.5}
+.kta-cta-card{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 60%,#2563EB 100%)!important;border:0!important;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.kta-cta-card::before{background:linear-gradient(90deg,#F59E0B,#FBBF24)!important}
+.btn-kta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#F59E0B,#FBBF24);color:#0F172A;font-size:13px;font-weight:800;padding:12px 24px;border-radius:14px;text-decoration:none;transition:all .25s;box-shadow:0 4px 16px rgba(245,158,11,.35)}
+.btn-kta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(245,158,11,.45)}
+.pks-grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:768px){.pks-grid{grid-template-columns:1fr 1fr}}
+.pks-card{background:white;border-radius:20px;overflow:hidden;border:1px solid #E2E8F0;box-shadow:0 4px 16px rgba(30,58,138,.06);transition:all .25s}
+.pks-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(30,58,138,.12)}
+.pks-img-wrap{position:relative;height:220px;overflow:hidden}
+.pks-img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .4s}
+.pks-card:hover .pks-img{transform:scale(1.04)}
+.pks-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,23,42,.7) 0%,rgba(15,23,42,.1) 60%);display:flex;align-items:flex-end;padding:14px}
+.pks-overlay-logo{display:flex;align-items:center;gap:6px}
+/* ===== VIDEO GALLERY CARDS ===== */
+.gal-video-card{cursor:pointer}
+.gal-video-card video{pointer-events:none}
+.gal-play-btn{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);
+  width:52px;height:52px;border-radius:50%;
+  background:rgba(15,23,42,.72);backdrop-filter:blur(4px);
+  display:flex;align-items:center;justify-content:center;
+  border:2px solid rgba(255,255,255,.6);
+  transition:all .25s;z-index:2
+}
+.gal-video-card:hover .gal-play-btn{background:rgba(37,99,235,.9);border-color:white;transform:translate(-50%,-60%) scale(1.12)}
+
+/* ===== VIDEO MODAL ===== */
+#video-modal{
+  display:none;position:fixed;inset:0;z-index:9999;
+  background:rgba(0,0,0,.92);backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;padding:16px
+}
+#video-modal.open{display:flex}
+#video-modal-inner{
+  position:relative;width:100%;max-width:900px;
+  background:#000;border-radius:16px;overflow:hidden;
+  box-shadow:0 32px 80px rgba(0,0,0,.6)
+}
+#video-modal video{width:100%;max-height:80vh;display:block;object-fit:contain}
+#video-modal-cap{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(to top,rgba(0,0,0,.8),transparent);
+  padding:16px 20px;font-size:13px;font-weight:600;color:white
+}
+#video-modal-close{
+  position:absolute;top:12px;right:12px;
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(255,255,255,.15);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  color:white;font-size:20px;line-height:1;transition:background .2s;z-index:10
+}
+#video-modal-close:hover{background:rgba(255,255,255,.3)}
 </style>
 </head>
 
@@ -653,6 +749,7 @@ body{font-family:'Poppins',sans-serif;background:#F8FAFC;overflow-x:hidden}
       <!-- Desktop links -->
       <div class="hidden lg:flex items-center gap-5">
         <a href="#layanan" class="text-xs font-semibold text-slate-500 hover:text-brand-blue transition-colors">Layanan</a>
+        <a href="#mitra" class="text-xs font-semibold text-slate-500 hover:text-brand-blue transition-colors">Mitra</a>
         <a href="#blog" class="text-xs font-semibold text-slate-500 hover:text-brand-blue transition-colors">Blog</a>
         <a href="#galeri" class="text-xs font-semibold text-slate-500 hover:text-brand-blue transition-colors">Galeri</a>
         <a href="#testimoni" class="text-xs font-semibold text-slate-500 hover:text-brand-blue transition-colors">Testimoni</a>
@@ -685,7 +782,7 @@ body{font-family:'Poppins',sans-serif;background:#F8FAFC;overflow-x:hidden}
     <div class="hero-grid">
 
       <!-- MOBILE PHOTO STRIP (tampil di atas teks, hanya di HP) -->
-      <div id="hero-mobile-photo" style="display:none;position:relative;height:220px;border-radius:20px;overflow:hidden;margin-bottom:8px">
+      <div id="hero-mobile-photo" style="position:relative;height:220px;border-radius:20px;overflow:hidden;margin-bottom:8px">
         <img src="assets/images/wisuda-2.jpg"
              alt="Wisudawan Universitas Terbuka Kalimantan Timur"
              style="width:100%;height:100%;object-fit:cover;object-position:center top"
@@ -769,7 +866,7 @@ body{font-family:'Poppins',sans-serif;background:#F8FAFC;overflow-x:hidden}
 
       <!-- RIGHT: Foto + Floating cards -->
       <!-- DESKTOP: tampil di kanan, MOBILE: tampil sebagai strip foto di atas teks -->
-      <div id="hero-photo" style="position:relative;height:420px;display:none">
+      <div id="hero-photo" style="position:relative;height:420px">
         <!-- Foto utama -->
         <div style="position:absolute;inset:0;border-radius:24px;overflow:hidden">
           <img src="assets/images/wisuda-2.jpg"
@@ -1055,6 +1152,182 @@ body{font-family:'Poppins',sans-serif;background:#F8FAFC;overflow-x:hidden}
 </section>
 
 <!-- ================================================================
+     MITRA & PARTNER EKSKLUSIF
+     ================================================================ -->
+<section id="mitra" style="padding:56px 0;background:linear-gradient(180deg,#F8FAFC 0%,#ffffff 100%)">
+  <div style="max-width:1280px;margin:0 auto;padding:0 16px">
+
+    <!-- Section header -->
+    <div style="text-align:center;margin-bottom:40px">
+      <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.25);color:#D97706;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 14px;border-radius:99px;margin-bottom:12px">
+        🎁 Keuntungan Eksklusif
+      </div>
+      <h2 style="font-size:clamp(24px,4vw,36px);font-weight:900;color:#1E3A8A;line-height:1.1;margin-bottom:8px">
+        Jadi Anggota Salut,<br>Dapat Banyak Keuntungan!
+      </h2>
+      <p style="font-size:13px;color:#64748B;max-width:480px;margin:0 auto;line-height:1.7">
+        Keanggotaan Rp 500.000/semester membuka akses ke 5 mitra eksklusif dengan diskon spesial yang tidak bisa didapat di tempat lain.
+      </p>
+    </div>
+
+    <!-- PARTNER LOGOS ROW -->
+    <div style="background:white;border-radius:24px;padding:28px 24px;border:1px solid #E2E8F0;box-shadow:0 4px 20px rgba(30,58,138,.06);margin-bottom:40px">
+      <div style="font-size:11px;font-weight:700;color:#94A3B8;letter-spacing:.08em;text-transform:uppercase;text-align:center;margin-bottom:20px">Mitra Resmi Salut Etam Betuah</div>
+      <div class="partner-logos-row">
+        <div class="partner-logo-item">
+          <img src="assets/images/partners/hotel-gk.png" alt="Hotel Grand Kartika Samarinda" class="partner-logo-img"
+               onerror="this.parentElement.innerHTML='<span style=\'font-size:11px;font-weight:700;color:#DC2626\'>Grand Kartika</span>'">
+        </div>
+        <div class="partner-logos-sep"></div>
+        <div class="partner-logo-item">
+          <img src="assets/images/partners/senyiur.png" alt="Senyiur Hotels & Resorts" class="partner-logo-img"
+               onerror="this.parentElement.innerHTML='<span style=\'font-size:11px;font-weight:700;color:#D97706\'>Senyiur Hotels</span>'">
+        </div>
+        <div class="partner-logos-sep"></div>
+        <div class="partner-logo-item">
+          <img src="assets/images/partners/quest-hotel.png" alt="Quest Hotel Balikpapan" class="partner-logo-img"
+               onerror="this.parentElement.innerHTML='<span style=\'font-size:11px;font-weight:700;color:#7C3AED\'>Quest Hotel</span>'">
+        </div>
+        <div class="partner-logos-sep"></div>
+        <div class="partner-logo-item">
+          <img src="assets/images/partners/btn.png" alt="Bank BTN" class="partner-logo-img"
+               onerror="this.parentElement.innerHTML='<span style=\'font-size:13px;font-weight:900;color:#1D4ED8\'>btn</span>'">
+        </div>
+        <div class="partner-logos-sep"></div>
+        <div class="partner-logo-item">
+          <img src="assets/images/partners/tms-daihatsu.png" alt="TMS Daihatsu Samarinda" class="partner-logo-img"
+               onerror="this.parentElement.innerHTML='<span style=\'font-size:11px;font-weight:700;color:#DC2626\'>TMS Daihatsu</span>'">
+        </div>
+      </div>
+    </div>
+
+    <!-- BENEFIT CARDS -->
+    <div class="benefit-grid">
+      <div class="benefit-card" style="--card-accent:#3B82F6">
+        <div class="bc-logo-wrap" style="background:#EFF6FF">
+          <img src="assets/images/partners/btn.png" alt="Bank BTN" class="bc-logo" onerror="this.outerHTML='<span style=\'font-size:18px;font-weight:900;color:#1D4ED8\'>btn</span>'">
+        </div>
+        <div class="bc-badge" style="background:#EFF6FF;color:#1D4ED8">💳 SPP & UKT</div>
+        <h3 class="bc-title">Bank BTN</h3>
+        <p class="bc-desc">SPP/UKT bisa dicicil! Bayar kuliah lebih ringan lewat layanan khusus Bank BTN, langsung di kantor Salut Etam Betuah.</p>
+        <div class="bc-benefit">
+          <div class="cb-item">✅ Pembayaran cicilan UKT</div>
+          <div class="cb-item">✅ Proses cepat & mudah</div>
+          <div class="cb-item">✅ Tidak perlu ke bank</div>
+        </div>
+      </div>
+      <div class="benefit-card" style="--card-accent:#DC2626">
+        <div class="bc-logo-wrap" style="background:#FEF2F2">
+          <img src="assets/images/partners/hotel-gk.png" alt="Hotel Grand Kartika" class="bc-logo" onerror="this.outerHTML='<span style=\'font-size:12px;font-weight:700;color:#DC2626\'>Grand Kartika</span>'">
+        </div>
+        <div class="bc-badge" style="background:#FEF2F2;color:#DC2626">🏨 Hotel Samarinda</div>
+        <h3 class="bc-title">Hotel Grand Kartika Samarinda</h3>
+        <p class="bc-desc">Nginap, nongkrong di resto, atau chill di cafe? Semua ada diskon khusus untuk anggota Salut Etam Betuah!</p>
+        <div class="bc-benefit">
+          <div class="cb-item">✅ Diskon kamar menginap</div>
+          <div class="cb-item">✅ Diskon resto & cafe</div>
+          <div class="cb-item">✅ Cukup tunjukkan KTA</div>
+        </div>
+      </div>
+      <div class="benefit-card" style="--card-accent:#7C3AED">
+        <div class="bc-logo-wrap" style="background:#F5F3FF">
+          <img src="assets/images/partners/quest-hotel.png" alt="Quest Hotel Balikpapan" class="bc-logo" onerror="this.outerHTML='<span style=\'font-size:12px;font-weight:700;color:#7C3AED\'>Quest Hotel</span>'">
+        </div>
+        <div class="bc-badge" style="background:#F5F3FF;color:#7C3AED">🏨 Hotel Balikpapan</div>
+        <h3 class="bc-title">Quest Hotel Balikpapan</h3>
+        <p class="bc-desc">Rasakan kenyamanan istirahat di jantung kota Balikpapan dengan pelayanan kelas satu dan fasilitas lengkap.</p>
+        <div class="bc-benefit">
+          <div class="cb-item"><strong>✅ Diskon 30%</strong> untuk menginap</div>
+          <div class="cb-item">✅ Fasilitas lengkap & premium</div>
+          <div class="cb-item">✅ Cocok untuk perjalanan bisnis</div>
+        </div>
+      </div>
+      <div class="benefit-card" style="--card-accent:#D97706">
+        <div class="bc-logo-wrap" style="background:#FFFBEB">
+          <img src="assets/images/partners/senyiur.png" alt="Senyiur Group" class="bc-logo" onerror="this.outerHTML='<span style=\'font-size:12px;font-weight:700;color:#D97706\'>Senyiur</span>'">
+        </div>
+        <div class="bc-badge" style="background:#FFFBEB;color:#D97706">🌴 Hotel & Resort</div>
+        <h3 class="bc-title">Senyiur Hotels & Resorts</h3>
+        <p class="bc-desc">Staycation, dinner romantis, atau acara spesial? Lebih hemat dengan potongan harga eksklusif untuk member Salut!</p>
+        <div class="bc-benefit">
+          <div class="cb-item">✅ Diskon staycation</div>
+          <div class="cb-item">✅ Diskon dinner & event</div>
+          <div class="cb-item">✅ Berlaku untuk keluarga</div>
+        </div>
+      </div>
+      <div class="benefit-card" style="--card-accent:#DC2626">
+        <div class="bc-logo-wrap" style="background:#FFF1F1">
+          <img src="assets/images/partners/tms-daihatsu.png" alt="TMS Daihatsu Samarinda" class="bc-logo" onerror="this.outerHTML='<span style=\'font-size:12px;font-weight:700;color:#DC2626\'>TMS Daihatsu</span>'">
+        </div>
+        <div class="bc-badge" style="background:#FFF1F1;color:#DC2626">🚗 Otomotif</div>
+        <h3 class="bc-title">TMS Daihatsu Samarinda</h3>
+        <p class="bc-desc">Super deal otomotif eksklusif! Hemat besar untuk service maupun pembelian mobil baru Daihatsu di Samarinda.</p>
+        <div class="bc-benefit">
+          <div class="cb-item"><strong>✅ Hemat 50%</strong> biaya service semua tipe</div>
+          <div class="cb-item">✅ Tambahan diskon beli mobil baru</div>
+          <div class="cb-item">✅ Booking via WA Salut</div>
+        </div>
+      </div>
+      <div class="benefit-card kta-cta-card">
+        <div style="font-size:48px;margin-bottom:12px">🪪</div>
+        <h3 class="bc-title" style="color:white;font-size:18px">Punya KTA = Dapat Semua!</h3>
+        <p style="font-size:13px;color:rgba(255,255,255,.8);line-height:1.6;margin-bottom:20px">
+          Tunjukkan KTA Salut Etam Betuah di semua mitra dan nikmati semua keuntungan eksklusif di atas.
+        </p>
+        <a href="/kta.html" class="btn-kta">🪪 Buat KTA Sekarang</a>
+        <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:10px">Download langsung · Gratis · Berlaku 6 bulan</div>
+      </div>
+    </div>
+
+    <!-- PKS PHOTOS -->
+    <div style="margin-top:40px">
+      <div style="text-align:center;margin-bottom:20px">
+        <div style="font-size:11px;font-weight:700;color:#94A3B8;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px">Bukti Kerjasama Resmi</div>
+        <h3 style="font-size:22px;font-weight:800;color:#1E3A8A">Perjanjian Kerjasama (PKS)</h3>
+        <p style="font-size:13px;color:#64748B;margin-top:4px">Semua keuntungan mitra dijamin dengan Perjanjian Kerjasama (PKS) resmi.</p>
+      </div>
+      <div class="pks-grid">
+        <div class="pks-card">
+          <div class="pks-img-wrap">
+            <img src="assets/images/partners/pks-gk-hotel.jpeg" alt="PKS Salut Etam Betuah dengan Hotel Grand Kartika" class="pks-img"
+                 onerror="this.parentElement.style.background='linear-gradient(135deg,#FEF2F2,#FEE2E2)'">
+            <div class="pks-img-overlay">
+              <div class="pks-overlay-logo">
+                <img src="assets/images/partners/hotel-gk.png" alt="Hotel Grand Kartika" style="height:32px;filter:brightness(0) invert(1)"
+                     onerror="this.style.display='none'">
+              </div>
+            </div>
+          </div>
+          <div class="pks-info">
+            <div style="font-size:10px;font-weight:700;color:#D97706;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">📋 PKS Resmi</div>
+            <div style="font-size:14px;font-weight:800;color:#1E3A8A">Hotel Grand Kartika Samarinda</div>
+            <div style="font-size:12px;color:#64748B;margin-top:4px">Perjanjian kerjasama diskon menginap, restoran & cafe untuk anggota Salut Etam Betuah.</div>
+          </div>
+        </div>
+        <div class="pks-card">
+          <div class="pks-img-wrap">
+            <img src="assets/images/partners/pks-quest-hotel.jpeg" alt="PKS Salut Etam Betuah dengan Quest Hotel Balikpapan" class="pks-img"
+                 onerror="this.parentElement.style.background='linear-gradient(135deg,#F5F3FF,#EDE9FE)'">
+            <div class="pks-img-overlay">
+              <div class="pks-overlay-logo">
+                <img src="assets/images/partners/quest-hotel.png" alt="Quest Hotel" style="height:32px;filter:brightness(0) invert(1)"
+                     onerror="this.style.display='none'">
+              </div>
+            </div>
+          </div>
+          <div class="pks-info">
+            <div style="font-size:10px;font-weight:700;color:#7C3AED;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">📋 PKS Resmi</div>
+            <div style="font-size:14px;font-weight:800;color:#1E3A8A">Quest Hotel Balikpapan</div>
+            <div style="font-size:12px;color:#64748B;margin-top:4px">Perjanjian kerjasama diskon 30% menginap di Quest Hotel Balikpapan untuk anggota Salut.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================================================================
      GALERI
      ================================================================ -->
 <section id="galeri" class="py-14 lg:py-20 bg-surface">
@@ -1072,8 +1345,10 @@ body{font-family:'Poppins',sans-serif;background:#F8FAFC;overflow-x:hidden}
       <button class="ftab" data-gf="wisuda">🎓 Wisuda</button>
       <button class="ftab" data-gf="talks">🎤 Salut Talks</button>
       <button class="ftab" data-gf="sosprom">📣 Sosprom</button>
+      <button class="ftab" data-gf="kuliah">📚 Kuliah TTM</button>
       <button class="ftab" data-gf="ujian">📝 Ujian</button>
       <button class="ftab" data-gf="kunjungan">🤝 Kunjungan</button>
+      <button class="ftab" data-gf="video">🎬 Video</button>
     </div>
 
     <div class="hscroll-wrap reveal">
@@ -1135,6 +1410,51 @@ body{font-family:'Poppins',sans-serif;background:#F8FAFC;overflow-x:hidden}
           <img src="assets/images/kunjungan-1.jpg" alt="Bersama Rektor UT" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🤝 Kunjungan</span><span class="text-xs font-bold text-white">Bersama Rektor UT</span></div>
         </div>
+
+        <!-- ===== FOTO BARU ===== -->
+        <div class="gal-card" data-gcat="sosprom" data-src="assets/images/sosprom-smk12.jpg" data-cap="Sosprom SMK 12 Samarinda">
+          <img src="assets/images/sosprom-smk12.jpg" alt="Kegiatan Sosprom SMK 12" loading="lazy">
+          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">📣 Sosprom</span><span class="text-xs font-bold text-white">Sosprom SMK 12 Samarinda</span></div>
+        </div>
+        <div class="gal-card" data-gcat="sosprom" data-src="assets/images/sosprom-sma-budiluhur.jpg" data-cap="Sosprom SMA Budi Luhur">
+          <img src="assets/images/sosprom-sma-budiluhur.jpg" alt="Sosprom SMA Budi Luhur" loading="lazy">
+          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">📣 Sosprom</span><span class="text-xs font-bold text-white">Sosprom SMA Budi Luhur</span></div>
+        </div>
+        <div class="gal-card" data-gcat="kuliah" data-src="assets/images/kuliah-ttm-1.jpg" data-cap="Kuliah Tatap Muka UT Samarinda">
+          <img src="assets/images/kuliah-ttm-1.jpg" alt="Kuliah Tatap Muka UT" loading="lazy">
+          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">📚 Kuliah TTM</span><span class="text-xs font-bold text-white">Kuliah Tatap Muka UT</span></div>
+        </div>
+        <div class="gal-card" data-gcat="kuliah" data-src="assets/images/kuliah-ttm-display.jpg" data-cap="Sesi Kuliah — Dosen Tamu">
+          <img src="assets/images/kuliah-ttm-display.jpg" alt="Display Kuliah Tatap Muka" loading="lazy">
+          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">📚 Kuliah TTM</span><span class="text-xs font-bold text-white">Sesi Kuliah Dosen Tamu</span></div>
+        </div>
+        <div class="gal-card" data-gcat="kuliah" data-src="assets/images/kuliah-ttm-display2.jpg" data-cap="Kuliah TTM — Hukum Internasional">
+          <img src="assets/images/kuliah-ttm-display2.jpg" alt="Kuliah Hukum Internasional" loading="lazy">
+          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">📚 Kuliah TTM</span><span class="text-xs font-bold text-white">Kuliah Hukum Internasional</span></div>
+        </div>
+
+        <!-- ===== VIDEO BARU ===== -->
+        <div class="gal-card gal-video-card" data-gcat="video" data-video="assets/videos/sosprom-smk12.mp4" data-cap="Video Sosprom SMK 12 Samarinda">
+          <video src="assets/videos/sosprom-smk12.mp4" muted playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover"></video>
+          <div class="gal-play-btn"><svg viewBox="0 0 24 24" fill="white" width="28" height="28"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎬 Video</span><span class="text-xs font-bold text-white">Sosprom SMK 12</span></div>
+        </div>
+        <div class="gal-card gal-video-card" data-gcat="video" data-video="assets/videos/sosprom-sma-budiluhur.mp4" data-cap="Video Sosprom SMA Budi Luhur">
+          <video src="assets/videos/sosprom-sma-budiluhur.mp4" muted playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover"></video>
+          <div class="gal-play-btn"><svg viewBox="0 0 24 24" fill="white" width="28" height="28"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎬 Video</span><span class="text-xs font-bold text-white">Sosprom SMA Budi Luhur</span></div>
+        </div>
+        <div class="gal-card gal-video-card" data-gcat="video" data-video="assets/videos/kuliah-ttm-kepala.mp4" data-cap="Kuliah TTM — Kepala Salut Etam Betuah">
+          <video src="assets/videos/kuliah-ttm-kepala.mp4" muted playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover"></video>
+          <div class="gal-play-btn"><svg viewBox="0 0 24 24" fill="white" width="28" height="28"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎬 Video</span><span class="text-xs font-bold text-white">Kuliah TTM — Kepala Salut</span></div>
+        </div>
+        <div class="gal-card gal-video-card" data-gcat="video" data-video="assets/videos/kuliah-ttm-walikota.mp4" data-cap="Kuliah TTM — Dosen Walikota Samarinda">
+          <video src="assets/videos/kuliah-ttm-walikota.mp4" muted playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover"></video>
+          <div class="gal-play-btn"><svg viewBox="0 0 24 24" fill="white" width="28" height="28"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎬 Video</span><span class="text-xs font-bold text-white">Kuliah TTM — Walikota SMD</span></div>
+        </div>
+
         <div class="flex-shrink-0 w-2"></div>
       </div>
     </div>
@@ -1545,13 +1865,29 @@ document.querySelectorAll('.ftab').forEach(btn => {
   });
 });
 
-// ===== GALLERY LIGHTBOX =====
+// ===== GALLERY LIGHTBOX (foto) =====
 galCards.forEach(c => {
   c.addEventListener('click', () => {
+    // Jika video card — buka video modal
+    if (c.classList.contains('gal-video-card')) {
+      const src = c.dataset.video;
+      const cap = c.dataset.cap || '';
+      const modal = document.getElementById('video-modal');
+      const player = document.getElementById('video-modal-player');
+      const capEl = document.getElementById('video-modal-cap');
+      player.src = src;
+      capEl.textContent = cap;
+      modal.classList.add('open');
+      player.play().catch(()=>{});
+      document.body.style.overflow = 'hidden';
+      return;
+    }
+    // Foto card — buka lightbox biasa
     const img = c.querySelector('img');
+    if (!img && !c.dataset.src) return;
     const lb = document.getElementById('lightbox');
     document.getElementById('lb-img').src = c.dataset.src || img.src;
-    document.getElementById('lb-img').alt = c.dataset.cap || img.alt;
+    document.getElementById('lb-img').alt = c.dataset.cap || (img ? img.alt : '');
     document.getElementById('lb-cap').textContent = c.dataset.cap || '';
     lb.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -1562,17 +1898,32 @@ function closeLB(e) {
   document.getElementById('lightbox').classList.remove('active');
   document.body.style.overflow = '';
 }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeLB(); closeVid(); } });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeLB(); closeVid(); closeVideoModal(); } });
 
-// ===== VIDEO LIGHTBOX =====
+// ===== VIDEO LIGHTBOX (lama — biarkan untuk kompatibilitas) =====
 function closeVid(e) {
   if (e && !e.target.closest('.vl-close') && e.target.id !== 'vid-lb') return;
   const vl = document.getElementById('vid-lb');
+  if (!vl) return;
   const v = document.getElementById('vl-video');
   vl.classList.remove('active');
-  v.pause(); v.removeAttribute('src'); v.load();
+  if (v) { v.pause(); v.removeAttribute('src'); v.load(); }
   document.body.style.overflow = '';
 }
+
+// ===== VIDEO MODAL BARU =====
+function closeVideoModal() {
+  const modal = document.getElementById('video-modal');
+  const player = document.getElementById('video-modal-player');
+  modal.classList.remove('open');
+  player.pause();
+  player.src = '';
+  document.body.style.overflow = '';
+}
+document.getElementById('video-modal-close').addEventListener('click', closeVideoModal);
+document.getElementById('video-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeVideoModal();
+});
 
 // ===== TESTIMONI CAROUSEL =====
 (function() {
@@ -1821,5 +2172,14 @@ document.querySelectorAll('.counter').forEach(el => cntObs.observe(el));
 
 }); // end DOMContentLoaded
 </script>
+<!-- ===== VIDEO MODAL ===== -->
+<div id="video-modal" role="dialog" aria-modal="true" aria-label="Pemutar Video">
+  <div id="video-modal-inner">
+    <button id="video-modal-close" aria-label="Tutup video">✕</button>
+    <video id="video-modal-player" controls playsinline></video>
+    <div id="video-modal-cap"></div>
+  </div>
+</div>
+
 </body>
 </html>

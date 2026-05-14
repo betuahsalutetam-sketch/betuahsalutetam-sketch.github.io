@@ -112,14 +112,16 @@ input,select,textarea{font-family:'Poppins',sans-serif}
   font-family:'Poppins',sans-serif;
 }
 
-/* === BACKGROUND ORNAMEN === */
-/* Subtle grid pattern */
-#kta-front::before{
-  content:'';position:absolute;inset:0;
-  background-image:
+/* === BACKGROUND ORNAMEN (div nyata, bukan ::before) === */
+.kta-bg-ornament{
+  position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
     radial-gradient(circle at 15% 85%,rgba(212,175,55,.08) 0%,transparent 45%),
     radial-gradient(circle at 85% 20%,rgba(37,99,235,.1) 0%,transparent 40%);
-  pointer-events:none;z-index:0;
+}
+.kta-back-ornament{
+  position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse at 80% 90%,rgba(212,175,55,.07) 0%,transparent 55%);
 }
 
 /* === TOP LOGO AREA — transparent, dark card visible === */
@@ -290,11 +292,6 @@ input,select,textarea{font-family:'Poppins',sans-serif}
   border-radius:18px;
   box-shadow:0 24px 64px rgba(0,0,0,.5),0 0 0 1px rgba(212,175,55,.25);
   font-family:'Poppins',sans-serif;
-}
-#kta-back::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at 80% 90%,rgba(212,175,55,.07) 0%,transparent 55%);
-  pointer-events:none;
 }
 .kta-back-header{
   height:76px;
@@ -675,6 +672,8 @@ input,select,textarea{font-family:'Poppins',sans-serif}
 
   <!-- KTA FRONT -->
   <div id="kta-front">
+    <!-- Ornamen background (div nyata, bukan ::before) -->
+    <div class="kta-bg-ornament"></div>
     <div class="kta-bg-top"></div>
     <div class="kta-corner-tl"></div>
     <div class="kta-corner-tl-line"></div>
@@ -741,6 +740,8 @@ input,select,textarea{font-family:'Poppins',sans-serif}
 
   <!-- KTA BACK -->
   <div id="kta-back">
+    <!-- Ornamen background (div nyata) -->
+    <div class="kta-back-ornament"></div>
     <img src="assets/images/enggang.png" alt="" class="kta-back-enggang" aria-hidden="true">
     <!-- Portrait logo emboss kiri belakang -->
     <img src="assets/images/logo-portrait.png" alt="" class="kta-back-portrait-emboss" aria-hidden="true">
@@ -913,9 +914,93 @@ function validateForm() {
 
 // ===== GENERATE KTA =====
 // ====================================================
-// PRE-LOAD IMAGES AS BASE64 — gunakan gambar yang sudah di-load browser
-// Lebih cepat & reliable: tidak perlu fetch ulang dari network
+// DEFINITIVE FIX: Ganti semua <img> jadi <canvas> sebelum html2canvas
+// Ini eliminasi 100% masalah createPattern 0x0 dan image loading timing
 // ====================================================
+
+const DECORATIVE_CLASSES = ['kta-enggang','kta-portrait-emboss','kta-back-enggang','kta-back-portrait-emboss'];
+
+async function convertImagesToCanvas(el) {
+  const imgs = Array.from(el.querySelectorAll('img'));
+  const log  = [];
+
+  for (const img of imgs) {
+    // 1. Sembunyikan dekoratif (enggang, portrait emboss) — tidak perlu di PDF
+    if (DECORATIVE_CLASSES.some(c => img.classList.contains(c))) {
+      log.push({ img, type:'hide', prev: img.style.display });
+      img.style.display = 'none';
+      continue;
+    }
+
+    // 2. Gambar tidak punya pixel → sembunyikan
+    if (!img.naturalWidth || !img.naturalHeight) {
+      log.push({ img, type:'hide', prev: img.style.display });
+      img.style.display = 'none';
+      continue;
+    }
+
+    // 3. Konversi ke canvas (sudah ada pixel data di memori)
+    try {
+      // Pakai rendered size jika bisa, fallback ke naturalSize
+      const rect = img.getBoundingClientRect();
+      const W = Math.round(rect.width)  || img.naturalWidth;
+      const H = Math.round(rect.height) || img.naturalHeight;
+      if (!W || !H) { img.style.display='none'; log.push({img,type:'hide',prev:''}); continue; }
+
+      const canvas = document.createElement('canvas');
+      canvas.width  = W;
+      canvas.height = H;
+      const ctx = canvas.getContext('2d');
+
+      // Handle object-fit: cover (dipakai foto profil)
+      const cs = window.getComputedStyle(img);
+      if (cs.objectFit === 'cover') {
+        const scl = Math.max(W / img.naturalWidth, H / img.naturalHeight);
+        const dw  = img.naturalWidth  * scl;
+        const dh  = img.naturalHeight * scl;
+        const dx  = (W - dw) / 2;
+        const dy  = cs.objectPosition && cs.objectPosition.includes('top') ? 0 : (H - dh) / 2;
+        ctx.drawImage(img, dx, dy, dw, dh);
+      } else {
+        ctx.drawImage(img, 0, 0, W, H);
+      }
+
+      // Salin style penting dari img ke canvas
+      const inlineStyle = img.getAttribute('style') || '';
+      canvas.setAttribute('style', inlineStyle);
+      canvas.style.width    = W + 'px';
+      canvas.style.height   = H + 'px';
+      canvas.style.display  = cs.display === 'none' ? 'none' : 'block';
+      canvas.style.objectFit = '';
+      canvas.style.objectPosition = '';
+
+      img.parentNode.insertBefore(canvas, img);
+      img.parentNode.removeChild(img);
+      log.push({ img, canvas, type:'canvas' });
+
+    } catch(e) {
+      // Tainted / gagal → sembunyikan
+      log.push({ img, type:'hide', prev: img.style.display });
+      img.style.display = 'none';
+    }
+  }
+
+  // Kembalikan fungsi restore
+  return function restore() {
+    for (const item of log) {
+      if (item.type === 'canvas') {
+        if (item.canvas && item.canvas.parentNode) {
+          item.canvas.parentNode.insertBefore(item.img, item.canvas);
+          item.canvas.parentNode.removeChild(item.canvas);
+        }
+      } else {
+        item.img.style.display = item.prev || '';
+      }
+    }
+  };
+}
+
+// Legacy preload — masih dipakai untuk memastikan img.naturalWidth > 0
 async function preloadImagesAsDataURL(el) {
   const BLANK = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
   const imgs  = Array.from(el.querySelectorAll('img'));
@@ -983,24 +1068,25 @@ async function preloadImagesAsDataURL(el) {
 }
 
 // ====================================================
-// KTA GENERATOR — robust, no html2canvas failures
+// KTA GENERATOR — FINAL ROBUST VERSION
 // ====================================================
 async function generateKTA() {
-  const nama = document.getElementById('input-nama').value.trim().toUpperCase();
-  const nim  = document.getElementById('input-nim').value.trim();
+  const nama  = document.getElementById('input-nama').value.trim().toUpperCase();
+  const nim   = document.getElementById('input-nim').value.trim();
   const prodi = document.getElementById('input-prodi').value;
 
   const now    = new Date();
-  const expiry = window._reprintExpiry || new Date(now.getTime() + 180 * 24 * 60 * 60 * 1000);
+  const expiry = window._reprintExpiry || new Date(now.getTime() + 180*24*60*60*1000);
   window._reprintExpiry = null;
-  const fmtDate = d => d.toLocaleDateString('id-ID', { day:'2-digit', month:'long', year:'numeric' });
+  const fmtDate = d => d.toLocaleDateString('id-ID',{day:'2-digit',month:'long',year:'numeric'});
 
-  // Populate template
-  document.getElementById('kta-nama-text').textContent = nama;
-  document.getElementById('kta-nim-text').textContent  = 'NIM: ' + nim;
+  // Populate KTA template fields
+  document.getElementById('kta-nama-text').textContent  = nama;
+  document.getElementById('kta-nim-text').textContent   = 'NIM: ' + nim;
   document.getElementById('kta-prodi-text').textContent = prodi;
   document.getElementById('kta-validity-text').textContent = fmtDate(expiry);
 
+  // Set & load foto profil
   const photoImg = document.getElementById('kta-photo-img');
   if (state.foto) {
     photoImg.src = state.foto;
@@ -1011,95 +1097,92 @@ async function generateKTA() {
   }
 
   document.getElementById('genOverlay').classList.add('show');
-  await new Promise(r => setTimeout(r, 400));
 
-  // ── Get the hidden wrapper ──────────────────────────
+  // Posisikan wrapper agar bisa di-render browser
   const ktaFront = document.getElementById('kta-front');
   const ktaBack  = document.getElementById('kta-back');
   const wrapper  = ktaFront.closest('div[style*="-9999px"]') || ktaFront.parentElement;
-
-  // ── Move wrapper ke posisi visible-but-offscreen ──────
-  // Tidak pakai visibility:hidden (diwarisi → blank). Pakai opacity:0.001
   const origStyle = wrapper.getAttribute('style') || '';
   wrapper.style.cssText = 'position:fixed;left:0;top:-700px;z-index:99998;opacity:0.001;pointer-events:none;width:400px;';
-  await new Promise(r => setTimeout(r, 300)); // beri browser waktu layout
+  await new Promise(r => setTimeout(r, 400));
 
-  // ── Pre-load semua image sebagai data URL ─────────────
+  // Preload semua img→dataURL (pastikan naturalWidth > 0)
   await preloadImagesAsDataURL(ktaFront);
   await preloadImagesAsDataURL(ktaBack);
-  await new Promise(r => setTimeout(r, 500)); // extra wait decode browser
+  await new Promise(r => setTimeout(r, 400));
 
+  // ★ KUNCI FIX: Ganti semua <img> jadi <canvas> ★
+  // html2canvas tidak perlu loading apapun — semua sudah pixel
+  const restoreFront = await convertImagesToCanvas(ktaFront);
+  const restoreBack  = await convertImagesToCanvas(ktaBack);
+  await new Promise(r => setTimeout(r, 100));
+
+  // onclone: strip CSS tidak kompatibel, pastikan dimensi benar
   const oncloneFn = (doc) => {
-    // 1. Strip CSS yang tidak didukung html2canvas
     const s = doc.createElement('style');
     s.textContent = `
       * { animation:none!important; transition:none!important;
           backdrop-filter:none!important; -webkit-backdrop-filter:none!important; }
-      .kta-enggang,.kta-portrait-emboss,
-      .kta-back-enggang,.kta-back-portrait-emboss { display:none!important; }
-      .kta-deco-ring { animation:none!important; border-style:solid!important; }
-      #kta-front::before, #kta-back::before { display:none!important; }
+      .kta-deco-ring { border-style:solid!important; }
+      #kta-front::before,#kta-back::before { display:none!important; content:none!important; }
     `;
     doc.head.appendChild(s);
-
-    // 2. PENTING: Sembunyikan semua img dengan naturalWidth/Height = 0
-    // Mencegah "createPattern: canvas element with width or height of 0"
-    doc.querySelectorAll('img').forEach(img => {
-      if (!img.naturalWidth || !img.naturalHeight || img.naturalWidth === 0 || img.naturalHeight === 0) {
-        img.style.display = 'none';
-        img.style.width = '0';
-        img.style.height = '0';
-      }
-    });
-
-    // 3. Pastikan KTA cards memiliki dimensi yang benar
-    const front = doc.getElementById('kta-front');
-    const back  = doc.getElementById('kta-back');
-    if (front) { front.style.width = '350px'; front.style.height = '560px'; front.style.overflow = 'hidden'; }
-    if (back)  { back.style.width  = '350px'; back.style.height  = '560px'; back.style.overflow = 'hidden'; }
+    // Pastikan dimensi KTA card benar
+    const f = doc.getElementById('kta-front');
+    const b = doc.getElementById('kta-back');
+    if (f) { f.style.width='350px'; f.style.height='560px'; f.style.overflow='hidden'; }
+    if (b) { b.style.width='350px'; b.style.height='560px'; b.style.overflow='hidden'; }
+    // Tidak ada <img> tersisa — tidak perlu filter img 0x0 lagi
   };
 
   const h2cOpts = {
     scale: 2.5,
-    useCORS: false,       // already data URLs → no CORS needed
+    useCORS: false,
     allowTaint: true,
     logging: false,
-    imageTimeout: 0,      // images already loaded, no timeout needed
+    imageTimeout: 0,
     removeContainer: true,
     width: 350, height: 560,
+    backgroundColor: null,
     onclone: oncloneFn
   };
 
   try {
     const { jsPDF } = window.jspdf;
-    const doc = new jsPDF({ orientation:'portrait', unit:'mm', format:[93.75, 150] });
+    const doc = new jsPDF({ orientation:'portrait', unit:'mm', format:[93.75,150] });
 
     const frontCanvas = await html2canvas(ktaFront, h2cOpts);
-    doc.addImage(frontCanvas.toDataURL('image/jpeg', 0.93), 'JPEG', 0, 0, 93.75, 150);
+    if (!frontCanvas.width || !frontCanvas.height) throw new Error('Front canvas kosong (0x0)');
+    doc.addImage(frontCanvas.toDataURL('image/jpeg',0.93), 'JPEG', 0, 0, 93.75, 150);
 
-    doc.addPage([93.75, 150]);
+    doc.addPage([93.75,150]);
     const backCanvas = await html2canvas(ktaBack, h2cOpts);
-    doc.addImage(backCanvas.toDataURL('image/jpeg', 0.93), 'JPEG', 0, 0, 93.75, 150);
+    if (!backCanvas.width || !backCanvas.height) throw new Error('Back canvas kosong (0x0)');
+    doc.addImage(backCanvas.toDataURL('image/jpeg',0.93), 'JPEG', 0, 0, 93.75, 150);
 
-    // Save PDF
-    const filename = `KTA_Salut_${nim}_${nama.replace(/\s+/g,'_')}.pdf`;
-    doc.save(filename);
+    // Download PDF
+    doc.save(`KTA_Salut_${nim}_${nama.replace(/\s+/g,'_')}.pdf`);
 
-    // Persist to localStorage
-    const ktaData = { nim, nama, prodi, foto: state.foto,
-                      downloadDate: now.toISOString(), expiryDate: expiry.toISOString() };
-    try { localStorage.setItem('kta_' + nim, JSON.stringify(ktaData)); } catch(e) {}
+    // Simpan ke localStorage
+    try {
+      localStorage.setItem('kta_'+nim, JSON.stringify({
+        nim, nama, prodi, foto:state.foto,
+        downloadDate: now.toISOString(), expiryDate: expiry.toISOString()
+      }));
+    } catch(e) {}
 
     document.getElementById('genOverlay').classList.remove('show');
-    showToast('✅ KTA berhasil didownload! Cek folder Downloads.', 'success');
-    setTimeout(() => window.scrollTo({ top:0, behavior:'smooth' }), 300);
+    showToast('✅ KTA berhasil didownload! Cek folder Downloads.','success');
+    setTimeout(() => window.scrollTo({top:0,behavior:'smooth'}), 300);
 
   } catch(err) {
-    console.error('[KTA Error]', err.name, err.message, err.stack);
+    console.error('[KTA]', err.name, err.message);
     document.getElementById('genOverlay').classList.remove('show');
-    showToast(`Gagal: ${err.message || 'Unknown error'}. Coba lagi.`, 'error');
+    showToast('Gagal: ' + (err.message||'error') + '. Coba lagi.','error');
   } finally {
-    // ALWAYS restore wrapper — even if error
+    // Selalu restore: canvas→img dan wrapper→semula
+    restoreFront();
+    restoreBack();
     wrapper.setAttribute('style', origStyle);
   }
 }

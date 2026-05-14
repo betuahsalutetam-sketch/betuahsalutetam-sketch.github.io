@@ -122,16 +122,16 @@ input,select,textarea{font-family:'Poppins',sans-serif}
   pointer-events:none;z-index:0;
 }
 
-/* === TOP WHITE LOGO AREA === */
+/* === TOP LOGO AREA — transparent, dark card visible === */
 .kta-bg-top{
-  position:absolute;top:0;left:0;right:0;height:86px;
-  background:linear-gradient(180deg,#ffffff 0%,#F8FAFC 100%);
+  position:absolute;top:0;left:0;right:0;height:88px;
+  background:linear-gradient(180deg,rgba(255,255,255,.06) 0%,transparent 100%);
   z-index:1;
 }
 
 /* === GOLD SHIMMER LINE === */
 .kta-gold-line{
-  position:absolute;top:86px;left:0;right:0;height:3px;z-index:3;
+  position:absolute;top:88px;left:0;right:0;height:3px;z-index:3;
   background:linear-gradient(90deg,transparent,#B8860B 15%,#FFD700 40%,#FFF8DC 50%,#FFD700 60%,#B8860B 85%,transparent);
 }
 
@@ -152,7 +152,7 @@ input,select,textarea{font-family:'Poppins',sans-serif}
 
 /* === KTA TITLE — di atas foto === */
 .kta-navy-bar{
-  position:absolute;top:89px;left:0;right:0;height:28px;z-index:4;
+  position:absolute;top:91px;left:0;right:0;height:28px;z-index:4;
   display:flex;align-items:center;justify-content:center;gap:8px;
 }
 .kta-navy-bar::before,.kta-navy-bar::after{
@@ -165,15 +165,15 @@ input,select,textarea{font-family:'Poppins',sans-serif}
 }
 
 /* === LOGO ROW === */
-.kta-logo-row{position:absolute;top:0;left:0;right:0;height:86px;display:flex;align-items:center;justify-content:center;z-index:2}
+.kta-logo-row{position:absolute;top:0;left:0;right:0;height:88px;display:flex;align-items:center;justify-content:center;z-index:2}
 .kta-logo-sep{width:1px;height:30px;background:rgba(30,58,138,.3)}
 
 /* === KTA TITLE ROW — posisi dalam kta-navy-bar, bukan absolute lagi === */
 .kta-title-row{display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:0 12px}
 .kta-title-row .kt2{font-size:9px;font-weight:800;color:#FFD700;letter-spacing:.14em;text-transform:uppercase;text-shadow:0 0 12px rgba(255,215,0,.4)}
 
-/* === PHOTO RING — turun ke bawah judul === */
-.kta-photo-ring{position:absolute;top:122px;left:50%;transform:translateX(-50%);width:120px;height:120px;z-index:3}
+/* === PHOTO RING — lebih bawah, jarak cukup dari title === */
+.kta-photo-ring{position:absolute;top:132px;left:50%;transform:translateX(-50%);width:120px;height:120px;z-index:3}
 .kta-photo-outer{
   position:absolute;inset:0;border-radius:50%;
   border:3px solid #D4AF37;
@@ -205,9 +205,26 @@ input,select,textarea{font-family:'Poppins',sans-serif}
 .kta-enggang{
   position:absolute;right:-18px;bottom:48px;
   width:170px;height:auto;
-  opacity:0.13;z-index:1;
+  opacity:0.12;z-index:1;
   filter:brightness(1.8) saturate(0.4) contrast(1.2);
   transform:scaleX(-1);
+  pointer-events:none;
+}
+
+/* === PORTRAIT LOGO EMBOSS — kiri, seperti enggang === */
+.kta-portrait-emboss{
+  position:absolute;left:-22px;bottom:44px;
+  width:155px;height:auto;
+  opacity:0.09;z-index:1;
+  filter:brightness(2.5) saturate(0.15) contrast(1.1);
+  pointer-events:none;
+}
+/* Same for back card */
+.kta-back-portrait-emboss{
+  position:absolute;left:-20px;bottom:38px;
+  width:130px;height:auto;
+  opacity:0.08;z-index:1;
+  filter:brightness(2.5) saturate(0.15) contrast(1.1);
   pointer-events:none;
 }
 
@@ -218,9 +235,9 @@ input,select,textarea{font-family:'Poppins',sans-serif}
   background:linear-gradient(90deg,transparent,rgba(212,175,55,.35),transparent);
 }
 
-/* === BODY CONTENT — lebih ke bawah === */
+/* === BODY CONTENT === */
 .kta-body{
-  position:absolute;top:298px;left:0;right:0;bottom:50px;
+  position:absolute;top:308px;left:0;right:0;bottom:44px;
   display:flex;flex-direction:column;align-items:center;
   padding:0 18px;z-index:2;
 }
@@ -662,30 +679,32 @@ input,select,textarea{font-family:'Poppins',sans-serif}
     <div class="kta-corner-tl"></div>
     <div class="kta-corner-tl-line"></div>
 
-    <!-- Landscape Logo — lebih besar, tengah -->
-    <div style="position:absolute;top:3px;left:10px;right:10px;height:83px;z-index:2;display:flex;align-items:center;justify-content:center">
-      <img src="assets/images/logo-landscape.png" alt="Salut Etam Betuah"
-           style="height:76px;width:auto;max-width:324px;object-fit:contain;display:block;margin:0 auto"
-           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div style="display:none;flex-direction:column;align-items:center">
-        <div style="font-size:20px;font-weight:900;color:#1E3A8A;letter-spacing:.06em">SALUT ETAM BETUAH</div>
-      </div>
+    <!-- Landscape Logo — no bg, timbul di atas dark navy -->
+    <div style="position:absolute;top:4px;left:10px;right:10px;height:84px;z-index:2;display:flex;align-items:center;justify-content:center">
+      <img src="assets/images/logo-landscape-nobg.png" alt="Salut Etam Betuah"
+           style="height:78px;width:auto;max-width:320px;object-fit:contain;display:block;
+                  filter:drop-shadow(0 0 10px rgba(255,255,255,.35)) drop-shadow(0 2px 8px rgba(0,0,0,.6));
+                  transition:filter .3s"
+           onerror="this.src='assets/images/logo-landscape.png'">
     </div>
 
     <!-- Gold shimmer line -->
     <div class="kta-gold-line"></div>
 
-    <!-- KARTU TANDA ANGGOTA — di atas foto -->
+    <!-- KARTU TANDA ANGGOTA — jelas di ATAS foto -->
     <div class="kta-navy-bar">
       <div class="kta-title-row">
         <div class="kt2">— KARTU TANDA ANGGOTA —</div>
       </div>
     </div>
 
-    <!-- Enggang Dayak Watermark -->
+    <!-- Enggang Dayak Watermark (kanan) -->
     <img src="assets/images/enggang.png" alt="" class="kta-enggang" aria-hidden="true">
 
-    <!-- Photo Ring — di bawah judul -->
+    <!-- Portrait Logo Emboss (kiri, seperti enggang) -->
+    <img src="assets/images/logo-portrait.png" alt="" class="kta-portrait-emboss" aria-hidden="true">
+
+    <!-- Photo Ring — lebih bawah dari title -->
     <div class="kta-photo-ring">
       <div class="kta-photo-outer"></div>
       <div class="kta-photo-inner">
@@ -699,9 +718,9 @@ input,select,textarea{font-family:'Poppins',sans-serif}
     </div>
 
     <!-- Gold divider -->
-    <div class="kta-divider" style="top:292px"></div>
+    <div class="kta-divider" style="top:300px"></div>
 
-    <!-- Body — lebih ke bawah -->
+    <!-- Body -->
     <div class="kta-body">
       <div class="kta-name-badge">
         <div class="knb-name" id="kta-nama-text">NAMA LENGKAP</div>
@@ -721,6 +740,8 @@ input,select,textarea{font-family:'Poppins',sans-serif}
   <!-- KTA BACK -->
   <div id="kta-back">
     <img src="assets/images/enggang.png" alt="" class="kta-back-enggang" aria-hidden="true">
+    <!-- Portrait logo emboss kiri belakang -->
+    <img src="assets/images/logo-portrait.png" alt="" class="kta-back-portrait-emboss" aria-hidden="true">
 
     <div class="kta-back-header">
       <div class="kta-back-corner-tl"></div>
@@ -731,60 +752,48 @@ input,select,textarea{font-family:'Poppins',sans-serif}
 
     <div class="kta-back-body">
 
-      <!-- Partner logos — layer semi-transparan agar natural -->
-      <div style="background:rgba(255,255,255,.82);border-radius:10px;padding:10px 8px;margin-bottom:8px;border:1px solid rgba(212,175,55,.2);box-shadow:0 2px 12px rgba(0,0,0,.15)">
-        <div style="font-size:7px;font-weight:700;color:#94A3B8;letter-spacing:.07em;text-transform:uppercase;text-align:center;margin-bottom:8px">Mitra Resmi</div>
-        <div style="display:flex;align-items:center;justify-content:space-around;flex-wrap:wrap;gap:6px">
-          <img src="assets/images/partners/hotel-gk.png" alt="Hotel Grand Kartika"
-               style="height:26px;max-width:48px;object-fit:contain"
-               onerror="this.outerHTML='<span style=\'font-size:7px;font-weight:700;color:#DC2626\'>GK Hotel</span>'">
-          <img src="assets/images/partners/senyiur.png" alt="Senyiur Group"
-               style="height:30px;max-width:30px;object-fit:contain"
-               onerror="this.outerHTML='<span style=\'font-size:7px;font-weight:700;color:#D97706\'>Senyiur</span>'">
-          <img src="assets/images/partners/quest-hotel.png" alt="Quest Hotel"
-               style="height:22px;max-width:68px;object-fit:contain"
-               onerror="this.outerHTML='<span style=\'font-size:7px;font-weight:700;color:#7C3AED\'>Quest</span>'">
-          <img src="assets/images/partners/btn.png" alt="Bank BTN"
-               style="height:20px;max-width:48px;object-fit:contain"
-               onerror="this.outerHTML='<span style=\'font-size:8px;font-weight:900;color:#1D4ED8\'>btn</span>'">
-          <img src="assets/images/partners/tms-daihatsu.png" alt="TMS Daihatsu"
-               style="height:18px;max-width:58px;object-fit:contain"
-               onerror="this.outerHTML='<span style=\'font-size:7px;font-weight:700;color:#DC2626\'>TMS</span>'">
+      <!-- Partner logos -->
+      <div style="background:rgba(255,255,255,.82);border-radius:10px;padding:12px 10px;margin-bottom:14px;border:1px solid rgba(212,175,55,.2);box-shadow:0 2px 12px rgba(0,0,0,.15)">
+        <div style="font-size:7px;font-weight:700;color:#64748B;letter-spacing:.07em;text-transform:uppercase;text-align:center;margin-bottom:10px">Mitra Resmi</div>
+        <div style="display:flex;align-items:center;justify-content:space-around;flex-wrap:wrap;gap:8px">
+          <img src="assets/images/partners/hotel-gk.png" alt="Hotel Grand Kartika" style="height:26px;max-width:48px;object-fit:contain" onerror="this.outerHTML='<span style=\'font-size:7px;font-weight:700;color:#DC2626\'>GK Hotel</span>'">
+          <img src="assets/images/partners/senyiur.png" alt="Senyiur Group" style="height:30px;max-width:30px;object-fit:contain" onerror="this.outerHTML='<span style=\'font-size:7px;font-weight:700;color:#D97706\'>Senyiur</span>'">
+          <img src="assets/images/partners/quest-hotel.png" alt="Quest Hotel" style="height:22px;max-width:68px;object-fit:contain" onerror="this.outerHTML='<span style=\'font-size:7px;font-weight:700;color:#7C3AED\'>Quest</span>'">
+          <img src="assets/images/partners/btn.png" alt="Bank BTN" style="height:20px;max-width:48px;object-fit:contain" onerror="this.outerHTML='<span style=\'font-size:8px;font-weight:900;color:#1D4ED8\'>btn</span>'">
+          <img src="assets/images/partners/tms-daihatsu.png" alt="TMS Daihatsu" style="height:18px;max-width:58px;object-fit:contain" onerror="this.outerHTML='<span style=\'font-size:7px;font-weight:700;color:#DC2626\'>TMS</span>'">
         </div>
       </div>
 
-      <!-- Terms -->
-      <div class="kta-terms">
+      <!-- PEMBERITAHUAN dengan spacing lebih lega -->
+      <div class="kta-terms" style="margin-bottom:14px">
         <div class="kt-head">PEMBERITAHUAN</div>
-        <ul>
-          <li>Kartu ini milik Salut Etam Betuah, bila menemukan harap dikembalikan.</li>
-          <li>Sebagai identitas anggota Salut Etam Betuah UT Samarinda.</li>
-          <li>Dapat digunakan sebagai benefit spesial pada mitra Salut.</li>
-          <li>Kartu tidak dapat dipindahtangankan.</li>
+        <ul style="gap:5px">
+          <li style="font-size:9.5px;line-height:1.65">Kartu ini milik Salut Etam Betuah, bila menemukan harap dikembalikan.</li>
+          <li style="font-size:9.5px;line-height:1.65">Sebagai identitas anggota Salut Etam Betuah UT Samarinda.</li>
+          <li style="font-size:9.5px;line-height:1.65">Dapat digunakan sebagai benefit spesial pada mitra Salut.</li>
+          <li style="font-size:9.5px;line-height:1.65">Kartu tidak dapat dipindahtangankan.</li>
         </ul>
       </div>
 
-      <!-- Informasi — WA icon, email icon, ganti @salutetambetuah -->
-      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(212,175,55,.2);border-radius:8px;padding:8px 10px">
-        <div style="font-size:7.5px;font-weight:800;color:#FFD700;letter-spacing:.08em;text-transform:uppercase;text-align:center;margin-bottom:6px">INFORMASI</div>
-        <div class="kta-info-grid">
-          <!-- WA icon ganti telepon -->
-          <div class="kta-info-item">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <!-- INFORMASI — jarak yang cukup dari Pemberitahuan -->
+      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(212,175,55,.2);border-radius:10px;padding:12px 12px">
+        <div style="font-size:9px;font-weight:800;color:#FFD700;letter-spacing:.08em;text-transform:uppercase;text-align:center;margin-bottom:10px">INFORMASI</div>
+        <div class="kta-info-grid" style="gap:8px">
+          <div class="kta-info-item" style="font-size:9px">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             0822-5063-8289
           </div>
-          <div class="kta-info-item">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <div class="kta-info-item" style="font-size:9px">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             0852-5283-4986
           </div>
-          <div class="kta-info-item"><span class="ki-icon">🌐</span> salutetambetuah.id</div>
-          <!-- Email icon ganti foto -->
-          <div class="kta-info-item">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="rgba(255,255,255,.7)"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          <div class="kta-info-item" style="font-size:9px"><span class="ki-icon">🌐</span> salutetambetuah.id</div>
+          <div class="kta-info-item" style="font-size:9px">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="rgba(255,255,255,.7)"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
             bestuahsalutetam@gmail.com
           </div>
         </div>
-        <div class="kta-info-addr"><span>📍</span> Jl. HM Kadrie Oening No.66A, Samarinda Ulu, Kaltim</div>
+        <div class="kta-info-addr" style="margin-top:8px;font-size:9px"><span>📍</span> Jl. HM Kadrie Oening No.66A, Samarinda Ulu, Kaltim</div>
       </div>
     </div>
 

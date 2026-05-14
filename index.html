@@ -471,12 +471,13 @@ body{font-family:'Poppins',sans-serif;background:#F8FAFC;overflow-x:hidden}
 @media(min-width:768px){.blog-card{flex:0 0 300px}}
 
 /* ===== GALLERY ===== */
-.gal-card{flex:0 0 180px;aspect-ratio:3/4;border-radius:var(--radius);overflow:hidden;position:relative;cursor:pointer}
-.gal-card img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
-.gal-card:hover img{transform:scale(1.08)}
-.gal-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,23,42,.9) 0%,transparent 50%);display:flex;flex-direction:column;justify-content:flex-end;padding:12px;opacity:0;transition:opacity .3s}
+.gal-card{flex:0 0 160px;height:200px;border-radius:12px;overflow:hidden;position:relative;cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,.1);transition:all .25s}
+.gal-card img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.gal-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.gal-card:hover img{transform:scale(1.07)}
+.gal-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,23,42,.88) 0%,transparent 55%);display:flex;flex-direction:column;justify-content:flex-end;padding:10px;opacity:0;transition:opacity .25s}
 .gal-card:hover .gal-overlay{opacity:1}
-@media(min-width:768px){.gal-card{flex:0 0 220px}}
+@media(min-width:768px){.gal-card{flex:0 0 200px;height:240px}}
 
 /* ===== TESTIMONI CAROUSEL ===== */
 .testi-track{display:flex;gap:16px;transition:transform .5s ease}
@@ -484,7 +485,7 @@ body{font-family:'Poppins',sans-serif;background:#F8FAFC;overflow-x:hidden}
 @media(min-width:768px){.testi-item{flex:0 0 calc(50% - 8px)}}
 
 /* ===== FILTER TABS ===== */
-.ftab{padding:6px 16px;border-radius:99px;font-size:.72rem;font-weight:700;border:1.5px solid #E2E8F0;color:#64748B;cursor:pointer;white-space:nowrap;transition:all .2s;background:white}
+.ftab{padding:5px 13px;border-radius:99px;font-size:.68rem;font-weight:600;border:1.5px solid #E2E8F0;color:#64748B;cursor:pointer;white-space:nowrap;transition:all .2s;background:white}
 .ftab.active{background:var(--navy);color:white;border-color:var(--navy)}
 
 /* ===== FAQ ===== */
@@ -637,23 +638,25 @@ body{font-family:'Poppins',sans-serif;background:#F8FAFC;overflow-x:hidden}
 @media(min-width:768px){.pks-grid{grid-template-columns:1fr 1fr}}
 .pks-card{background:white;border-radius:20px;overflow:hidden;border:1px solid #E2E8F0;box-shadow:0 4px 16px rgba(30,58,138,.06);transition:all .25s}
 .pks-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(30,58,138,.12)}
-.pks-img-wrap{position:relative;height:260px;overflow:hidden}
-.pks-img{width:100%;height:100%;object-fit:cover;object-position:center 20%;transition:transform .4s}
-.pks-card:hover .pks-img{transform:scale(1.04)}
+.pks-img-wrap{position:relative;height:280px;overflow:hidden;background:#0F172A}
+.pks-img{width:100%;height:100%;object-fit:contain;object-position:center;transition:transform .4s;position:relative;z-index:1}
+.pks-img-bg{position:absolute;inset:-10px;z-index:0;background-size:cover;background-position:center;filter:blur(16px) brightness(.4) saturate(1.2)}
+.pks-card:hover .pks-img{transform:scale(1.02)}
 .pks-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,23,42,.7) 0%,rgba(15,23,42,.1) 60%);display:flex;align-items:flex-end;padding:14px}
 .pks-overlay-logo{display:flex;align-items:center;gap:6px}
 /* ===== VIDEO GALLERY CARDS ===== */
 .gal-video-card{cursor:pointer}
-.gal-video-card video{pointer-events:none}
+.gal-video-card video{pointer-events:none;width:100%;height:100%;object-fit:cover}
 .gal-play-btn{
-  position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);
-  width:52px;height:52px;border-radius:50%;
-  background:rgba(15,23,42,.72);backdrop-filter:blur(4px);
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:44px;height:44px;border-radius:50%;
+  background:rgba(255,255,255,.85);
   display:flex;align-items:center;justify-content:center;
-  border:2px solid rgba(255,255,255,.6);
-  transition:all .25s;z-index:2
+  transition:all .2s;z-index:2;
+  box-shadow:0 2px 12px rgba(0,0,0,.25);
 }
-.gal-video-card:hover .gal-play-btn{background:rgba(37,99,235,.9);border-color:white;transform:translate(-50%,-60%) scale(1.12)}
+.gal-play-btn svg{fill:#0F172A;margin-left:3px}
+.gal-video-card:hover .gal-play-btn{background:#ffffff;transform:translate(-50%,-50%) scale(1.1);box-shadow:0 4px 16px rgba(0,0,0,.35)}
 
 /* ===== VIDEO MODAL ===== */
 #video-modal{
@@ -758,6 +761,7 @@ body{font-family:'Poppins',sans-serif;background:#F8FAFC;overflow-x:hidden}
         <a href="#testimoni" class="text-xs font-semibold text-slate-500 hover:text-brand-blue transition-colors">Testimoni</a>
         <a href="#faq" class="text-xs font-semibold text-slate-500 hover:text-brand-blue transition-colors">FAQ</a>
         <a href="#kontak" class="text-xs font-semibold text-slate-500 hover:text-brand-blue transition-colors">Kontak</a>
+        <a href="/kta.html" style="display:inline-flex;align-items:center;gap:4px;background:linear-gradient(135deg,#0F172A,#1E3A8A);color:#FFD700;font-size:11px;font-weight:700;padding:5px 12px;border-radius:99px;letter-spacing:.03em;border:1px solid rgba(212,175,55,.4);text-decoration:none;transition:all .2s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 18px rgba(15,23,42,.35)'" onmouseout="this.style.transform='';this.style.boxShadow=''">🪪 KTA</a>
       </div>
       <!-- CTA -->
       <a href="https://wa.me/6282250638289?text=Halo%20Salut%20Etam%20Betuah%2C%20saya%20ingin%20konsultasi" target="_blank" rel="noopener"
@@ -1292,6 +1296,7 @@ body{font-family:'Poppins',sans-serif;background:#F8FAFC;overflow-x:hidden}
       <div class="pks-grid">
         <div class="pks-card">
           <div class="pks-img-wrap">
+            <div class="pks-img-bg" style="background-image:url('assets/images/partners/pks-gk-hotel.jpeg')"></div>
             <img src="assets/images/partners/pks-gk-hotel.jpeg" alt="PKS Salut Etam Betuah dengan Hotel Grand Kartika" class="pks-img"
                  onerror="this.parentElement.style.background='linear-gradient(135deg,#FEF2F2,#FEE2E2)'">
             <div class="pks-img-overlay">
@@ -1309,6 +1314,7 @@ body{font-family:'Poppins',sans-serif;background:#F8FAFC;overflow-x:hidden}
         </div>
         <div class="pks-card">
           <div class="pks-img-wrap">
+            <div class="pks-img-bg" style="background-image:url('assets/images/partners/pks-quest-hotel.jpeg')"></div>
             <img src="assets/images/partners/pks-quest-hotel.jpeg" alt="PKS Salut Etam Betuah dengan Quest Hotel Balikpapan" class="pks-img"
                  onerror="this.parentElement.style.background='linear-gradient(135deg,#F5F3FF,#EDE9FE)'">
             <div class="pks-img-overlay">

@@ -1214,12 +1214,12 @@ async function renderKTACanvas() {
     b.fillText(line, 34, py); py+=15;
   });
 
-  // Info section box — dinamis: mulai dari py+6, isi sampai H-44
-  var infoY = py + 6;
-  var infoH = H - 44 - infoY;
+  // Info section box — lebar pas konten, tinggi tetap sesuai 3 baris
+  var infoY = py + 14;            // lebih besar: space jelas antara pemberitahuan & informasi
+  var infoBoxH = 72;              // tinggi pas: title(14) + 3 row(14*3) + padding(16)
   b.fillStyle='rgba(255,255,255,.05)';
   b.strokeStyle='rgba(212,175,55,.22)'; b.lineWidth=1;
-  roundRect(b, 16,infoY, W-32, Math.max(infoH,80), 10, true, true);
+  roundRect(b, 16,infoY, W-32, infoBoxH, 10, true, true);
 
   b.fillStyle='#FFD700'; b.font='800 9px Poppins';
   var ih='INFORMASI';
@@ -1288,7 +1288,7 @@ async function renderKTACanvas() {
   // Row 3: Pin + Alamat (full width)
   drawPin(col1+5, iy-1.5);
   b.fillStyle='rgba(255,255,255,.65)'; b.font='400 8px Poppins';
-  b.fillText('Jl. HM Kadrie Oening No.66A, Samarinda Ulu, Kaltim', col1+14, iy);
+  b.fillText('Jl. Kadrie Oening No. 66A, Air Hitam, Samarinda Ulu, Kota Samarinda - Kaltim', col1+14, iy);
 
   // Watermark BACK: Enggang kanan + Portrait logo kiri (di atas info box, di bawah)
   if (engganImg && engganImg.naturalWidth) {

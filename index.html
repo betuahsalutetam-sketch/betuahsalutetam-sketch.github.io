@@ -508,14 +508,14 @@ body{font-family:'Poppins',sans-serif;background:#F8FAFC;overflow-x:hidden}
 @media(min-width:1024px){body{padding-bottom:0}}
 @media(max-width:1023px){body{padding-bottom:calc(68px + env(safe-area-inset-bottom))}}
 
-/* ===== WA FLOAT (DESKTOP) ===== */
-.wa-float{position:fixed;bottom:24px;right:24px;z-index:90;display:none;flex-direction:column;align-items:flex-end;gap:10px}
-@media(min-width:1024px){.wa-float{display:flex}}
+/* ===== WA + KTA + CHATBOT FLOAT STACK ===== */
+.wa-float{position:fixed;right:16px;z-index:99;display:flex;flex-direction:column;align-items:flex-end;gap:8px;bottom:calc(68px + env(safe-area-inset-bottom) + 10px)}
+@media(min-width:1024px){.wa-float{bottom:24px;right:24px}}
 @keyframes pulse-wa{0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}50%{box-shadow:0 0 0 12px rgba(37,211,102,0)}}
-.wa-float a.wa-circle{width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;animation:pulse-wa 2.5s infinite;box-shadow:0 8px 24px rgba(37,211,102,.35)}
+.wa-float a.wa-circle{width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;animation:pulse-wa 2.5s infinite;box-shadow:0 6px 20px rgba(37,211,102,.4)}
 .wa-float a{text-decoration:none}
-.kta-float-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#0F172A,#1E3A8A);color:#FFD700;border-radius:28px;padding:11px 18px 11px 12px;font-size:13px;font-weight:800;letter-spacing:.03em;box-shadow:0 8px 24px rgba(15,23,42,.45),0 0 0 1px rgba(212,175,55,.25);transition:all .3s;white-space:nowrap}
-.kta-float-btn:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 14px 32px rgba(15,23,42,.55),0 0 0 2px rgba(212,175,55,.4)}
+.kta-float-btn{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,#0F172A,#1E3A8A);color:#FFD700;border-radius:22px;padding:9px 15px 9px 10px;font-size:12px;font-weight:800;letter-spacing:.03em;box-shadow:0 6px 20px rgba(15,23,42,.4),0 0 0 1px rgba(212,175,55,.25);transition:all .25s;white-space:nowrap}
+.kta-float-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(15,23,42,.5),0 0 0 2px rgba(212,175,55,.4)}
 
 /* ===== BACK TO TOP ===== */
 #btt{position:fixed;bottom:90px;right:20px;z-index:89;width:40px;height:40px;border-radius:50%;background:white;border:1px solid #E2E8F0;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transform:translateY(8px);transition:all .3s;box-shadow:0 4px 12px rgba(30,58,138,.1);color:var(--navy)}
@@ -540,12 +540,16 @@ body{font-family:'Poppins',sans-serif;background:#F8FAFC;overflow-x:hidden}
 .mp-close{width:20px;height:20px;background:transparent;border:0;color:rgba(255,255,255,.6);cursor:pointer;display:flex;align-items:center;justify-content:center}
 
 /* ===== CHATBOT ===== */
-.chatbot-fab{position:fixed;bottom:90px;right:20px;z-index:95;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#1E3A8A,#2563EB);display:flex;align-items:center;justify-content:center;cursor:pointer;border:0;color:white;box-shadow:0 8px 24px rgba(30,58,138,.4);transition:.3s}
-@media(min-width:1024px){.chatbot-fab{bottom:100px;right:88px}}
+/* chatbot-fab sekarang ada di dalam .wa-float stack */
+.chatbot-fab{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#1E3A8A,#2563EB);display:flex;align-items:center;justify-content:center;cursor:pointer;border:0;color:white;box-shadow:0 6px 20px rgba(30,58,138,.4);transition:.3s;position:relative;flex-shrink:0}
+.chatbot-fab .pulse{position:absolute;inset:-4px;border-radius:50%;background:rgba(245,158,11,.4);animation:pulse-ring 2s infinite;z-index:-1}
 @keyframes pulse-ring{0%{transform:scale(.85);opacity:.7}100%{transform:scale(1.35);opacity:0}}
-.chatbot-fab .pulse{position:absolute;inset:-4px;border-radius:50%;background:rgba(245,158,11,.5);animation:pulse-ring 2s infinite;z-index:-1}
-.chatbot-panel{position:fixed;bottom:156px;right:16px;z-index:96;width:min(360px,calc(100vw - 32px));height:min(520px,calc(100vh - 180px));background:white;border-radius:20px;box-shadow:0 20px 60px rgba(15,23,42,.25);display:none;flex-direction:column;overflow:hidden;transform-origin:bottom right}
-@media(min-width:1024px){.chatbot-panel{bottom:168px;right:88px}}
+
+/* Panel chatbot */
+.chatbot-panel{position:fixed;right:16px;z-index:200;width:min(360px,calc(100vw - 32px));height:min(480px,calc(100vh - 180px));background:white;border-radius:20px;box-shadow:0 20px 60px rgba(15,23,42,.25);display:none;flex-direction:column;overflow:hidden;transform-origin:bottom right}
+/* Mobile: di atas bottom nav + wa-float stack */
+@media(max-width:1023px){.chatbot-panel{bottom:calc(68px + env(safe-area-inset-bottom) + 160px)}}
+@media(min-width:1024px){.chatbot-panel{bottom:108px;right:24px}}
 .chatbot-panel.open{display:flex;animation:chat-pop .3s cubic-bezier(.34,1.56,.64,1)}
 @keyframes chat-pop{from{transform:scale(.8) translateY(20px);opacity:0}to{transform:scale(1);opacity:1}}
 .chat-head{background:linear-gradient(135deg,#1E3A8A,#2563EB);padding:14px 16px;color:white;display:flex;align-items:center;gap:10px}
@@ -705,11 +709,7 @@ body{font-family:'Poppins',sans-serif;background:#F8FAFC;overflow-x:hidden}
   <button id="mp-close" class="mp-close" aria-label="Tutup"><i data-lucide="x" class="w-3 h-3"></i></button>
 </div>
 
-<!-- CHATBOT FAB -->
-<button id="chat-fab" class="chatbot-fab" aria-label="Chat asisten">
-  <span class="pulse"></span>
-  <i data-lucide="message-circle" class="w-5 h-5" id="chat-fab-icon"></i>
-</button>
+<!-- chatbot-fab dipindah ke wa-float stack -->
 <!-- CHATBOT PANEL -->
 <div id="chat-panel" class="chatbot-panel" role="dialog" aria-label="Asisten Salut">
   <div class="chat-head">
@@ -1741,13 +1741,15 @@ body{font-family:'Poppins',sans-serif;background:#F8FAFC;overflow-x:hidden}
 
 <!-- ===== WA FLOAT + KTA BUTTON (DESKTOP) ===== -->
 <div class="wa-float" aria-label="Tombol Cepat">
-  <!-- KTA Float Button -->
+  <!-- Chatbot (atas) -->
+  <button id="chat-fab" class="chatbot-fab" aria-label="Chat asisten Salut">
+    <div class="pulse"></div>
+    <svg id="chat-fab-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  </button>
+  <!-- KTA Button (tengah) -->
   <a href="/kta.html" class="kta-float-btn" aria-label="Buat KTA Salut Etam Betuah">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <rect x="2" y="5" width="20" height="14" rx="2"/><path d="M8 10h8M8 14h4"/>
-      <circle cx="17" cy="14" r="2.5" fill="#FFD700" stroke="none"/>
-    </svg>
-    🪪 Buat KTA
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="2.5" stroke-linecap="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M8 10h8M8 14h4"/></svg>
+    🪪 KTA
   </a>
   <!-- WA Circle -->
   <a class="wa-circle" href="https://wa.me/6282250638289?text=Halo%20Salut%20Etam%20Betuah%2C%20saya%20ingin%20bertanya" target="_blank" rel="noopener" aria-label="WhatsApp">
@@ -2106,18 +2108,40 @@ document.querySelectorAll('.counter').forEach(el => cntObs.observe(el));
   if (!fab) return;
 
   const KB = [
-    { keys: ['daftar','mendaftar','pendaftaran','register','masuk'], answer: 'Pendaftaran kuliah UT ada 2 jalur:\n📝 <b>Non-RPL</b> (SMA/SMK): isi form online di section Layanan\n🔄 <b>RPL</b> (D3/S1/pindahan): tersedia link RPL di section Layanan\n\nAtau chat WA <a href="https://wa.me/6282250638289" target="_blank" class="underline text-amber-300">0822 5063 8289</a> untuk dipandu langsung.' },
-    { keys: ['biaya','harga','spp','bayar','tarif','cicil'], answer: 'Keanggotaan SALUT: <b>Rp 500.000/semester</b> (sudah termasuk semua fasilitas).\n\nBiaya kuliah UT: Rp 1,5–3,5 juta/semester (tergantung prodi). Bisa dicicil via Bank BTN.' },
-    { keys: ['lokasi','alamat','kantor','dimana'], answer: '📍 Jl. Kadrie Oening No. 66A, Samarinda Ulu, Kaltim\n🕒 Senin–Sabtu 08.30–17.00 WITA\n💬 WhatsApp 24 jam' },
-    { keys: ['jam','buka','tutup','operasional'], answer: 'Jam buka: <b>Senin–Sabtu 08.30–17.00 WITA</b>\nWhatsApp aktif <b>24 jam</b>, respons &lt;5 menit.' },
-    { keys: ['kontak','whatsapp','nomor','hubungi','admin'], answer: 'Admin 1: <a href="https://wa.me/6282250638289" target="_blank" class="underline text-amber-300">0822 5063 8289</a>\nAdmin 2: <a href="https://wa.me/6285252834986" target="_blank" class="underline text-amber-300">0852 5283 4986</a>\nEmail: bestuahsalutetam@gmail.com' },
-    { keys: ['rpl','alih kredit','pindah','d3'], answer: '<b>RPL (Rekognisi Pembelajaran Lampau)</b> cocok untuk lulusan D3/S1 atau yang ingin pindah ke UT. Matkul yang sudah ditempuh bisa diakui, kuliah jadi lebih singkat!' },
-    { keys: ['prodi','jurusan','program studi','fakultas'], answer: 'Prodi populer di UT:\n• Manajemen\n• Akuntansi\n• Ilmu Hukum\n• PGSD / PG-PAUD\n• Administrasi Negara\n• Agribisnis\n\nSemua akreditasi A/B + FIBAA Internasional.' },
-    { keys: ['audit','bdo','akreditasi','resmi'], answer: 'SALUT Etam Betuah telah <b>lolos Audit Independen BDO</b> — firma audit multinasional. Menjamin transparansi dan mutu layanan berstandar internasional.' },
-    { keys: ['wisuda','lulus','ijazah'], answer: 'Kami bantu: pendaftaran wisuda, syarat kelulusan, pengambilan ijazah, legalisir dokumen. Ijazah UT setara PTN lain — valid untuk CPNS, BUMN, S2!' },
-    { keys: ['halo','hai','hi','pagi','siang','sore','malam'], answer: 'Halo! 👋 Saya Asisten <b>Salut Etam Betuah</b>. Ada yang bisa saya bantu?\n• Pendaftaran UT\n• Biaya & fasilitas\n• RPL alih kredit\n• Lokasi & jam buka' }
+    // SALAM
+    { keys: ['halo','hai','hi','pagi','siang','sore','malam','apa kabar','assalam'], answer: 'Halo! 👋 Saya Asisten <b>Salut Etam Betuah</b>. Ada yang bisa saya bantu?\n• 📝 Cara daftar kuliah UT\n• 💰 Biaya kuliah & keanggotaan\n• 🎓 Program studi tersedia\n• 🪪 Kartu Tanda Anggota (KTA)\n• 🤝 Keuntungan mitra\n• 📍 Lokasi & jam buka' },
+    // PENDAFTARAN
+    { keys: ['daftar','mendaftar','pendaftaran','register','masuk','cara kuliah','mulai kuliah','bergabung'], answer: '📝 <b>Cara Daftar Kuliah UT via Salut:</b>\n\n1️⃣ Hubungi admin WA: <a href="https://wa.me/6282250638289" target="_blank" class="underline text-amber-300">0822 5063 8289</a>\n2️⃣ Siapkan: KTP, ijazah, foto 3x4, email aktif\n3️⃣ Pilih jalur:\n   • <b>Non-RPL</b> (lulusan SMA/SMK)\n   • <b>RPL</b> (D3/S1/pengalaman kerja)\n4️⃣ Bayar biaya registrasi & SPP\n5️⃣ Akses e-learning & mulai belajar!\n\n✅ Proses mudah, dibantu admin sampai selesai.' },
+    // BIAYA
+    { keys: ['biaya','harga','spp','bayar','tarif','cicil','berapa','murah'], answer: '💰 <b>Biaya Kuliah UT:</b>\n\n• Rp 1.500.000 – 3.500.000/semester\n• Tergantung program studi\n• Bisa <b>cicil via Bank BTN</b> (khusus anggota Salut)\n\n🪪 <b>Keanggotaan Salut Etam Betuah:</b>\n• Rp 500.000/semester\n• Dapat KTA + akses semua fasilitas + diskon mitra\n\nIngin simulasi biaya? Chat WA kami!' },
+    // KTA / KARTU ANGGOTA
+    { keys: ['kta','kartu','anggota','member'], answer: '🪪 <b>Kartu Tanda Anggota (KTA) Salut:</b>\n\nBuat KTA digital gratis di: <a href="/kta.html" class="underline text-amber-300">salutetambetuah.id/kta.html</a>\n\n<b>Keuntungan punya KTA:</b>\n• 🏨 Diskon menginap & makan GK Hotel\n• 🏨 Diskon 30% Quest Hotel Balikpapan\n• 🌴 Diskon Senyiur Hotels & Resorts\n• 🚗 Hemat 50% servis TMS Daihatsu\n• 💳 Cicil SPP via Bank BTN\n\nBerlaku 6 bulan, bisa cetak ulang kapan saja.' },
+    // MITRA / KEUNTUNGAN
+    { keys: ['mitra','keuntungan','diskon','benefit','fasilitas','hotel','daihatsu','btn'], answer: '🤝 <b>5 Mitra Eksklusif Salut Etam Betuah:</b>\n\n1. 🏦 <b>Bank BTN</b> — Cicil SPP/UKT tanpa ribet\n2. 🏨 <b>GK Hotel Samarinda</b> — Diskon kamar, restoran & cafe\n3. 🏨 <b>Quest Hotel Balikpapan</b> — Diskon 30% menginap (By Aston)\n4. 🌴 <b>Senyiur Hotels & Resorts</b> — Diskon staycation & dinner\n5. 🚗 <b>TMS Daihatsu Samarinda</b> — Hemat 50% biaya servis\n\nTunjukkan KTA untuk klaim semua benefit!' },
+    // RPL
+    { keys: ['rpl','alih kredit','pindah','d3','pengakuan'], answer: '🔄 <b>RPL (Rekognisi Pembelajaran Lampau)</b>\n\nCocok untuk:\n• Lulusan D3 ingin lanjut S1\n• Pindahan dari kampus lain\n• Profesional berpengalaman\n• Anggota TNI/Polri/ASN\n\n✅ Matkul yang sudah ditempuh <b>diakui, tidak perlu ulang</b>\n✅ Hemat waktu & biaya\n✅ Tetap dapat ijazah resmi UT\n\nKonsultasi RPL: <a href="https://wa.me/6282250638289" target="_blank" class="underline text-amber-300">WA 0822 5063 8289</a>' },
+    // PRODI / JURUSAN
+    { keys: ['prodi','jurusan','program studi','fakultas','ambil','pilih'], answer: '🎓 <b>Program Studi Populer di UT Samarinda:</b>\n\n<b>FHISIP:</b> Ilmu Hukum, Adm. Negara, Ilmu Komunikasi, Sosiologi\n<b>FEB:</b> Manajemen, Akuntansi, Ekonomi Pembangunan\n<b>FKIP:</b> PGSD, PG-PAUD, Matematika, Bahasa Indonesia\n<b>FST:</b> Agribisnis, Teknik Informatika, Statistika\n\n✅ Semua akreditasi A/B dari BAN-PT\n✅ Setara + FIBAA Internasional\n✅ Valid untuk CPNS, BUMN, melanjutkan S2' },
+    // SISTEM KULIAH
+    { keys: ['sistem','online','kuliah','jarak','belajar','e-learning','modul'], answer: '💻 <b>Sistem Kuliah UT (Jarak Jauh):</b>\n\n• Belajar mandiri via <b>e-learning</b> & modul PDF\n• Tidak perlu hadir setiap hari\n• Cocok untuk yang sudah bekerja\n• Ada <b>Tutorial Online (Tuton)</b> & Tutorial Tatap Muka (TTM)\n• Ujian tiap akhir semester (UAS)\n• Nilai dari tugas + ujian\n\nFleksibel 100% — kuliah dari mana saja! 🌏' },
+    // TUTORIAL / BIMBEL
+    { keys: ['tutorial','bimbel','ttm','tuton','bimbingan','belajar bareng'], answer: '📚 <b>Layanan Tutorial Salut Etam Betuah:</b>\n\n• <b>TTM (Tutorial Tatap Muka)</b> — Belajar kelompok tatap muka\n• <b>Tuton (Tutorial Online)</b> — Diskusi online di platform UT\n• <b>Bimbingan Belajar</b> — Sesi khusus persiapan ujian\n• <b>Pendampingan skripsi/TAP</b>\n\n🕒 Jadwal fleksibel sesuai kebutuhan\n📞 Hubungi: <a href="https://wa.me/6282250638289" target="_blank" class="underline text-amber-300">0822 5063 8289</a>' },
+    // UJIAN
+    { keys: ['ujian','uas','tap','skripsi','nilai','remedial'], answer: '📋 <b>Info Ujian UT:</b>\n\n• <b>UAS</b> — Ujian Akhir Semester (offline/online)\n• <b>TAP</b> — Tugas Akhir Program (pengganti skripsi S1)\n• Ujian biasanya Juni & Desember\n• Nilai: Tuton (30%) + UAS (70%)\n• Ada ujian remedi jika tidak lulus\n\nSalut membantu persiapan ujian & pendaftaran TAP!' },
+    // WISUDA / IJAZAH
+    { keys: ['wisuda','lulus','ijazah','gelar','sertifikat','selesai','kelulusan'], answer: '🎓 <b>Info Wisuda & Ijazah UT:</b>\n\n• Wisuda 2x/tahun (biasanya April & Oktober)\n• Ijazah UT setara PTN/PTS lain\n• Valid untuk: CPNS, TNI/Polri, BUMN, S2\n• Salut bantu: pendaftaran wisuda, legalisir dokumen, verifikasi ijazah\n\n💡 Ijazah UT diakui secara nasional & internasional!' },
+    // AKREDITASI
+    { keys: ['akreditasi','resmi','terakreditasi','legal','valid'], answer: '✅ <b>Akreditasi & Legalitas:</b>\n\n• UT terakreditasi <b>BAN-PT</b>\n• Akreditasi institusi: <b>A (Unggul)</b>\n• Memiliki akreditasi internasional <b>FIBAA</b>\n• Salut Etam Betuah lolos <b>Audit BDO</b> (firma audit multinasional)\n• Salut terdaftar resmi sebagai Sentra Layanan UT Samarinda' },
+    // LOKASI
+    { keys: ['lokasi','alamat','kantor','dimana','maps','peta'], answer: '📍 <b>Lokasi Salut Etam Betuah:</b>\n\nJl. HM Kadrie Oening No. 66A\nKel. Air Hitam, Samarinda Ulu\nKalimantan Timur 75124\n\n🕒 <b>Jam Operasional:</b>\nSenin–Sabtu: 08.30–17.00 WITA\nWhatsApp: 24 jam 🌙\n\n<a href="https://maps.app.goo.gl/tuReCHw3uPCLJzHCA" target="_blank" class="underline text-amber-300">📌 Buka Google Maps</a>' },
+    // JAM BUKA
+    { keys: ['jam','buka','tutup','operasional','hari'], answer: '🕒 <b>Jam Operasional:</b>\n\nSenin–Sabtu: <b>08.30–17.00 WITA</b>\nMinggu: Tutup (WhatsApp tetap aktif)\n\n💬 WA 24 jam, respons dalam <b>5 menit</b>!' },
+    // KONTAK
+    { keys: ['kontak','whatsapp','nomor','hubungi','admin','telp','email'], answer: '📞 <b>Kontak Salut Etam Betuah:</b>\n\nAdmin 1: <a href="https://wa.me/6282250638289" target="_blank" class="underline text-amber-300">0822-5063-8289</a>\nAdmin 2: <a href="https://wa.me/6285252834986" target="_blank" class="underline text-amber-300">0852-5283-4986</a>\nEmail: bestuahsalutetam@gmail.com\nWebsite: salutetambetuah.id\n\nInstagram/TikTok/YouTube: <b>@salutetambetuah</b>' },
+    // TENTANG SALUT
+    { keys: ['salut','etam','betuah','tentang','apa itu','siapa','profil'], answer: '🏫 <b>Tentang Salut Etam Betuah:</b>\n\n<b>S</b>entra <b>L</b>ayanan <b>U</b>niversitas <b>T</b>erbuka\n\n✅ Berdiri sejak <b>2018</b>\n✅ Melayani ribuan mahasiswa Kaltim\n✅ Bermitra dengan 5 institusi terkemuka\n✅ Lolos audit BDO International\n✅ Layanan lengkap: dari daftar hingga wisuda\n\nMisi: Memudahkan akses pendidikan tinggi berkualitas di Kalimantan Timur 🦅' },
   ];
-  const SUGGESTS = ['Cara daftar kuliah UT?','Berapa biaya?','Dimana lokasinya?','Apa itu RPL?','Fasilitas apa saja?'];
+  const SUGGESTS = ['Cara daftar kuliah UT?','Berapa biaya kuliah?','Prodi apa saja?','Keuntungan KTA?','Apa itu RPL?','Dimana lokasinya?','Info wisuda & ijazah'];
 
   function addMsg(html, who, delay=0) {
     return new Promise(res => {

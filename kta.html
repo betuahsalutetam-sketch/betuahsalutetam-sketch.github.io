@@ -915,10 +915,10 @@ async function generateKTA() {
   const nim = document.getElementById('input-nim').value.trim();
   const prodi = document.getElementById('input-prodi').value;
 
-  // Validity: 6 months from today
+  // Validity
   const now = new Date();
-  const expiry = new Date(now);
-  expiry.setMonth(expiry.getMonth() + 6);
+  const expiry = window._reprintExpiry || new Date(now.getTime() + 180 * 24 * 60 * 60 * 1000);
+  window._reprintExpiry = null; // reset after use
   const formatDate = (d) => d.toLocaleDateString('id-ID', { day:'2-digit', month:'long', year:'numeric' });
 
   // Update KTA template
@@ -926,63 +926,81 @@ async function generateKTA() {
   document.getElementById('kta-nim-text').textContent = 'NIM: ' + nim;
   document.getElementById('kta-prodi-text').textContent = prodi;
   document.getElementById('kta-validity-text').textContent = formatDate(expiry);
-  document.getElementById('kta-photo-img').src = state.foto;
+
+  // Set photo
+  const photoImg = document.getElementById('kta-photo-img');
+  photoImg.src = state.foto || '';
 
   // Show generating overlay
   document.getElementById('genOverlay').classList.add('show');
 
-  // Wait for photo to load
+  // Wait for photo
   await new Promise(res => {
-    const img = document.getElementById('kta-photo-img');
-    if (img.complete) { res(); return; }
-    img.onload = res;
-    img.onerror = res;
-    setTimeout(res, 2000);
+    if (!state.foto) { res(); return; }
+    if (photoImg.complete && photoImg.naturalWidth > 0) { res(); return; }
+    photoImg.onload = res;
+    photoImg.onerror = res;
+    setTimeout(res, 3000);
   });
-  await new Promise(res => setTimeout(res, 800));
+  await new Promise(res => setTimeout(res, 600));
+
+  // Helper: strip CSS that html2canvas can't render
+  function stripUnsupportedCSS(cloneDoc) {
+    const style = cloneDoc.createElement('style');
+    style.textContent = `
+      * { animation: none !important; transition: none !important; }
+      * { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+      .kta-deco-ring { animation: none !important; transform: none !important; }
+      .kta-enggang, .kta-portrait-emboss, .kta-back-enggang, .kta-back-portrait-emboss { display: none !important; }
+    `;
+    cloneDoc.head.appendChild(style);
+    // Fix images that may 404
+    cloneDoc.querySelectorAll('img').forEach(img => {
+      if (!img.complete || img.naturalWidth === 0) img.style.display = 'none';
+    });
+  }
 
   try {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: [93.75, 150] });
 
+    const h2cOpts = {
+      scale: 2,
+      useCORS: true,
+      allowTaint: false,
+      logging: false,
+      imageTimeout: 20000,
+      removeContainer: true,
+      onclone: (cloneDoc) => stripUnsupportedCSS(cloneDoc)
+    };
+
     // Capture front
     const frontEl = document.getElementById('kta-front');
-    const frontCanvas = await html2canvas(frontEl, {
-      scale: 2, useCORS: true, allowTaint: true,
-      backgroundColor: '#ffffff', logging: false
-    });
-    doc.addImage(frontCanvas.toDataURL('image/jpeg', 0.95), 'JPEG', 0, 0, 93.75, 150);
+    const frontCanvas = await html2canvas(frontEl, h2cOpts);
+    doc.addImage(frontCanvas.toDataURL('image/jpeg', 0.92), 'JPEG', 0, 0, 93.75, 150);
 
-    // Add back page
+    // Capture back
     doc.addPage([93.75, 150]);
     const backEl = document.getElementById('kta-back');
-    const backCanvas = await html2canvas(backEl, {
-      scale: 2, useCORS: true, allowTaint: true,
-      backgroundColor: '#ffffff', logging: false
-    });
-    doc.addImage(backCanvas.toDataURL('image/jpeg', 0.95), 'JPEG', 0, 0, 93.75, 150);
+    const backCanvas = await html2canvas(backEl, h2cOpts);
+    doc.addImage(backCanvas.toDataURL('image/jpeg', 0.92), 'JPEG', 0, 0, 93.75, 150);
 
     // Save PDF
     const filename = `KTA_Salut_${nim}_${nama.replace(/\s+/g,'_')}.pdf`;
     doc.save(filename);
 
     // Save to localStorage
-    const ktaData = {
-      nim, nama, prodi,
-      foto: state.foto,
-      downloadDate: now.toISOString(),
-      expiryDate: expiry.toISOString()
-    };
+    const ktaData = { nim, nama, prodi, foto: state.foto, downloadDate: now.toISOString(), expiryDate: expiry.toISOString() };
     try { localStorage.setItem('kta_' + nim, JSON.stringify(ktaData)); } catch(e) {}
 
     document.getElementById('genOverlay').classList.remove('show');
-    showToast('KTA berhasil didownload! Cek folder Downloads Anda.', 'success');
+    showToast('✅ KTA berhasil didownload! Cek folder Downloads Anda.', 'success');
     setTimeout(() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }, 300);
 
   } catch(err) {
-    console.error(err);
+    console.error('KTA generate error:', err);
     document.getElementById('genOverlay').classList.remove('show');
-    showToast('Gagal generate KTA. Coba lagi atau hubungi admin.', 'error');
+    showToast('Gagal generate KTA: ' + (err.message || 'Unknown error') + '. Coba lagi.', 'error');
   }
 }
 
@@ -1020,8 +1038,9 @@ function reprintKTA() {
 async function downloadReprintKTA() {
   const data = window._reprintData;
   if (!data) return;
-  // Restore state and generate
   state.foto = data.foto;
+  // Use original expiry date for reprint
+  window._reprintExpiry = new Date(data.expiryDate);
   document.getElementById('input-nama').value = data.nama;
   document.getElementById('input-nim').value = data.nim;
   document.getElementById('input-prodi').value = data.prodi;

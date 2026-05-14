@@ -135,16 +135,16 @@ input,select,textarea{font-family:'Poppins',sans-serif}
   background:linear-gradient(90deg,transparent,#B8860B 15%,#FFD700 40%,#FFF8DC 50%,#FFD700 60%,#B8860B 85%,transparent);
 }
 
-/* === CORNER ORNAMEN === */
+/* === CORNER ORNAMEN — html2canvas safe === */
 .kta-corner-tl{
-  position:absolute;top:0;left:0;width:72px;height:72px;z-index:2;
-  background:linear-gradient(135deg,#D4AF37,#F5C518);
-  clip-path:polygon(0 0,100% 0,0 100%);
+  position:absolute;top:0;left:0;width:0;height:0;z-index:2;
+  border-style:solid;border-width:72px 72px 0 0;
+  border-color:#D4AF37 transparent transparent transparent;
 }
 .kta-corner-br{
-  position:absolute;bottom:0;right:0;width:72px;height:72px;z-index:2;
-  background:linear-gradient(135deg,#B8860B,#D4AF37);
-  clip-path:polygon(100% 0,100% 100%,0 100%);
+  position:absolute;bottom:0;right:0;width:0;height:0;z-index:2;
+  border-style:solid;border-width:0 0 72px 72px;
+  border-color:transparent transparent #D4AF37 transparent;
 }
 /* Thin gold corner lines */
 .kta-corner-tl-line{position:absolute;top:0;left:0;width:28px;height:2px;background:#FFD700;z-index:3}
@@ -310,14 +310,14 @@ input,select,textarea{font-family:'Poppins',sans-serif}
 }
 .kta-back-header .kb-subtitle{font-size:8px;color:rgba(212,175,55,.6);letter-spacing:.06em}
 .kta-back-corner-tl{
-  position:absolute;top:0;left:0;width:44px;height:44px;
-  background:linear-gradient(135deg,#D4AF37,#F5C518);
-  clip-path:polygon(0 0,100% 0,0 100%);
+  position:absolute;top:0;left:0;width:0;height:0;z-index:2;
+  border-style:solid;border-width:44px 44px 0 0;
+  border-color:#D4AF37 transparent transparent transparent;
 }
 .kta-back-corner-tr{
-  position:absolute;top:0;right:0;width:44px;height:44px;
-  background:linear-gradient(225deg,#D4AF37,#B8860B);
-  clip-path:polygon(0 0,100% 0,100% 100%);
+  position:absolute;top:0;right:0;width:0;height:0;z-index:2;
+  border-style:solid;border-width:44px 0 0 44px;
+  border-color:#B8860B transparent transparent transparent;
 }
 
 .kta-back-body{padding:12px 16px}
@@ -379,9 +379,9 @@ input,select,textarea{font-family:'Poppins',sans-serif}
 .kta-back-footer a{display:flex;align-items:center;gap:3px;text-decoration:none}
 .kta-back-footer .sep{width:1px;height:9px;background:rgba(212,175,55,.25)}
 .kta-back-footer-corner{
-  position:absolute;bottom:0;right:0;width:32px;height:32px;
-  background:linear-gradient(135deg,#B8860B,#D4AF37);
-  clip-path:polygon(100% 0,100% 100%,0 100%);
+  position:absolute;bottom:0;right:0;width:0;height:0;
+  border-style:solid;border-width:0 0 32px 32px;
+  border-color:transparent transparent #D4AF37 transparent;
 }
 
 /* ===== SUCCESS STATE ===== */
@@ -681,9 +681,11 @@ input,select,textarea{font-family:'Poppins',sans-serif}
 
     <!-- Landscape Logo — no bg, timbul di atas dark navy -->
     <div style="position:absolute;top:4px;left:10px;right:10px;height:84px;z-index:2;display:flex;align-items:center;justify-content:center">
+      <!-- Layer putih transparan agar logo lebih hidup -->
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(255,255,255,0.14) 0%,rgba(255,255,255,0.06) 55%,transparent 75%);border-radius:12px;pointer-events:none"></div>
       <img src="assets/images/logo-landscape-nobg.png" alt="Salut Etam Betuah"
-           style="height:78px;width:auto;max-width:320px;object-fit:contain;display:block;
-                  filter:drop-shadow(0 0 10px rgba(255,255,255,.35)) drop-shadow(0 2px 8px rgba(0,0,0,.6));
+           style="height:78px;width:auto;max-width:320px;object-fit:contain;display:block;position:relative;z-index:1;
+                  filter:drop-shadow(0 0 14px rgba(255,255,255,.45)) drop-shadow(0 2px 6px rgba(0,0,0,.5)) contrast(1.1) brightness(1.08);
                   transition:filter .3s"
            onerror="this.src='assets/images/logo-landscape.png'">
     </div>
@@ -910,97 +912,133 @@ function validateForm() {
 }
 
 // ===== GENERATE KTA =====
+// ====================================================
+// PRE-LOAD IMAGES AS BASE64 — eliminates CORS + 404
+// ====================================================
+async function preloadImagesAsDataURL(el) {
+  const imgs = Array.from(el.querySelectorAll('img[src]'));
+  await Promise.all(imgs.map(async img => {
+    const src = img.getAttribute('src');
+    if (!src || src.startsWith('data:') || src === '') return;
+    try {
+      const resp = await fetch(src, { mode: 'cors' });
+      if (!resp.ok) throw new Error('404');
+      const blob = await resp.blob();
+      await new Promise((res, rej) => {
+        const reader = new FileReader();
+        reader.onload = () => { img.src = reader.result; res(); };
+        reader.onerror = rej;
+        reader.readAsDataURL(blob);
+      });
+    } catch(e) {
+      // Image not found — hide it, won't cause createPattern error
+      img.style.display = 'none';
+      img.src = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='; // 1x1 transparent GIF
+    }
+  }));
+}
+
+// ====================================================
+// KTA GENERATOR — robust, no html2canvas failures
+// ====================================================
 async function generateKTA() {
   const nama = document.getElementById('input-nama').value.trim().toUpperCase();
-  const nim = document.getElementById('input-nim').value.trim();
+  const nim  = document.getElementById('input-nim').value.trim();
   const prodi = document.getElementById('input-prodi').value;
 
-  // Validity
-  const now = new Date();
+  const now    = new Date();
   const expiry = window._reprintExpiry || new Date(now.getTime() + 180 * 24 * 60 * 60 * 1000);
-  window._reprintExpiry = null; // reset after use
-  const formatDate = (d) => d.toLocaleDateString('id-ID', { day:'2-digit', month:'long', year:'numeric' });
+  window._reprintExpiry = null;
+  const fmtDate = d => d.toLocaleDateString('id-ID', { day:'2-digit', month:'long', year:'numeric' });
 
-  // Update KTA template
+  // Populate template
   document.getElementById('kta-nama-text').textContent = nama;
-  document.getElementById('kta-nim-text').textContent = 'NIM: ' + nim;
+  document.getElementById('kta-nim-text').textContent  = 'NIM: ' + nim;
   document.getElementById('kta-prodi-text').textContent = prodi;
-  document.getElementById('kta-validity-text').textContent = formatDate(expiry);
+  document.getElementById('kta-validity-text').textContent = fmtDate(expiry);
 
-  // Set photo
   const photoImg = document.getElementById('kta-photo-img');
-  photoImg.src = state.foto || '';
-
-  // Show generating overlay
-  document.getElementById('genOverlay').classList.add('show');
-
-  // Wait for photo
-  await new Promise(res => {
-    if (!state.foto) { res(); return; }
-    if (photoImg.complete && photoImg.naturalWidth > 0) { res(); return; }
-    photoImg.onload = res;
-    photoImg.onerror = res;
-    setTimeout(res, 3000);
-  });
-  await new Promise(res => setTimeout(res, 600));
-
-  // Helper: strip CSS that html2canvas can't render
-  function stripUnsupportedCSS(cloneDoc) {
-    const style = cloneDoc.createElement('style');
-    style.textContent = `
-      * { animation: none !important; transition: none !important; }
-      * { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
-      .kta-deco-ring { animation: none !important; transform: none !important; }
-      .kta-enggang, .kta-portrait-emboss, .kta-back-enggang, .kta-back-portrait-emboss { display: none !important; }
-    `;
-    cloneDoc.head.appendChild(style);
-    // Fix images that may 404
-    cloneDoc.querySelectorAll('img').forEach(img => {
-      if (!img.complete || img.naturalWidth === 0) img.style.display = 'none';
+  if (state.foto) {
+    photoImg.src = state.foto;
+    await new Promise(res => {
+      if (photoImg.complete && photoImg.naturalWidth > 0) { res(); return; }
+      photoImg.onload = res; photoImg.onerror = res; setTimeout(res, 3000);
     });
   }
 
+  document.getElementById('genOverlay').classList.add('show');
+  await new Promise(r => setTimeout(r, 400));
+
+  // ── Get the hidden wrapper ──────────────────────────
+  const ktaFront = document.getElementById('kta-front');
+  const ktaBack  = document.getElementById('kta-back');
+  const wrapper  = ktaFront.closest('div[style*="-9999px"]') || ktaFront.parentElement;
+
+  // ── Pre-load all images as data URLs ───────────────
+  await preloadImagesAsDataURL(ktaFront);
+  await preloadImagesAsDataURL(ktaBack);
+
+  // ── Move wrapper to visible-but-off-screen position ──
+  // PENTING: jangan pakai visibility:hidden — diwarisi children → html2canvas blank!
+  // Gunakan opacity saja, masih terrender oleh html2canvas.
+  const origStyle = wrapper.getAttribute('style') || '';
+  wrapper.style.cssText = 'position:fixed;left:0;top:-650px;z-index:99998;opacity:0.001;pointer-events:none;';
+  await new Promise(r => setTimeout(r, 300)); // beri waktu browser paint
+
+  const oncloneFn = (doc) => {
+    const s = doc.createElement('style');
+    s.textContent = `
+      * { animation:none!important; transition:none!important;
+          backdrop-filter:none!important; -webkit-backdrop-filter:none!important; }
+      .kta-enggang,.kta-portrait-emboss,
+      .kta-back-enggang,.kta-back-portrait-emboss { display:none!important; }
+      .kta-deco-ring { animation:none!important; border-style:solid!important; }
+    `;
+    doc.head.appendChild(s);
+  };
+
+  const h2cOpts = {
+    scale: 2.5,
+    useCORS: false,       // already data URLs → no CORS needed
+    allowTaint: true,
+    logging: false,
+    imageTimeout: 0,      // images already loaded, no timeout needed
+    removeContainer: true,
+    width: 350, height: 560,
+    onclone: oncloneFn
+  };
+
   try {
     const { jsPDF } = window.jspdf;
-    const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: [93.75, 150] });
+    const doc = new jsPDF({ orientation:'portrait', unit:'mm', format:[93.75, 150] });
 
-    const h2cOpts = {
-      scale: 2,
-      useCORS: true,
-      allowTaint: false,
-      logging: false,
-      imageTimeout: 20000,
-      removeContainer: true,
-      onclone: (cloneDoc) => stripUnsupportedCSS(cloneDoc)
-    };
+    const frontCanvas = await html2canvas(ktaFront, h2cOpts);
+    doc.addImage(frontCanvas.toDataURL('image/jpeg', 0.93), 'JPEG', 0, 0, 93.75, 150);
 
-    // Capture front
-    const frontEl = document.getElementById('kta-front');
-    const frontCanvas = await html2canvas(frontEl, h2cOpts);
-    doc.addImage(frontCanvas.toDataURL('image/jpeg', 0.92), 'JPEG', 0, 0, 93.75, 150);
-
-    // Capture back
     doc.addPage([93.75, 150]);
-    const backEl = document.getElementById('kta-back');
-    const backCanvas = await html2canvas(backEl, h2cOpts);
-    doc.addImage(backCanvas.toDataURL('image/jpeg', 0.92), 'JPEG', 0, 0, 93.75, 150);
+    const backCanvas = await html2canvas(ktaBack, h2cOpts);
+    doc.addImage(backCanvas.toDataURL('image/jpeg', 0.93), 'JPEG', 0, 0, 93.75, 150);
 
     // Save PDF
     const filename = `KTA_Salut_${nim}_${nama.replace(/\s+/g,'_')}.pdf`;
     doc.save(filename);
 
-    // Save to localStorage
-    const ktaData = { nim, nama, prodi, foto: state.foto, downloadDate: now.toISOString(), expiryDate: expiry.toISOString() };
+    // Persist to localStorage
+    const ktaData = { nim, nama, prodi, foto: state.foto,
+                      downloadDate: now.toISOString(), expiryDate: expiry.toISOString() };
     try { localStorage.setItem('kta_' + nim, JSON.stringify(ktaData)); } catch(e) {}
 
     document.getElementById('genOverlay').classList.remove('show');
-    showToast('✅ KTA berhasil didownload! Cek folder Downloads Anda.', 'success');
-    setTimeout(() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }, 300);
+    showToast('✅ KTA berhasil didownload! Cek folder Downloads.', 'success');
+    setTimeout(() => window.scrollTo({ top:0, behavior:'smooth' }), 300);
 
   } catch(err) {
-    console.error('KTA generate error:', err);
+    console.error('[KTA Error]', err.name, err.message, err.stack);
     document.getElementById('genOverlay').classList.remove('show');
-    showToast('Gagal generate KTA: ' + (err.message || 'Unknown error') + '. Coba lagi.', 'error');
+    showToast(`Gagal: ${err.message || 'Unknown error'}. Coba lagi.`, 'error');
+  } finally {
+    // ALWAYS restore wrapper — even if error
+    wrapper.setAttribute('style', origStyle);
   }
 }
 

@@ -1047,9 +1047,9 @@ async function renderKTACanvas() {
   f.save();
   f.beginPath(); f.arc(pCX,pCY,innerR,0,Math.PI*2); f.clip();
   if (photoImg && photoImg.naturalWidth) {
-    var scl=Math.max(innerR*2/photoImg.naturalWidth, innerR*2/photoImg.naturalHeight);
+    var scl=Math.max(innerR*2/photoImg.naturalWidth, innerR*2/photoImg.naturalHeight)*1.4;
     var dw=photoImg.naturalWidth*scl, dh=photoImg.naturalHeight*scl;
-    f.drawImage(photoImg, pCX-dw/2, pCY-innerR, dw, dh);
+    f.drawImage(photoImg, pCX-dw/2, pCY-dh/2, dw, dh); // center crop, zoom 1.4x
   } else {
     f.fillStyle='#1E3A8A';
     f.fillRect(pCX-innerR, pCY-innerR, innerR*2, innerR*2);
@@ -1190,7 +1190,7 @@ async function renderKTACanvas() {
   });
 
   // Pemberitahuan
-  var pbY=172;
+  var pbY=188;  // lebih jauh dari mitra logos
   b.fillStyle='rgba(212,175,55,.25)'; b.fillRect(16,pbY,W-32,1);
   b.fillStyle='#FFD700'; b.font='800 9px Poppins';
   var ph='PEMBERITAHUAN';
@@ -1218,7 +1218,7 @@ async function renderKTACanvas() {
   });
 
   // Info section box — lebar pas konten, tinggi tetap sesuai 3 baris
-  var infoY = py + 14;
+  var infoY = py + 20;  // space lebih jelas dari pemberitahuan
   // Hitung lebar box berdasarkan konten terlebar
   b.font='400 8.5px Poppins';
   var maxRow = Math.max(
@@ -1229,7 +1229,7 @@ async function renderKTACanvas() {
   var addrW = b.measureText('Jl. Kadrie Oening No. 66A, Air Hitam, Samarinda Ulu - Kaltim').width + 28 + 10;
   var infoBoxW = Math.min(W-32, Math.max(maxRow, addrW) + 16);
   var infoBoxX = (W - infoBoxW) / 2;
-  var infoBoxH = 74;
+  var infoBoxH = 86;  // tambah tinggi untuk alamat 2 baris
   b.fillStyle='rgba(255,255,255,.05)';
   b.strokeStyle='rgba(212,175,55,.22)'; b.lineWidth=1;
   roundRect(b, infoBoxX, infoY, infoBoxW, infoBoxH, 10, true, true);
@@ -1242,18 +1242,25 @@ async function renderKTACanvas() {
   var col1 = infoBoxX + 10;
   var col2 = infoBoxX + infoBoxW/2 + 4;
 
-  // Helper: WA icon (green circle + white chat path)
+  // Helper: WA icon — logo WhatsApp (green circle + speech bubble + phone path)
   function drawWA(cx, cy) {
+    b.save();
+    var r=5.5;
+    // Green circle background
     b.fillStyle='#25D366';
-    b.beginPath(); b.arc(cx,cy,5,0,Math.PI*2); b.fill();
-    // White phone handset simplified
-    b.fillStyle='white'; b.lineWidth=0.8; b.strokeStyle='white';
+    b.beginPath(); b.arc(cx,cy,r,0,Math.PI*2); b.fill();
+    // White speech bubble (bulat)
+    b.fillStyle='white';
+    b.beginPath(); b.arc(cx,cy-0.3,3.2,0,Math.PI*2); b.fill();
+    // Ekor speech bubble (kiri bawah)
     b.beginPath();
-    b.arc(cx,cy,2.8,Math.PI*0.2,Math.PI*1.1); b.stroke();
-    b.beginPath();
-    b.moveTo(cx-2.2,cy+1.5); b.lineTo(cx-1.5,cy+3); b.stroke();
-    b.beginPath();
-    b.moveTo(cx+2.2,cy-1.5); b.lineTo(cx+1.5,cy-3); b.stroke();
+    b.moveTo(cx-2.5,cy+2); b.lineTo(cx-1.4,cy+3.8); b.lineTo(cx-0.8,cy+2); b.closePath(); b.fill();
+    // Green phone handset inside (ciri khas WA)
+    b.strokeStyle='#25D366'; b.lineWidth=1.1; b.lineCap='round';
+    b.beginPath(); b.arc(cx-0.3,cy-0.5,1.9,Math.PI*1.1,Math.PI*0.3,false); b.stroke();
+    b.beginPath(); b.moveTo(cx-1.7,cy+0.8); b.lineTo(cx-1.1,cy+1.4); b.stroke();
+    b.beginPath(); b.moveTo(cx+1.2,cy-1.7); b.lineTo(cx+1.8,cy-1.1); b.stroke();
+    b.restore();
   }
 
   // Helper: Globe icon
@@ -1299,10 +1306,19 @@ async function renderKTACanvas() {
   b.fillText('bestuahsalutetam@gmail.com', col2+14, iy);
   iy += 14;
 
-  // Row 3: Pin + Alamat (full width)
+  // Row 3: Pin + Alamat (word wrap agar tidak overflow box)
   drawPin(col1+5, iy-1.5);
   b.fillStyle='rgba(255,255,255,.65)'; b.font='400 8px Poppins';
-  b.fillText('Jl. Kadrie Oening No. 66A, Air Hitam, Samarinda Ulu - Kota Samarinda, Kaltim', col1+14, iy);
+  var addrText = 'Jl. Kadrie Oening No. 66A, Air Hitam, Samarinda Ulu, Kota Samarinda - Kaltim';
+  var addrMaxW = W - 32 - (col1+14-infoBoxX) - 8; // batas kanan box
+  var addrWords = addrText.split(' '), addrLine = '';
+  for (var ai=0; ai<addrWords.length; ai++) {
+    var addrTest = addrLine + addrWords[ai] + ' ';
+    if (b.measureText(addrTest).width > addrMaxW && addrLine) {
+      b.fillText(addrLine.trim(), col1+14, iy); addrLine = addrWords[ai]+' '; iy += 11;
+    } else { addrLine = addrTest; }
+  }
+  b.fillText(addrLine.trim(), col1+14, iy);
 
   // Watermark BACK: Enggang kanan + Portrait logo kiri (di atas info box, di bawah)
   if (engganImg && engganImg.naturalWidth) {

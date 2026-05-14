@@ -854,12 +854,13 @@ function handleFoto(input) {
     const prev = document.getElementById('prev-foto');
     prev.src = state.foto; prev.style.display = 'block';
     ua.querySelector('.ua-icon').style.display = 'none';
-    ua.querySelector('.ua-text').textContent = '✅ ' + file.name;
-    ua.querySelector('.ua-sub').textContent = (file.size/1024).toFixed(0)+' KB — Klik untuk ganti';
+    ua.querySelector('.ua-text').textContent = '\u2705 ' + file.name;
+    ua.querySelector('.ua-sub').textContent = (file.size/1024).toFixed(0)+' KB \u2014 Klik untuk ganti';
     validateForm();
   };
   reader.readAsDataURL(file);
 }
+
 function handleTF(input) {
   if (!input.files[0]) return;
   const file = input.files[0];
@@ -869,429 +870,427 @@ function handleTF(input) {
   ua.classList.add('has-file');
   if (file.type.startsWith('image/')) {
     const reader = new FileReader();
-    reader.onload = e => { const p=document.getElementById('prev-tf'); p.src=e.target.result; p.style.display='block'; ua.querySelector('.ua-icon').style.display='none'; };
+    reader.onload = e => {
+      const p = document.getElementById('prev-tf');
+      p.src = e.target.result; p.style.display = 'block';
+      ua.querySelector('.ua-icon').style.display = 'none';
+    };
     reader.readAsDataURL(file);
-  } else { ua.querySelector('.ua-icon').textContent='📄'; }
-  ua.querySelector('.ua-text').textContent = '✅ ' + file.name;
-  ua.querySelector('.ua-sub').textContent = (file.size/1024).toFixed(0)+' KB — Klik untuk ganti';
+  } else {
+    ua.querySelector('.ua-icon').textContent = '\ud83d\udcc4';
+  }
+  ua.querySelector('.ua-text').textContent = '\u2705 ' + file.name;
+  ua.querySelector('.ua-sub').textContent = (file.size/1024).toFixed(0)+' KB \u2014 Klik untuk ganti';
   validateForm();
 }
 
 // ===== VALIDATE =====
 function validateForm() {
-  const nama = document.getElementById('input-nama').value.trim();
-  const nim  = document.getElementById('input-nim').value.trim();
-  const prodi= document.getElementById('input-prodi').value;
+  const nama  = document.getElementById('input-nama').value.trim();
+  const nim   = document.getElementById('input-nim').value.trim();
+  const prodi = document.getElementById('input-prodi').value;
   const mark = (id, ok) => {
     const el = document.getElementById(id);
-    if (ok) { el.classList.add('ok'); el.querySelector('.chk').textContent='✓'; }
-    else    { el.classList.remove('ok'); el.querySelector('.chk').textContent=id.replace('req-','').charAt(0).toUpperCase(); }
+    if (ok) { el.classList.add('ok'); el.querySelector('.chk').textContent = '\u2713'; }
+    else    { el.classList.remove('ok'); el.querySelector('.chk').textContent = id.replace('req-','').charAt(0).toUpperCase(); }
   };
-  mark('req-nama',  nama.length>2);
-  mark('req-nim',   nim.length>5);
+  mark('req-nama',  nama.length > 2);
+  mark('req-nim',   nim.length  > 5);
   mark('req-prodi', !!prodi);
   mark('req-foto',  !!state.foto);
   mark('req-tf',    !!state.tf);
-  document.getElementById('btn-generate').disabled = !(nama.length>2&&nim.length>5&&prodi&&state.foto&&state.tf);
+  document.getElementById('btn-generate').disabled =
+    !(nama.length>2 && nim.length>5 && prodi && state.foto && state.tf);
 }
 
-// ===== HELPERS =====
-function showToast(msg, type='') {
+// ===== TOAST =====
+function showToast(msg, type) {
   const t = document.getElementById('toastKta');
   t.textContent = msg;
-  t.className = 'toast-kta show ' + type;
+  t.className = 'toast-kta show ' + (type||'');
   setTimeout(() => t.classList.remove('show'), 3500);
 }
+
+// ===== IMAGE LOADER =====
 function loadImg(src) {
-  return new Promise(res => {
+  return new Promise(function(res) {
     if (!src) { res(null); return; }
-    if (src.startsWith('data:')) {
-      const i = new Image();
-      i.onload = () => res(i);
-      i.onerror = () => res(null);
-      i.src = src;
-      setTimeout(() => res(i.naturalWidth ? i : null), 2000);
-      return;
-    }
-    const i = new Image();
-    i.crossOrigin = 'anonymous';
-    i.onload = () => res(i);
-    i.onerror = () => res(null);
-    i.src = src;
-    setTimeout(() => res(null), 5000);
+    const img = new Image();
+    if (!src.startsWith('data:')) img.crossOrigin = 'anonymous';
+    img.onload  = function() { res(img); };
+    img.onerror = function() { res(null); };
+    img.src = src;
+    setTimeout(function() { if (!img.naturalWidth) res(null); }, 6000);
   });
 }
+
+// ===== CANVAS HELPERS =====
 function roundRect(ctx, x, y, w, h, r, fill, stroke) {
   ctx.beginPath();
   ctx.moveTo(x+r, y);
   ctx.lineTo(x+w-r, y);   ctx.arcTo(x+w, y,   x+w, y+r,   r);
   ctx.lineTo(x+w, y+h-r); ctx.arcTo(x+w, y+h, x+w-r, y+h, r);
-  ctx.lineTo(x+r, y+h);   ctx.arcTo(x,   y+h, x,   y+h-r, r);
-  ctx.lineTo(x, y+r);     ctx.arcTo(x,   y,   x+r, y,     r);
+  ctx.lineTo(x+r, y+h);   ctx.arcTo(x,   y+h, x, y+h-r,   r);
+  ctx.lineTo(x, y+r);     ctx.arcTo(x,   y,   x+r, y,      r);
   ctx.closePath();
   if (fill)   ctx.fill();
   if (stroke) ctx.stroke();
 }
-function fillTextCenter(ctx, text, cx, y) {
-  ctx.fillText(text, cx - ctx.measureText(text).width / 2, y);
+
+function centerText(ctx, text, cx) {
+  return cx - ctx.measureText(text).width / 2;
 }
 
-// ===== PURE CANVAS KTA RENDERER (tidak pakai html2canvas sama sekali) =====
+// ===== PURE CANVAS KTA RENDERER (NO html2canvas) =====
 async function renderKTACanvas() {
-  const W = 350, H = 560, SC = 2.5;
-
-  const nama  = document.getElementById('input-nama').value.trim().toUpperCase();
-  const nim   = document.getElementById('input-nim').value.trim();
-  const prodi = document.getElementById('input-prodi').value;
-  const now   = new Date();
-  const expiry= window._reprintExpiry || new Date(now.getTime()+180*24*60*60*1000);
+  var W = 350, H = 560, SC = 2.5;
+  var nama   = document.getElementById('input-nama').value.trim().toUpperCase();
+  var nim    = document.getElementById('input-nim').value.trim();
+  var prodi  = document.getElementById('input-prodi').value;
+  var expiry = window._reprintExpiry || new Date(Date.now() + 180*24*60*60*1000);
   window._reprintExpiry = null;
-  const validStr = expiry.toLocaleDateString('id-ID',{day:'2-digit',month:'long',year:'numeric'});
+  var validStr = expiry.toLocaleDateString('id-ID', {day:'2-digit', month:'long', year:'numeric'});
 
-  // Load semua gambar secara paralel
-  const [logoImg, photoImg, gkImg, senyiurImg, questImg, btnImg, tmsImg] = await Promise.all([
+  // Load all images in parallel
+  var imgs = await Promise.all([
     loadImg('assets/images/logo-landscape-nobg.png'),
     loadImg(state.foto),
     loadImg('assets/images/partners/hotel-gk.png'),
     loadImg('assets/images/partners/senyiur.png'),
     loadImg('assets/images/partners/quest-hotel.png'),
     loadImg('assets/images/partners/btn.png'),
-    loadImg('assets/images/partners/tms-daihatsu.png'),
+    loadImg('assets/images/partners/tms-daihatsu.png')
   ]);
+  var logoImg=imgs[0], photoImg=imgs[1], gkImg=imgs[2],
+      senyiurImg=imgs[3], questImg=imgs[4], btnImg=imgs[5], tmsImg=imgs[6];
 
-  // ────────── FRONT CARD ──────────
-  const fc = document.createElement('canvas');
+  // ── FRONT ──────────────────────────────────────────
+  var fc = document.createElement('canvas');
   fc.width = W*SC; fc.height = H*SC;
-  const f = fc.getContext('2d');
+  var f = fc.getContext('2d');
   f.scale(SC, SC);
 
-  // Background
-  const bgF = f.createLinearGradient(0,0,W,H);
+  // Background gradient
+  var bgF = f.createLinearGradient(0,0,W,H);
   bgF.addColorStop(0,   '#060E1F');
   bgF.addColorStop(0.3, '#0A1830');
   bgF.addColorStop(0.65,'#0F2347');
   bgF.addColorStop(1,   '#142C5A');
   f.fillStyle = bgF; f.fillRect(0,0,W,H);
 
-  // Radial ornament accents
-  const o1 = f.createRadialGradient(W*0.15,H*0.85,0,W*0.15,H*0.85,W*0.45);
+  // Radial ornaments
+  var o1 = f.createRadialGradient(W*.15,H*.85,0,W*.15,H*.85,W*.45);
   o1.addColorStop(0,'rgba(212,175,55,.08)'); o1.addColorStop(1,'transparent');
   f.fillStyle=o1; f.fillRect(0,0,W,H);
-  const o2 = f.createRadialGradient(W*0.85,H*0.2,0,W*0.85,H*0.2,W*0.4);
+  var o2 = f.createRadialGradient(W*.85,H*.2,0,W*.85,H*.2,W*.4);
   o2.addColorStop(0,'rgba(37,99,235,.1)'); o2.addColorStop(1,'transparent');
   f.fillStyle=o2; f.fillRect(0,0,W,H);
 
-  // Gold corner TL
+  // Corner TL
   f.fillStyle='#D4AF37';
   f.beginPath(); f.moveTo(0,0); f.lineTo(72,0); f.lineTo(0,72); f.closePath(); f.fill();
   f.fillStyle='#FFD700'; f.fillRect(0,0,28,2);
 
-  // Gold shimmer line y=88
-  const gl = f.createLinearGradient(0,0,W,0);
+  // Gold shimmer line
+  var gl = f.createLinearGradient(0,0,W,0);
   gl.addColorStop(0,'transparent'); gl.addColorStop(.15,'#B8860B');
-  gl.addColorStop(.4,'#FFD700'); gl.addColorStop(.5,'#FFF8DC');
-  gl.addColorStop(.6,'#FFD700'); gl.addColorStop(.85,'#B8860B'); gl.addColorStop(1,'transparent');
+  gl.addColorStop(.4,'#FFD700');    gl.addColorStop(.5,'#FFF8DC');
+  gl.addColorStop(.6,'#FFD700');    gl.addColorStop(.85,'#B8860B'); gl.addColorStop(1,'transparent');
   f.fillStyle=gl; f.fillRect(0,88,W,3);
 
-  // Logo glow background
-  const lglow = f.createRadialGradient(W/2,44,0,W/2,44,W*0.55);
-  lglow.addColorStop(0,'rgba(255,255,255,.12)'); lglow.addColorStop(.6,'rgba(255,255,255,.05)'); lglow.addColorStop(1,'transparent');
+  // Logo glow
+  var lglow = f.createRadialGradient(W/2,44,0,W/2,44,W*.55);
+  lglow.addColorStop(0,'rgba(255,255,255,.14)');
+  lglow.addColorStop(.6,'rgba(255,255,255,.05)');
+  lglow.addColorStop(1,'transparent');
   f.fillStyle=lglow; f.fillRect(10,0,W-20,88);
 
   // Logo image
   if (logoImg && logoImg.naturalWidth) {
-    const lh=74, lw=Math.min(316,logoImg.naturalWidth*(lh/logoImg.naturalHeight));
+    var lh=74, lw=Math.min(316, logoImg.naturalWidth*(lh/logoImg.naturalHeight));
+    f.save();
+    f.shadowColor='rgba(255,255,255,.4)'; f.shadowBlur=14;
     f.globalAlpha=0.95;
-    f.shadowColor='rgba(255,255,255,.35)'; f.shadowBlur=12;
-    f.drawImage(logoImg,(W-lw)/2,7,lw,lh);
-    f.shadowBlur=0; f.globalAlpha=1;
+    f.drawImage(logoImg, (W-lw)/2, 7, lw, lh);
+    f.restore();
   }
 
-  // "KARTU TANDA ANGGOTA"
-  f.fillStyle='#FFD700'; f.font='800 9px Poppins'; f.textAlign='left';
-  const kta_text='— KARTU TANDA ANGGOTA —';
-  const kta_w=f.measureText(kta_text).width;
-  f.fillText(kta_text,(W-kta_w)/2,108);
+  // KTA Title
+  f.font='800 9px Poppins'; f.fillStyle='#FFD700';
+  var titleTxt='\u2014 KARTU TANDA ANGGOTA \u2014';
+  var titleW=f.measureText(titleTxt).width;
+  var titleX=(W-titleW)/2;
+  f.fillText(titleTxt, titleX, 108);
+  // Decorative lines
+  f.fillStyle='rgba(212,175,55,.45)';
+  f.fillRect(12, 104, titleX-18, 1);
+  f.fillRect(titleX+titleW+6, 104, W-titleX-titleW-18, 1);
 
-  // Decorative lines beside title
-  f.fillStyle='rgba(212,175,55,.5)';
-  f.fillRect(12,104,(W-kta_w)/2-18,1);
-  f.fillRect((W-kta_w)/2+kta_w+6,104,(W-kta_w)/2-18,1);
-
-  // Photo circle
-  const pCX=W/2, pCY=192, pR=50, innerR=40;
-
-  // Deco ring (dashed via segmented arc)
+  // Photo ring
+  var pCX=W/2, pCY=192, pR=50, innerR=40;
+  // Dashed outer ring
   f.strokeStyle='rgba(212,175,55,.5)'; f.lineWidth=1.5;
-  for (let a=0; a<Math.PI*2; a+=0.25) {
+  for (var a=0; a<Math.PI*2; a+=0.25) {
     f.beginPath(); f.arc(pCX,pCY,pR+10,a,a+0.12); f.stroke();
   }
-  // Gold dots
-  ['top','bottom','left','right'].forEach(d=>{
-    const dx=d==='left'?-pR-10:d==='right'?pR+10:0;
-    const dy=d==='top'?-pR-10:d==='bottom'?pR+10:0;
-    f.fillStyle='#FFD700'; f.beginPath(); f.arc(pCX+dx,pCY+dy,3.5,0,Math.PI*2); f.fill();
+  // Dots
+  [[pCX,pCY-pR-10],[pCX,pCY+pR+10],[pCX-pR-10,pCY],[pCX+pR+10,pCY]].forEach(function(d) {
+    f.fillStyle='#FFD700';
+    f.beginPath(); f.arc(d[0],d[1],3.5,0,Math.PI*2); f.fill();
   });
-  // Outer gold ring
+  // Gold ring
   f.strokeStyle='#D4AF37'; f.lineWidth=3;
   f.beginPath(); f.arc(pCX,pCY,pR,0,Math.PI*2); f.stroke();
-  // Inner dark ring
+  // Dark inner ring
   f.strokeStyle='#0F2347'; f.lineWidth=2;
   f.beginPath(); f.arc(pCX,pCY,pR-2,0,Math.PI*2); f.stroke();
-
-  // Photo clip & draw
+  // Photo
   f.save();
   f.beginPath(); f.arc(pCX,pCY,innerR,0,Math.PI*2); f.clip();
   if (photoImg && photoImg.naturalWidth) {
-    const scl=Math.max(innerR*2/photoImg.naturalWidth,innerR*2/photoImg.naturalHeight);
-    const dw=photoImg.naturalWidth*scl, dh=photoImg.naturalHeight*scl;
-    f.drawImage(photoImg, pCX-dw/2, pCY-innerR, dw, dh); // top-aligned
+    var scl=Math.max(innerR*2/photoImg.naturalWidth, innerR*2/photoImg.naturalHeight);
+    var dw=photoImg.naturalWidth*scl, dh=photoImg.naturalHeight*scl;
+    f.drawImage(photoImg, pCX-dw/2, pCY-innerR, dw, dh);
   } else {
-    f.fillStyle='#1E3A8A'; f.fillRect(pCX-innerR,pCY-innerR,innerR*2,innerR*2);
+    f.fillStyle='#1E3A8A';
+    f.fillRect(pCX-innerR, pCY-innerR, innerR*2, innerR*2);
   }
   f.restore();
 
   // Gold divider
-  const gd=f.createLinearGradient(20,300,W-20,300);
+  var gd=f.createLinearGradient(20,300,W-20,300);
   gd.addColorStop(0,'transparent'); gd.addColorStop(.5,'rgba(212,175,55,.35)'); gd.addColorStop(1,'transparent');
   f.fillStyle=gd; f.fillRect(20,300,W-40,1);
 
   // Name badge box
-  f.fillStyle='rgba(255,255,255,.06)'; f.strokeStyle='rgba(212,175,55,.3)'; f.lineWidth=1;
-  roundRect(f,18,310,W-36,68,12,true,true);
+  f.fillStyle='rgba(255,255,255,.06)';
+  f.strokeStyle='rgba(212,175,55,.3)'; f.lineWidth=1;
+  roundRect(f, 18,310, W-36,68, 12, true, true);
 
   // Name
-  f.fillStyle='#ffffff'; f.font='800 16px Poppins'; f.textAlign='left';
-  const nw=f.measureText(nama).width; f.fillText(nama,(W-nw)/2,336);
-
+  f.fillStyle='#ffffff'; f.font='800 16px Poppins';
+  f.fillText(nama, centerText(f,nama,W/2), 336);
   // NIM
   f.fillStyle='#93C5FD'; f.font='500 11.5px Poppins';
-  const nimw=f.measureText(nim).width; f.fillText(nim,(W-nimw)/2,354);
-
+  f.fillText(nim, centerText(f,nim,W/2), 354);
   // Prodi
   f.fillStyle='rgba(147,197,253,.6)'; f.font='400 10px Poppins';
-  const pw=f.measureText(prodi).width; f.fillText(prodi,(W-pw)/2,368);
+  f.fillText(prodi, centerText(f,prodi,W/2), 368);
 
   // Salut Etam Betuah
   f.fillStyle='#FFD700'; f.font='900 11px Poppins';
   f.shadowColor='rgba(255,215,0,.4)'; f.shadowBlur=16;
-  const sw=f.measureText('✦ SALUT ETAM BETUAH ✦').width;
-  f.fillText('✦ SALUT ETAM BETUAH ✦',(W-sw)/2,398);
+  var se='\u2756 SALUT ETAM BETUAH \u2756';
+  f.fillText(se, centerText(f,se,W/2), 398);
   f.shadowBlur=0;
 
   // Validity
-  f.fillStyle='rgba(255,255,255,.55)'; f.font='500 9.5px Poppins';
-  const vLabel='Berlaku Hingga: ';
-  const vLabelW=f.measureText(vLabel).width;
-  const vDateW=f.measureText(validStr).width;
-  const vTotalW=vLabelW+vDateW;
-  f.fillText(vLabel,(W-vTotalW)/2,418);
-  f.fillStyle='#34D399'; f.font='700 9.5px Poppins';
-  f.fillText(validStr,(W-vTotalW)/2+vLabelW,418);
+  f.font='500 9.5px Poppins'; f.fillStyle='rgba(255,255,255,.55)';
+  var vLabel='Berlaku Hingga: ';
+  var vLW=f.measureText(vLabel).width;
+  f.font='700 9.5px Poppins';
+  var vDW=f.measureText(validStr).width;
+  var vStart=(W-(vLW+vDW))/2;
+  f.font='500 9.5px Poppins'; f.fillStyle='rgba(255,255,255,.55)';
+  f.fillText(vLabel, vStart, 418);
+  f.font='700 9.5px Poppins'; f.fillStyle='#34D399';
+  f.fillText(validStr, vStart+vLW, 418);
 
   // Bottom wave
-  const wvG=f.createLinearGradient(0,0,W,0);
+  var wvG=f.createLinearGradient(0,0,W,0);
   wvG.addColorStop(0,'#0A1830'); wvG.addColorStop(.5,'#0F2347'); wvG.addColorStop(1,'#0A1830');
   f.fillStyle=wvG; f.fillRect(0,516,W,H-516);
   f.fillStyle='rgba(212,175,55,.2)'; f.fillRect(0,516,W,1);
 
-  // Gold corner BR
+  // Corner BR
   f.fillStyle='#D4AF37';
   f.beginPath(); f.moveTo(W,H); f.lineTo(W-72,H); f.lineTo(W,H-72); f.closePath(); f.fill();
   f.fillStyle='#FFD700'; f.fillRect(W-28,H-2,28,2);
 
   // URL
   f.fillStyle='rgba(212,175,55,.7)'; f.font='600 8px Poppins';
-  const urlW=f.measureText('🌐 www.salutetambetuah.id').width;
-  f.fillText('🌐 www.salutetambetuah.id',(W-urlW)/2,H-13);
+  var urlT='\ud83c\udf10 www.salutetambetuah.id';
+  f.fillText(urlT, centerText(f,urlT,W/2), H-13);
 
-  // ────────── BACK CARD ──────────
-  const bc = document.createElement('canvas');
+  // ── BACK ───────────────────────────────────────────
+  var bc = document.createElement('canvas');
   bc.width = W*SC; bc.height = H*SC;
-  const b = bc.getContext('2d');
+  var b = bc.getContext('2d');
   b.scale(SC, SC);
 
   // Background
-  const bgB=b.createLinearGradient(0,0,W*0.7,H);
+  var bgB=b.createLinearGradient(0,0,W*.7,H);
   bgB.addColorStop(0,'#060E1F'); bgB.addColorStop(.4,'#0A1830'); bgB.addColorStop(1,'#0F2347');
   b.fillStyle=bgB; b.fillRect(0,0,W,H);
-
-  // Radial ornament
-  const ob=b.createRadialGradient(W*.8,H*.9,0,W*.8,H*.9,W*.55);
+  var ob=b.createRadialGradient(W*.8,H*.9,0,W*.8,H*.9,W*.55);
   ob.addColorStop(0,'rgba(212,175,55,.07)'); ob.addColorStop(1,'transparent');
   b.fillStyle=ob; b.fillRect(0,0,W,H);
 
-  // Header background
-  const hg=b.createLinearGradient(0,0,W,76);
+  // Header
+  var hg=b.createLinearGradient(0,0,W,76);
   hg.addColorStop(0,'#0A1830'); hg.addColorStop(1,'#0F2347');
   b.fillStyle=hg; b.fillRect(0,0,W,76);
   b.fillStyle='rgba(212,175,55,.4)'; b.fillRect(0,76,W,2);
-
-  // Header corner TL
+  // Header corners
   b.fillStyle='#D4AF37';
   b.beginPath(); b.moveTo(0,0); b.lineTo(44,0); b.lineTo(0,44); b.closePath(); b.fill();
-  // Header corner TR
   b.fillStyle='#B8860B';
   b.beginPath(); b.moveTo(W,0); b.lineTo(W-44,0); b.lineTo(W,44); b.closePath(); b.fill();
 
   // Header text
   b.fillStyle='#FFD700'; b.font='900 12px Poppins';
   b.shadowColor='rgba(255,215,0,.4)'; b.shadowBlur=12;
-  const ht1='✦ KEUNTUNGAN MEMBER ✦'; b.fillText(ht1,(W-b.measureText(ht1).width)/2,38);
+  var ht='\u2756 KEUNTUNGAN MEMBER \u2756';
+  b.fillText(ht, centerText(b,ht,W/2), 40);
   b.shadowBlur=0;
   b.fillStyle='rgba(212,175,55,.6)'; b.font='400 8px Poppins';
-  const ht2='SALUT ETAM BETUAH · UT SAMARINDA'; b.fillText(ht2,(W-b.measureText(ht2).width)/2,56);
+  var hs='SALUT ETAM BETUAH \u00b7 UT SAMARINDA';
+  b.fillText(hs, centerText(b,hs,W/2), 58);
 
   // Partner logos white box
-  b.fillStyle='rgba(255,255,255,.82)'; b.strokeStyle='rgba(212,175,55,.2)'; b.lineWidth=1;
-  roundRect(b,16,88,W-32,74,10,true,true);
-
-  // "Mitra Resmi" label
+  b.fillStyle='rgba(255,255,255,.82)';
+  b.strokeStyle='rgba(212,175,55,.2)'; b.lineWidth=1;
+  roundRect(b, 16,88, W-32,74, 10, true, true);
   b.fillStyle='#64748B'; b.font='700 7px Poppins';
-  const mrT='Mitra Resmi'; b.fillText(mrT,(W-b.measureText(mrT).width)/2,104);
+  var mr='Mitra Resmi';
+  b.fillText(mr, centerText(b,mr,W/2), 104);
 
-  // Partner logos
-  const pImgs=[gkImg,senyiurImg,questImg,btnImg,tmsImg];
-  const pHts=[26,30,22,20,18];
-  const totalLogosW=W-40; const gap=totalLogosW/5;
-  pImgs.forEach((pImg,i)=>{
-    if (!pImg||!pImg.naturalWidth) return;
-    const lh=pHts[i];
-    const lw=Math.min(gap-4, pImg.naturalWidth*(lh/pImg.naturalHeight));
-    const cx=20+(i+.5)*gap;
-    b.drawImage(pImg, cx-lw/2, 137-lh/2, lw, lh);
+  // Draw partner logos
+  var pImgArr=[gkImg,senyiurImg,questImg,btnImg,tmsImg];
+  var pHts=[26,30,22,20,18];
+  var segW=(W-32)/5;
+  pImgArr.forEach(function(pi,i) {
+    if (!pi || !pi.naturalWidth) return;
+    var lh=pHts[i];
+    var lw=Math.min(segW-6, pi.naturalWidth*(lh/pi.naturalHeight));
+    var cx=16+(i+.5)*segW;
+    b.drawImage(pi, cx-lw/2, 137-lh/2, lw, lh);
   });
 
-  // Pemberitahuan section
-  const pbY=175;
+  // Pemberitahuan
+  var pbY=176;
   b.fillStyle='rgba(212,175,55,.25)'; b.fillRect(16,pbY,W-32,1);
-  b.fillStyle='rgba(212,175,55,.25)'; b.fillRect(16,pbY+100,W-32,1);
-
-  const pbHead='PEMBERITAHUAN';
   b.fillStyle='#FFD700'; b.font='800 9px Poppins';
-  b.fillText(pbHead,(W-b.measureText(pbHead).width)/2,pbY+16);
+  var ph='PEMBERITAHUAN';
+  b.fillText(ph, centerText(b,ph,W/2), pbY+16);
 
-  const pbItems=[
+  var pbList=[
     'Kartu ini milik Salut Etam Betuah, bila menemukan harap dikembalikan.',
     'Sebagai identitas anggota Salut Etam Betuah UT Samarinda.',
     'Dapat digunakan sebagai benefit spesial pada mitra Salut.',
     'Kartu tidak dapat dipindahtangankan.'
   ];
   b.font='400 9px Poppins';
-  let pyy=pbY+30;
-  pbItems.forEach(txt=>{
-    b.fillStyle='#D4AF37'; b.fillText('◆',22,pyy);
+  var py=pbY+30;
+  pbList.forEach(function(txt) {
+    b.fillStyle='#D4AF37'; b.fillText('\u25c6', 22, py);
     b.fillStyle='rgba(255,255,255,.7)';
-    // Simple wrap
-    const words=txt.split(' '); let line='';
-    words.forEach(w=>{
-      const test=line+w+' ';
-      if(b.measureText(test).width>W-52&&line){ b.fillText(line,34,pyy); line=w+' '; pyy+=13; }
-      else line=test;
-    });
-    b.fillText(line,34,pyy); pyy+=16;
+    // word wrap
+    var words=txt.split(' '), line='';
+    for (var wi=0; wi<words.length; wi++) {
+      var test=line+words[wi]+' ';
+      if (b.measureText(test).width>W-52 && line) {
+        b.fillText(line, 34, py); line=words[wi]+' '; py+=13;
+      } else { line=test; }
+    }
+    b.fillText(line, 34, py); py+=16;
   });
 
   // Info section box
-  const infoY=pbY+108;
-  b.fillStyle='rgba(255,255,255,.05)'; b.strokeStyle='rgba(212,175,55,.2)'; b.lineWidth=1;
-  roundRect(b,16,infoY,W-32,92,10,true,true);
-
-  const infoHead='INFORMASI';
+  var infoY=py+4;
+  b.fillStyle='rgba(255,255,255,.05)';
+  b.strokeStyle='rgba(212,175,55,.2)'; b.lineWidth=1;
+  roundRect(b, 16,infoY, W-32,94, 10, true, true);
   b.fillStyle='#FFD700'; b.font='800 9px Poppins';
-  b.fillText(infoHead,(W-b.measureText(infoHead).width)/2,infoY+16);
+  var ih='INFORMASI';
+  b.fillText(ih, centerText(b,ih,W/2), infoY+16);
 
-  b.font='400 9px Poppins'; b.fillStyle='rgba(255,255,255,.65)';
-  const infoRows=[
-    ['📱 0822-5063-8289','📱 0852-5283-4986'],
-    ['🌐 salutetambetuah.id','✉️ bestuahsalutetam@gmail.com'],
-    ['📍 Jl. HM Kadrie Oening No.66A, Samarinda Ulu, Kaltim',''],
-  ];
-  let iy=infoY+32;
-  infoRows.forEach(row=>{
-    b.fillText(row[0],26,iy);
-    if(row[1]) b.fillText(row[1],W/2+4,iy);
+  b.fillStyle='rgba(255,255,255,.65)'; b.font='400 9px Poppins';
+  var iy=infoY+32;
+  [
+    ['\ud83d\udcf1 0822-5063-8289', '\ud83d\udcf1 0852-5283-4986'],
+    ['\ud83c\udf10 salutetambetuah.id', '\u2709\ufe0f bestuahsalutetam@gmail.com'],
+    ['\ud83d\udccd Jl. HM Kadrie Oening No.66A, Samarinda Ulu, Kaltim', '']
+  ].forEach(function(row) {
+    b.fillText(row[0], 26, iy);
+    if (row[1]) b.fillText(row[1], W/2+4, iy);
     iy+=18;
   });
 
   // Footer
-  const ftG=b.createLinearGradient(0,0,W,0);
+  var ftG=b.createLinearGradient(0,0,W,0);
   ftG.addColorStop(0,'#060E1F'); ftG.addColorStop(.5,'#0A1830'); ftG.addColorStop(1,'#060E1F');
   b.fillStyle=ftG; b.fillRect(0,H-40,W,40);
   b.fillStyle='rgba(212,175,55,.25)'; b.fillRect(0,H-40,W,1);
-
   b.fillStyle='rgba(255,255,255,.7)'; b.font='600 7.5px Poppins';
-  const ftTxt='YouTube  ·  TikTok  ·  Instagram  ·  Facebook   @salutetambetuah';
-  b.fillText(ftTxt,(W-b.measureText(ftTxt).width)/2,H-14);
-
-  // Gold corner BR
+  var ft='YouTube  \u00b7  TikTok  \u00b7  Instagram  \u00b7  Facebook   @salutetambetuah';
+  b.fillText(ft, centerText(b,ft,W/2), H-14);
   b.fillStyle='#D4AF37';
   b.beginPath(); b.moveTo(W,H); b.lineTo(W-32,H); b.lineTo(W,H-32); b.closePath(); b.fill();
 
-  return { frontCanvas:fc, backCanvas:bc, nama, nim, expiry };
+  return { frontCanvas:fc, backCanvas:bc, nama:nama, nim:nim, expiry:expiry };
 }
 
-// ===== GENERATE KTA (pure canvas, NO html2canvas) =====
+// ===== GENERATE KTA (pure canvas) =====
 async function generateKTA() {
   document.getElementById('genOverlay').classList.add('show');
-  const now = new Date();
-
+  var now = new Date();
   try {
-    const { frontCanvas, backCanvas, nama, nim, expiry } = await renderKTACanvas();
+    var result = await renderKTACanvas();
+    var fc=result.frontCanvas, bc=result.backCanvas,
+        nama=result.nama, nim=result.nim, expiry=result.expiry;
 
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF({ orientation:'portrait', unit:'mm', format:[93.75,150] });
-    doc.addImage(frontCanvas.toDataURL('image/jpeg',.93),'JPEG',0,0,93.75,150);
+    var jsPDF = window.jspdf.jsPDF;
+    var doc = new jsPDF({ orientation:'portrait', unit:'mm', format:[93.75,150] });
+    doc.addImage(fc.toDataURL('image/jpeg',.93), 'JPEG', 0, 0, 93.75, 150);
     doc.addPage([93.75,150]);
-    doc.addImage(backCanvas.toDataURL('image/jpeg',.93),'JPEG',0,0,93.75,150);
-    doc.save(`KTA_Salut_${nim}_${nama.replace(/\s+/g,'_')}.pdf`);
+    doc.addImage(bc.toDataURL('image/jpeg',.93), 'JPEG', 0, 0, 93.75, 150);
+    doc.save('KTA_Salut_'+nim+'_'+nama.replace(/\s+/g,'_')+'.pdf');
 
-    // Simpan ke localStorage
     try {
       localStorage.setItem('kta_'+nim, JSON.stringify({
-        nim, nama,
+        nim:nim, nama:nama,
         prodi: document.getElementById('input-prodi').value,
         foto: state.foto,
         downloadDate: now.toISOString(),
-        expiryDate: expiry.toISOString()
+        expiryDate:   expiry.toISOString()
       }));
-    } catch(e){}
+    } catch(e) {}
 
     document.getElementById('genOverlay').classList.remove('show');
-    showToast('✅ KTA berhasil didownload! Cek folder Downloads.','success');
-
+    showToast('\u2705 KTA berhasil didownload! Cek folder Downloads.', 'success');
   } catch(err) {
     console.error('[KTA]', err);
     document.getElementById('genOverlay').classList.remove('show');
-    showToast('Gagal: '+(err.message||'error')+'. Coba lagi.','error');
+    showToast('Gagal: '+(err.message||String(err))+'. Coba lagi.', 'error');
   }
 }
 
 // ===== REPRINT =====
 function reprintKTA() {
-  const nim = document.getElementById('reprint-nim').value.trim();
+  var nim = document.getElementById('reprint-nim').value.trim();
   if (!nim) { showToast('Masukkan NIM terlebih dahulu','error'); return; }
   document.getElementById('reprint-result').classList.remove('show');
   document.getElementById('reprint-notfound').style.display='none';
   try {
-    const data = JSON.parse(localStorage.getItem('kta_'+nim)||'null');
+    var data = JSON.parse(localStorage.getItem('kta_'+nim)||'null');
     if (!data) { document.getElementById('reprint-notfound').style.display='block'; return; }
-    document.getElementById('reprint-photo').src = data.foto||'';
+    document.getElementById('reprint-photo').src         = data.foto||'';
     document.getElementById('reprint-nama-text').textContent = data.nama;
     document.getElementById('reprint-nim-text').textContent  = 'NIM: '+data.nim;
     document.getElementById('rp-prodi').textContent    = data.prodi;
     document.getElementById('rp-download').textContent = new Date(data.downloadDate).toLocaleDateString('id-ID');
     document.getElementById('rp-expiry').textContent   = new Date(data.expiryDate).toLocaleDateString('id-ID');
-    const expired = new Date(data.expiryDate)<new Date();
-    document.getElementById('rp-status').textContent = expired?'⚠️ Kadaluarsa':'✅ Aktif';
-    document.getElementById('rp-status').style.color = expired?'#EF4444':'#059669';
+    var expired = new Date(data.expiryDate)<new Date();
+    document.getElementById('rp-status').textContent  = expired?'\u26a0\ufe0f Kadaluarsa':'\u2705 Aktif';
+    document.getElementById('rp-status').style.color  = expired?'#EF4444':'#059669';
     document.getElementById('reprint-result').classList.add('show');
     window._reprintData = data;
   } catch(e) { document.getElementById('reprint-notfound').style.display='block'; }
 }
 
 async function downloadReprintKTA() {
-  const data = window._reprintData;
+  var data = window._reprintData;
   if (!data) return;
   state.foto = data.foto;
   window._reprintExpiry = new Date(data.expiryDate);
@@ -1304,692 +1303,30 @@ async function downloadReprintKTA() {
 
 // ===== STORED KTAs =====
 function loadStoredKTAs() {
-  const container = document.getElementById('stored-list');
-  const keys = Object.keys(localStorage).filter(k=>k.startsWith('kta_'));
+  var container = document.getElementById('stored-list');
+  var keys = Object.keys(localStorage).filter(function(k){ return k.startsWith('kta_'); });
   if (!keys.length) {
     container.innerHTML='<div style="text-align:center;padding:20px;color:#94A3B8;font-size:13px">Belum ada KTA tersimpan di perangkat ini</div>';
     return;
   }
-  container.innerHTML = keys.map(k=>{
+  container.innerHTML = keys.map(function(k) {
     try {
-      const d=JSON.parse(localStorage.getItem(k));
-      const expired=new Date(d.expiryDate)<new Date();
-      return `<div style="display:flex;align-items:center;justify-content:space-between;padding:12px;background:#F8FAFC;border-radius:12px;margin-bottom:8px;border:1px solid #E2E8F0">
-        <div style="display:flex;align-items:center;gap:10px">
-          <div style="width:36px;height:36px;border-radius:50%;overflow:hidden;background:#E2E8F0"><img src="${d.foto||''}" style="width:100%;height:100%;object-fit:cover"></div>
-          <div><div style="font-size:13px;font-weight:700;color:#0F172A">${d.nama}</div><div style="font-size:11px;color:#94A3B8">${d.nim} · ${d.prodi||''}</div></div>
-        </div>
-        <div style="text-align:right">
-          <div style="font-size:10px;font-weight:700;color:${expired?'#EF4444':'#059669'}">${expired?'⚠️ Kadaluarsa':'✅ Aktif'}</div>
-          <button onclick="document.getElementById('reprint-nim').value='${d.nim}';switchTab('cetak');reprintKTA()"
-            style="font-size:10px;background:#1E3A8A;color:white;border:none;border-radius:8px;padding:4px 10px;margin-top:4px;cursor:pointer;font-family:'Poppins',sans-serif">
-            Cetak Ulang
-          </button>
-        </div>
-      </div>`;
+      var d=JSON.parse(localStorage.getItem(k));
+      var exp=new Date(d.expiryDate)<new Date();
+      var col=exp?'#EF4444':'#059669';
+      var lbl=exp?'\u26a0\ufe0f Kadaluarsa':'\u2705 Aktif';
+      return '<div style="display:flex;align-items:center;justify-content:space-between;padding:12px;background:#F8FAFC;border-radius:12px;margin-bottom:8px;border:1px solid #E2E8F0">'
+        +'<div style="display:flex;align-items:center;gap:10px">'
+        +'<div style="width:36px;height:36px;border-radius:50%;overflow:hidden;background:#E2E8F0"><img src="'+(d.foto||'')+'" style="width:100%;height:100%;object-fit:cover"></div>'
+        +'<div><div style="font-size:13px;font-weight:700;color:#0F172A">'+d.nama+'</div>'
+        +'<div style="font-size:11px;color:#94A3B8">'+d.nim+' \u00b7 '+(d.prodi||'')+'</div></div></div>'
+        +'<div style="text-align:right">'
+        +'<div style="font-size:10px;font-weight:700;color:'+col+'">'+lbl+'</div>'
+        +'<button onclick="document.getElementById(\'reprint-nim\').value=\''+d.nim+'\';switchTab(\'cetak\');reprintKTA()" '
+        +'style="font-size:10px;background:#1E3A8A;color:white;border:none;border-radius:8px;padding:4px 10px;margin-top:4px;cursor:pointer;font-family:\'Poppins\',sans-serif">'
+        +'Cetak Ulang</button></div></div>';
     } catch(e) { return ''; }
   }).join('');
-}
-
-
-// ===== TABS =====
-function switchTab(tab) {
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('panel-' + tab).classList.add('active');
-  const btns = document.querySelectorAll('.tab-btn');
-  const map = { buat: 0, cetak: 1, info: 2 };
-  btns[map[tab]].classList.add('active');
-  if (tab === 'cetak') loadStoredKTAs();
-}
-
-// ===== FILE HANDLERS =====
-function handleFoto(input) {
-  if (!input.files[0]) return;
-  const file = input.files[0];
-  if (file.size > 5 * 1024 * 1024) { showToast('Ukuran foto maksimal 5MB', 'error'); return; }
-  const reader = new FileReader();
-  reader.onload = (e) => {
-    state.foto = e.target.result;
-    const ua = document.getElementById('ua-foto');
-    ua.classList.add('has-file');
-    const prev = document.getElementById('prev-foto');
-    prev.src = state.foto;
-    prev.style.display = 'block';
-    ua.querySelector('.ua-icon').style.display = 'none';
-    ua.querySelector('.ua-text').textContent = '✅ ' + file.name;
-    ua.querySelector('.ua-sub').textContent = (file.size/1024).toFixed(0) + ' KB — Klik untuk ganti';
-    validateForm();
-  };
-  reader.readAsDataURL(file);
-}
-
-function handleTF(input) {
-  if (!input.files[0]) return;
-  const file = input.files[0];
-  if (file.size > 10 * 1024 * 1024) { showToast('Ukuran file maksimal 10MB', 'error'); return; }
-  state.tf = true; // just need to know it's uploaded
-  const ua = document.getElementById('ua-tf');
-  ua.classList.add('has-file');
-  if (file.type.startsWith('image/')) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const prev = document.getElementById('prev-tf');
-      prev.src = e.target.result;
-      prev.style.display = 'block';
-      ua.querySelector('.ua-icon').style.display = 'none';
-    };
-    reader.readAsDataURL(file);
-  } else {
-    ua.querySelector('.ua-icon').textContent = '📄';
-    ua.querySelector('.ua-icon').style.display = 'block';
-  }
-  ua.querySelector('.ua-text').textContent = '✅ ' + file.name;
-  ua.querySelector('.ua-sub').textContent = (file.size/1024).toFixed(0) + ' KB — Klik untuk ganti';
-  validateForm();
-}
-
-// ===== VALIDATE FORM =====
-function validateForm() {
-  const nama = document.getElementById('input-nama').value.trim();
-  const nim = document.getElementById('input-nim').value.trim();
-  const prodi = document.getElementById('input-prodi').value;
-  const foto = state.foto;
-  const tf = state.tf;
-
-  const mark = (id, ok) => {
-    const el = document.getElementById(id);
-    if (ok) { el.classList.add('ok'); el.querySelector('.chk').textContent = '✓'; }
-    else { el.classList.remove('ok'); el.querySelector('.chk').textContent = id.replace('req-', '').charAt(0).toUpperCase(); }
-  };
-
-  mark('req-nama', nama.length > 2);
-  mark('req-nim', nim.length > 5);
-  mark('req-prodi', !!prodi);
-  mark('req-foto', !!foto);
-  mark('req-tf', !!tf);
-
-  const allOk = nama.length > 2 && nim.length > 5 && prodi && foto && tf;
-  document.getElementById('btn-generate').disabled = !allOk;
-}
-
-// ===== GENERATE KTA =====
-// ====================================================
-// DEFINITIVE FIX: Ganti semua <img> jadi <canvas> sebelum html2canvas
-// Ini eliminasi 100% masalah createPattern 0x0 dan image loading timing
-// ====================================================
-
-const DECORATIVE_CLASSES = ['kta-enggang','kta-portrait-emboss','kta-back-enggang','kta-back-portrait-emboss'];
-
-async function convertImagesToCanvas(el) {
-  const imgs = Array.from(el.querySelectorAll('img'));
-  const log  = [];
-
-  for (const img of imgs) {
-    // 1. Sembunyikan dekoratif (enggang, portrait emboss) — tidak perlu di PDF
-    if (DECORATIVE_CLASSES.some(c => img.classList.contains(c))) {
-      log.push({ img, type:'hide', prev: img.style.display });
-      img.style.display = 'none';
-      continue;
-    }
-
-    // 2. Gambar tidak punya pixel → sembunyikan
-    if (!img.naturalWidth || !img.naturalHeight) {
-      log.push({ img, type:'hide', prev: img.style.display });
-      img.style.display = 'none';
-      continue;
-    }
-
-    // 3. Konversi ke canvas (sudah ada pixel data di memori)
-    try {
-      // Pakai rendered size jika bisa, fallback ke naturalSize
-      const rect = img.getBoundingClientRect();
-      const W = Math.round(rect.width)  || img.naturalWidth;
-      const H = Math.round(rect.height) || img.naturalHeight;
-      if (!W || !H) { img.style.display='none'; log.push({img,type:'hide',prev:''}); continue; }
-
-      const canvas = document.createElement('canvas');
-      canvas.width  = W;
-      canvas.height = H;
-      const ctx = canvas.getContext('2d');
-
-      // Handle object-fit: cover (dipakai foto profil)
-      const cs = window.getComputedStyle(img);
-      if (cs.objectFit === 'cover') {
-        const scl = Math.max(W / img.naturalWidth, H / img.naturalHeight);
-        const dw  = img.naturalWidth  * scl;
-        const dh  = img.naturalHeight * scl;
-        const dx  = (W - dw) / 2;
-        const dy  = cs.objectPosition && cs.objectPosition.includes('top') ? 0 : (H - dh) / 2;
-        ctx.drawImage(img, dx, dy, dw, dh);
-      } else {
-        ctx.drawImage(img, 0, 0, W, H);
-      }
-
-      // Salin style penting dari img ke canvas
-      const inlineStyle = img.getAttribute('style') || '';
-      canvas.setAttribute('style', inlineStyle);
-      canvas.style.width    = W + 'px';
-      canvas.style.height   = H + 'px';
-      canvas.style.display  = cs.display === 'none' ? 'none' : 'block';
-      canvas.style.objectFit = '';
-      canvas.style.objectPosition = '';
-
-      img.parentNode.insertBefore(canvas, img);
-      img.parentNode.removeChild(img);
-      log.push({ img, canvas, type:'canvas' });
-
-    } catch(e) {
-      // Tainted / gagal → sembunyikan
-      log.push({ img, type:'hide', prev: img.style.display });
-      img.style.display = 'none';
-    }
-  }
-
-  // Kembalikan fungsi restore
-  return function restore() {
-    for (const item of log) {
-      if (item.type === 'canvas') {
-        if (item.canvas && item.canvas.parentNode) {
-          item.canvas.parentNode.insertBefore(item.img, item.canvas);
-          item.canvas.parentNode.removeChild(item.canvas);
-        }
-      } else {
-        item.img.style.display = item.prev || '';
-      }
-    }
-  };
-}
-
-// Legacy preload — masih dipakai untuk memastikan img.naturalWidth > 0
-async function preloadImagesAsDataURL(el) {
-  const BLANK = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
-  const imgs  = Array.from(el.querySelectorAll('img'));
-
-  for (const img of imgs) {
-    const src = img.getAttribute('src') || '';
-
-    // Skip: sudah dataURL atau kosong
-    if (!src || src.startsWith('data:')) continue;
-
-    try {
-      // Coba konversi gambar yang sudah loaded ke dataURL via canvas
-      if (img.complete && img.naturalWidth > 0 && img.naturalHeight > 0) {
-        const c = document.createElement('canvas');
-        c.width  = img.naturalWidth;
-        c.height = img.naturalHeight;
-        const ctx = c.getContext('2d');
-        ctx.drawImage(img, 0, 0);
-        const dataURL = c.toDataURL('image/png');
-        // Set & tunggu browser decode
-        await new Promise(res => {
-          img.onload  = res;
-          img.onerror = res;
-          img.src = dataURL;
-          setTimeout(res, 300);
-        });
-        continue;
-      }
-
-      // Gambar belum load → fetch dari network
-      const resp = await fetch(src);
-      if (!resp.ok) throw new Error('HTTP ' + resp.status);
-      const blob = await resp.blob();
-      const dataURL = await new Promise((res, rej) => {
-        const reader = new FileReader();
-        reader.onload  = () => res(reader.result);
-        reader.onerror = () => rej(new Error('FileReader error'));
-        reader.readAsDataURL(blob);
-      });
-      await new Promise(res => {
-        img.onload  = res;
-        img.onerror = res;
-        img.src = dataURL;
-        setTimeout(res, 500);
-      });
-
-    } catch(e) {
-      // Gagal total → ganti dengan 1x1 transparan & sembunyikan
-      img.src   = BLANK;
-      img.style.display    = 'none';
-      img.style.visibility = 'hidden';
-    }
-  }
-
-  // Extra buffer untuk browser decode semua gambar
-  await new Promise(r => setTimeout(r, 400));
-
-  // Final safety: sembunyikan semua img dengan dimensi 0
-  imgs.forEach(img => {
-    if (!img.naturalWidth || !img.naturalHeight) {
-      img.style.display    = 'none';
-      img.style.visibility = 'hidden';
-    }
-  });
-}
-
-// ====================================================
-// KTA GENERATOR — FINAL ROBUST VERSION
-// ====================================================
-async function generateKTA() {
-// ===== REPRINT =====
-function reprintKTA() {
-  const nim = document.getElementById('reprint-nim').value.trim();
-  if (!nim) { showToast('Masukkan NIM terlebih dahulu','error'); return; }
-  document.getElementById('reprint-result').classList.remove('show');
-  document.getElementById('reprint-notfound').style.display='none';
-  try {
-    const data = JSON.parse(localStorage.getItem('kta_'+nim)||'null');
-    if (!data) { document.getElementById('reprint-notfound').style.display='block'; return; }
-    document.getElementById('reprint-photo').src = data.foto||'';
-    document.getElementById('reprint-nama-text').textContent = data.nama;
-    document.getElementById('reprint-nim-text').textContent  = 'NIM: '+data.nim;
-    document.getElementById('rp-prodi').textContent    = data.prodi;
-    document.getElementById('rp-download').textContent = new Date(data.downloadDate).toLocaleDateString('id-ID');
-    document.getElementById('rp-expiry').textContent   = new Date(data.expiryDate).toLocaleDateString('id-ID');
-    const expired = new Date(data.expiryDate)<new Date();
-    document.getElementById('rp-status').textContent = expired?'⚠️ Kadaluarsa':'✅ Aktif';
-    document.getElementById('rp-status').style.color = expired?'#EF4444':'#059669';
-    document.getElementById('reprint-result').classList.add('show');
-    window._reprintData = data;
-  } catch(e) { document.getElementById('reprint-notfound').style.display='block'; }
-}
-
-async function downloadReprintKTA() {
-  const data = window._reprintData;
-  if (!data) return;
-  state.foto = data.foto;
-  window._reprintExpiry = new Date(data.expiryDate);
-  document.getElementById('input-nama').value  = data.nama;
-  document.getElementById('input-nim').value   = data.nim;
-  document.getElementById('input-prodi').value = data.prodi;
-  state.tf = true; validateForm();
-  await generateKTA();
-}
-
-// ===== STORED KTAs =====
-function loadStoredKTAs() {
-  const container = document.getElementById('stored-list');
-  const keys = Object.keys(localStorage).filter(k=>k.startsWith('kta_'));
-  if (!keys.length) {
-    container.innerHTML='<div style="text-align:center;padding:20px;color:#94A3B8;font-size:13px">Belum ada KTA tersimpan di perangkat ini</div>';
-    return;
-  }
-  container.innerHTML = keys.map(k=>{
-    try {
-      const d=JSON.parse(localStorage.getItem(k));
-      const expired=new Date(d.expiryDate)<new Date();
-      return `<div style="display:flex;align-items:center;justify-content:space-between;padding:12px;background:#F8FAFC;border-radius:12px;margin-bottom:8px;border:1px solid #E2E8F0">
-        <div style="display:flex;align-items:center;gap:10px">
-          <div style="width:36px;height:36px;border-radius:50%;overflow:hidden;background:#E2E8F0"><img src="${d.foto||''}" style="width:100%;height:100%;object-fit:cover"></div>
-          <div><div style="font-size:13px;font-weight:700;color:#0F172A">${d.nama}</div><div style="font-size:11px;color:#94A3B8">${d.nim} · ${d.prodi||''}</div></div>
-        </div>
-        <div style="text-align:right">
-          <div style="font-size:10px;font-weight:700;color:${expired?'#EF4444':'#059669'}">${expired?'⚠️ Kadaluarsa':'✅ Aktif'}</div>
-          <button onclick="document.getElementById('reprint-nim').value='${d.nim}';switchTab('cetak');reprintKTA()"
-            style="font-size:10px;background:#1E3A8A;color:white;border:none;border-radius:8px;padding:4px 10px;margin-top:4px;cursor:pointer;font-family:'Poppins',sans-serif">
-            Cetak Ulang
-          </button>
-        </div>
-      </div>`;
-    } catch(e) { return ''; }
-  }).join('');
-}
-
-
-// ===== TABS =====
-function switchTab(tab) {
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('panel-' + tab).classList.add('active');
-  const btns = document.querySelectorAll('.tab-btn');
-  const map = { buat: 0, cetak: 1, info: 2 };
-  btns[map[tab]].classList.add('active');
-  if (tab === 'cetak') loadStoredKTAs();
-}
-
-// ===== FILE HANDLERS =====
-function handleFoto(input) {
-  if (!input.files[0]) return;
-  const file = input.files[0];
-  if (file.size > 5 * 1024 * 1024) { showToast('Ukuran foto maksimal 5MB', 'error'); return; }
-  const reader = new FileReader();
-  reader.onload = (e) => {
-    state.foto = e.target.result;
-    const ua = document.getElementById('ua-foto');
-    ua.classList.add('has-file');
-    const prev = document.getElementById('prev-foto');
-    prev.src = state.foto;
-    prev.style.display = 'block';
-    ua.querySelector('.ua-icon').style.display = 'none';
-    ua.querySelector('.ua-text').textContent = '✅ ' + file.name;
-    ua.querySelector('.ua-sub').textContent = (file.size/1024).toFixed(0) + ' KB — Klik untuk ganti';
-    validateForm();
-  };
-  reader.readAsDataURL(file);
-}
-
-function handleTF(input) {
-  if (!input.files[0]) return;
-  const file = input.files[0];
-  if (file.size > 10 * 1024 * 1024) { showToast('Ukuran file maksimal 10MB', 'error'); return; }
-  state.tf = true; // just need to know it's uploaded
-  const ua = document.getElementById('ua-tf');
-  ua.classList.add('has-file');
-  if (file.type.startsWith('image/')) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const prev = document.getElementById('prev-tf');
-      prev.src = e.target.result;
-      prev.style.display = 'block';
-      ua.querySelector('.ua-icon').style.display = 'none';
-    };
-    reader.readAsDataURL(file);
-  } else {
-    ua.querySelector('.ua-icon').textContent = '📄';
-    ua.querySelector('.ua-icon').style.display = 'block';
-  }
-  ua.querySelector('.ua-text').textContent = '✅ ' + file.name;
-  ua.querySelector('.ua-sub').textContent = (file.size/1024).toFixed(0) + ' KB — Klik untuk ganti';
-  validateForm();
-}
-
-// ===== VALIDATE FORM =====
-function validateForm() {
-  const nama = document.getElementById('input-nama').value.trim();
-  const nim = document.getElementById('input-nim').value.trim();
-  const prodi = document.getElementById('input-prodi').value;
-  const foto = state.foto;
-  const tf = state.tf;
-
-  const mark = (id, ok) => {
-    const el = document.getElementById(id);
-    if (ok) { el.classList.add('ok'); el.querySelector('.chk').textContent = '✓'; }
-    else { el.classList.remove('ok'); el.querySelector('.chk').textContent = id.replace('req-', '').charAt(0).toUpperCase(); }
-  };
-
-  mark('req-nama', nama.length > 2);
-  mark('req-nim', nim.length > 5);
-  mark('req-prodi', !!prodi);
-  mark('req-foto', !!foto);
-  mark('req-tf', !!tf);
-
-  const allOk = nama.length > 2 && nim.length > 5 && prodi && foto && tf;
-  document.getElementById('btn-generate').disabled = !allOk;
-}
-
-// ===== GENERATE KTA =====
-// ====================================================
-// DEFINITIVE FIX: Ganti semua <img> jadi <canvas> sebelum html2canvas
-// Ini eliminasi 100% masalah createPattern 0x0 dan image loading timing
-// ====================================================
-
-const DECORATIVE_CLASSES = ['kta-enggang','kta-portrait-emboss','kta-back-enggang','kta-back-portrait-emboss'];
-
-async function convertImagesToCanvas(el) {
-  const imgs = Array.from(el.querySelectorAll('img'));
-  const log  = [];
-
-  for (const img of imgs) {
-    // 1. Sembunyikan dekoratif (enggang, portrait emboss) — tidak perlu di PDF
-    if (DECORATIVE_CLASSES.some(c => img.classList.contains(c))) {
-      log.push({ img, type:'hide', prev: img.style.display });
-      img.style.display = 'none';
-      continue;
-    }
-
-    // 2. Gambar tidak punya pixel → sembunyikan
-    if (!img.naturalWidth || !img.naturalHeight) {
-      log.push({ img, type:'hide', prev: img.style.display });
-      img.style.display = 'none';
-      continue;
-    }
-
-    // 3. Konversi ke canvas (sudah ada pixel data di memori)
-    try {
-      // Pakai rendered size jika bisa, fallback ke naturalSize
-      const rect = img.getBoundingClientRect();
-      const W = Math.round(rect.width)  || img.naturalWidth;
-      const H = Math.round(rect.height) || img.naturalHeight;
-      if (!W || !H) { img.style.display='none'; log.push({img,type:'hide',prev:''}); continue; }
-
-      const canvas = document.createElement('canvas');
-      canvas.width  = W;
-      canvas.height = H;
-      const ctx = canvas.getContext('2d');
-
-      // Handle object-fit: cover (dipakai foto profil)
-      const cs = window.getComputedStyle(img);
-      if (cs.objectFit === 'cover') {
-        const scl = Math.max(W / img.naturalWidth, H / img.naturalHeight);
-        const dw  = img.naturalWidth  * scl;
-        const dh  = img.naturalHeight * scl;
-        const dx  = (W - dw) / 2;
-        const dy  = cs.objectPosition && cs.objectPosition.includes('top') ? 0 : (H - dh) / 2;
-        ctx.drawImage(img, dx, dy, dw, dh);
-      } else {
-        ctx.drawImage(img, 0, 0, W, H);
-      }
-
-      // Salin style penting dari img ke canvas
-      const inlineStyle = img.getAttribute('style') || '';
-      canvas.setAttribute('style', inlineStyle);
-      canvas.style.width    = W + 'px';
-      canvas.style.height   = H + 'px';
-      canvas.style.display  = cs.display === 'none' ? 'none' : 'block';
-      canvas.style.objectFit = '';
-      canvas.style.objectPosition = '';
-
-      img.parentNode.insertBefore(canvas, img);
-      img.parentNode.removeChild(img);
-      log.push({ img, canvas, type:'canvas' });
-
-    } catch(e) {
-      // Tainted / gagal → sembunyikan
-      log.push({ img, type:'hide', prev: img.style.display });
-      img.style.display = 'none';
-    }
-  }
-
-  // Kembalikan fungsi restore
-  return function restore() {
-    for (const item of log) {
-      if (item.type === 'canvas') {
-        if (item.canvas && item.canvas.parentNode) {
-          item.canvas.parentNode.insertBefore(item.img, item.canvas);
-          item.canvas.parentNode.removeChild(item.canvas);
-        }
-      } else {
-        item.img.style.display = item.prev || '';
-      }
-    }
-  };
-}
-
-// Legacy preload — masih dipakai untuk memastikan img.naturalWidth > 0
-async function preloadImagesAsDataURL(el) {
-  const BLANK = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
-  const imgs  = Array.from(el.querySelectorAll('img'));
-
-  for (const img of imgs) {
-    const src = img.getAttribute('src') || '';
-
-    // Skip: sudah dataURL atau kosong
-    if (!src || src.startsWith('data:')) continue;
-
-    try {
-      // Coba konversi gambar yang sudah loaded ke dataURL via canvas
-      if (img.complete && img.naturalWidth > 0 && img.naturalHeight > 0) {
-        const c = document.createElement('canvas');
-        c.width  = img.naturalWidth;
-        c.height = img.naturalHeight;
-        const ctx = c.getContext('2d');
-        ctx.drawImage(img, 0, 0);
-        const dataURL = c.toDataURL('image/png');
-        // Set & tunggu browser decode
-        await new Promise(res => {
-          img.onload  = res;
-          img.onerror = res;
-          img.src = dataURL;
-          setTimeout(res, 300);
-        });
-        continue;
-      }
-
-      // Gambar belum load → fetch dari network
-      const resp = await fetch(src);
-      if (!resp.ok) throw new Error('HTTP ' + resp.status);
-      const blob = await resp.blob();
-      const dataURL = await new Promise((res, rej) => {
-        const reader = new FileReader();
-        reader.onload  = () => res(reader.result);
-        reader.onerror = () => rej(new Error('FileReader error'));
-        reader.readAsDataURL(blob);
-      });
-      await new Promise(res => {
-        img.onload  = res;
-        img.onerror = res;
-        img.src = dataURL;
-        setTimeout(res, 500);
-      });
-
-    } catch(e) {
-      // Gagal total → ganti dengan 1x1 transparan & sembunyikan
-      img.src   = BLANK;
-      img.style.display    = 'none';
-      img.style.visibility = 'hidden';
-    }
-  }
-
-  // Extra buffer untuk browser decode semua gambar
-  await new Promise(r => setTimeout(r, 400));
-
-  // Final safety: sembunyikan semua img dengan dimensi 0
-  imgs.forEach(img => {
-    if (!img.naturalWidth || !img.naturalHeight) {
-      img.style.display    = 'none';
-      img.style.visibility = 'hidden';
-    }
-  });
-}
-
-// ====================================================
-// KTA GENERATOR — FINAL ROBUST VERSION
-// ====================================================
-async function generateKTA() {
-  const nama  = document.getElementById('input-nama').value.trim().toUpperCase();
-  const nim   = document.getElementById('input-nim').value.trim();
-  const prodi = document.getElementById('input-prodi').value;
-
-  const now    = new Date();
-  const expiry = window._reprintExpiry || new Date(now.getTime() + 180*24*60*60*1000);
-  window._reprintExpiry = null;
-  const fmtDate = d => d.toLocaleDateString('id-ID',{day:'2-digit',month:'long',year:'numeric'});
-
-  // Populate KTA template fields
-  document.getElementById('kta-nama-text').textContent  = nama;
-  document.getElementById('kta-nim-text').textContent   = 'NIM: ' + nim;
-  document.getElementById('kta-prodi-text').textContent = prodi;
-  document.getElementById('kta-validity-text').textContent = fmtDate(expiry);
-
-  // Set & load foto profil
-  const photoImg = document.getElementById('kta-photo-img');
-  if (state.foto) {
-    photoImg.src = state.foto;
-    await new Promise(res => {
-      if (photoImg.complete && photoImg.naturalWidth > 0) { res(); return; }
-      photoImg.onload = res; photoImg.onerror = res; setTimeout(res, 3000);
-    });
-  }
-
-  document.getElementById('genOverlay').classList.add('show');
-
-}
-// ===== REPRINT =====
-function reprintKTA() {
-  const nim = document.getElementById('reprint-nim').value.trim();
-  if (!nim) { showToast('Masukkan NIM terlebih dahulu', 'error'); return; }
-
-  document.getElementById('reprint-result').classList.remove('show');
-  document.getElementById('reprint-notfound').style.display = 'none';
-
-  try {
-    const data = JSON.parse(localStorage.getItem('kta_' + nim) || 'null');
-    if (!data) {
-      document.getElementById('reprint-notfound').style.display = 'block';
-      return;
-    }
-    // Show result
-    document.getElementById('reprint-photo').src = data.foto || '';
-    document.getElementById('reprint-nama-text').textContent = data.nama;
-    document.getElementById('reprint-nim-text').textContent = 'NIM: ' + data.nim;
-    document.getElementById('rp-prodi').textContent = data.prodi;
-    document.getElementById('rp-download').textContent = new Date(data.downloadDate).toLocaleDateString('id-ID');
-    document.getElementById('rp-expiry').textContent = new Date(data.expiryDate).toLocaleDateString('id-ID');
-    const expired = new Date(data.expiryDate) < new Date();
-    document.getElementById('rp-status').textContent = expired ? '⚠️ Kadaluarsa' : '✅ Aktif';
-    document.getElementById('rp-status').style.color = expired ? '#EF4444' : '#059669';
-    document.getElementById('reprint-result').classList.add('show');
-    window._reprintData = data;
-  } catch(e) {
-    document.getElementById('reprint-notfound').style.display = 'block';
-  }
-}
-
-async function downloadReprintKTA() {
-  const data = window._reprintData;
-  if (!data) return;
-  state.foto = data.foto;
-  // Use original expiry date for reprint
-  window._reprintExpiry = new Date(data.expiryDate);
-  document.getElementById('input-nama').value = data.nama;
-  document.getElementById('input-nim').value = data.nim;
-  document.getElementById('input-prodi').value = data.prodi;
-  state.tf = true;
-  validateForm();
-  await generateKTA();
-}
-
-// ===== LOAD STORED KTAs =====
-function loadStoredKTAs() {
-  const container = document.getElementById('stored-list');
-  const keys = Object.keys(localStorage).filter(k => k.startsWith('kta_'));
-  if (keys.length === 0) {
-    container.innerHTML = '<div style="text-align:center;padding:20px;color:#94A3B8;font-size:13px">Belum ada KTA tersimpan di perangkat ini</div>';
-    return;
-  }
-  container.innerHTML = keys.map(k => {
-    try {
-      const d = JSON.parse(localStorage.getItem(k));
-      const expired = new Date(d.expiryDate) < new Date();
-      return `<div style="display:flex;align-items:center;justify-content:space-between;padding:12px;background:#F8FAFC;border-radius:12px;margin-bottom:8px;border:1px solid #E2E8F0">
-        <div style="display:flex;align-items:center;gap:10px">
-          <div style="width:36px;height:36px;border-radius:50%;overflow:hidden;background:#E2E8F0">
-            <img src="${d.foto||''}" style="width:100%;height:100%;object-fit:cover">
-          </div>
-          <div>
-            <div style="font-size:13px;font-weight:700;color:#0F172A">${d.nama}</div>
-            <div style="font-size:11px;color:#94A3B8">${d.nim} · ${d.prodi||''}</div>
-          </div>
-        </div>
-        <div style="text-align:right">
-          <div style="font-size:10px;font-weight:700;color:${expired?'#EF4444':'#059669'}">${expired?'⚠️ Kadaluarsa':'✅ Aktif'}</div>
-          <button onclick="document.getElementById('reprint-nim').value='${d.nim}';switchTab('cetak');reprintKTA()" 
-                  style="font-size:10px;background:#1E3A8A;color:white;border:none;border-radius:8px;padding:4px 10px;margin-top:4px;cursor:pointer;font-family:'Poppins',sans-serif">
-            Cetak Ulang
-          </button>
-        </div>
-      </div>`;
-    } catch(e) { return ''; }
-  }).join('');
-}
-
-// ===== TOAST =====
-function showToast(msg, type = '') {
-  const t = document.getElementById('toastKta');
-  t.textContent = msg;
-  t.className = 'toast-kta show ' + type;
-  setTimeout(() => t.classList.remove('show'), 3500);
 }
 </script>
 </body>

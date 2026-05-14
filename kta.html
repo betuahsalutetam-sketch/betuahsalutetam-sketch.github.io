@@ -959,10 +959,13 @@ async function renderKTACanvas() {
     loadImg('assets/images/partners/senyiur.png'),
     loadImg('assets/images/partners/quest-hotel.png'),
     loadImg('assets/images/partners/btn.png'),
-    loadImg('assets/images/partners/tms-daihatsu.png')
+    loadImg('assets/images/partners/tms-daihatsu.png'),
+    loadImg('assets/images/logo-portrait.png'),
+    loadImg('assets/images/enggang.png')
   ]);
   var logoImg=imgs[0], photoImg=imgs[1], gkImg=imgs[2],
-      senyiurImg=imgs[3], questImg=imgs[4], btnImg=imgs[5], tmsImg=imgs[6];
+      senyiurImg=imgs[3], questImg=imgs[4], btnImg=imgs[5], tmsImg=imgs[6],
+      portraitImg=imgs[7], engganImg=imgs[8];
 
   // ── FRONT ──────────────────────────────────────────
   var fc = document.createElement('canvas');
@@ -1096,6 +1099,26 @@ async function renderKTACanvas() {
   f.font='700 9.5px Poppins'; f.fillStyle='#34D399';
   f.fillText(validStr, vStart+vLW, 418);
 
+  // ── Watermark FRONT: Enggang kanan + Portrait logo kiri ──
+  if (engganImg && engganImg.naturalWidth) {
+    f.save();
+    f.globalAlpha = 0.11;
+    f.filter = 'brightness(180%) saturate(40%) contrast(120%)';
+    // Flip horizontal (enggang menghadap ke dalam)
+    f.translate(W, 0); f.scale(-1,1);
+    var eg_h=170, eg_w=engganImg.naturalWidth*(eg_h/engganImg.naturalHeight);
+    f.drawImage(engganImg, -28, H-48-eg_h, eg_w, eg_h);
+    f.restore();
+  }
+  if (portraitImg && portraitImg.naturalWidth) {
+    f.save();
+    f.globalAlpha = 0.09;
+    f.filter = 'brightness(250%) saturate(15%) contrast(110%)';
+    var pt_h=150, pt_w=portraitImg.naturalWidth*(pt_h/portraitImg.naturalHeight);
+    f.drawImage(portraitImg, -22, H-50-pt_h, pt_w, pt_h);
+    f.restore();
+  }
+
   // Bottom wave
   var wvG=f.createLinearGradient(0,0,W,0);
   wvG.addColorStop(0,'#0A1830'); wvG.addColorStop(.5,'#0F2347'); wvG.addColorStop(1,'#0A1830');
@@ -1168,7 +1191,7 @@ async function renderKTACanvas() {
   });
 
   // Pemberitahuan
-  var pbY=176;
+  var pbY=174;
   b.fillStyle='rgba(212,175,55,.25)'; b.fillRect(16,pbY,W-32,1);
   b.fillStyle='#FFD700'; b.font='800 9px Poppins';
   var ph='PEMBERITAHUAN';
@@ -1180,42 +1203,86 @@ async function renderKTACanvas() {
     'Dapat digunakan sebagai benefit spesial pada mitra Salut.',
     'Kartu tidak dapat dipindahtangankan.'
   ];
-  b.font='400 9px Poppins';
-  var py=pbY+30;
+  b.font='400 9.5px Poppins';
+  var py=pbY+32;
   pbList.forEach(function(txt) {
     b.fillStyle='#D4AF37'; b.fillText('\u25c6', 22, py);
-    b.fillStyle='rgba(255,255,255,.7)';
-    // word wrap
+    b.fillStyle='rgba(255,255,255,.72)';
     var words=txt.split(' '), line='';
     for (var wi=0; wi<words.length; wi++) {
       var test=line+words[wi]+' ';
       if (b.measureText(test).width>W-52 && line) {
-        b.fillText(line, 34, py); line=words[wi]+' '; py+=13;
+        b.fillText(line, 34, py); line=words[wi]+' '; py+=14;
       } else { line=test; }
     }
-    b.fillText(line, 34, py); py+=16;
+    b.fillText(line, 34, py); py+=18;
   });
 
-  // Info section box
-  var infoY=py+4;
+  // Info section box — dinamis: mulai dari py+12, isi sampai H-44
+  var infoY = py + 10;
+  var infoH = H - 44 - infoY; // sisakan 44px untuk footer
   b.fillStyle='rgba(255,255,255,.05)';
-  b.strokeStyle='rgba(212,175,55,.2)'; b.lineWidth=1;
-  roundRect(b, 16,infoY, W-32,94, 10, true, true);
+  b.strokeStyle='rgba(212,175,55,.22)'; b.lineWidth=1;
+  roundRect(b, 16,infoY, W-32, Math.max(infoH,80), 10, true, true);
+
   b.fillStyle='#FFD700'; b.font='800 9px Poppins';
   var ih='INFORMASI';
   b.fillText(ih, centerText(b,ih,W/2), infoY+16);
 
-  b.fillStyle='rgba(255,255,255,.65)'; b.font='400 9px Poppins';
-  var iy=infoY+32;
-  [
-    ['\ud83d\udcf1 0822-5063-8289', '\ud83d\udcf1 0852-5283-4986'],
-    ['\ud83c\udf10 salutetambetuah.id', '\u2709\ufe0f bestuahsalutetam@gmail.com'],
-    ['\ud83d\udccd Jl. HM Kadrie Oening No.66A, Samarinda Ulu, Kaltim', '']
-  ].forEach(function(row) {
-    b.fillText(row[0], 26, iy);
-    if (row[1]) b.fillText(row[1], W/2+4, iy);
-    iy+=18;
-  });
+  // Row spacing: fill info box evenly
+  var infoRowH = Math.max(16, (infoH - 30) / 4);
+  b.fillStyle='rgba(255,255,255,.68)'; b.font='400 9px Poppins';
+  var iy = infoY + 32;
+
+  // WA icons (green SVG-style dot)
+  function infoRow(label, val, x, y) {
+    b.fillStyle='rgba(255,255,255,.68)';
+    b.fillText(label+' '+val, x, y);
+  }
+
+  b.fillStyle='rgba(37,211,102,.9)';
+  b.beginPath(); b.arc(30,iy-3,4,0,Math.PI*2); b.fill();
+  b.fillStyle='rgba(255,255,255,.7)'; b.font='400 9px Poppins';
+  b.fillText('0822-5063-8289', 38, iy);
+
+  b.fillStyle='rgba(37,211,102,.9)';
+  b.beginPath(); b.arc(W/2+6,iy-3,4,0,Math.PI*2); b.fill();
+  b.fillText('0852-5283-4986', W/2+14, iy);
+  iy += infoRowH;
+
+  b.fillStyle='rgba(100,180,255,.8)';
+  b.beginPath(); b.arc(30,iy-3,4,0,Math.PI*2); b.fill();
+  b.fillStyle='rgba(255,255,255,.7)';
+  b.fillText('salutetambetuah.id', 38, iy);
+
+  b.fillStyle='rgba(255,180,100,.8)';
+  b.beginPath(); b.arc(W/2+6,iy-3,4,0,Math.PI*2); b.fill();
+  b.fillText('bestuahsalutetam@gmail.com', W/2+14, iy);
+  iy += infoRowH;
+
+  b.fillStyle='rgba(255,100,100,.8)';
+  b.beginPath(); b.arc(30,iy-3,4,0,Math.PI*2); b.fill();
+  b.fillStyle='rgba(255,255,255,.7)';
+  b.fillText('Jl. HM Kadrie Oening No.66A, Samarinda Ulu, Kaltim', 38, iy);
+
+  // Watermark BACK: Enggang kanan + Portrait logo kiri (di atas info box, di bawah)
+  if (engganImg && engganImg.naturalWidth) {
+    b.save();
+    b.globalAlpha = 0.09;
+    b.filter = 'brightness(200%) saturate(20%) contrast(110%)';
+    b.translate(W, 0); b.scale(-1,1);
+    var beg_h=120, beg_w=engganImg.naturalWidth*(beg_h/engganImg.naturalHeight);
+    b.drawImage(engganImg, -18, H-44-beg_h, beg_w, beg_h);
+    b.restore();
+  }
+  if (portraitImg && portraitImg.naturalWidth) {
+    b.save();
+    b.globalAlpha = 0.08;
+    b.filter = 'brightness(250%) saturate(15%) contrast(110%)';
+    var bpt_h=120, bpt_w=portraitImg.naturalWidth*(bpt_h/portraitImg.naturalHeight);
+    b.drawImage(portraitImg, -20, H-44-bpt_h, bpt_w, bpt_h);
+    b.restore();
+  }
 
   // Footer
   var ftG=b.createLinearGradient(0,0,W,0);

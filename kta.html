@@ -1223,47 +1223,76 @@ async function renderKTACanvas() {
   var infoH = H - 44 - infoY; // sisakan 44px untuk footer
   b.fillStyle='rgba(255,255,255,.05)';
   b.strokeStyle='rgba(212,175,55,.22)'; b.lineWidth=1;
-  roundRect(b, 16,infoY, W-32, Math.max(infoH,80), 10, true, true);
+  roundRect(b, 16,infoY, W-32, Math.max(infoH,88), 10, true, true);
 
   b.fillStyle='#FFD700'; b.font='800 9px Poppins';
   var ih='INFORMASI';
   b.fillText(ih, centerText(b,ih,W/2), infoY+16);
 
-  // Row spacing: fill info box evenly
-  var infoRowH = Math.max(16, (infoH - 30) / 4);
-  b.fillStyle='rgba(255,255,255,.68)'; b.font='400 9px Poppins';
-  var iy = infoY + 32;
+  var iy = infoY + 28;
+  var col1=26, col2=W/2+6;
 
-  // WA icons (green SVG-style dot)
-  function infoRow(label, val, x, y) {
-    b.fillStyle='rgba(255,255,255,.68)';
-    b.fillText(label+' '+val, x, y);
+  // Helper: WA icon (green circle + white chat path)
+  function drawWA(cx, cy) {
+    b.fillStyle='#25D366';
+    b.beginPath(); b.arc(cx,cy,5,0,Math.PI*2); b.fill();
+    // White phone handset simplified
+    b.fillStyle='white'; b.lineWidth=0.8; b.strokeStyle='white';
+    b.beginPath();
+    b.arc(cx,cy,2.8,Math.PI*0.2,Math.PI*1.1); b.stroke();
+    b.beginPath();
+    b.moveTo(cx-2.2,cy+1.5); b.lineTo(cx-1.5,cy+3); b.stroke();
+    b.beginPath();
+    b.moveTo(cx+2.2,cy-1.5); b.lineTo(cx+1.5,cy-3); b.stroke();
   }
 
-  b.fillStyle='rgba(37,211,102,.9)';
-  b.beginPath(); b.arc(30,iy-3,4,0,Math.PI*2); b.fill();
-  b.fillStyle='rgba(255,255,255,.7)'; b.font='400 9px Poppins';
-  b.fillText('0822-5063-8289', 38, iy);
+  // Helper: Globe icon
+  function drawGlobe(cx, cy) {
+    b.strokeStyle='rgba(120,190,255,.85)'; b.lineWidth=0.9; b.fillStyle='transparent';
+    b.beginPath(); b.arc(cx,cy,5,0,Math.PI*2); b.stroke();
+    b.beginPath(); b.moveTo(cx-5,cy); b.lineTo(cx+5,cy); b.stroke();
+    b.beginPath(); b.ellipse(cx,cy,2.2,5,0,0,Math.PI*2); b.stroke();
+  }
 
-  b.fillStyle='rgba(37,211,102,.9)';
-  b.beginPath(); b.arc(W/2+6,iy-3,4,0,Math.PI*2); b.fill();
-  b.fillText('0852-5283-4986', W/2+14, iy);
-  iy += infoRowH;
+  // Helper: Email icon (envelope)
+  function drawEmail(cx, cy) {
+    b.strokeStyle='rgba(255,255,255,.7)'; b.lineWidth=0.9;
+    b.fillStyle='rgba(255,255,255,.08)';
+    roundRect(b, cx-5,cy-3.5, 10,7, 1, true, true);
+    b.beginPath(); b.moveTo(cx-5,cy-3.5); b.lineTo(cx,cy+0.5); b.lineTo(cx+5,cy-3.5); b.stroke();
+  }
 
-  b.fillStyle='rgba(100,180,255,.8)';
-  b.beginPath(); b.arc(30,iy-3,4,0,Math.PI*2); b.fill();
-  b.fillStyle='rgba(255,255,255,.7)';
-  b.fillText('salutetambetuah.id', 38, iy);
+  // Helper: Pin icon
+  function drawPin(cx, cy) {
+    b.fillStyle='#F87171';
+    b.beginPath(); b.arc(cx,cy-1.5,4,0,Math.PI*2); b.fill();
+    b.beginPath(); b.moveTo(cx-2.5,cy); b.lineTo(cx,cy+5); b.lineTo(cx+2.5,cy); b.closePath(); b.fill();
+    b.fillStyle='white';
+    b.beginPath(); b.arc(cx,cy-1.5,1.6,0,Math.PI*2); b.fill();
+  }
 
-  b.fillStyle='rgba(255,180,100,.8)';
-  b.beginPath(); b.arc(W/2+6,iy-3,4,0,Math.PI*2); b.fill();
-  b.fillText('bestuahsalutetam@gmail.com', W/2+14, iy);
-  iy += infoRowH;
+  // Row 1: WA numbers
+  drawWA(col1+5, iy-2);
+  b.fillStyle='rgba(255,255,255,.72)'; b.font='400 8.5px Poppins';
+  b.fillText('0822-5063-8289', col1+14, iy);
 
-  b.fillStyle='rgba(255,100,100,.8)';
-  b.beginPath(); b.arc(30,iy-3,4,0,Math.PI*2); b.fill();
-  b.fillStyle='rgba(255,255,255,.7)';
-  b.fillText('Jl. HM Kadrie Oening No.66A, Samarinda Ulu, Kaltim', 38, iy);
+  drawWA(col2+5, iy-2);
+  b.fillText('0852-5283-4986', col2+14, iy);
+  iy += 17;
+
+  // Row 2: Globe + Email
+  drawGlobe(col1+5, iy-2);
+  b.fillStyle='rgba(255,255,255,.72)';
+  b.fillText('salutetambetuah.id', col1+14, iy);
+
+  drawEmail(col2+5, iy-2);
+  b.fillText('bestuahsalutetam@gmail.com', col2+14, iy);
+  iy += 17;
+
+  // Row 3: Pin + Alamat (full width)
+  drawPin(col1+5, iy-1.5);
+  b.fillStyle='rgba(255,255,255,.65)'; b.font='400 8px Poppins';
+  b.fillText('Jl. HM Kadrie Oening No.66A, Samarinda Ulu, Kaltim', col1+14, iy);
 
   // Watermark BACK: Enggang kanan + Portrait logo kiri (di atas info box, di bawah)
   if (engganImg && engganImg.naturalWidth) {

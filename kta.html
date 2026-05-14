@@ -1019,14 +1019,14 @@ async function renderKTACanvas() {
   var titleTxt='\u2014 KARTU TANDA ANGGOTA \u2014';
   var titleW=f.measureText(titleTxt).width;
   var titleX=(W-titleW)/2;
-  f.fillText(titleTxt, titleX, 108);
+  f.fillText(titleTxt, titleX, 121);
   // Decorative lines
   f.fillStyle='rgba(212,175,55,.45)';
-  f.fillRect(12, 104, titleX-18, 1);
-  f.fillRect(titleX+titleW+6, 104, W-titleX-titleW-18, 1);
+  f.fillRect(12, 117, titleX-18, 1);
+  f.fillRect(titleX+titleW+6, 117, W-titleX-titleW-18, 1);
 
-  // Photo ring — LEBIH BESAR (innerR=55 px, diameter 110px)
-  var pCX=W/2, pCY=200, pR=67, innerR=55;
+  // Photo ring — center pCY=226 (lebih rendah, ada space dari title)
+  var pCX=W/2, pCY=226, pR=67, innerR=55;
   // Dashed outer ring
   f.strokeStyle='rgba(212,175,55,.5)'; f.lineWidth=1.5;
   for (var a=0; a<Math.PI*2; a+=0.22) {
@@ -1056,14 +1056,14 @@ async function renderKTACanvas() {
   }
   f.restore();
 
-  // Gold divider — rapat di bawah foto
-  var divY = pCY + pR + 12;
+  // Gold divider — gap 22px dari outer deco ring bawah foto
+  var divY = pCY + pR + 32;
   var gd=f.createLinearGradient(20,divY,W-20,divY);
   gd.addColorStop(0,'transparent'); gd.addColorStop(.5,'rgba(212,175,55,.35)'); gd.addColorStop(1,'transparent');
   f.fillStyle=gd; f.fillRect(20,divY,W-40,1);
 
-  // Name badge — tepat di bawah divider
-  var badgeY = divY + 8;
+  // Name badge — gap 12px dari divider
+  var badgeY = divY + 12;
   f.fillStyle='rgba(255,255,255,.06)'; f.strokeStyle='rgba(212,175,55,.3)'; f.lineWidth=1;
   roundRect(f, 18,badgeY, W-36,66, 12, true, true);
   // Name
@@ -1077,16 +1077,16 @@ async function renderKTACanvas() {
   f.fillStyle='rgba(147,197,253,.6)'; f.font='400 10px Poppins';
   f.fillText(prodi, centerText(f,prodi,W/2), badgeY+54);
 
-  // Salut Etam Betuah
-  var seY = badgeY + 80;
+  // Salut Etam Betuah — gap 22px dari badge bottom
+  var seY = badgeY + 88;
   f.fillStyle='#FFD700'; f.font='900 11px Poppins';
   f.shadowColor='rgba(255,215,0,.4)'; f.shadowBlur=16;
   var se='\u2756 SALUT ETAM BETUAH \u2756';
   f.fillText(se, centerText(f,se,W/2), seY);
   f.shadowBlur=0;
 
-  // Validity
-  var vY = seY + 18;
+  // Validity — rapat di bawah salut (group bawah)
+  var vY = seY + 14;
   f.font='500 9.5px Poppins'; f.fillStyle='rgba(255,255,255,.55)';
   var vLabel='Berlaku Hingga: ';
   var vLW=f.measureText(vLabel).width;

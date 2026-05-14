@@ -913,29 +913,73 @@ function validateForm() {
 
 // ===== GENERATE KTA =====
 // ====================================================
-// PRE-LOAD IMAGES AS BASE64 — eliminates CORS + 404
+// PRE-LOAD IMAGES AS BASE64 — gunakan gambar yang sudah di-load browser
+// Lebih cepat & reliable: tidak perlu fetch ulang dari network
 // ====================================================
 async function preloadImagesAsDataURL(el) {
-  const imgs = Array.from(el.querySelectorAll('img[src]'));
-  await Promise.all(imgs.map(async img => {
-    const src = img.getAttribute('src');
-    if (!src || src.startsWith('data:') || src === '') return;
+  const BLANK = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
+  const imgs  = Array.from(el.querySelectorAll('img'));
+
+  for (const img of imgs) {
+    const src = img.getAttribute('src') || '';
+
+    // Skip: sudah dataURL atau kosong
+    if (!src || src.startsWith('data:')) continue;
+
     try {
-      const resp = await fetch(src, { mode: 'cors' });
-      if (!resp.ok) throw new Error('404');
+      // Coba konversi gambar yang sudah loaded ke dataURL via canvas
+      if (img.complete && img.naturalWidth > 0 && img.naturalHeight > 0) {
+        const c = document.createElement('canvas');
+        c.width  = img.naturalWidth;
+        c.height = img.naturalHeight;
+        const ctx = c.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+        const dataURL = c.toDataURL('image/png');
+        // Set & tunggu browser decode
+        await new Promise(res => {
+          img.onload  = res;
+          img.onerror = res;
+          img.src = dataURL;
+          setTimeout(res, 300);
+        });
+        continue;
+      }
+
+      // Gambar belum load → fetch dari network
+      const resp = await fetch(src);
+      if (!resp.ok) throw new Error('HTTP ' + resp.status);
       const blob = await resp.blob();
-      await new Promise((res, rej) => {
+      const dataURL = await new Promise((res, rej) => {
         const reader = new FileReader();
-        reader.onload = () => { img.src = reader.result; res(); };
-        reader.onerror = rej;
+        reader.onload  = () => res(reader.result);
+        reader.onerror = () => rej(new Error('FileReader error'));
         reader.readAsDataURL(blob);
       });
+      await new Promise(res => {
+        img.onload  = res;
+        img.onerror = res;
+        img.src = dataURL;
+        setTimeout(res, 500);
+      });
+
     } catch(e) {
-      // Image not found — hide it, won't cause createPattern error
-      img.style.display = 'none';
-      img.src = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='; // 1x1 transparent GIF
+      // Gagal total → ganti dengan 1x1 transparan & sembunyikan
+      img.src   = BLANK;
+      img.style.display    = 'none';
+      img.style.visibility = 'hidden';
     }
-  }));
+  }
+
+  // Extra buffer untuk browser decode semua gambar
+  await new Promise(r => setTimeout(r, 400));
+
+  // Final safety: sembunyikan semua img dengan dimensi 0
+  imgs.forEach(img => {
+    if (!img.naturalWidth || !img.naturalHeight) {
+      img.style.display    = 'none';
+      img.style.visibility = 'hidden';
+    }
+  });
 }
 
 // ====================================================
@@ -974,18 +1018,19 @@ async function generateKTA() {
   const ktaBack  = document.getElementById('kta-back');
   const wrapper  = ktaFront.closest('div[style*="-9999px"]') || ktaFront.parentElement;
 
-  // ── Pre-load all images as data URLs ───────────────
+  // ── Move wrapper ke posisi visible-but-offscreen ──────
+  // Tidak pakai visibility:hidden (diwarisi → blank). Pakai opacity:0.001
+  const origStyle = wrapper.getAttribute('style') || '';
+  wrapper.style.cssText = 'position:fixed;left:0;top:-700px;z-index:99998;opacity:0.001;pointer-events:none;width:400px;';
+  await new Promise(r => setTimeout(r, 300)); // beri browser waktu layout
+
+  // ── Pre-load semua image sebagai data URL ─────────────
   await preloadImagesAsDataURL(ktaFront);
   await preloadImagesAsDataURL(ktaBack);
-
-  // ── Move wrapper to visible-but-off-screen position ──
-  // PENTING: jangan pakai visibility:hidden — diwarisi children → html2canvas blank!
-  // Gunakan opacity saja, masih terrender oleh html2canvas.
-  const origStyle = wrapper.getAttribute('style') || '';
-  wrapper.style.cssText = 'position:fixed;left:0;top:-650px;z-index:99998;opacity:0.001;pointer-events:none;';
-  await new Promise(r => setTimeout(r, 300)); // beri waktu browser paint
+  await new Promise(r => setTimeout(r, 500)); // extra wait decode browser
 
   const oncloneFn = (doc) => {
+    // 1. Strip CSS yang tidak didukung html2canvas
     const s = doc.createElement('style');
     s.textContent = `
       * { animation:none!important; transition:none!important;
@@ -993,8 +1038,25 @@ async function generateKTA() {
       .kta-enggang,.kta-portrait-emboss,
       .kta-back-enggang,.kta-back-portrait-emboss { display:none!important; }
       .kta-deco-ring { animation:none!important; border-style:solid!important; }
+      #kta-front::before, #kta-back::before { display:none!important; }
     `;
     doc.head.appendChild(s);
+
+    // 2. PENTING: Sembunyikan semua img dengan naturalWidth/Height = 0
+    // Mencegah "createPattern: canvas element with width or height of 0"
+    doc.querySelectorAll('img').forEach(img => {
+      if (!img.naturalWidth || !img.naturalHeight || img.naturalWidth === 0 || img.naturalHeight === 0) {
+        img.style.display = 'none';
+        img.style.width = '0';
+        img.style.height = '0';
+      }
+    });
+
+    // 3. Pastikan KTA cards memiliki dimensi yang benar
+    const front = doc.getElementById('kta-front');
+    const back  = doc.getElementById('kta-back');
+    if (front) { front.style.width = '350px'; front.style.height = '560px'; front.style.overflow = 'hidden'; }
+    if (back)  { back.style.width  = '350px'; back.style.height  = '560px'; back.style.overflow = 'hidden'; }
   };
 
   const h2cOpts = {

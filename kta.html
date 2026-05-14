@@ -953,7 +953,7 @@ async function renderKTACanvas() {
 
   // Load all images in parallel
   var imgs = await Promise.all([
-    loadImg('assets/images/logo-landscape-nobg.png'),
+    loadImg('assets/images/logo-landscape.png'),  // original logo dengan background
     loadImg(state.foto),
     loadImg('assets/images/partners/hotel-gk.png'),
     loadImg('assets/images/partners/senyiur.png'),
@@ -973,7 +973,7 @@ async function renderKTACanvas() {
   var f = fc.getContext('2d');
   f.scale(SC, SC);
 
-  // Background gradient
+  // Background gradient (dark navy)
   var bgF = f.createLinearGradient(0,0,W,H);
   bgF.addColorStop(0,   '#060E1F');
   bgF.addColorStop(0.3, '#0A1830');
@@ -989,33 +989,29 @@ async function renderKTACanvas() {
   o2.addColorStop(0,'rgba(37,99,235,.1)'); o2.addColorStop(1,'transparent');
   f.fillStyle=o2; f.fillRect(0,0,W,H);
 
-  // Corner TL
+  // ── WHITE LOGO ZONE (top 88px) ──
+  var lgGrad = f.createLinearGradient(0,0,0,88);
+  lgGrad.addColorStop(0,'#ffffff');
+  lgGrad.addColorStop(0.85,'#F8FAFC');
+  lgGrad.addColorStop(1,'rgba(248,250,252,0.92)');
+  f.fillStyle=lgGrad; f.fillRect(0,0,W,88);
+
+  // Corner TL (over white zone)
   f.fillStyle='#D4AF37';
   f.beginPath(); f.moveTo(0,0); f.lineTo(72,0); f.lineTo(0,72); f.closePath(); f.fill();
   f.fillStyle='#FFD700'; f.fillRect(0,0,28,2);
 
-  // Gold shimmer line
+  // Gold shimmer line y=88
   var gl = f.createLinearGradient(0,0,W,0);
   gl.addColorStop(0,'transparent'); gl.addColorStop(.15,'#B8860B');
   gl.addColorStop(.4,'#FFD700');    gl.addColorStop(.5,'#FFF8DC');
   gl.addColorStop(.6,'#FFD700');    gl.addColorStop(.85,'#B8860B'); gl.addColorStop(1,'transparent');
   f.fillStyle=gl; f.fillRect(0,88,W,3);
 
-  // Logo glow
-  var lglow = f.createRadialGradient(W/2,44,0,W/2,44,W*.55);
-  lglow.addColorStop(0,'rgba(255,255,255,.14)');
-  lglow.addColorStop(.6,'rgba(255,255,255,.05)');
-  lglow.addColorStop(1,'transparent');
-  f.fillStyle=lglow; f.fillRect(10,0,W-20,88);
-
-  // Logo image
+  // Logo image on white background
   if (logoImg && logoImg.naturalWidth) {
-    var lh=74, lw=Math.min(316, logoImg.naturalWidth*(lh/logoImg.naturalHeight));
-    f.save();
-    f.shadowColor='rgba(255,255,255,.4)'; f.shadowBlur=14;
-    f.globalAlpha=0.95;
-    f.drawImage(logoImg, (W-lw)/2, 7, lw, lh);
-    f.restore();
+    var lh=72, lw=Math.min(310, logoImg.naturalWidth*(lh/logoImg.naturalHeight));
+    f.drawImage(logoImg, (W-lw)/2, (88-lh)/2, lw, lh);
   }
 
   // KTA Title
@@ -1191,11 +1187,11 @@ async function renderKTACanvas() {
   });
 
   // Pemberitahuan
-  var pbY=174;
+  var pbY=172;
   b.fillStyle='rgba(212,175,55,.25)'; b.fillRect(16,pbY,W-32,1);
   b.fillStyle='#FFD700'; b.font='800 9px Poppins';
   var ph='PEMBERITAHUAN';
-  b.fillText(ph, centerText(b,ph,W/2), pbY+16);
+  b.fillText(ph, centerText(b,ph,W/2), pbY+14);
 
   var pbList=[
     'Kartu ini milik Salut Etam Betuah, bila menemukan harap dikembalikan.',
@@ -1203,8 +1199,8 @@ async function renderKTACanvas() {
     'Dapat digunakan sebagai benefit spesial pada mitra Salut.',
     'Kartu tidak dapat dipindahtangankan.'
   ];
-  b.font='400 9.5px Poppins';
-  var py=pbY+32;
+  b.font='400 9px Poppins';
+  var py=pbY+26;
   pbList.forEach(function(txt) {
     b.fillStyle='#D4AF37'; b.fillText('\u25c6', 22, py);
     b.fillStyle='rgba(255,255,255,.72)';
@@ -1212,24 +1208,24 @@ async function renderKTACanvas() {
     for (var wi=0; wi<words.length; wi++) {
       var test=line+words[wi]+' ';
       if (b.measureText(test).width>W-52 && line) {
-        b.fillText(line, 34, py); line=words[wi]+' '; py+=14;
+        b.fillText(line, 34, py); line=words[wi]+' '; py+=12;
       } else { line=test; }
     }
-    b.fillText(line, 34, py); py+=18;
+    b.fillText(line, 34, py); py+=15;
   });
 
-  // Info section box — dinamis: mulai dari py+12, isi sampai H-44
-  var infoY = py + 10;
-  var infoH = H - 44 - infoY; // sisakan 44px untuk footer
+  // Info section box — dinamis: mulai dari py+6, isi sampai H-44
+  var infoY = py + 6;
+  var infoH = H - 44 - infoY;
   b.fillStyle='rgba(255,255,255,.05)';
   b.strokeStyle='rgba(212,175,55,.22)'; b.lineWidth=1;
-  roundRect(b, 16,infoY, W-32, Math.max(infoH,88), 10, true, true);
+  roundRect(b, 16,infoY, W-32, Math.max(infoH,80), 10, true, true);
 
   b.fillStyle='#FFD700'; b.font='800 9px Poppins';
   var ih='INFORMASI';
-  b.fillText(ih, centerText(b,ih,W/2), infoY+16);
+  b.fillText(ih, centerText(b,ih,W/2), infoY+14);
 
-  var iy = infoY + 28;
+  var iy = infoY + 24;
   var col1=26, col2=W/2+6;
 
   // Helper: WA icon (green circle + white chat path)
@@ -1278,7 +1274,7 @@ async function renderKTACanvas() {
 
   drawWA(col2+5, iy-2);
   b.fillText('0852-5283-4986', col2+14, iy);
-  iy += 17;
+  iy += 14;
 
   // Row 2: Globe + Email
   drawGlobe(col1+5, iy-2);
@@ -1287,7 +1283,7 @@ async function renderKTACanvas() {
 
   drawEmail(col2+5, iy-2);
   b.fillText('bestuahsalutetam@gmail.com', col2+14, iy);
-  iy += 17;
+  iy += 14;
 
   // Row 3: Pin + Alamat (full width)
   drawPin(col1+5, iy-1.5);

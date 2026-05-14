@@ -796,7 +796,7 @@ input,select,textarea{font-family:'Poppins',sans-serif}
             bestuahsalutetam@gmail.com
           </div>
         </div>
-        <div class="kta-info-addr" style="margin-top:8px;font-size:9px"><span>📍</span> Jl. HM Kadrie Oening No.66A, Samarinda Ulu, Kaltim</div>
+        <div class="kta-info-addr" style="margin-top:8px;font-size:9px"><span>📍</span> Jl. Kadrie Oening No. 66A, Air Hitam, Samarinda Ulu, Kota Samarinda - Kaltim</div>
       </div>
     </div>
 
@@ -1025,17 +1025,17 @@ async function renderKTACanvas() {
   f.fillRect(12, 104, titleX-18, 1);
   f.fillRect(titleX+titleW+6, 104, W-titleX-titleW-18, 1);
 
-  // Photo ring
-  var pCX=W/2, pCY=192, pR=50, innerR=40;
+  // Photo ring — LEBIH BESAR (innerR=55 px, diameter 110px)
+  var pCX=W/2, pCY=200, pR=67, innerR=55;
   // Dashed outer ring
   f.strokeStyle='rgba(212,175,55,.5)'; f.lineWidth=1.5;
-  for (var a=0; a<Math.PI*2; a+=0.25) {
-    f.beginPath(); f.arc(pCX,pCY,pR+10,a,a+0.12); f.stroke();
+  for (var a=0; a<Math.PI*2; a+=0.22) {
+    f.beginPath(); f.arc(pCX,pCY,pR+10,a,a+0.10); f.stroke();
   }
-  // Dots
+  // Gold dots 4 sisi
   [[pCX,pCY-pR-10],[pCX,pCY+pR+10],[pCX-pR-10,pCY],[pCX+pR+10,pCY]].forEach(function(d) {
     f.fillStyle='#FFD700';
-    f.beginPath(); f.arc(d[0],d[1],3.5,0,Math.PI*2); f.fill();
+    f.beginPath(); f.arc(d[0],d[1],4,0,Math.PI*2); f.fill();
   });
   // Gold ring
   f.strokeStyle='#D4AF37'; f.lineWidth=3;
@@ -1043,7 +1043,7 @@ async function renderKTACanvas() {
   // Dark inner ring
   f.strokeStyle='#0F2347'; f.lineWidth=2;
   f.beginPath(); f.arc(pCX,pCY,pR-2,0,Math.PI*2); f.stroke();
-  // Photo
+  // Photo clip & draw
   f.save();
   f.beginPath(); f.arc(pCX,pCY,innerR,0,Math.PI*2); f.clip();
   if (photoImg && photoImg.naturalWidth) {
@@ -1056,34 +1056,37 @@ async function renderKTACanvas() {
   }
   f.restore();
 
-  // Gold divider
-  var gd=f.createLinearGradient(20,300,W-20,300);
+  // Gold divider — rapat di bawah foto
+  var divY = pCY + pR + 12;
+  var gd=f.createLinearGradient(20,divY,W-20,divY);
   gd.addColorStop(0,'transparent'); gd.addColorStop(.5,'rgba(212,175,55,.35)'); gd.addColorStop(1,'transparent');
-  f.fillStyle=gd; f.fillRect(20,300,W-40,1);
+  f.fillStyle=gd; f.fillRect(20,divY,W-40,1);
 
-  // Name badge box
-  f.fillStyle='rgba(255,255,255,.06)';
-  f.strokeStyle='rgba(212,175,55,.3)'; f.lineWidth=1;
-  roundRect(f, 18,310, W-36,68, 12, true, true);
-
+  // Name badge — tepat di bawah divider
+  var badgeY = divY + 8;
+  f.fillStyle='rgba(255,255,255,.06)'; f.strokeStyle='rgba(212,175,55,.3)'; f.lineWidth=1;
+  roundRect(f, 18,badgeY, W-36,66, 12, true, true);
   // Name
   f.fillStyle='#ffffff'; f.font='800 16px Poppins';
-  f.fillText(nama, centerText(f,nama,W/2), 336);
-  // NIM
+  f.fillText(nama, centerText(f,nama,W/2), badgeY+22);
+  // NIM — dengan prefix "NIM:"
+  var nimDisplay='NIM: '+nim;
   f.fillStyle='#93C5FD'; f.font='500 11.5px Poppins';
-  f.fillText(nim, centerText(f,nim,W/2), 354);
+  f.fillText(nimDisplay, centerText(f,nimDisplay,W/2), badgeY+40);
   // Prodi
   f.fillStyle='rgba(147,197,253,.6)'; f.font='400 10px Poppins';
-  f.fillText(prodi, centerText(f,prodi,W/2), 368);
+  f.fillText(prodi, centerText(f,prodi,W/2), badgeY+54);
 
   // Salut Etam Betuah
+  var seY = badgeY + 80;
   f.fillStyle='#FFD700'; f.font='900 11px Poppins';
   f.shadowColor='rgba(255,215,0,.4)'; f.shadowBlur=16;
   var se='\u2756 SALUT ETAM BETUAH \u2756';
-  f.fillText(se, centerText(f,se,W/2), 398);
+  f.fillText(se, centerText(f,se,W/2), seY);
   f.shadowBlur=0;
 
   // Validity
+  var vY = seY + 18;
   f.font='500 9.5px Poppins'; f.fillStyle='rgba(255,255,255,.55)';
   var vLabel='Berlaku Hingga: ';
   var vLW=f.measureText(vLabel).width;
@@ -1091,9 +1094,9 @@ async function renderKTACanvas() {
   var vDW=f.measureText(validStr).width;
   var vStart=(W-(vLW+vDW))/2;
   f.font='500 9.5px Poppins'; f.fillStyle='rgba(255,255,255,.55)';
-  f.fillText(vLabel, vStart, 418);
+  f.fillText(vLabel, vStart, vY);
   f.font='700 9.5px Poppins'; f.fillStyle='#34D399';
-  f.fillText(validStr, vStart+vLW, 418);
+  f.fillText(validStr, vStart+vLW, vY);
 
   // ── Watermark FRONT: Enggang kanan + Portrait logo kiri ──
   if (engganImg && engganImg.naturalWidth) {
@@ -1215,18 +1218,29 @@ async function renderKTACanvas() {
   });
 
   // Info section box — lebar pas konten, tinggi tetap sesuai 3 baris
-  var infoY = py + 14;            // lebih besar: space jelas antara pemberitahuan & informasi
-  var infoBoxH = 72;              // tinggi pas: title(14) + 3 row(14*3) + padding(16)
+  var infoY = py + 14;
+  // Hitung lebar box berdasarkan konten terlebar
+  b.font='400 8.5px Poppins';
+  var maxRow = Math.max(
+    b.measureText('0822-5063-8289').width + b.measureText('0852-5283-4986').width + 28 + 28 + 20,
+    b.measureText('salutetambetuah.id').width + b.measureText('bestuahsalutetam@gmail.com').width + 28 + 28 + 20
+  );
+  b.font='400 8px Poppins';
+  var addrW = b.measureText('Jl. Kadrie Oening No. 66A, Air Hitam, Samarinda Ulu - Kaltim').width + 28 + 10;
+  var infoBoxW = Math.min(W-32, Math.max(maxRow, addrW) + 16);
+  var infoBoxX = (W - infoBoxW) / 2;
+  var infoBoxH = 74;
   b.fillStyle='rgba(255,255,255,.05)';
   b.strokeStyle='rgba(212,175,55,.22)'; b.lineWidth=1;
-  roundRect(b, 16,infoY, W-32, infoBoxH, 10, true, true);
+  roundRect(b, infoBoxX, infoY, infoBoxW, infoBoxH, 10, true, true);
 
   b.fillStyle='#FFD700'; b.font='800 9px Poppins';
   var ih='INFORMASI';
   b.fillText(ih, centerText(b,ih,W/2), infoY+14);
 
-  var iy = infoY + 24;
-  var col1=26, col2=W/2+6;
+  var iy = infoY + 26;
+  var col1 = infoBoxX + 10;
+  var col2 = infoBoxX + infoBoxW/2 + 4;
 
   // Helper: WA icon (green circle + white chat path)
   function drawWA(cx, cy) {
@@ -1288,7 +1302,7 @@ async function renderKTACanvas() {
   // Row 3: Pin + Alamat (full width)
   drawPin(col1+5, iy-1.5);
   b.fillStyle='rgba(255,255,255,.65)'; b.font='400 8px Poppins';
-  b.fillText('Jl. Kadrie Oening No. 66A, Air Hitam, Samarinda Ulu, Kota Samarinda - Kaltim', col1+14, iy);
+  b.fillText('Jl. Kadrie Oening No. 66A, Air Hitam, Samarinda Ulu - Kota Samarinda, Kaltim', col1+14, iy);
 
   // Watermark BACK: Enggang kanan + Portrait logo kiri (di atas info box, di bawah)
   if (engganImg && engganImg.naturalWidth) {

@@ -2940,5 +2940,44 @@ document.querySelectorAll('.counter').forEach(el => cntObs.observe(el));
   </div>
 </div>
 
+
+<!-- WA PICKER OVERRIDE - GLOBAL FUNCTIONS -->
+<script>
+window._waSvc = '';
+window.openWAPicker = function(svc) {
+  window._waSvc = svc || '';
+  var overlay = document.getElementById('wa-picker-overlay');
+  var modal   = document.getElementById('wa-picker-modal');
+  if (!overlay || !modal) {
+    window.open('https://wa.me/6282250638289?text=' + encodeURIComponent('Halo Salut Etam Betuah, saya ingin konsultasi'), '_blank');
+    return;
+  }
+  var label   = document.getElementById('wa-service-label');
+  var svcText = document.getElementById('wa-service-text');
+  overlay.style.cssText = 'display:block;position:fixed;inset:0;background:rgba(0,0,0,0.55);backdrop-filter:blur(4px);z-index:99998';
+  modal.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  if (svc && label && svcText) { label.style.display='block'; svcText.textContent=svc; }
+  else if (label) { label.style.display='none'; }
+};
+window.closeWAPicker = function() {
+  var overlay = document.getElementById('wa-picker-overlay');
+  var modal   = document.getElementById('wa-picker-modal');
+  if (overlay) overlay.style.display = 'none';
+  if (modal)   modal.style.display   = 'none';
+  document.body.style.overflow = '';
+};
+window.goWA = function(admin) {
+  var nums = {1:'6282250638289', 2:'6285252834986'};
+  var txt  = window._waSvc
+    ? encodeURIComponent('Halo Salut Etam Betuah, saya ingin tanya tentang: ' + window._waSvc)
+    : encodeURIComponent('Halo Salut Etam Betuah, saya ingin konsultasi');
+  window.closeWAPicker();
+  window.open('https://wa.me/' + nums[admin] + '?text=' + txt, '_blank');
+};
+window.openWA = function(svc) { window.openWAPicker(svc); };
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') window.closeWAPicker(); });
+</script>
+
 </body>
 </html>

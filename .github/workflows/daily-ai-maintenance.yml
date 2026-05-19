@@ -25,6 +25,7 @@ jobs:
         run: pip install anthropic requests --quiet
 
       - name: Run daily maintenance script
+        continue-on-error: true
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
@@ -54,9 +55,8 @@ jobs:
         run: |
           echo "" >> MAINTENANCE_LOG.md
           echo "## $(date +%Y-%m-%d) ($(date +%A))" >> MAINTENANCE_LOG.md
-          echo "- GBP content generated" >> MAINTENANCE_LOG.md
-          echo "- 5-star reviews synced" >> MAINTENANCE_LOG.md
           echo "- Sitemap & dateModified updated" >> MAINTENANCE_LOG.md
+          echo "- GBP script: see log above" >> MAINTENANCE_LOG.md
 
       - name: Commit and push
         run: |

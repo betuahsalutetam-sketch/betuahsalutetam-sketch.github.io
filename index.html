@@ -2202,6 +2202,42 @@ html { scroll-behavior: smooth; }
      JAVASCRIPT
      ================================================================ -->
 <script>
+// ===== WA PICKER — GLOBAL SCOPE =====
+var _waSvc = '';
+function openWAPicker(svc) {
+  _waSvc = svc || '';
+  var overlay = document.getElementById('wa-picker-overlay');
+  var modal   = document.getElementById('wa-picker-modal');
+  var label   = document.getElementById('wa-service-label');
+  var svcText = document.getElementById('wa-service-text');
+  if (!overlay || !modal) {
+    window.open('https://wa.me/6282250638289?text=' + encodeURIComponent('Halo Salut Etam Betuah, saya ingin konsultasi'), '_blank');
+    return;
+  }
+  overlay.style.display = 'block';
+  modal.style.display   = 'block';
+  document.body.style.overflow = 'hidden';
+  if (svc && label && svcText) { label.style.display='block'; svcText.textContent=svc; }
+  else if (label) { label.style.display='none'; }
+}
+function closeWAPicker() {
+  var overlay = document.getElementById('wa-picker-overlay');
+  var modal   = document.getElementById('wa-picker-modal');
+  if (overlay) overlay.style.display='none';
+  if (modal) modal.style.display='none';
+  document.body.style.overflow='';
+}
+function goWA(admin) {
+  var nums = { 1:'6282250638289', 2:'6285252834986' };
+  var base = _waSvc
+    ? encodeURIComponent('Halo Salut Etam Betuah, saya ingin tanya tentang: ' + _waSvc)
+    : encodeURIComponent('Halo Salut Etam Betuah, saya ingin konsultasi');
+  closeWAPicker();
+  window.open('https://wa.me/' + nums[admin] + '?text=' + base, '_blank');
+}
+function openWA(svc) { openWAPicker(svc); }
+document.addEventListener('keydown', function(e) { if(e.key==='Escape') closeWAPicker(); });
+
 // ===== SAFE LUCIDE WRAPPER =====
 function initIcons() {
   if (typeof lucide !== 'undefined') {
@@ -2231,36 +2267,7 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 3000);
 }
 
-// ===== WA PICKER =====
-let _waSvc = '';
-function openWAPicker(svc) {
-  _waSvc = svc || '';
-  const overlay = document.getElementById('wa-picker-overlay');
-  const modal   = document.getElementById('wa-picker-modal');
-  const label   = document.getElementById('wa-service-label');
-  const svcText = document.getElementById('wa-service-text');
-  overlay.style.display = 'block';
-  modal.style.display   = 'block';
-  document.body.style.overflow = 'hidden';
-  if (svc) { label.style.display='block'; svcText.textContent=svc; }
-  else { label.style.display='none'; }
-  requestAnimationFrame(() => { overlay.style.opacity='1'; });
-}
-function closeWAPicker() {
-  document.getElementById('wa-picker-overlay').style.display='none';
-  document.getElementById('wa-picker-modal').style.display='none';
-  document.body.style.overflow='';
-}
-function goWA(admin) {
-  const nums = { 1:'6282250638289', 2:'6285252834986' };
-  const base = _waSvc
-    ? encodeURIComponent('Halo Salut Etam Betuah, saya ingin tanya tentang: ' + _waSvc)
-    : encodeURIComponent('Halo Salut Etam Betuah, saya ingin konsultasi');
-  closeWAPicker();
-  window.open('https://wa.me/' + nums[admin] + '?text=' + base, '_blank');
-}
-function openWA(svc) { openWAPicker(svc); }
-document.addEventListener('keydown', e => { if(e.key==='Escape') closeWAPicker(); });
+
 
 // ===== NAV SCROLL =====
 const topnav = document.getElementById('topnav');

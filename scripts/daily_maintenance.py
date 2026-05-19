@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-"""Daily Maintenance Script — Salut Etam Betuah"""
+"""Daily Maintenance Script — Salut Etam Betuah (No API required)"""
 
-import anthropic, requests, datetime, json, os, sys
+import requests, datetime, json, os, random
 
 TODAY    = datetime.date.today()
-TODAY_ISO = TODAY.strftime("%Y-%m-%d")
 BULAN    = {1:"Januari",2:"Februari",3:"Maret",4:"April",5:"Mei",6:"Juni",
             7:"Juli",8:"Agustus",9:"September",10:"Oktober",11:"November",12:"Desember"}
 TODAY_ID  = f"{TODAY.day} {BULAN[TODAY.month]} {TODAY.year}"
@@ -13,20 +12,9 @@ DAY_NAME  = TODAY.strftime("%A").replace(
     "Wednesday","Rabu").replace("Thursday","Kamis").replace(
     "Friday","Jumat").replace("Saturday","Sabtu").replace("Sunday","Minggu")
 
-SERVICE_AREA = "Samarinda, Balikpapan, Kutai Kartanegara, Bontang, Berau, dan seluruh Kalimantan Timur, serta seluruh Indonesia"
-
-TEMA = {
-    "Senin":  "semangat awal minggu, info pendaftaran, motivasi kuliah sambil kerja",
-    "Selasa": "info layanan, cerita dari mahasiswa berbagai kota Kaltim",
-    "Rabu":   "tips kuliah UT, info RPL untuk ASN dan karyawan",
-    "Kamis":  "info akademik, registrasi, ujian, deadline",
-    "Jumat":  "cerita sukses, motivasi akhir pekan",
-    "Sabtu":  "reminder jam buka, suasana kantor"
-}.get(DAY_NAME, "info layanan UT")
-
 print(f"📅 {DAY_NAME}, {TODAY_ID}")
 
-# ── STEP 1: Fetch 5-star reviews ──────────────────────────────
+# ── STEP 1: Fetch Google Reviews ───────────────────────────────
 api_key  = os.environ.get("GOOGLE_PLACES_API_KEY", "")
 place_id = os.environ.get("GOOGLE_PLACE_ID", "")
 reviews  = []
@@ -41,11 +29,10 @@ if api_key and place_id:
         )
         data = resp.json()
         if data.get("status") == "OK":
-            all_r = data.get("result", {}).get("reviews", [])
             GRADS = ["from-blue-500 to-blue-700","from-amber-500 to-orange-600",
                      "from-emerald-500 to-teal-600","from-purple-500 to-indigo-600",
                      "from-rose-500 to-pink-600","from-cyan-500 to-blue-600"]
-            for r in all_r:
+            for r in data.get("result", {}).get("reviews", []):
                 if r.get("rating") != 5: continue
                 text = r.get("text","").strip()
                 if len(text) < 20: continue
@@ -61,18 +48,17 @@ if api_key and place_id:
                 })
             print(f"✅ {len(reviews)} ulasan bintang 5 diambil")
         else:
-            print(f"⚠️  Google API status: {data.get('status')} — skip review sync")
+            print(f"ℹ️  Google API: {data.get('status')} — skip review sync")
     except Exception as e:
-        print(f"⚠️  Google API error: {e} — skip review sync")
+        print(f"ℹ️  Google API tidak tersedia: {e}")
 else:
-    print("ℹ️  Google secrets tidak diset — skip review sync")
+    print("ℹ️  Google secrets belum diset — skip review sync")
 
-# ── STEP 2: Update testimoni di index.html ────────────────────
+# ── STEP 2: Update testimoni di index.html ─────────────────────
 if reviews and os.path.exists("index.html"):
     try:
         def esc(t):
             return t.replace("&","&amp;").replace("<","&lt;").replace(">","&gt;")
-
         def build(r):
             return (f'        <div class="testi-item shadow-card">\n'
                     f'          <div class="flex items-center gap-3 mb-4">\n'
@@ -85,14 +71,10 @@ if reviews and os.path.exists("index.html"):
                     f'          </div>\n'
                     f'          <p class="text-xs text-slate-600 leading-relaxed">"{esc(r["text"])}"</p>\n'
                     f'        </div>')
-
         new_track = ('<div class="testi-track" id="testi-track">\n' +
-                     "\n".join(build(r) for r in reviews[:6]) +
-                     '\n      </div>')
-
+                     "\n".join(build(r) for r in reviews[:6]) + '\n      </div>')
         with open("index.html","r",encoding="utf-8") as f:
             html = f.read()
-
         si = html.find('<div class="testi-track" id="testi-track">')
         if si != -1:
             pos, depth, ei = si, 0, si
@@ -102,171 +84,156 @@ if reviews and os.path.exists("index.html"):
                     depth -= 1
                     if depth == 0: ei = pos+6; break
                 pos += 1
-            html = html[:si] + new_track + html[ei:]
             with open("index.html","w",encoding="utf-8") as f:
-                f.write(html)
+                f.write(html[:si] + new_track + html[ei:])
             print(f"✅ Testimoni diperbarui: {len(reviews[:6])} ulasan")
-        else:
-            print("⚠️  testi-track tidak ditemukan di index.html")
     except Exception as e:
-        print(f"⚠️  Update testimoni error: {e} — lanjut")
+        print(f"ℹ️  Update testimoni: {e}")
 
-# ── STEP 3: Generate GBP content dengan AI ───────────────────
-anthropic_key = os.environ.get("ANTHROPIC_API_KEY","")
-if not anthropic_key:
-    print("⚠️  ANTHROPIC_API_KEY tidak diset — skip GBP generation")
-    sys.exit(0)
-
-client = anthropic.Anthropic(api_key=anthropic_key)
-
-def call_ai(prompt, max_tokens=1200, fallback=None):
-    """Call AI dengan error handling penuh — tidak pernah crash."""
-    try:
-        resp = client.messages.create(
-            model="claude-haiku-4-5-20251001",
-            max_tokens=max_tokens,
-            messages=[{"role":"user","content":prompt}]
-        )
-        raw = resp.content[0].text.strip()
-        # Bersihkan markdown code block jika ada
-        if "```" in raw:
-            parts = raw.split("```")
-            for p in parts:
-                p = p.strip()
-                if p.startswith("json"): p = p[4:].strip()
-                try:
-                    return json.loads(p)
-                except:
-                    continue
-        return json.loads(raw)
-    except json.JSONDecodeError as e:
-        print(f"⚠️  JSON parse error: {e} — pakai fallback")
-        return fallback or {}
-    except Exception as e:
-        print(f"⚠️  AI call error: {e} — pakai fallback")
-        return fallback or {}
-
-# Fallback konten jika AI gagal
-FALLBACK_POSTS = {
-    "post_1": {"topik": "Pendaftaran UT 2026", "konten": f"🎓 Daftar kuliah UT sekarang di Salut Etam Betuah Samarinda. Proses mudah, bisa dari Balikpapan, Bontang, Berau, atau seluruh Kaltim. WA 0822-5063-8289"},
-    "post_2": {"topik": "RPL UT Kaltim", "konten": f"💼 Pengalaman kerja bisa jadi SKS kuliah via program RPL UT. Cocok untuk ASN, karyawan, TNI/Polri. Info: salutetambetuah.id"}
-}
-FALLBACK_REVIEW = {
-    "template_wa": "Halo Kak [Nama], boleh minta ulasan di Google Maps? Link: https://g.page/r/CcXrBsm7Ua8xEAE/review 🙏",
-    "contoh_1": "Udah daftar kuliah UT lewat Salut Etam Betuah Samarinda, gampang banget prosesnya. Recommended!",
-    "contoh_2": "Dari Balikpapan tapi urus semua via WA ke Salut Etam Betuah, alhamdulillah lancar.",
-    "contoh_3": "ASN kayak saya cocok banget pakai jalur RPL di Salut Etam Betuah, hemat waktu.",
-    "reply_bintang5": "Terima kasih banyak atas ulasan dan kepercayaan Kakak kepada Salut Etam Betuah. Semoga sukses kuliahnya! 🎓",
-    "reply_rendah": "Terima kasih atas masukannya. Kami akan terus memperbaiki layanan. Silakan hubungi kami langsung agar kami bisa bantu selesaikan. 🙏"
+# ── STEP 3: Generate GBP content dari template ────────────────
+# Template konten per hari — tanpa AI, selalu berhasil
+KONTEN = {
+    "Senin": [
+        ("Pendaftaran UT 2026",
+         "🎓 Awal minggu yang produktif! Masih buka pendaftaran mahasiswa baru UT 2026 di Salut Etam Betuah Samarinda. Non-RPL & RPL tersedia. WA 0822-5063-8289"),
+        ("Kuliah Sambil Kerja",
+         "📚 Kuliah di UT bisa sambil kerja, dari Balikpapan, Bontang, Berau, atau Kukar — semua bisa. Info lengkap: salutetambetuah.id"),
+    ],
+    "Selasa": [
+        ("Layanan Lengkap UT",
+         "✅ Di Salut Etam Betuah, satu tempat untuk semua urusan UT: daftar, registrasi, modul, ujian, wisuda. Samarinda & seluruh Kaltim. WA 0822-5063-8289"),
+        ("Konsultasi Gratis",
+         "💬 Bingung soal kuliah UT? Konsultasi dulu, gratis, tanpa komitmen. Balas WA ini atau kunjungi salutetambetuah.id 🙏"),
+    ],
+    "Rabu": [
+        ("RPL untuk ASN & Karyawan",
+         "💼 Pengalaman kerja bisa jadi SKS! Program RPL UT cocok untuk ASN, PNS, TNI, Polri & karyawan berpengalaman. Info: salutetambetuah.id"),
+        ("Tips Kuliah UT",
+         "📖 Kuliah di UT itu fleksibel — bisa belajar kapan saja, dari mana saja. Banyak mahasiswa dari Bontang & Berau sudah buktikan. WA 0852-5283-4986"),
+    ],
+    "Kamis": [
+        ("Deadline Registrasi",
+         "⏰ Jangan sampai terlewat! Cek deadline registrasi semester ini. Hubungi Salut Etam Betuah Samarinda sekarang: 0822-5063-8289"),
+        ("Info Ujian UT",
+         "📝 Mau ujian UT? Persiapan bisa dibantu di Salut Etam Betuah. Dari Kukar, Balikpapan, Bontang semua bisa koordinasi via WA 🙏"),
+    ],
+    "Jumat": [
+        ("Cerita Sukses Mahasiswa",
+         "🌟 Alhamdulillah, satu lagi mahasiswa UT dari Samarinda berhasil wisuda! Bergabung dan raih gelar S1 Anda bersama Salut Etam Betuah 🎓"),
+        ("Akhir Pekan Produktif",
+         "🙌 Akhir pekan bukan halangan untuk daftar kuliah UT! Salut Etam Betuah tetap siap dikontak via WA. salutetambetuah.id"),
+    ],
+    "Sabtu": [
+        ("Jam Buka Sabtu",
+         "🏢 Sabtu tetap buka! Salut Etam Betuah Samarinda siap membantu urusan UT Anda hari ini. WA: 0822-5063-8289 | 0852-5283-4986"),
+        ("Layanan Online",
+         "💻 Tidak sempat ke kantor? Semua urusan UT bisa via WhatsApp. Mahasiswa dari Berau & Kukar juga bisa urus online 🙏"),
+    ],
+    "Minggu": [
+        ("Info UT Minggu",
+         "📱 WA Salut Etam Betuah aktif setiap hari. Tanya soal kuliah UT, RPL, atau registrasi — langsung chat: 0822-5063-8289"),
+        ("Persiapan Pekan Ini",
+         "✅ Siapkan dokumen untuk daftar UT: KTP, ijazah, foto 3x4, email aktif. Proses mudah, dibantu sampai NIM aktif! salutetambetuah.id"),
+    ],
 }
 
-print("🤖 Generating GBP content...")
-posts = call_ai(
-    f"Buat 2 caption Google Business Profile untuk Salut Etam Betuah "
-    f"yang melayani {SERVICE_AREA}.\n\n"
-    f"ATURAN KETAT: Jangan sebut 'tim kami'/'admin kami'/'kami siap'. "
-    f"Jangan gaya korporat. Tulis seperti orang Samarinda share info ke teman. "
-    f"Sesekali sebut kota lain (Balikpapan, Bontang dll). Max 220 karakter per post. "
-    f"1-2 emoji saja.\n\nHari ini: {DAY_NAME}, {TODAY_ID}. Tema: {TEMA}\n\n"
-    f'Return JSON ONLY (no markdown): {{"post_1":{{"konten":"...","topik":"..."}},"post_2":{{"konten":"...","topik":"..."}}}}',
-    fallback=FALLBACK_POSTS
-)
-print("✅ Google Posts generated")
+hari_posts = KONTEN.get(DAY_NAME, KONTEN["Minggu"])
+# Pilih berdasarkan tanggal agar variatif tiap minggu
+idx = TODAY.day % 2
+post1_topik, post1_konten = hari_posts[0]
+post2_topik, post2_konten = hari_posts[idx]
 
-review_tmpl = call_ai(
-    f"Buat template untuk Salut Etam Betuah yang melayani {SERVICE_AREA}.\n\n"
-    f"ATURAN REPLY BINTANG 5: Formal dan profesional. Boleh mulai "
-    f"'Terima kasih banyak...' atau 'Alhamdulillah...'. Hangat tapi sopan. Max 180 karakter.\n\n"
-    f"ATURAN CONTOH REVIEW: Dari sudut pandang MAHASISWA sungguhan. Informal, "
-    f"ada pengalaman nyata. Sebut 'Salut Etam Betuah' dan kota secara natural.\n\n"
-    f"ATURAN TEMPLATE MINTA REVIEW: Pesan WA singkat personal. "
-    f"Sertakan link: https://g.page/r/CcXrBsm7Ua8xEAE/review\n\n"
-    f'Return JSON ONLY (no markdown): {{"template_wa":"...","contoh_1":"...","contoh_2":"...","contoh_3":"...","reply_bintang5":"...","reply_rendah":"..."}}',
-    fallback=FALLBACK_REVIEW
+TEMPLATE_WA = (
+    "Halo Kak [Nama] 😊\n\n"
+    "Makasih ya sudah mempercayakan urusan kuliah UT ke Salut Etam Betuah!\n\n"
+    "Boleh minta tolong kasih ulasan di Google Maps kami? Sangat membantu calon mahasiswa lain 🙏\n\n"
+    "Klik di sini: https://g.page/r/CcXrBsm7Ua8xEAE/review\n\n"
+    "Ceritakan pengalaman Kakak singkat saja sudah cukup. Terima kasih banyak! 🎓"
 )
-print("✅ Review templates generated")
 
-def s(v, d=""): return str(v) if v else d
+CONTOH_REVIEWS = [
+    "Daftar kuliah UT di Salut Etam Betuah Samarinda, prosesnya gampang banget. Admin responsif, semua dijelasin dengan sabar. Recommended! ⭐⭐⭐⭐⭐",
+    "Dari Balikpapan urus administrasi UT via WA ke Salut Etam Betuah, alhamdulillah lancar. Tidak perlu ke Samarinda, semua bisa online 🙏",
+    "Sebagai ASN, pilih jalur RPL di Salut Etam Betuah sangat tepat. Pengalaman kerja saya diakui jadi SKS, hemat waktu & biaya kuliah.",
+]
 
 md = f"""# Konten GBP — Salut Etam Betuah
 ### {DAY_NAME}, {TODAY_ID}
-*Melayani: {SERVICE_AREA}*
+*Samarinda · Balikpapan · Kutai Kartanegara · Bontang · Berau · Seluruh Kaltim*
 
 ---
 
 ## Google Posts Hari Ini
 
-### Post 1 — {s(posts.get("post_1",{}).get("topik",""))}
+### Post 1 — {post1_topik}
 > GBP → Tambahkan pembaruan → salin teks → tombol "Pelajari selengkapnya" → salutetambetuah.id
 
 ```
-{s(posts.get("post_1",{}).get("konten",""))}
+{post1_konten}
 ```
-*{len(s(posts.get("post_1",{}).get("konten","")))} karakter*
+*{len(post1_konten)} karakter*
 
 ---
 
-### Post 2 — {s(posts.get("post_2",{}).get("topik",""))}
+### Post 2 — {post2_topik}
 ```
-{s(posts.get("post_2",{}).get("konten",""))}
+{post2_konten}
 ```
-*{len(s(posts.get("post_2",{}).get("konten","")))} karakter*
+*{len(post2_konten)} karakter*
 
 ---
 
-## Minta Review dari Mahasiswa
-
-### Pesan WhatsApp
-*Ganti [Nama] sebelum kirim.*
+## Minta Review dari Mahasiswa (Kirim via WA)
+*Ganti [Nama] sebelum kirim. Kirim ke 2-3 mahasiswa yang baru selesai urusan.*
 
 ```
-{s(review_tmpl.get("template_wa",""))}
+{TEMPLATE_WA}
 ```
 
-### Contoh Teks Review
+---
+
+## Contoh Teks Review untuk Mahasiswa
 
 **Mahasiswa Samarinda:**
 ```
-{s(review_tmpl.get("contoh_1",""))}
+{CONTOH_REVIEWS[0]}
 ```
 
 **Mahasiswa luar kota (Balikpapan / Bontang / Berau / Kukar):**
 ```
-{s(review_tmpl.get("contoh_2",""))}
+{CONTOH_REVIEWS[1]}
 ```
 
 **ASN / Karyawan / RPL:**
 ```
-{s(review_tmpl.get("contoh_3",""))}
+{CONTOH_REVIEWS[2]}
 ```
 
 ---
 
-## Reply Ulasan di Google Maps
-
-**Untuk ulasan ★★★★★:**
+## Reply Ulasan ★★★★★ di Google Maps
 ```
-{s(review_tmpl.get("reply_bintang5",""))}
+Terima kasih banyak atas ulasan dan kepercayaan Kakak kepada Salut Etam Betuah! 🙏 Semoga sukses kuliahnya dan sampai jumpa di wisuda! 🎓
 ```
 
-**Untuk ulasan bintang rendah / keluhan:**
+## Reply Ulasan Bintang Rendah
 ```
-{s(review_tmpl.get("reply_rendah",""))}
+Terima kasih atas masukannya. Kami mohon maaf atas ketidaknyamanan ini. Silakan hubungi kami langsung di WA 0822-5063-8289 agar bisa segera kami bantu selesaikan. 🙏
 ```
 
 ---
 
-## Area Layanan
-**Samarinda · Balikpapan · Kutai Kartanegara · Bontang · Berau**
-dan seluruh Kalimantan Timur, serta **seluruh Indonesia**
-
-Konsultasi: WA 0822-5063-8289 | 0852-5283-4986 | salutetambetuah.id
+## Kontak
+WA Admin 1: 0822-5063-8289
+WA Admin 2: 0852-5283-4986
+Website: salutetambetuah.id
 
 ---
-*Update: {TODAY_ID} | Auto-generated by GitHub Actions + Anthropic AI*
+*Update: {TODAY_ID} | Auto-generated oleh GitHub Actions*
 """
 
 with open("GBP_KONTEN_SALUT.md","w",encoding="utf-8") as f:
     f.write(md)
+
 print("✅ GBP_KONTEN_SALUT.md selesai")
-print("🎉 Daily maintenance selesai!")
+print("🎉 Daily maintenance selesai — exit code 0")

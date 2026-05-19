@@ -16,32 +16,45 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
 
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install anthropic requests --quiet
+
+      - name: Run daily maintenance script
+        continue-on-error: true
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
+          GOOGLE_PLACE_ID: ${{ secrets.GOOGLE_PLACE_ID }}
+        run: python3 scripts/daily_maintenance.py
+
       - name: Update sitemap lastmod
         run: |
           TODAY=$(date +%Y-%m-%d)
           if [ -f sitemap.xml ]; then
             sed -i "s|<lastmod>[0-9-]*</lastmod>|<lastmod>$TODAY</lastmod>|g" sitemap.xml
-            echo "sitemap.xml updated to $TODAY"
           fi
+          echo "sitemap updated: $TODAY"
 
       - name: Update dateModified in HTML files
         run: |
           TODAY=$(date +%Y-%m-%d)
           for f in index.html kta.html; do
-            if [ -f "$f" ]; then
-              sed -i "s/\"dateModified\": \"[0-9-]*\"/\"dateModified\": \"$TODAY\"/g" "$f"
-            fi
+            [ -f "$f" ] && sed -i "s/\"dateModified\": \"[0-9-]*\"/\"dateModified\": \"$TODAY\"/g" "$f"
           done
           for f in blog/*.html; do
-            if [ -f "$f" ]; then
-              sed -i "s/\"dateModified\": \"[0-9-]*\"/\"dateModified\": \"$TODAY\"/g" "$f"
-            fi
+            [ -f "$f" ] && sed -i "s/\"dateModified\": \"[0-9-]*\"/\"dateModified\": \"$TODAY\"/g" "$f"
           done
-          echo "dateModified updated to $TODAY"
+          echo "dateModified updated: $TODAY"
 
       - name: Update maintenance log
         run: |
-          printf "\n## %s (%s)\n- Sitemap & dateModified updated\n" "$(date +%Y-%m-%d)" "$(date +%A)" >> MAINTENANCE_LOG.md
+          printf "\n## %s (%s)\n- GBP content generated\n- Sitemap & dateModified updated\n" \
+            "$(date +%Y-%m-%d)" "$(date +%A)" >> MAINTENANCE_LOG.md
 
       - name: Commit and push
         run: |

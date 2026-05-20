@@ -481,7 +481,7 @@ input,select,textarea{font-family:'Poppins',sans-serif}
 <div class="page-hero">
   <div class="hero-badge"><span>🪪 KTA Digital 2026</span></div>
   <h1>Kartu Tanda Anggota<br>Salut Etam Betuah</h1>
-  <p>Isi data, upload foto & bukti pembayaran — KTA langsung bisa didownload. Berlaku 6 bulan.</p>
+  <p>Isi data, upload foto & bukti pembayaran — KTA langsung bisa didownload. Berlaku per semester (6 bulan).</p>
 </div>
 
 <!-- TABS -->
@@ -672,7 +672,7 @@ input,select,textarea{font-family:'Poppins',sans-serif}
     <div class="info-grid">
       <div class="info-card">
         <div class="ic-icon" style="background:#EFF6FF">🗓️</div>
-        <div><div class="ic-title">Masa Berlaku KTA</div><div class="ic-text">6 bulan sejak tanggal download. Perbarui dengan mendaftar ulang keanggotaan.</div></div>
+        <div><div class="ic-title">Masa Berlaku KTA</div><div class="ic-text">Berlaku per semester: Feb–Jul (hingga 31 Juli) dan Ags–Jan (hingga 31 Januari). Perbarui setiap awal semester baru.</div></div>
       </div>
       <div class="info-card">
         <div class="ic-icon" style="background:#FEF3C7">💾</div>
@@ -965,13 +965,29 @@ function centerText(ctx, text, cx) {
   return cx - ctx.measureText(text).width / 2;
 }
 
+// ===== SEMESTER EXPIRY SYSTEM =====
+// Semester 1: Februari - Juli (berlaku hingga 31 Juli)
+// Semester 2: Agustus - Januari (berlaku hingga 31 Januari tahun berikutnya)
+function getSemesterExpiry() {
+  var now   = new Date();
+  var month = now.getMonth(); // 0=Jan ... 6=Jul ... 11=Des
+  if (month >= 1 && month <= 6) {
+    // Feb(1) - Jul(6) → berlaku hingga 31 Juli tahun ini
+    return new Date(now.getFullYear(), 6, 31); // July 31
+  } else {
+    // Ags(7) - Jan(0) → berlaku hingga 31 Januari tahun berikutnya
+    var y = (month >= 7) ? now.getFullYear() + 1 : now.getFullYear();
+    return new Date(y, 0, 31); // January 31
+  }
+}
+
 // ===== PURE CANVAS KTA RENDERER (NO html2canvas) =====
 async function renderKTACanvas() {
   var W = 350, H = 560, SC = 2.5;
   var nama   = document.getElementById('input-nama').value.trim().toUpperCase();
   var nim    = document.getElementById('input-nim').value.trim();
   var prodi  = document.getElementById('input-prodi').value;
-  var expiry = window._reprintExpiry || new Date(Date.now() + 180*24*60*60*1000);
+  var expiry = window._reprintExpiry || getSemesterExpiry();
   window._reprintExpiry = null;
   var validStr = expiry.toLocaleDateString('id-ID', {day:'2-digit', month:'long', year:'numeric'});
 

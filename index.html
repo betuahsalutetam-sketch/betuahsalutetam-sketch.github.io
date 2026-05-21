@@ -915,16 +915,69 @@ html { scroll-behavior: smooth; }
 }
 #video-modal-close:hover{background:rgba(255,255,255,.3)}
 </style>
+
+<!-- Modern CSS Enhancements — AI Agent -->
+<style>
+/* Smooth global transitions */
+*{transition-property:background-color,border-color,box-shadow,transform,opacity;transition-duration:.2s;transition-timing-function:cubic-bezier(.4,0,.2,1)}
+img,svg,video{transition:none}
+
+/* Modern card hover lift */
+.card-hover:hover,.mitra-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(30,58,138,.12)!important}
+
+/* Smoother section transitions */
+section{will-change:opacity}
+
+/* Better focus states */
+a:focus-visible,button:focus-visible{outline:2px solid #3b82f6;outline-offset:3px;border-radius:4px}
+
+/* Modern scrollbar */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:99px}
+::-webkit-scrollbar-thumb:hover{background:#94a3b8}
+
+/* Subtle glass effect on nav when scrolled */
+#topnav.scrolled,nav.scrolled{box-shadow:0 1px 24px rgba(30,58,138,.08)!important}
+
+/* Video cards glow on hover */
+.vt-card:hover{box-shadow:0 0 20px rgba(245,158,11,.15)!important}
+
+/* Better button press feedback */
+a:active,button:active{transform:scale(.97)!important}
+
+/* Subtle image zoom on gallery hover */
+.gallery-img:hover img{transform:scale(1.04)}
+.gallery-img{overflow:hidden;border-radius:12px}
+.gallery-img img{transition:transform .4s cubic-bezier(.4,0,.2,1)!important}
+
+/* Modern gradient text for section titles */
+.gradient-text{background:linear-gradient(135deg,#1e3a8a 0%,#3b82f6 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* Pulse animation for WhatsApp button */
+@keyframes wa-pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+.wa-float a:first-child,.btn-wa-float{animation:wa-pulse 2.5s infinite!important}
+
+/* Smoother FAQ accordion */
+details[open] summary{color:#1e3a8a!important}
+details .faq-body,details>div{animation:fadeSlide .25s ease}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+
+/* Better mobile bottom nav */
+@media(max-width:1023px){
+  .bottom-nav a.active,.bnav-item.active{color:#1e3a8a!important}
+}
+
+/* Subtle loading shimmer for images */
+img[loading="lazy"]{background:linear-gradient(110deg,#f1f5f9 25%,#e2e8f0 37%,#f1f5f9 63%);background-size:200% 100%;animation:shimmer 1.5s ease-in-out infinite}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+img[loading="lazy"][src]{animation:none;background:transparent}
+</style>
+
 </head>
 
 <body>
 
-<!-- BDO RIBBON — ALWAYS VISIBLE -->
-<div id="bdo-ribbon" style="background:linear-gradient(90deg,#1e3a8a,#1d4ed8);color:#fff;text-align:center;padding:8px 1rem;font-size:.72rem;font-weight:600;display:flex;align-items:center;justify-content:center;gap:10px;z-index:200;position:relative;flex-wrap:wrap">
-  <img src="assets/images/logo-bdo.png" alt="BDO International" style="height:16px;object-fit:contain;filter:brightness(0) invert(1);opacity:.9" loading="eager">
-  <span>🏆 Satu-satunya SALUT di Kaltim yang <strong>Lolos Audit Independen BDO International</strong></span>
-  <a href="https://infokaltim.id/lolos-audit-independen-bdo-salut-etam-betuah-buktikan-tata-kelola-layanan-pendidikan-berstandar-internasional/" target="_blank" rel="noopener noreferrer" style="color:#fcd34d;font-weight:700;text-decoration:none;white-space:nowrap">Baca →</a>
-</div>
 
 <!-- ===== AUDIO + TOAST ===== -->
 <div id="toast" class="toast fixed bottom-24 right-4 z-[100] bg-brand-blue text-white px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3 max-w-xs lg:bottom-6 lg:right-6">
@@ -2898,6 +2951,15 @@ window.goWA = function(admin) {
 };
 window.openWA = function(svc) { window.openWAPicker(svc); };
 document.addEventListener('keydown', function(e){ if(e.key==='Escape') window.closeWAPicker(); });
+</script>
+
+
+<script>
+// Modern nav shadow on scroll
+window.addEventListener('scroll',function(){
+  var nav=document.querySelector('nav')||document.getElementById('topnav');
+  if(nav){nav.classList.toggle('scrolled',window.scrollY>30)}
+},{ passive:true });
 </script>
 
 </body>

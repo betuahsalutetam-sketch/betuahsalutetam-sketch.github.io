@@ -1,7 +1,7 @@
 # ============================================================
 # robots.txt — salutetambetuah.id
 # Sentra Layanan Universitas Terbuka Etam Betuah, Samarinda
-# Update: Mei 2026
+# Update: 22 Mei 2026
 # ============================================================
 
 # ===== Semua crawler: izinkan seluruh website =====
@@ -12,12 +12,15 @@ Allow: /
 Allow: /index.html
 Allow: /blog/
 Allow: /blog/index.html
+Allow: /blog/apa-itu-salut-ut-panduan-lengkap.html
 Allow: /blog/tips-lulus-ut-tepat-waktu-fresh-graduate.html
-Allow: /blog/cara-daftar-kuliah-ut-samarinda-2026.html
-Allow: /blog/rpl-alih-kredit-universitas-terbuka.html
-Allow: /blog/panduan-registrasi-matkul-ut-2026.html
-Allow: /blog/keuntungan-kuliah-universitas-terbuka.html
-Allow: /blog/wisuda-ut-2026-panduan-lengkap.html
+Allow: /blog/salut-ut-samarinda.html
+Allow: /blog/salut-etam-betuah-profil.html
+Allow: /blog/daftar-ut-samarinda-2026.html
+Allow: /blog/rpl-ut-kaltim.html
+Allow: /blog/biaya-kuliah-ut-samarinda.html
+Allow: /blog/wisuda-ut-samarinda.html
+Allow: /kta.html
 
 # Assets yang boleh di-crawl (gambar, og-image, logo)
 Allow: /assets/images/

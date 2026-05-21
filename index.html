@@ -1162,807 +1162,240 @@ html { scroll-behavior: smooth; }
   </div>
 </section>
 
-<!-- ================================================================
-     TRUST INDICATORS BAR - SEO + Social Proof
-     ================================================================ -->
-<section id="trust-bar" style="background:linear-gradient(90deg,#0F172A 0%,#1E3A8A 40%,#1D4ED8 60%,#0F172A 100%);padding:0;overflow:hidden;border-bottom:1px solid rgba(255,255,255,0.08)">
-  <style>
-    @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-    .ticker-inner{display:flex;animation:ticker 28s linear infinite;width:max-content}
-    .ticker-inner:hover{animation-play-state:paused}
-    .ticker-item{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,0.85);font-size:11px;font-weight:600;white-space:nowrap;padding:12px 28px;border-right:1px solid rgba(255,255,255,0.08)}
-  </style>
-  <div style="overflow:hidden">
-    <div class="ticker-inner">
-      <div class="ticker-item"><span style="color:#4ADE80">✓</span> Salut Etam Betuah — Sentra Layanan UT Samarinda</div>
-      <div class="ticker-item"><span style="color:#FCD34D">★★★★★</span> 5.0 Google Rating • 200+ Ulasan</div>
-      <div class="ticker-item"><span style="color:#FBBF24">🏆</span> Lolos Audit Independen BDO International</div>
-      <div class="ticker-item"><span style="color:#93C5FD">🎓</span> 5000+ Mahasiswa UT Terlayani Sejak 2018</div>
-      <div class="ticker-item"><span style="color:#4ADE80">💬</span> Respons WhatsApp &lt; 5 Menit · 24 Jam</div>
-      <div class="ticker-item"><span style="color:#FCD34D">🪪</span> KTA Gratis · 5 Mitra Eksklusif</div>
-      <div class="ticker-item"><span style="color:#C4B5FD">🏦</span> Cicil SPP via Bank BTN</div>
-      <div class="ticker-item"><span style="color:#4ADE80">✓</span> Salut Etam Betuah — Sentra Layanan UT Samarinda</div>
-      <div class="ticker-item"><span style="color:#FCD34D">★★★★★</span> 5.0 Google Rating • 200+ Ulasan</div>
-      <div class="ticker-item"><span style="color:#FBBF24">🏆</span> Lolos Audit Independen BDO International</div>
-      <div class="ticker-item"><span style="color:#93C5FD">🎓</span> 5000+ Mahasiswa UT Terlayani Sejak 2018</div>
-      <div class="ticker-item"><span style="color:#4ADE80">💬</span> Respons WhatsApp &lt; 5 Menit · 24 Jam</div>
-      <div class="ticker-item"><span style="color:#FCD34D">🪪</span> KTA Gratis · 5 Mitra Eksklusif</div>
-      <div class="ticker-item"><span style="color:#C4B5FD">🏦</span> Cicil SPP via Bank BTN</div>
-    </div>
-  </div>
-</section>
 
-<!-- ================================================================
-     AUDIT BDO BANNER (compact)
-     ================================================================ -->
-<section id="audit-bdo" class="bg-white border-b border-slate-100">
-  <div class="max-w-7xl mx-auto px-4 lg:px-6 py-6">
-    <a href="https://infokaltim.id/lolos-audit-independen-bdo-salut-etam-betuah-buktikan-tata-kelola-layanan-pendidikan-berstandar-internasional/" target="_blank" rel="noopener"
-       class="flex items-center gap-4 group">
-      <div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-blue-100 transition-colors">
-        <img src="assets/images/logo-bdo.png" alt="Logo BDO" class="w-8 h-8 object-contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <i data-lucide="shield-check" class="w-6 h-6 text-brand-blue hidden"></i>
-      </div>
-      <div class="flex-1 min-w-0">
-        <div class="text-[10px] font-bold text-amber-600 uppercase tracking-wider mb-0.5">🏆 Prestasi Internasional</div>
-        <div class="text-sm font-bold text-brand-navy leading-tight">Lolos Audit Independen BDO — Standar Tata Kelola Internasional</div>
-        <div class="text-xs text-slate-400 mt-0.5 hidden sm:block">Transparansi · Akuntabilitas · Mutu Pelayanan Terstandar Global</div>
-      </div>
-      <div class="flex-shrink-0 text-brand-blue group-hover:translate-x-1 transition-transform">
-        <i data-lucide="arrow-right" class="w-5 h-5"></i>
-      </div>
-    </a>
-  </div>
-</section>
 
 <!-- ================================================================
      LAYANAN
      ================================================================ -->
-<section id="layanan" class="py-14 lg:py-20 bg-surface" aria-label="Layanan Salut Etam Betuah UT Samarinda">
-  <div class="max-w-7xl mx-auto px-4 lg:px-6">
-    <div class="sec-header reveal">
+<section id="layanan" style="padding:3.5rem 1.25rem;background:#fff" aria-label="Layanan Salut Etam Betuah">
+  <div style="max-width:1100px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:2rem">
+      <p style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#3b82f6;margin-bottom:.375rem">Layanan Kami</p>
+      <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(1.25rem,3vw,1.75rem);font-weight:800;color:#1e293b;margin-bottom:.5rem">Layanan Salut Etam Betuah Lengkap</h2>
+      <p style="font-size:0.875rem;color:#64748b">Dari daftar hingga wisuda — semua bisa via WhatsApp</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.875rem;margin-bottom:2rem">
+      <div style="background:#eff6ff;border-radius:12px;padding:1rem;text-align:center"><div style="font-size:1.5rem;margin-bottom:.375rem">🎓</div><div style="font-size:.8rem;font-weight:700;color:#1e40af;margin-bottom:.25rem">Pendaftaran</div><div style="font-size:.72rem;color:#64748b">Non-RPL & RPL</div></div>
+      <div style="background:#f0fdf4;border-radius:12px;padding:1rem;text-align:center"><div style="font-size:1.5rem;margin-bottom:.375rem">📋</div><div style="font-size:.8rem;font-weight:700;color:#15803d;margin-bottom:.25rem">Registrasi</div><div style="font-size:.72rem;color:#64748b">Semester & Reaktivasi</div></div>
+      <div style="background:#fefce8;border-radius:12px;padding:1rem;text-align:center"><div style="font-size:1.5rem;margin-bottom:.375rem">📚</div><div style="font-size:.8rem;font-weight:700;color:#a16207;margin-bottom:.25rem">Modul & Buku</div><div style="font-size:.72rem;color:#64748b">Langsung & Kirim</div></div>
+      <div style="background:#fdf2f8;border-radius:12px;padding:1rem;text-align:center"><div style="font-size:1.5rem;margin-bottom:.375rem">📝</div><div style="font-size:.8rem;font-weight:700;color:#9d174d;margin-bottom:.25rem">Ujian UAS</div><div style="font-size:.72rem;color:#64748b">Lab AC & Online</div></div>
+      <div style="background:#eff6ff;border-radius:12px;padding:1rem;text-align:center"><div style="font-size:1.5rem;margin-bottom:.375rem">📄</div><div style="font-size:.8rem;font-weight:700;color:#1e40af;margin-bottom:.25rem">Dokumen</div><div style="font-size:.72rem;color:#64748b">SKA, Transkrip, SKPI</div></div>
+      <div style="background:#f0fdf4;border-radius:12px;padding:1rem;text-align:center"><div style="font-size:1.5rem;margin-bottom:.375rem">🏛️</div><div style="font-size:.8rem;font-weight:700;color:#15803d;margin-bottom:.25rem">Wisuda</div><div style="font-size:.72rem;color:#64748b">Daftar & Persiapan</div></div>
+      <div style="background:#fefce8;border-radius:12px;padding:1rem;text-align:center"><div style="font-size:1.5rem;margin-bottom:.375rem">💬</div><div style="font-size:.8rem;font-weight:700;color:#a16207;margin-bottom:.25rem">Konsultasi</div><div style="font-size:.72rem;color:#64748b">Online & Offline</div></div>
+      <div style="background:#fdf2f8;border-radius:12px;padding:1rem;text-align:center"><div style="font-size:1.5rem;margin-bottom:.375rem">🏦</div><div style="font-size:.8rem;font-weight:700;color:#9d174d;margin-bottom:.25rem">Cicil SPP</div><div style="font-size:.72rem;color:#64748b">Via Bank BTN</div></div>
+    </div>
+    <div style="background:linear-gradient(135deg,#1e3a8a,#2563eb);border-radius:14px;padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
       <div>
-        <div class="sec-label mb-3"><i data-lucide="sparkles" class="w-3 h-3"></i> Layanan Kami</div>
-        <h2 class="text-2xl lg:text-4xl font-black text-brand-navy leading-tight">Layanan Salut Etam Betuah Lengkap</h2>
-        <p class="text-xs text-slate-500 mt-1 max-w-sm">Dari daftar hingga wisuda — semua bisa via WhatsApp</p>
+        <div style="font-size:.9rem;font-weight:700;color:#fff;margin-bottom:.25rem">Keanggotaan Rp 500.000/semester</div>
+        <div style="font-size:.78rem;color:#bfdbfe">Sudah termasuk semua fasilitas + 5 mitra eksklusif</div>
       </div>
-      <a href="#kontak" class="text-brand-blue hover:underline flex items-center gap-1">
-        Konsultasi <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-      </a>
-    </div>
-
-    <!-- Horizontal scroll cards -->
-    <div class="hscroll-wrap reveal">
-      <div class="hscroll">
-
-        <div class="svc-card" onclick="openWA('Pendaftaran Mahasiswa Baru')">
-          <div class="svc-icon"><i data-lucide="user-plus" class="w-5 h-5 text-brand-blue"></i></div>
-          <div class="svc-title">Pendaftaran Mahasiswa Baru</div>
-          <div class="svc-tags">
-            <span class="svc-tag">Non-RPL</span><span class="svc-tag">RPL</span>
-          </div>
-        </div>
-
-        <div class="svc-card" onclick="openWA('Registrasi/Herregistrasi')">
-          <div class="svc-icon"><i data-lucide="refresh-cw" class="w-5 h-5 text-brand-blue"></i></div>
-          <div class="svc-title">Registrasi / Herregistrasi</div>
-          <div class="svc-tags">
-            <span class="svc-tag">Semester</span><span class="svc-tag">Reaktivasi</span>
-          </div>
-        </div>
-
-        <div class="svc-card" onclick="openWA('Pengambilan Modul')">
-          <div class="svc-icon"><i data-lucide="book-open" class="w-5 h-5 text-brand-blue"></i></div>
-          <div class="svc-title">Pengambilan Modul & Buku</div>
-          <div class="svc-tags">
-            <span class="svc-tag">Langsung</span><span class="svc-tag">Kirim</span>
-          </div>
-        </div>
-
-        <div class="svc-card" onclick="openWA('Pengurusan Dokumen Akademik')">
-          <div class="svc-icon"><i data-lucide="file-text" class="w-5 h-5 text-brand-blue"></i></div>
-          <div class="svc-title">Dokumen Akademik</div>
-          <div class="svc-tags">
-            <span class="svc-tag">SKA</span><span class="svc-tag">Transkrip</span><span class="svc-tag">SKPI</span>
-          </div>
-        </div>
-
-        <div class="svc-card" onclick="openWA('Pelayanan Ujian')">
-          <div class="svc-icon"><i data-lucide="clipboard-check" class="w-5 h-5 text-brand-blue"></i></div>
-          <div class="svc-title">Pelayanan Ujian</div>
-          <div class="svc-tags">
-            <span class="svc-tag">UAS</span><span class="svc-tag">UASKU</span><span class="svc-tag">Susulan</span>
-          </div>
-        </div>
-
-        <div class="svc-card" onclick="openWA('Konsultasi Akademik')">
-          <div class="svc-icon"><i data-lucide="message-square" class="w-5 h-5 text-brand-blue"></i></div>
-          <div class="svc-title">Konsultasi Akademik</div>
-          <div class="svc-tags">
-            <span class="svc-tag">Offline</span><span class="svc-tag">Online</span>
-          </div>
-        </div>
-
-        <div class="svc-card" onclick="openWA('Cetak KRS/Perwalian')">
-          <div class="svc-icon"><i data-lucide="list-checks" class="w-5 h-5 text-brand-blue"></i></div>
-          <div class="svc-title">Cetak KRS & Perwalian</div>
-          <div class="svc-tags">
-            <span class="svc-tag">KRS</span><span class="svc-tag">Perwalian</span>
-          </div>
-        </div>
-
-        <div class="svc-card" onclick="openWA('Pendaftaran Wisuda')">
-          <div class="svc-icon"><i data-lucide="award" class="w-5 h-5 text-brand-blue"></i></div>
-          <div class="svc-title">Pendaftaran Wisuda</div>
-          <div class="svc-tags">
-            <span class="svc-tag">Daftar</span><span class="svc-tag">Persiapan</span>
-          </div>
-        </div>
-
-        <div class="svc-card" onclick="openWA('Cuti Akademik/Perpindahan')">
-          <div class="svc-icon"><i data-lucide="arrow-right-left" class="w-5 h-5 text-brand-blue"></i></div>
-          <div class="svc-title">Cuti & Perpindahan</div>
-          <div class="svc-tags">
-            <span class="svc-tag">Cuti</span><span class="svc-tag">Pindah Prodi</span>
-          </div>
-        </div>
-
-        <!-- padding spacer -->
-        <div class="flex-shrink-0 w-2"></div>
-      </div>
-    </div>
-
-    <!-- Fasilitas icons (compact) -->
-    <div class="mt-10 reveal">
-      <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Fasilitas</div>
-      <div class="grid grid-cols-3 sm:grid-cols-5 gap-3">
-        <div class="bg-white rounded-xl p-3.5 flex flex-col items-center gap-2 border border-slate-100 shadow-card text-center">
-          <i data-lucide="monitor" class="w-6 h-6 text-brand-blue"></i>
-          <span class="text-[11px] font-semibold text-slate-600 leading-tight">Lab Komputer AC</span>
-        </div>
-        <div class="bg-white rounded-xl p-3.5 flex flex-col items-center gap-2 border border-slate-100 shadow-card text-center">
-          <i data-lucide="users" class="w-6 h-6 text-brand-blue"></i>
-          <span class="text-[11px] font-semibold text-slate-600 leading-tight">Ruang Konsultasi</span>
-        </div>
-        <div class="bg-white rounded-xl p-3.5 flex flex-col items-center gap-2 border border-slate-100 shadow-card text-center">
-          <i data-lucide="accessibility" class="w-6 h-6 text-brand-blue"></i>
-          <span class="text-[11px] font-semibold text-slate-600 leading-tight">Ruang Disabilitas</span>
-        </div>
-        <div class="bg-white rounded-xl p-3.5 flex flex-col items-center gap-2 border border-slate-100 shadow-card text-center">
-          <i data-lucide="coffee" class="w-6 h-6 text-brand-blue"></i>
-          <span class="text-[11px] font-semibold text-slate-600 leading-tight">Area Rooftop</span>
-        </div>
-        <div class="bg-amber-50 border border-amber-100 rounded-xl p-3.5 flex flex-col items-center gap-2 shadow-card text-center">
-          <i data-lucide="credit-card" class="w-6 h-6 text-amber-600"></i>
-          <span class="text-[11px] font-semibold text-amber-700 leading-tight">SPP Cicil BTN</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Keanggotaan CTA -->
-    <div class="mt-8 reveal bg-gradient-to-r from-amber-400 to-yellow-300 rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div>
-        <div class="text-[10px] font-bold text-brand-navy/60 uppercase tracking-wider">Biaya Keanggotaan</div>
-        <div class="text-2xl font-black text-brand-navy">Rp 500.000<span class="text-base font-semibold">/Semester</span></div>
-        <div class="text-xs text-brand-navy/70 mt-0.5">Sudah termasuk semua fasilitas + keuntungan eksklusif</div>
-      </div>
-      <a href="https://wa.me/6282250638289?text=Halo%20Salut%20Etam%20Betuah%2C%20saya%20ingin%20daftar%20keanggotaan" target="_blank" rel="noopener"
-         class="flex-shrink-0 bg-brand-navy text-white text-sm font-bold px-6 py-3 rounded-full hover:bg-blue-900 transition-colors whitespace-nowrap">
-        Daftar Sekarang →
-      </a>
+      <a href="https://wa.me/6282250638289?text=Halo%20Salut%20Etam%20Betuah%2C%20saya%20ingin%20daftar%20keanggotaan" target="_blank" rel="noopener noreferrer" style="background:#f59e0b;color:#0f172a;padding:.625rem 1.25rem;border-radius:8px;font-weight:700;font-size:.8rem;text-decoration:none;white-space:nowrap">Daftar Sekarang →</a>
     </div>
   </div>
 </section>
 
-<!-- ================================================================
-     BLOG
-     ================================================================ -->
-<section id="blog" class="py-14 lg:py-20 bg-white">
-  <div class="max-w-7xl mx-auto px-4 lg:px-6">
-    <div class="sec-header reveal">
-      <div>
-        <div class="sec-label mb-3"><i data-lucide="pen-tool" class="w-3 h-3"></i> Blog & Artikel</div>
-        <h2 class="text-2xl lg:text-4xl font-black text-brand-navy">Tips Kuliah UT</h2>
-      </div>
-      <a href="/blog/" class="text-brand-blue hover:underline flex items-center gap-1">
-        Semua <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-      </a>
-    </div>
 
-    <div class="hscroll-wrap reveal">
-      <div class="hscroll">
 
-        <!-- Featured -->
-        <a href="/blog/tips-lulus-ut-tepat-waktu-fresh-graduate.html" class="blog-card flex-shrink-0" style="flex:0 0 300px">
-          <div class="h-40 flex items-center justify-center text-4xl relative" style="background:linear-gradient(135deg,#1E3A8A,#3B82F6)">
-            🎓
-            <span class="absolute top-3 left-3 bg-amber-400 text-brand-navy text-[9px] font-bold px-2.5 py-1 rounded-full">⭐ Terpopuler</span>
-          </div>
-          <div class="p-5">
-            <div class="flex gap-2 items-center mb-2">
-              <span class="bg-blue-50 text-brand-blue text-[9px] font-bold px-2 py-0.5 rounded-full">Tips Kuliah</span>
-              <span class="text-slate-400 text-[10px]">6 Mei 2026</span>
-            </div>
-            <h3 class="text-sm font-bold text-brand-navy leading-snug mb-2">7 Tips Lulus UT Tepat Waktu untuk Fresh Graduate 2026</h3>
-            <p class="text-[11px] text-slate-500 leading-relaxed">Panduan dari 5000+ mahasiswa yang berhasil lulus 4 tahun.</p>
-          </div>
-        </a>
-
-        <a href="/blog/cara-daftar-kuliah-ut-samarinda-2026.html" class="blog-card">
-          <div class="h-40 flex items-center justify-center text-4xl" style="background:linear-gradient(135deg,#065F46,#10B981)">📋</div>
-          <div class="p-5">
-            <div class="flex gap-2 items-center mb-2">
-              <span class="bg-emerald-50 text-emerald-700 text-[9px] font-bold px-2 py-0.5 rounded-full">Pendaftaran</span>
-              <span class="text-slate-400 text-[10px]">10 Mei 2026</span>
-            </div>
-            <h3 class="text-sm font-bold text-brand-navy leading-snug mb-2">Cara Daftar Kuliah UT Samarinda 2026</h3>
-            <p class="text-[11px] text-slate-500 leading-relaxed">Dari dokumen hingga NIM aktif — panduan lengkap.</p>
-          </div>
-        </a>
-
-        <a href="/blog/rpl-alih-kredit-universitas-terbuka.html" class="blog-card">
-          <div class="h-40 flex items-center justify-center text-4xl" style="background:linear-gradient(135deg,#7C2D12,#F97316)">🔄</div>
-          <div class="p-5">
-            <div class="flex gap-2 items-center mb-2">
-              <span class="bg-orange-50 text-orange-700 text-[9px] font-bold px-2 py-0.5 rounded-full">RPL</span>
-              <span class="text-slate-400 text-[10px]">8 Mei 2026</span>
-            </div>
-            <h3 class="text-sm font-bold text-brand-navy leading-snug mb-2">RPL Alih Kredit: Hemat Waktu Kuliah D3 & Pekerja</h3>
-            <p class="text-[11px] text-slate-500 leading-relaxed">Pengalaman kerja bisa diakui sebagai SKS kuliah.</p>
-          </div>
-        </a>
-
-        <a href="/blog/" class="blog-card bg-brand-blue border-0 flex flex-col justify-between">
-          <div class="p-5 flex-1 flex flex-col justify-center text-center">
-            <i data-lucide="newspaper" class="w-10 h-10 text-amber-300 mx-auto mb-4"></i>
-            <h3 class="text-sm font-bold text-white mb-2">Baca Semua Artikel</h3>
-            <p class="text-[11px] text-blue-200 leading-relaxed">6 artikel tips & panduan kuliah UT tersedia.</p>
-          </div>
-          <div class="p-4">
-            <span class="block text-center text-brand-navy text-xs font-bold bg-amber-400 px-4 py-2.5 rounded-xl hover:bg-amber-300 transition-colors">
-              Ke Blog →
-            </span>
-          </div>
-        </a>
-
-        <div class="flex-shrink-0 w-2"></div>
+<!-- VIDEO TESTIMONI -->
+<section id="video-testimoni" style="background:#0f172a;padding:3rem 1.25rem 3.5rem" aria-label="Video Testimoni Salut Etam Betuah">
+  <div style="max-width:1100px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:2rem">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3);border-radius:99px;padding:5px 14px;margin-bottom:.875rem">
+        <span style="width:6px;height:6px;border-radius:50%;background:#f59e0b;display:inline-block"></span>
+        <span style="font-size:.7rem;font-weight:700;color:#f59e0b;letter-spacing:.08em;text-transform:uppercase">Video Testimoni & Liputan</span>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================================================================
-     MITRA & PARTNER EKSKLUSIF
-     ================================================================ -->
-<section id="mitra" style="padding:56px 0;background:linear-gradient(180deg,#F8FAFC 0%,#ffffff 100%)">
-  <div style="max-width:1280px;margin:0 auto;padding:0 16px">
-
-    <!-- Section header -->
-    <div style="text-align:center;margin-bottom:40px">
-      <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.25);color:#D97706;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 14px;border-radius:99px;margin-bottom:12px">
-        🎁 Keuntungan Eksklusif
-      </div>
-      <h2 style="font-size:clamp(24px,4vw,36px);font-weight:900;color:#1E3A8A;line-height:1.1;margin-bottom:8px">
-        Jadi Anggota Salut,<br>Dapat Banyak Keuntungan!
-      </h2>
-      <p style="font-size:13px;color:#64748B;max-width:480px;margin:0 auto;line-height:1.7">
-        Keanggotaan Rp 500.000/semester membuka akses ke 5 mitra eksklusif dengan diskon spesial yang tidak bisa didapat di tempat lain.
-      </p>
-    </div>
-
-    <!-- PARTNER LOGOS ROW -->
-    <div style="background:white;border-radius:24px;padding:28px 24px;border:1px solid #E2E8F0;box-shadow:0 4px 20px rgba(30,58,138,.06);margin-bottom:40px">
-      <div style="font-size:11px;font-weight:700;color:#94A3B8;letter-spacing:.08em;text-transform:uppercase;text-align:center;margin-bottom:20px">Mitra Resmi Salut Etam Betuah</div>
-      <div class="partner-logos-row">
-        <div class="partner-logo-item">
-          <img src="assets/images/partners/hotel-gk.png" alt="Hotel Grand Kartika Samarinda" class="partner-logo-img"
-               onerror="this.parentElement.innerHTML='<span style=\'font-size:11px;font-weight:700;color:#DC2626\'>Grand Kartika</span>'">
-        </div>
-        <div class="partner-logos-sep"></div>
-        <div class="partner-logo-item">
-          <img src="assets/images/partners/senyiur.png" alt="Senyiur Hotels & Resorts" class="partner-logo-img"
-               onerror="this.parentElement.innerHTML='<span style=\'font-size:11px;font-weight:700;color:#D97706\'>Senyiur Hotels</span>'">
-        </div>
-        <div class="partner-logos-sep"></div>
-        <div class="partner-logo-item">
-          <img src="assets/images/partners/quest-hotel.png" alt="Quest Hotel Balikpapan" class="partner-logo-img"
-               onerror="this.parentElement.innerHTML='<span style=\'font-size:11px;font-weight:700;color:#7C3AED\'>Quest Hotel</span>'">
-        </div>
-        <div class="partner-logos-sep"></div>
-        <div class="partner-logo-item">
-          <img src="assets/images/partners/btn.png" alt="Bank BTN" class="partner-logo-img"
-               onerror="this.parentElement.innerHTML='<span style=\'font-size:13px;font-weight:900;color:#1D4ED8\'>btn</span>'">
-        </div>
-        <div class="partner-logos-sep"></div>
-        <div class="partner-logo-item">
-          <img src="assets/images/partners/tms-daihatsu.png" alt="TMS Daihatsu Samarinda" class="partner-logo-img"
-               onerror="this.parentElement.innerHTML='<span style=\'font-size:11px;font-weight:700;color:#DC2626\'>TMS Daihatsu</span>'">
-        </div>
-      </div>
-    </div>
-
-    <!-- BENEFIT CARDS -->
-    <div class="benefit-grid">
-      <div class="benefit-card" style="--card-accent:#3B82F6">
-        <div class="bc-logo-wrap" style="background:#EFF6FF">
-          <img src="assets/images/partners/btn.png" alt="Bank BTN" class="bc-logo" onerror="this.outerHTML='<span style=\'font-size:18px;font-weight:900;color:#1D4ED8\'>btn</span>'">
-        </div>
-        <div class="bc-badge" style="background:#EFF6FF;color:#1D4ED8">💳 SPP & UKT</div>
-        <h3 class="bc-title">Bank BTN</h3>
-        <p class="bc-desc">SPP/UKT bisa dicicil! Bayar kuliah lebih ringan lewat layanan khusus Bank BTN, langsung di kantor Salut Etam Betuah.</p>
-        <div class="bc-benefit">
-          <div class="cb-item">✅ Pembayaran cicilan UKT</div>
-          <div class="cb-item">✅ Proses cepat & mudah</div>
-          <div class="cb-item">✅ Tidak perlu ke bank</div>
-        </div>
-      </div>
-      <div class="benefit-card" style="--card-accent:#DC2626">
-        <div class="bc-logo-wrap" style="background:#FEF2F2">
-          <img src="assets/images/partners/hotel-gk.png" alt="Hotel Grand Kartika" class="bc-logo" onerror="this.outerHTML='<span style=\'font-size:12px;font-weight:700;color:#DC2626\'>Grand Kartika</span>'">
-        </div>
-        <div class="bc-badge" style="background:#FEF2F2;color:#DC2626">🏨 Hotel Samarinda</div>
-        <h3 class="bc-title">Hotel Grand Kartika Samarinda</h3>
-        <p class="bc-desc">Nginap, nongkrong di resto, atau chill di cafe? Semua ada diskon khusus untuk anggota Salut Etam Betuah!</p>
-        <div class="bc-benefit">
-          <div class="cb-item">✅ Diskon kamar menginap</div>
-          <div class="cb-item">✅ Diskon resto & cafe</div>
-          <div class="cb-item">✅ Cukup tunjukkan KTA</div>
-        </div>
-      </div>
-      <div class="benefit-card" style="--card-accent:#7C3AED">
-        <div class="bc-logo-wrap" style="background:#F5F3FF">
-          <img src="assets/images/partners/quest-hotel.png" alt="Quest Hotel Balikpapan" class="bc-logo" onerror="this.outerHTML='<span style=\'font-size:12px;font-weight:700;color:#7C3AED\'>Quest Hotel</span>'">
-        </div>
-        <div class="bc-badge" style="background:#F5F3FF;color:#7C3AED">🏨 Hotel Balikpapan</div>
-        <h3 class="bc-title">Quest Hotel Balikpapan</h3>
-        <p class="bc-desc">Rasakan kenyamanan istirahat di jantung kota Balikpapan dengan pelayanan kelas satu dan fasilitas lengkap.</p>
-        <div class="bc-benefit">
-          <div class="cb-item"><strong>✅ Diskon 30%</strong> untuk menginap</div>
-          <div class="cb-item">✅ Fasilitas lengkap & premium</div>
-          <div class="cb-item">✅ Cocok untuk perjalanan bisnis</div>
-        </div>
-      </div>
-      <div class="benefit-card" style="--card-accent:#D97706">
-        <div class="bc-logo-wrap" style="background:#FFFBEB">
-          <img src="assets/images/partners/senyiur.png" alt="Senyiur Group" class="bc-logo" onerror="this.outerHTML='<span style=\'font-size:12px;font-weight:700;color:#D97706\'>Senyiur</span>'">
-        </div>
-        <div class="bc-badge" style="background:#FFFBEB;color:#D97706">🌴 Hotel & Resort</div>
-        <h3 class="bc-title">Senyiur Hotels & Resorts</h3>
-        <p class="bc-desc">Staycation, dinner romantis, atau acara spesial? Lebih hemat dengan potongan harga eksklusif untuk member Salut!</p>
-        <div class="bc-benefit">
-          <div class="cb-item">✅ Diskon staycation</div>
-          <div class="cb-item">✅ Diskon dinner & event</div>
-          <div class="cb-item">✅ Berlaku untuk keluarga</div>
-        </div>
-      </div>
-      <div class="benefit-card" style="--card-accent:#DC2626">
-        <div class="bc-logo-wrap" style="background:#FFF1F1">
-          <img src="assets/images/partners/tms-daihatsu.png" alt="TMS Daihatsu Samarinda" class="bc-logo" onerror="this.outerHTML='<span style=\'font-size:12px;font-weight:700;color:#DC2626\'>TMS Daihatsu</span>'">
-        </div>
-        <div class="bc-badge" style="background:#FFF1F1;color:#DC2626">🚗 Otomotif</div>
-        <h3 class="bc-title">TMS Daihatsu Samarinda</h3>
-        <p class="bc-desc">Super deal otomotif eksklusif! Hemat besar untuk service maupun pembelian mobil baru Daihatsu di Samarinda.</p>
-        <div class="bc-benefit">
-          <div class="cb-item"><strong>✅ Hemat 50%</strong> biaya service semua tipe</div>
-          <div class="cb-item">✅ Tambahan diskon beli mobil baru</div>
-          <div class="cb-item">✅ Booking via WA Salut</div>
-        </div>
-      </div>
-      <div class="benefit-card kta-cta-card">
-        <div style="font-size:48px;margin-bottom:12px">🪪</div>
-        <h3 class="bc-title" style="color:white;font-size:18px">Punya KTA = Dapat Semua!</h3>
-        <p style="font-size:13px;color:rgba(255,255,255,.8);line-height:1.6;margin-bottom:20px">
-          Tunjukkan KTA Salut Etam Betuah di semua mitra dan nikmati semua keuntungan eksklusif di atas.
-        </p>
-        <a href="/kta.html" class="btn-kta">🪪 Buat KTA Sekarang</a>
-        <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:10px">Download langsung · Gratis · Berlaku 6 bulan</div>
-      </div>
-    </div>
-
-    <!-- PKS PHOTOS -->
-    <div style="margin-top:40px">
-      <div style="text-align:center;margin-bottom:20px">
-        <div style="font-size:11px;font-weight:700;color:#94A3B8;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px">Bukti Kerjasama Resmi</div>
-        <h3 style="font-size:22px;font-weight:800;color:#1E3A8A">Perjanjian Kerjasama (PKS)</h3>
-        <p style="font-size:13px;color:#64748B;margin-top:4px">Semua keuntungan mitra dijamin dengan Perjanjian Kerjasama (PKS) resmi.</p>
-      </div>
-      <div class="pks-grid">
-        <div class="pks-card">
-          <div class="pks-img-wrap">
-            <div class="pks-img-bg" style="background-image:url('assets/images/partners/pks-gk-hotel.jpeg')"></div>
-            <img src="assets/images/partners/pks-gk-hotel.jpeg" alt="PKS Salut Etam Betuah dengan Hotel Grand Kartika" class="pks-img"
-                 onerror="this.parentElement.style.background='linear-gradient(135deg,#FEF2F2,#FEE2E2)'">
-            <div class="pks-img-overlay">
-              <div class="pks-overlay-logo">
-                <img src="assets/images/partners/hotel-gk.png" alt="Hotel Grand Kartika" style="height:32px;filter:brightness(0) invert(1)"
-                     onerror="this.style.display='none'">
-              </div>
-            </div>
-          </div>
-          <div class="pks-info">
-            <div style="font-size:10px;font-weight:700;color:#D97706;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">📋 PKS Resmi</div>
-            <div style="font-size:14px;font-weight:800;color:#1E3A8A">Hotel Grand Kartika Samarinda</div>
-            <div style="font-size:12px;color:#64748B;margin-top:4px">Perjanjian kerjasama diskon menginap, restoran & cafe untuk anggota Salut Etam Betuah.</div>
-          </div>
-        </div>
-        <div class="pks-card">
-          <div class="pks-img-wrap">
-            <div class="pks-img-bg" style="background-image:url('assets/images/partners/pks-quest-hotel.jpeg')"></div>
-            <img src="assets/images/partners/pks-quest-hotel.jpeg" alt="PKS Salut Etam Betuah dengan Quest Hotel Balikpapan" class="pks-img"
-                 onerror="this.parentElement.style.background='linear-gradient(135deg,#F5F3FF,#EDE9FE)'">
-            <div class="pks-img-overlay">
-              <div class="pks-overlay-logo">
-                <img src="assets/images/partners/quest-hotel.png" alt="Quest Hotel" style="height:32px;filter:brightness(0) invert(1)"
-                     onerror="this.style.display='none'">
-              </div>
-            </div>
-          </div>
-          <div class="pks-info">
-            <div style="font-size:10px;font-weight:700;color:#7C3AED;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">📋 PKS Resmi</div>
-            <div style="font-size:14px;font-weight:800;color:#1E3A8A">Quest Hotel Balikpapan</div>
-            <div style="font-size:12px;color:#64748B;margin-top:4px">Perjanjian kerjasama diskon 30% menginap di Quest Hotel Balikpapan untuk anggota Salut.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ================================================================
-     GALERI
-     ================================================================ -->
-<section id="galeri" class="py-14 lg:py-20 bg-surface">
-  <div class="max-w-7xl mx-auto px-4 lg:px-6">
-    <div class="sec-header reveal">
-      <div>
-        <div class="sec-label mb-3"><i data-lucide="camera" class="w-3 h-3"></i> Galeri</div>
-        <h2 class="text-2xl lg:text-4xl font-black text-brand-navy">Dokumentasi Kegiatan</h2>
-      </div>
+      <h2 style="font-family:'Poppins',sans-serif;font-size:clamp(1.35rem,3.5vw,2rem);font-weight:800;color:#fff;line-height:1.15;margin-bottom:.5rem">Mereka Sudah Membuktikan —<br><span style="color:#f59e0b">Salut Etam Betuah</span> Terpercaya</h2>
+      <p style="font-size:.825rem;color:#94a3b8">Testimoni wisudawan, liputan resmi, dan momen nyata dari kampus UT Samarinda</p>
     </div>
 
     <!-- Filter tabs -->
-    <div class="flex gap-2 overflow-x-auto pb-3 mb-6 reveal" style="scrollbar-width:none">
-      <button class="ftab active" data-gf="all">Semua</button>
-      <button class="ftab" data-gf="wisuda">🎓 Wisuda</button>
-      <button class="ftab" data-gf="talks">🎤 Salut Talks</button>
-      <button class="ftab" data-gf="sosprom">📣 Sosprom</button>
-      <button class="ftab" data-gf="kuliah">📚 Kuliah TTM</button>
-      <button class="ftab" data-gf="ujian">📝 Ujian</button>
-      <button class="ftab" data-gf="kunjungan">🤝 Kunjungan</button>
-      <button class="ftab" data-gf="video">🎬 Video</button>
+    <div style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem">
+      <button onclick="filterVid('semua',this)" class="vt-tab vt-active" style="padding:6px 14px;border-radius:99px;font-size:.75rem;font-weight:600;border:1px solid rgba(245,158,11,0.4);background:rgba(245,158,11,0.15);color:#f59e0b;cursor:pointer">Semua</button>
+      <button onclick="filterVid('testimoni',this)" class="vt-tab" style="padding:6px 14px;border-radius:99px;font-size:.75rem;font-weight:600;border:1px solid rgba(255,255,255,0.12);background:transparent;color:#94a3b8;cursor:pointer">Testimoni</button>
+      <button onclick="filterVid('resmi',this)" class="vt-tab" style="padding:6px 14px;border-radius:99px;font-size:.75rem;font-weight:600;border:1px solid rgba(255,255,255,0.12);background:transparent;color:#94a3b8;cursor:pointer">Kunjungan Resmi</button>
+      <button onclick="filterVid('wisuda',this)" class="vt-tab" style="padding:6px 14px;border-radius:99px;font-size:.75rem;font-weight:600;border:1px solid rgba(255,255,255,0.12);background:transparent;color:#94a3b8;cursor:pointer">Wisuda</button>
+      <button onclick="filterVid('fasilitas',this)" class="vt-tab" style="padding:6px 14px;border-radius:99px;font-size:.75rem;font-weight:600;border:1px solid rgba(255,255,255,0.12);background:transparent;color:#94a3b8;cursor:pointer">Fasilitas</button>
     </div>
 
-    <div class="hscroll-wrap reveal">
-      <div class="hscroll" id="gal-hscroll">
-
-        <div class="gal-card" data-gcat="wisuda" data-src="assets/images/wisuda-1.jpg" data-cap="Wisuda UT Kaltim 2026">
-          <img src="assets/images/wisuda-1.jpg" alt="Wisuda UT Kaltim 2026" loading="lazy">
-          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎓 Wisuda</span><span class="text-xs font-bold text-white">Wisuda UT Kaltim 2026</span></div>
+    <!-- Featured: Tina Toon -->
+    <div id="vid-featured" class="vt-card" data-cat="testimoni" onclick="openVidModal('7306544111337671938','univterbuka','Kesan &amp; Pesan Tina Toon — Artis Wisuda S1 Hukum Universitas Terbuka','🌟 Artis · UT Pusat')" style="background:rgba(255,255,255,0.04);border:1px solid rgba(245,158,11,0.35);border-radius:14px;overflow:hidden;cursor:pointer;margin-bottom:1rem;display:flex;align-items:stretch;min-height:130px" role="button" aria-label="Putar video Tina Toon">
+      <div style="padding:1.25rem;flex:1;display:flex;flex-direction:column;justify-content:center">
+        <div style="display:flex;gap:6px;margin-bottom:.625rem;flex-wrap:wrap">
+          <span style="background:rgba(245,158,11,0.2);color:#f59e0b;font-size:.6rem;font-weight:800;padding:2px 8px;border-radius:99px;border:1px solid rgba(245,158,11,0.3);text-transform:uppercase">🌟 Featured</span>
+          <span style="background:rgba(255,255,255,0.07);color:#94a3b8;font-size:.6rem;font-weight:700;padding:2px 8px;border-radius:99px;text-transform:uppercase">Artis · UT Pusat</span>
         </div>
-        <div class="gal-card" data-gcat="wisuda" data-src="assets/images/wisuda-2.jpg" data-cap="Wisudawan Periode 1">
-          <img src="assets/images/wisuda-2.jpg" alt="Wisudawan Periode 1" loading="lazy">
-          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎓 Wisuda</span><span class="text-xs font-bold text-white">Wisudawan Periode 1</span></div>
-        </div>
-        <div class="gal-card" data-gcat="wisuda" data-src="assets/images/wisuda-3.jpg" data-cap="Pemberian Beasiswa IKA">
-          <img src="assets/images/wisuda-3.jpg" alt="Pemberian Beasiswa IKA" loading="lazy">
-          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎓 Wisuda</span><span class="text-xs font-bold text-white">Pemberian Beasiswa IKA</span></div>
-        </div>
-        <div class="gal-card" data-gcat="wisuda" data-src="assets/images/wisuda-bersama.jpg" data-cap="Wisuda Bersama Keluarga UT">
-          <img src="assets/images/wisuda-bersama.jpg" alt="Wisuda Bersama" loading="lazy">
-          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎓 Wisuda</span><span class="text-xs font-bold text-white">Wisuda Bersama</span></div>
-        </div>
-        <div class="gal-card" data-gcat="talks" data-src="assets/images/salut-talks-1.jpg" data-cap="Podcast Salut Talks">
-          <img src="assets/images/salut-talks-1.jpg" alt="Podcast Salut Talks" loading="lazy">
-          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎤 Salut Talks</span><span class="text-xs font-bold text-white">Diskusi Interaktif</span></div>
-        </div>
-        <div class="gal-card" data-gcat="talks" data-src="assets/images/salut-talks-2.jpg" data-cap="Diskusi Tim Salut Talks">
-          <img src="assets/images/salut-talks-2.jpg" alt="Diskusi Tim" loading="lazy">
-          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎤 Salut Talks</span><span class="text-xs font-bold text-white">Podcast Salut Talks</span></div>
-        </div>
-        <div class="gal-card" data-gcat="talks" data-src="assets/images/salut-talks-3.jpg" data-cap="Workshop Praktisi">
-          <img src="assets/images/salut-talks-3.jpg" alt="Workshop Praktisi" loading="lazy">
-          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎤 Salut Talks</span><span class="text-xs font-bold text-white">Workshop Praktisi</span></div>
-        </div>
-        <div class="gal-card" data-gcat="talks" data-src="assets/images/salut-talks-5.jpg" data-cap="Pelatihan Public Speaking">
-          <img src="assets/images/salut-talks-5.jpg" alt="Pelatihan Public Speaking" loading="lazy">
-          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎤 Salut Talks</span><span class="text-xs font-bold text-white">Public Speaking</span></div>
-        </div>
-        <div class="gal-card" data-gcat="sosprom" data-src="assets/images/sosprom-1.jpg" data-cap="Sosialisasi ke SMA">
-          <img src="assets/images/sosprom-1.jpg" alt="Sosialisasi ke SMA" loading="lazy">
-          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">📣 Sosprom</span><span class="text-xs font-bold text-white">Sosialisasi ke SMA</span></div>
-        </div>
-        <div class="gal-card" data-gcat="sosprom" data-src="assets/images/sosprom-2.jpg" data-cap="Promosi UT di Sekolah">
-          <img src="assets/images/sosprom-2.jpg" alt="Promosi UT" loading="lazy">
-          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">📣 Sosprom</span><span class="text-xs font-bold text-white">Promosi di Sekolah</span></div>
-        </div>
-        <div class="gal-card" data-gcat="ujian" data-src="assets/images/ujian-1.jpg" data-cap="UAS di Lab Komputer">
-          <img src="assets/images/ujian-1.jpg" alt="UAS di Lab Komputer" loading="lazy">
-          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">📝 Ujian</span><span class="text-xs font-bold text-white">Lab Komputer</span></div>
-        </div>
-        <div class="gal-card" data-gcat="ujian" data-src="assets/images/ujian-2.jpg" data-cap="Lab Ujian Modern">
-          <img src="assets/images/ujian-2.jpg" alt="Lab Ujian Modern" loading="lazy">
-          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">📝 Ujian</span><span class="text-xs font-bold text-white">Lab Modern</span></div>
-        </div>
-        <div class="gal-card" data-gcat="kunjungan" data-src="assets/images/wawali-samarinda.jpg" data-cap="Bersama Wakil Walikota Samarinda">
-          <img src="assets/images/wawali-samarinda.jpg" alt="Wakil Walikota Samarinda" loading="lazy">
-          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🤝 Kunjungan</span><span class="text-xs font-bold text-white">Wakil Walikota Samarinda</span></div>
-        </div>
-        <div class="gal-card" data-gcat="kunjungan" data-src="assets/images/kunjungan-1.jpg" data-cap="Bersama Rektor UT">
-          <img src="assets/images/kunjungan-1.jpg" alt="Bersama Rektor UT" loading="lazy">
-          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🤝 Kunjungan</span><span class="text-xs font-bold text-white">Bersama Rektor UT</span></div>
-        </div>
-
-        <!-- ===== FOTO BARU ===== -->
-        <div class="gal-card" data-gcat="sosprom" data-src="assets/images/sosprom-smk12.jpg" data-cap="Sosprom SMK 12 Samarinda">
-          <img src="assets/images/sosprom-smk12.jpg" alt="Kegiatan Sosprom SMK 12" loading="lazy">
-          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">📣 Sosprom</span><span class="text-xs font-bold text-white">Sosprom SMK 12 Samarinda</span></div>
-        </div>
-        <div class="gal-card" data-gcat="sosprom" data-src="assets/images/sosprom-sma-budiluhur.jpg" data-cap="Sosprom SMA Budi Luhur">
-          <img src="assets/images/sosprom-sma-budiluhur.jpg" alt="Sosprom SMA Budi Luhur" loading="lazy">
-          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">📣 Sosprom</span><span class="text-xs font-bold text-white">Sosprom SMA Budi Luhur</span></div>
-        </div>
-        <div class="gal-card" data-gcat="kuliah" data-src="assets/images/kuliah-ttm-1.jpg" data-cap="Kuliah Tatap Muka UT Samarinda">
-          <img src="assets/images/kuliah-ttm-1.jpg" alt="Kuliah Tatap Muka UT" loading="lazy">
-          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">📚 Kuliah TTM</span><span class="text-xs font-bold text-white">Kuliah Tatap Muka UT</span></div>
-        </div>
-        <div class="gal-card" data-gcat="kuliah" data-src="assets/images/kuliah-ttm-display.jpg" data-cap="Sesi Kuliah — Dosen Tamu">
-          <img src="assets/images/kuliah-ttm-display.jpg" alt="Display Kuliah Tatap Muka" loading="lazy">
-          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">📚 Kuliah TTM</span><span class="text-xs font-bold text-white">Sesi Kuliah Dosen Tamu</span></div>
-        </div>
-        <div class="gal-card" data-gcat="kuliah" data-src="assets/images/kuliah-ttm-display2.jpg" data-cap="Kuliah TTM — Hukum Internasional">
-          <img src="assets/images/kuliah-ttm-display2.jpg" alt="Kuliah Hukum Internasional" loading="lazy">
-          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">📚 Kuliah TTM</span><span class="text-xs font-bold text-white">Kuliah Hukum Internasional</span></div>
-        </div>
-
-        <!-- ===== VIDEO BARU ===== -->
-        <div class="gal-card gal-video-card" data-gcat="video" data-video="assets/videos/sosprom-smk12.mp4" data-cap="Video Sosprom SMK 12 Samarinda">
-          <video src="assets/videos/sosprom-smk12.mp4" muted playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover"></video>
-          <div class="gal-play-btn"><svg viewBox="0 0 24 24" fill="white" width="28" height="28"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎬 Video</span><span class="text-xs font-bold text-white">Sosprom SMK 12</span></div>
-        </div>
-        <div class="gal-card gal-video-card" data-gcat="video" data-video="assets/videos/sosprom-sma-budiluhur.mp4" data-cap="Video Sosprom SMA Budi Luhur">
-          <video src="assets/videos/sosprom-sma-budiluhur.mp4" muted playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover"></video>
-          <div class="gal-play-btn"><svg viewBox="0 0 24 24" fill="white" width="28" height="28"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎬 Video</span><span class="text-xs font-bold text-white">Sosprom SMA Budi Luhur</span></div>
-        </div>
-        <div class="gal-card gal-video-card" data-gcat="video" data-video="assets/videos/kuliah-ttm-kepala.mp4" data-cap="Kuliah TTM — Kepala Salut Etam Betuah">
-          <video src="assets/videos/kuliah-ttm-kepala.mp4" muted playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover"></video>
-          <div class="gal-play-btn"><svg viewBox="0 0 24 24" fill="white" width="28" height="28"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎬 Video</span><span class="text-xs font-bold text-white">Kuliah TTM — Kepala Salut</span></div>
-        </div>
-        <div class="gal-card gal-video-card" data-gcat="video" data-video="assets/videos/kuliah-ttm-walikota.mp4" data-cap="Kuliah TTM — Dosen Walikota Samarinda">
-          <video src="assets/videos/kuliah-ttm-walikota.mp4" muted playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover"></video>
-          <div class="gal-play-btn"><svg viewBox="0 0 24 24" fill="white" width="28" height="28"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎬 Video</span><span class="text-xs font-bold text-white">Kuliah TTM — Walikota SMD</span></div>
-        </div>
-
-        <div class="flex-shrink-0 w-2"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================================================================
-     TESTIMONI — carousel
-     ================================================================ -->
-<section id="testimoni" class="py-14 lg:py-20 bg-white" aria-label="Testimoni Mahasiswa Salut Etam Betuah">
-  <div class="max-w-7xl mx-auto px-4 lg:px-6">
-    <div class="sec-header reveal">
-      <div>
-        <div class="sec-label mb-3"><i data-lucide="star" class="w-3 h-3"></i> Testimoni</div>
-        <h2 class="text-2xl lg:text-4xl font-black text-brand-navy">Kata Mereka</h2>
-        <div class="flex items-center gap-2 mt-1">
-          <div class="flex text-amber-400 text-sm">★★★★★</div>
-          <span class="text-sm font-bold text-brand-navy">5.0</span>
-          <a href="https://maps.app.goo.gl/tuReCHw3uPCLJzHCA" target="_blank" class="text-[11px] text-slate-400 hover:text-brand-blue" rel="noopener noreferrer">Google Maps</a>
+        <h3 style="font-family:'Poppins',sans-serif;font-size:clamp(.9rem,2vw,1.2rem);font-weight:800;color:#fff;line-height:1.25;margin-bottom:.5rem">Kesan &amp; Pesan Tina Toon — Artis Wisuda S1 Hukum UT</h3>
+        <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(245,158,11,0.85);color:#0f172a;padding:7px 14px;border-radius:99px;font-size:.75rem;font-weight:700;width:fit-content">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>Tonton Video
         </div>
       </div>
-      <div class="flex gap-2">
-        <button id="t-prev" class="w-9 h-9 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors text-brand-navy">
-          <i data-lucide="chevron-left" class="w-4 h-4"></i>
-        </button>
-        <button id="t-next" class="w-9 h-9 rounded-full bg-brand-navy text-white flex items-center justify-center hover:bg-blue-900 transition-colors">
-          <i data-lucide="chevron-right" class="w-4 h-4"></i>
-        </button>
+      <div style="width:120px;flex-shrink:0;background:linear-gradient(135deg,#1d4ed8,#7c3aed);display:flex;align-items:center;justify-content:center">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" style="opacity:.5"><circle cx="12" cy="12" r="11" stroke="white" stroke-width="1.5"/><path d="M10 8l6 4-6 4V8z" fill="white"/></svg>
       </div>
     </div>
 
-    <div class="overflow-hidden reveal" id="testi-outer">
-      <div class="testi-track" id="testi-track">
-        <!-- 6 reviews -->
-        <div class="testi-item shadow-card">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-sm font-bold text-white flex-shrink-0">RH</div>
-            <div><div class="text-sm font-bold text-brand-navy">Rahmat Hidayat</div><div class="text-[10px] text-slate-400">Local Guide · 3 bulan lalu</div></div>
-            <div class="ml-auto flex text-amber-400 text-sm">★★★★★</div>
-          </div>
-          <p class="text-xs text-slate-600 leading-relaxed">"Pelayanan sangat ramah dan profesional. Tim Salut Etam Betuah membantu saya mendaftar ulang semester baru dengan cepat. Lokasinya strategis dan parkir luas. Sangat direkomendasikan!"</p>
-        </div>
-        <div class="testi-item shadow-card">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-sm font-bold text-white flex-shrink-0">SA</div>
-            <div><div class="text-sm font-bold text-brand-navy">Siti Aminah</div><div class="text-[10px] text-slate-400">8 ulasan · 2 bulan lalu</div></div>
-            <div class="ml-auto flex text-amber-400 text-sm">★★★★★</div>
-          </div>
-          <p class="text-xs text-slate-600 leading-relaxed">"Tempatnya nyaman, full AC, dan staff-nya komunikatif. Saya yang awam administrasi UT dibimbing dari awal sampai NIM aktif. Terima kasih Salut Etam Betuah!"</p>
-        </div>
-        <div class="testi-item shadow-card">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-sm font-bold text-white flex-shrink-0">BP</div>
-            <div><div class="text-sm font-bold text-brand-navy">Bayu Prasetyo</div><div class="text-[10px] text-slate-400">Local Guide · 5 bulan lalu</div></div>
-            <div class="ml-auto flex text-amber-400 text-sm">★★★★★</div>
-          </div>
-          <p class="text-xs text-slate-600 leading-relaxed">"Salut Talks-nya bagus banget, narasumbernya keren. Untuk urusan administrasi UT juga top. Tim selalu update progres via WhatsApp. Recommended buat mahasiswa UT di Samarinda!"</p>
-        </div>
-        <div class="testi-item shadow-card">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-sm font-bold text-white flex-shrink-0">DA</div>
-            <div><div class="text-sm font-bold text-brand-navy">Dini Anggraeni</div><div class="text-[10px] text-slate-400">15 ulasan · 1 bulan lalu</div></div>
-            <div class="ml-auto flex text-amber-400 text-sm">★★★★★</div>
-          </div>
-          <p class="text-xs text-slate-600 leading-relaxed">"Mantap. Saya pindahan kampus lain (alih kredit RPL) dan dibantu pengisian formulir, validasi ijazah, sampai aktif kuliah. Prosesnya transparan dan tidak bertele-tele."</p>
-        </div>
-        <div class="testi-item shadow-card">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-rose-500 to-pink-600 flex items-center justify-center text-sm font-bold text-white flex-shrink-0">MF</div>
-            <div><div class="text-sm font-bold text-brand-navy">Muhammad Fadhil</div><div class="text-[10px] text-slate-400">Local Guide · 2 minggu lalu</div></div>
-            <div class="ml-auto flex text-amber-400 text-sm">★★★★★</div>
-          </div>
-          <p class="text-xs text-slate-600 leading-relaxed">"Tempat ujian online ber-AC dan komputernya cepat. Wifi stabil dan pengawasannya tertib. Salut Etam Betuah memang mitra terbaik UT di Samarinda. Lima bintang!"</p>
-        </div>
-        <div class="testi-item shadow-card">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-sm font-bold text-white flex-shrink-0">YS</div>
-            <div><div class="text-sm font-bold text-brand-navy">Yusuf Setiawan</div><div class="text-[10px] text-slate-400">7 ulasan · 4 bulan lalu</div></div>
-            <div class="ml-auto flex text-amber-400 text-sm">★★★★★</div>
-          </div>
-          <p class="text-xs text-slate-600 leading-relaxed">"Saya kerja di tambang dan jarang ke kota. Semua urusan registrasi UT bisa diselesaikan via WhatsApp dengan tim Salut. Respon cepat, bukti pembayaran rapi. Sangat puas!"</p>
-        </div>
+    <!-- Video grid 3x3 -->
+    <div id="vt-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem;margin-bottom:1.5rem">
+      <div class="vt-card" data-cat="testimoni" onclick="openVidModal('7628867795161320725','salutetambetuah','Testimoni Wisudawan Salut Etam Betuah','🎓 Testimoni')" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;overflow:hidden;cursor:pointer" role="button">
+        <div style="height:110px;background:linear-gradient(135deg,#1e3a8a,#2563eb);display:flex;align-items:center;justify-content:center;position:relative"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" style="opacity:.55"><circle cx="12" cy="12" r="11" stroke="white" stroke-width="1.5"/><path d="M10 8l6 4-6 4V8z" fill="white"/></svg><span style="position:absolute;top:8px;left:8px;background:rgba(245,158,11,.85);color:#0f172a;font-size:.55rem;font-weight:800;padding:2px 6px;border-radius:99px">🎓 TESTIMONI</span></div>
+        <div style="padding:.625rem"><div style="font-size:.75rem;font-weight:600;color:#e2e8f0;line-height:1.35">Kesan &amp; Pesan Wisudawan Salut</div><div style="font-size:.65rem;color:#475569;margin-top:2px">@salutetambetuah</div></div>
+      </div>
+      <div class="vt-card" data-cat="testimoni" onclick="openVidModal('7562013816272227592','salutetambetuah','Kuliah Sambil Kerja — Mahasiswa UT Kaltim','🎓 Testimoni')" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;overflow:hidden;cursor:pointer" role="button">
+        <div style="height:110px;background:linear-gradient(135deg,#0f766e,#0d9488);display:flex;align-items:center;justify-content:center;position:relative"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" style="opacity:.55"><circle cx="12" cy="12" r="11" stroke="white" stroke-width="1.5"/><path d="M10 8l6 4-6 4V8z" fill="white"/></svg><span style="position:absolute;top:8px;left:8px;background:rgba(245,158,11,.85);color:#0f172a;font-size:.55rem;font-weight:800;padding:2px 6px;border-radius:99px">🎓 TESTIMONI</span></div>
+        <div style="padding:.625rem"><div style="font-size:.75rem;font-weight:600;color:#e2e8f0;line-height:1.35">Kuliah Sambil Kerja — Cerita Mahasiswa</div><div style="font-size:.65rem;color:#475569;margin-top:2px">@salutetambetuah</div></div>
+      </div>
+      <div class="vt-card" data-cat="testimoni" onclick="openVidModal('7553490878577397003','salutetambetuah','Dari Daftar Hingga Toga — Wisudawan Salut','🎓 Testimoni')" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;overflow:hidden;cursor:pointer" role="button">
+        <div style="height:110px;background:linear-gradient(135deg,#7c3aed,#5b21b6);display:flex;align-items:center;justify-content:center;position:relative"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" style="opacity:.55"><circle cx="12" cy="12" r="11" stroke="white" stroke-width="1.5"/><path d="M10 8l6 4-6 4V8z" fill="white"/></svg><span style="position:absolute;top:8px;left:8px;background:rgba(245,158,11,.85);color:#0f172a;font-size:.55rem;font-weight:800;padding:2px 6px;border-radius:99px">🎓 TESTIMONI</span></div>
+        <div style="padding:.625rem"><div style="font-size:.75rem;font-weight:600;color:#e2e8f0;line-height:1.35">Dari Daftar Hingga Toga</div><div style="font-size:.65rem;color:#475569;margin-top:2px">@salutetambetuah</div></div>
+      </div>
+      <div class="vt-card" data-cat="testimoni" onclick="openVidModal('7442900752852356370','salutetambetuah','Bangga Lulus UT bersama Salut Etam Betuah','🎓 Testimoni')" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;overflow:hidden;cursor:pointer" role="button">
+        <div style="height:110px;background:linear-gradient(135deg,#b45309,#d97706);display:flex;align-items:center;justify-content:center;position:relative"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" style="opacity:.55"><circle cx="12" cy="12" r="11" stroke="white" stroke-width="1.5"/><path d="M10 8l6 4-6 4V8z" fill="white"/></svg><span style="position:absolute;top:8px;left:8px;background:rgba(245,158,11,.85);color:#0f172a;font-size:.55rem;font-weight:800;padding:2px 6px;border-radius:99px">🎓 TESTIMONI</span></div>
+        <div style="padding:.625rem"><div style="font-size:.75rem;font-weight:600;color:#e2e8f0;line-height:1.35">Bangga Lulus UT bersama Salut</div><div style="font-size:.65rem;color:#475569;margin-top:2px">@salutetambetuah</div></div>
+      </div>
+      <div class="vt-card" data-cat="resmi" onclick="openVidModal('7593167135287872786','salutetambetuah','ASN Kabag Kerjasama Pemprov Kaltim — Anggota Salut','🏛️ Resmi')" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;overflow:hidden;cursor:pointer" role="button">
+        <div style="height:110px;background:linear-gradient(135deg,#1e3a8a,#1d4ed8);display:flex;align-items:center;justify-content:center;position:relative"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" style="opacity:.55"><circle cx="12" cy="12" r="11" stroke="white" stroke-width="1.5"/><path d="M10 8l6 4-6 4V8z" fill="white"/></svg><span style="position:absolute;top:8px;left:8px;background:rgba(99,102,241,.9);color:#fff;font-size:.55rem;font-weight:800;padding:2px 6px;border-radius:99px">🏛️ PEMERINTAH</span></div>
+        <div style="padding:.625rem"><div style="font-size:.75rem;font-weight:600;color:#e2e8f0;line-height:1.35">ASN Kabag Kerjasama Pemprov Kaltim</div><div style="font-size:.65rem;color:#475569;margin-top:2px">@salutetambetuah</div></div>
+      </div>
+      <div class="vt-card" data-cat="resmi" onclick="openVidModal('7593630526515334407','salutetambetuah','Kunjungan MWA Universitas Terbuka Pusat','🏛️ Resmi')" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;overflow:hidden;cursor:pointer" role="button">
+        <div style="height:110px;background:linear-gradient(135deg,#065f46,#059669);display:flex;align-items:center;justify-content:center;position:relative"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" style="opacity:.55"><circle cx="12" cy="12" r="11" stroke="white" stroke-width="1.5"/><path d="M10 8l6 4-6 4V8z" fill="white"/></svg><span style="position:absolute;top:8px;left:8px;background:rgba(5,150,105,.9);color:#fff;font-size:.55rem;font-weight:800;padding:2px 6px;border-radius:99px">🏆 MWA UT PUSAT</span></div>
+        <div style="padding:.625rem"><div style="font-size:.75rem;font-weight:600;color:#e2e8f0;line-height:1.35">Kunjungan &amp; Monev MWA UT Pusat</div><div style="font-size:.65rem;color:#475569;margin-top:2px">@salutetambetuah</div></div>
+      </div>
+      <div class="vt-card" data-cat="resmi" onclick="openVidModal('7525251807308827922','salutetambetuah','Monev Ujian UT Pusat &amp; Walikota Samarinda','🏛️ Resmi')" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;overflow:hidden;cursor:pointer" role="button">
+        <div style="height:110px;background:linear-gradient(135deg,#9d174d,#db2777);display:flex;align-items:center;justify-content:center;position:relative"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" style="opacity:.55"><circle cx="12" cy="12" r="11" stroke="white" stroke-width="1.5"/><path d="M10 8l6 4-6 4V8z" fill="white"/></svg><span style="position:absolute;top:8px;left:8px;background:rgba(219,39,119,.9);color:#fff;font-size:.55rem;font-weight:800;padding:2px 6px;border-radius:99px">🏙️ WALIKOTA</span></div>
+        <div style="padding:.625rem"><div style="font-size:.75rem;font-weight:600;color:#e2e8f0;line-height:1.35">Monev UT Pusat &amp; Walikota Samarinda</div><div style="font-size:.65rem;color:#475569;margin-top:2px">@salutetambetuah</div></div>
+      </div>
+      <div class="vt-card" data-cat="wisuda" onclick="openVidModal('7558676831038180620','salutetambetuah','Momen Wisuda UT Kalimantan Timur','🎓 Wisuda')" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;overflow:hidden;cursor:pointer" role="button">
+        <div style="height:110px;background:linear-gradient(135deg,#1e3a8a,#7c3aed);display:flex;align-items:center;justify-content:center;position:relative"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" style="opacity:.55"><circle cx="12" cy="12" r="11" stroke="white" stroke-width="1.5"/><path d="M10 8l6 4-6 4V8z" fill="white"/></svg><span style="position:absolute;top:8px;left:8px;background:rgba(124,58,237,.9);color:#fff;font-size:.55rem;font-weight:800;padding:2px 6px;border-radius:99px">🎓 WISUDA</span></div>
+        <div style="padding:.625rem"><div style="font-size:.75rem;font-weight:600;color:#e2e8f0;line-height:1.35">Momen Wisuda UT Kalimantan Timur</div><div style="font-size:.65rem;color:#475569;margin-top:2px">@salutetambetuah</div></div>
+      </div>
+      <div class="vt-card" data-cat="fasilitas" onclick="openVidModal('DP5fUfBE9Mp','instagram','Fasilitas Lengkap Salut Etam Betuah','📸 Fasilitas')" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;overflow:hidden;cursor:pointer" role="button">
+        <div style="height:110px;background:linear-gradient(135deg,#c026d3,#db2777,#f97316);display:flex;align-items:center;justify-content:center;position:relative"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" style="opacity:.55"><rect x="2" y="2" width="20" height="20" rx="5" stroke="white" stroke-width="1.5"/><circle cx="12" cy="12" r="5" stroke="white" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="white"/></svg><span style="position:absolute;top:8px;left:8px;background:rgba(192,38,211,.9);color:#fff;font-size:.55rem;font-weight:800;padding:2px 6px;border-radius:99px">📸 INSTAGRAM</span></div>
+        <div style="padding:.625rem"><div style="font-size:.75rem;font-weight:600;color:#e2e8f0;line-height:1.35">Fasilitas — Lab AC, Rooftop, Konsultasi</div><div style="font-size:.65rem;color:#475569;margin-top:2px">@salutetambetuah · Instagram</div></div>
       </div>
     </div>
 
-    <!-- Dots -->
-    <div id="testi-dots" class="flex justify-center gap-1.5 mt-5"></div>
-
-    <div class="mt-6 text-center reveal">
-      <a href="https://maps.app.goo.gl/tuReCHw3uPCLJzHCA" target="_blank" rel="noopener"
-         class="inline-flex items-center gap-2 border border-slate-200 text-brand-navy text-xs font-semibold px-5 py-2.5 rounded-full hover:bg-slate-50 transition-colors">
-        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-        Lihat Semua Review di Google Maps
-        <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+    <div style="text-align:center">
+      <a href="https://www.tiktok.com/@salutetambetuah" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);color:#cbd5e1;padding:9px 20px;border-radius:99px;font-size:.8rem;font-weight:600;text-decoration:none">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.29 6.29 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.52V6.78a4.84 4.84 0 01-1.02-.09z"/></svg>
+        Lihat Semua Video di TikTok
       </a>
     </div>
   </div>
 </section>
 
-<!-- ================================================================
-     WHY #1 — SEO Rich Content Section
-     ================================================================ -->
-<section id="mengapa-salut" style="padding:72px 0;background:linear-gradient(150deg,#0A0F1E 0%,#0F172A 30%,#1E3A8A 65%,#1D4ED8 100%);position:relative;overflow:hidden" aria-label="Mengapa Salut Etam Betuah #1 di Samarinda">
-  <div style="position:absolute;top:-80px;right:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(245,158,11,0.12) 0%,transparent 70%);pointer-events:none"></div>
-  <div style="position:absolute;bottom:-80px;left:-60px;width:350px;height:350px;background:radial-gradient(circle,rgba(59,130,246,0.12) 0%,transparent 70%);pointer-events:none"></div>
-  <div style="max-width:1280px;margin:0 auto;padding:0 20px;position:relative;z-index:1">
-    <div style="text-align:center;margin-bottom:56px">
-      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.35);color:#FBBF24;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 16px;border-radius:99px;margin-bottom:16px">🏆 Mengapa Pilih Kami?</div>
-      <h2 style="font-size:clamp(24px,4.5vw,42px);font-weight:900;color:#ffffff;line-height:1.08;margin-bottom:12px;letter-spacing:-0.02em">Salut Etam Betuah —<br><span style="background:linear-gradient(90deg,#F59E0B,#FCD34D);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Pilihan #1 UT di Samarinda</span></h2>
-      <p style="font-size:14px;color:rgba(147,197,253,0.75);max-width:520px;margin:0 auto;line-height:1.75">Ketika Anda mencari <strong style="color:#FCD34D">sentra layanan UT di Samarinda</strong>, satu nama yang selalu muncul: <strong style="color:#FCD34D">Salut Etam Betuah</strong></p>
+<!-- VIDEO MODAL -->
+<div id="vt-modal" style="display:none;position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,0.93);align-items:center;justify-content:center;padding:1rem" onclick="closeVidModal(event)">
+  <div id="vt-modal-inner" style="position:relative;width:100%;max-width:400px;background:#0f172a;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,0.1)" onclick="event.stopPropagation()">
+    <div style="padding:.875rem 1rem;display:flex;align-items:flex-start;gap:8px;border-bottom:1px solid rgba(255,255,255,0.08)">
+      <div style="flex:1"><div id="vt-modal-cat" style="font-size:.6rem;font-weight:800;color:#f59e0b;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px"></div><div id="vt-modal-title" style="font-size:.8rem;font-weight:600;color:#e2e8f0;line-height:1.35"></div></div>
+      <button onclick="closeVidModal(null)" style="background:rgba(255,255,255,0.07);border:none;color:#94a3b8;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0" aria-label="Tutup">×</button>
     </div>
-    <!-- Stats Row -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:rgba(255,255,255,0.08);border-radius:20px;overflow:hidden;margin-bottom:48px">
-      <div style="background:rgba(15,23,42,0.6);backdrop-filter:blur(12px);padding:28px 20px;text-align:center"><div style="font-size:38px;font-weight:900;color:#FCD34D;line-height:1;margin-bottom:6px">5000+</div><div style="font-size:11px;color:rgba(147,197,253,0.7);font-weight:600;text-transform:uppercase;letter-spacing:.06em">Mahasiswa</div></div>
-      <div style="background:rgba(15,23,42,0.6);backdrop-filter:blur(12px);padding:28px 20px;text-align:center"><div style="font-size:38px;font-weight:900;color:#4ADE80;line-height:1;margin-bottom:6px">5.0★</div><div style="font-size:11px;color:rgba(147,197,253,0.7);font-weight:600;text-transform:uppercase;letter-spacing:.06em">Google Rating</div></div>
-      <div style="background:rgba(15,23,42,0.6);backdrop-filter:blur(12px);padding:28px 20px;text-align:center"><div style="font-size:38px;font-weight:900;color:#93C5FD;line-height:1;margin-bottom:6px">2018</div><div style="font-size:11px;color:rgba(147,197,253,0.7);font-weight:600;text-transform:uppercase;letter-spacing:.06em">Tahun Berdiri</div></div>
-      <div style="background:rgba(15,23,42,0.6);backdrop-filter:blur(12px);padding:28px 20px;text-align:center"><div style="font-size:38px;font-weight:900;color:#C4B5FD;line-height:1;margin-bottom:6px">&lt;5'</div><div style="font-size:11px;color:rgba(147,197,253,0.7);font-weight:600;text-transform:uppercase;letter-spacing:.06em">Respons WA</div></div>
-    </div>
-    <!-- Feature Cards -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px;margin-bottom:48px">
-      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:24px;padding:28px;position:relative;overflow:hidden;transition:all .3s" onmouseover="this.style.borderColor='rgba(245,158,11,0.5)';this.style.background='rgba(255,255,255,0.09)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.12)';this.style.background='rgba(255,255,255,0.06)'">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#F59E0B,#FBBF24)"></div>
-        <div style="width:48px;height:48px;background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px">⭐</div>
-        <h3 style="font-size:16px;font-weight:800;color:#ffffff;margin-bottom:10px">Rating 5.0 di Google</h3>
-        <p style="font-size:13px;color:rgba(147,197,253,0.7);line-height:1.75;margin:0">Lebih dari 200 ulasan bintang lima dari mahasiswa UT Samarinda dan Kaltim yang puas dengan layanan kami.</p>
-      </div>
-      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:24px;padding:28px;position:relative;overflow:hidden;transition:all .3s" onmouseover="this.style.borderColor='rgba(16,185,129,0.5)';this.style.background='rgba(255,255,255,0.09)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.12)';this.style.background='rgba(255,255,255,0.06)'">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#10B981,#34D399)"></div>
-        <div style="width:48px;height:48px;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px">🏆</div>
-        <h3 style="font-size:16px;font-weight:800;color:#ffffff;margin-bottom:10px">Lolos Audit BDO Internasional</h3>
-        <p style="font-size:13px;color:rgba(147,197,253,0.7);line-height:1.75;margin:0">Satu-satunya sentra layanan UT di Kalimantan Timur yang lolos audit BDO — standar tata kelola kelas dunia.</p>
-      </div>
-      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:24px;padding:28px;position:relative;overflow:hidden;transition:all .3s" onmouseover="this.style.borderColor='rgba(59,130,246,0.5)';this.style.background='rgba(255,255,255,0.09)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.12)';this.style.background='rgba(255,255,255,0.06)'">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#3B82F6,#60A5FA)"></div>
-        <div style="width:48px;height:48px;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px">🎓</div>
-        <h3 style="font-size:16px;font-weight:800;color:#ffffff;margin-bottom:10px">5000+ Mahasiswa Terlayani</h3>
-        <p style="font-size:13px;color:rgba(147,197,253,0.7);line-height:1.75;margin:0">Sejak 2018, kami melayani ribuan mahasiswa UT dari Samarinda, Balikpapan, dan seluruh Kalimantan Timur.</p>
-      </div>
-      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:24px;padding:28px;position:relative;overflow:hidden;transition:all .3s" onmouseover="this.style.borderColor='rgba(236,72,153,0.5)';this.style.background='rgba(255,255,255,0.09)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.12)';this.style.background='rgba(255,255,255,0.06)'">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#EC4899,#F472B6)"></div>
-        <div style="width:48px;height:48px;background:rgba(236,72,153,0.15);border:1px solid rgba(236,72,153,0.3);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px">💬</div>
-        <h3 style="font-size:16px;font-weight:800;color:#ffffff;margin-bottom:10px">Respons WhatsApp &lt; 5 Menit</h3>
-        <p style="font-size:13px;color:rgba(147,197,253,0.7);line-height:1.75;margin:0">Tim admin siap 24 jam via WhatsApp. Tidak perlu antri — semua urusan UT bisa diselesaikan online.</p>
-      </div>
-      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:24px;padding:28px;position:relative;overflow:hidden;transition:all .3s" onmouseover="this.style.borderColor='rgba(245,158,11,0.5)';this.style.background='rgba(255,255,255,0.09)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.12)';this.style.background='rgba(255,255,255,0.06)'">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#F59E0B,#EF4444)"></div>
-        <div style="width:48px;height:48px;background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px">🤝</div>
-        <h3 style="font-size:16px;font-weight:800;color:#ffffff;margin-bottom:10px">5 Mitra Eksklusif</h3>
-        <p style="font-size:13px;color:rgba(147,197,253,0.7);line-height:1.75;margin:0">Anggota Salut mendapat diskon di Bank BTN, Hotel Grand Kartika, Quest Hotel Balikpapan, Senyiur, dan TMS Daihatsu.</p>
-      </div>
-      <div style="background:linear-gradient(135deg,#F59E0B,#FBBF24 50%,#F97316);border-radius:24px;padding:28px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden">
-        <div style="position:absolute;top:-20px;right:-20px;width:80px;height:80px;background:rgba(255,255,255,0.15);border-radius:50%"></div>
-        <div style="position:absolute;bottom:-20px;left:-20px;width:60px;height:60px;background:rgba(255,255,255,0.12);border-radius:50%"></div>
-        <div style="font-size:44px;margin-bottom:14px;position:relative;z-index:1">🪪</div>
-        <h3 style="font-size:17px;font-weight:900;color:#0F172A;margin-bottom:8px;position:relative;z-index:1">Buat KTA Sekarang</h3>
-        <p style="font-size:12px;color:rgba(15,23,42,0.72);line-height:1.6;margin-bottom:18px;position:relative;z-index:1">Download KTA gratis dan nikmati semua keuntungan anggota eksklusif Salut Etam Betuah!</p>
-        <a href="/kta.html" style="display:inline-flex;align-items:center;gap:8px;background:#0F172A;color:#FFD700;font-size:13px;font-weight:800;padding:12px 22px;border-radius:99px;text-decoration:none;position:relative;z-index:1">🪪 Buat KTA Gratis</a>
-      </div>
-    </div>
-    <!-- SEO Text Block -->
-    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:24px;padding:32px;max-width:840px;margin:0 auto">
-      <h3 style="font-size:19px;font-weight:800;color:#ffffff;margin-bottom:14px">📚 Tentang Salut Etam Betuah</h3>
-      <p style="font-size:13.5px;color:rgba(147,197,253,0.75);line-height:1.9;margin-bottom:14px"><strong style="color:#FCD34D">Salut Etam Betuah</strong> adalah Sentra Layanan Universitas Terbuka (SALUT) resmi yang beroperasi di Samarinda, Kalimantan Timur sejak tahun 2018. Kami melayani seluruh kebutuhan akademik mahasiswa <strong style="color:#FCD34D">UT Samarinda</strong> — dari pendaftaran mahasiswa baru, registrasi semester, pengambilan modul, pelayanan ujian, hingga pendaftaran wisuda.</p>
-      <p style="font-size:13.5px;color:rgba(147,197,253,0.75);line-height:1.9;margin-bottom:14px">Bagi Anda yang mencari <strong style="color:#FCD34D">sentra layanan UT di Samarinda</strong> yang terpercaya, <strong style="color:#FCD34D">Salut Etam Betuah</strong> hadir dengan bukti nyata: <strong style="color:#FCD34D">rating 5.0★ di Google</strong>, lolos audit BDO internasional, dan ribuan mahasiswa yang telah lulus. Kami melayani mahasiswa dari Samarinda, Balikpapan, Kutai Kartanegara, Bontang, Berau, dan seluruh wilayah Kalimantan Timur, serta seluruh Indonesia.</p>
-      <p style="font-size:13.5px;color:rgba(147,197,253,0.75);line-height:1.9;margin:0">Dengan program RPL (Rekognisi Pembelajaran Lampau), <strong style="color:#FCD34D">Salut Etam Betuah</strong> membantu ASN, TNI, Polri, dan profesional berpengalaman mendapatkan gelar S1 dari Universitas Terbuka lebih cepat dan efisien. Hubungi kami sekarang di <a href="#" onclick="openWAPicker();return false;" style="color:#FBBF24;text-decoration:underline;font-weight:700">0822-5063-8289</a>.</p>
+    <div style="position:relative;width:100%;padding-bottom:177.77%">
+      <iframe id="vt-iframe" src="" style="position:absolute;inset:0;width:100%;height:100%;border:none" allow="autoplay;fullscreen" loading="lazy"></iframe>
     </div>
   </div>
+</div>
+<script>
+(function(){
+  function openVidModal(id,platform,title,cat){
+    var src = platform==='instagram'?'https://www.instagram.com/p/'+id+'/embed/':'https://www.tiktok.com/embed/v2/'+id;
+    document.getElementById('vt-iframe').src=src;
+    document.getElementById('vt-modal-title').textContent=title;
+    document.getElementById('vt-modal-cat').textContent=cat;
+    document.getElementById('vt-modal').style.display='flex';
+    document.body.style.overflow='hidden';
+  }
+  function closeVidModal(e){
+    if(e&&e.target!==document.getElementById('vt-modal'))return;
+    document.getElementById('vt-modal').style.display='none';
+    document.getElementById('vt-iframe').src='';
+    document.body.style.overflow='';
+  }
+  function filterVid(cat,btn){
+    document.querySelectorAll('.vt-tab').forEach(function(b){b.style.background='transparent';b.style.color='#94a3b8';b.style.borderColor='rgba(255,255,255,0.12)';});
+    btn.style.background='rgba(245,158,11,0.15)';btn.style.color='#f59e0b';btn.style.borderColor='rgba(245,158,11,0.4)';
+    document.querySelectorAll('.vt-card').forEach(function(c){c.style.display=(cat==='semua'||c.dataset.cat===cat)?'':'none';});
+    var f=document.getElementById('vid-featured');if(f)f.style.display=(cat==='semua'||cat==='testimoni')?'':'none';
+  }
+  window.openVidModal=openVidModal;window.closeVidModal=closeVidModal;window.filterVid=filterVid;
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeVidModal(null);});
+})();
+</script>
+
+<section id="mitra" style="padding:2.5rem 1.25rem;background:#f8fafc;border-top:1px solid #e2e8f0" aria-label="Mitra Eksklusif Salut Etam Betuah">
+  <div style="max-width:900px;margin:0 auto;text-align:center">
+    <p style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#3b82f6;margin-bottom:.375rem">🎁 Keuntungan Eksklusif</p>
+    <h2 style="font-family:'Poppins',sans-serif;font-size:1.35rem;font-weight:800;color:#1e293b;margin-bottom:.5rem">Jadi Anggota Salut, Dapat 5 Mitra Eksklusif!</h2>
+    <p style="font-size:0.8rem;color:#64748b;margin-bottom:1.5rem">Tunjukkan KTA Salut Etam Betuah dan nikmati diskon spesial di semua mitra</p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:1.25rem;flex-wrap:wrap;margin-bottom:1.5rem">
+      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:.625rem 1rem;display:flex;align-items:center;gap:.5rem">
+        <img src="assets/images/partners/btn.png" alt="Bank BTN" loading="lazy" style="height:28px;object-fit:contain">
+        <div style="text-align:left"><div style="font-size:.7rem;font-weight:700;color:#1e293b">Bank BTN</div><div style="font-size:.65rem;color:#64748b">Cicil SPP/UKT</div></div>
+      </div>
+      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:.625rem 1rem;display:flex;align-items:center;gap:.5rem">
+        <img src="assets/images/partners/hotel-gk.png" alt="Hotel Grand Kartika Samarinda" loading="lazy" style="height:28px;object-fit:contain">
+        <div style="text-align:left"><div style="font-size:.7rem;font-weight:700;color:#1e293b">Grand Kartika</div><div style="font-size:.65rem;color:#64748b">Diskon Hotel</div></div>
+      </div>
+      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:.625rem 1rem;display:flex;align-items:center;gap:.5rem">
+        <img src="assets/images/partners/quest-hotel.png" alt="Quest Hotel Balikpapan" loading="lazy" style="height:28px;object-fit:contain">
+        <div style="text-align:left"><div style="font-size:.7rem;font-weight:700;color:#1e293b">Quest Hotel</div><div style="font-size:.65rem;color:#64748b">Diskon 30%</div></div>
+      </div>
+      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:.625rem 1rem;display:flex;align-items:center;gap:.5rem">
+        <img src="assets/images/partners/senyiur.png" alt="Senyiur Hotels Resorts" loading="lazy" style="height:28px;object-fit:contain">
+        <div style="text-align:left"><div style="font-size:.7rem;font-weight:700;color:#1e293b">Senyiur</div><div style="font-size:.65rem;color:#64748b">Diskon Hotel</div></div>
+      </div>
+      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:.625rem 1rem;display:flex;align-items:center;gap:.5rem">
+        <img src="assets/images/partners/tms-daihatsu.png" alt="TMS Daihatsu Samarinda" loading="lazy" style="height:28px;object-fit:contain">
+        <div style="text-align:left"><div style="font-size:.7rem;font-weight:700;color:#1e293b">TMS Daihatsu</div><div style="font-size:.65rem;color:#64748b">Hemat 50% Service</div></div>
+      </div>
+    </div>
+    <a href="https://salutetambetuah.id/kta.html" style="display:inline-flex;align-items:center;gap:6px;background:#1e3a8a;color:#fff;padding:9px 20px;border-radius:8px;font-weight:700;font-size:.8rem;text-decoration:none">🪪 Buat KTA Gratis →</a>
+  </div>
 </section>
+
+
+
+
 
 <!-- ================================================================
      FAQ (compact)
      ================================================================ -->
-<section id="faq" class="py-14 lg:py-20 bg-surface" aria-label="FAQ Salut Etam Betuah">
-  <div class="max-w-3xl mx-auto px-4 lg:px-6">
-    <div class="text-center mb-10 reveal">
-      <div class="sec-label mb-3 mx-auto" style="display:inline-flex"><i data-lucide="help-circle" class="w-3 h-3"></i> FAQ</div>
-      <h2 class="text-2xl lg:text-4xl font-black text-brand-navy">Pertanyaan Umum</h2>
+
+<section id="faq" style="padding:3rem 1.25rem;background:#fff" aria-label="FAQ Salut Etam Betuah">
+  <div style="max-width:750px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:1.75rem">
+      <p style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#3b82f6;margin-bottom:.375rem">FAQ</p>
+      <h2 style="font-family:'Poppins',sans-serif;font-size:1.5rem;font-weight:800;color:#1e293b">Pertanyaan Umum</h2>
     </div>
-    <div class="space-y-3 reveal" id="faq-list">
-      <div class="faq-item">
-        <button class="faq-btn"><span class="fq">Apakah Salut Etam Betuah lembaga resmi?</span><i data-lucide="chevron-down" class="w-4 h-4 fq-icon"></i></button>
-        <div class="faq-body">Kami adalah mitra layanan resmi Universitas Terbuka yang telah <strong>lolos audit independen BDO</strong> — firma audit multinasional terkemuka. Seluruh proses mengikuti prosedur resmi UT.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-btn"><span class="fq">Bagaimana cara mendaftar kuliah UT di Samarinda?</span><i data-lucide="chevron-down" class="w-4 h-4 fq-icon"></i></button>
-        <div class="faq-body">Chat WhatsApp <strong>0822 5063 8289</strong> atau isi formulir di section Kontak. Untuk Non-RPL (SMA/SMK) dan RPL (D3/pindahan) tersedia form online di website. Tim kami dampingi dari awal hingga NIM aktif.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-btn"><span class="fq">Berapa biaya dan apakah bisa dicicil?</span><i data-lucide="chevron-down" class="w-4 h-4 fq-icon"></i></button>
-        <div class="faq-body">Keanggotaan <strong>Rp 500.000/semester</strong> sudah termasuk semua fasilitas. Biaya kuliah UT per semester Rp 1,5–3,5 juta tergantung prodi. Tersedia cicilan via Bank BTN. Konsultasi gratis!</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-btn"><span class="fq">Bisa urus administrasi dari luar kota?</span><i data-lucide="chevron-down" class="w-4 h-4 fq-icon"></i></button>
-        <div class="faq-body">Ya! Sebagian besar layanan bisa via WhatsApp. Kirim scan dokumen, bayar transfer, dokumen jadi dikirim ke seluruh Kaltim via ekspedisi. WhatsApp kami aktif <strong>24 jam</strong>.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-btn"><span class="fq">Berapa lama proses pengurusan dokumen?</span><i data-lucide="chevron-down" class="w-4 h-4 fq-icon"></i></button>
-        <div class="faq-body">SKA 1–3 hari, transkrip 2–5 hari, legalisir same-day bisa. Ijazah dari pusat UT 7–14 hari. Kami selalu update progress via WhatsApp.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-btn"><span class="fq">Apa itu Salut Talks?</span><i data-lucide="chevron-down" class="w-4 h-4 fq-icon"></i></button>
-        <div class="faq-body">Program talkshow eksklusif dengan narasumber inspiratif — praktisi, akademisi, alumni UT — membahas pendidikan, karir, dan pengembangan diri. Disiarkan live di media sosial kami.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-btn"><span class="fq">Apa itu Salut Etam Betuah dan apa bedanya dengan SALUT?</span><i data-lucide="chevron-down" class="w-4 h-4 fq-icon"></i></button>
-        <div class="faq-body"><strong>Salut Etam Betuah</strong> adalah nama brand resmi kami — kepanjangan dari <strong>S</strong>entra <strong>L</strong>ayanan <strong>U</strong>niversitas <strong>T</strong>erbuka <strong>E</strong>tam <strong>B</strong>etuah. Kami adalah SALUT (Sentra Layanan UT) resmi yang beroperasi di Samarinda, Kalimantan Timur sejak 2018. "Etam Betuah" adalah frasa Bahasa Kutai yang berarti "Kita Beruntung/Sejahtera" — mencerminkan misi kami memajukan pendidikan di Kaltim.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-btn"><span class="fq">Apakah Salut Etam Betuah melayani mahasiswa dari luar Samarinda?</span><i data-lucide="chevron-down" class="w-4 h-4 fq-icon"></i></button>
-        <div class="faq-body">Ya! <strong>Salut Etam Betuah</strong> melayani mahasiswa UT dari seluruh Kalimantan Timur — Balikpapan, Kutai Kartanegara, Bontang, Berau, Penajam, Mahakam Ulu, dan daerah lainnya. Sebagian besar layanan bisa dilakukan via WhatsApp tanpa perlu datang ke Samarinda.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-btn"><span class="fq">Kenapa harus pilih Salut Etam Betuah untuk kuliah UT di Samarinda?</span><i data-lucide="chevron-down" class="w-4 h-4 fq-icon"></i></button>
-        <div class="faq-body"><strong>Salut Etam Betuah</strong> adalah sentra layanan UT di Samarinda dengan rekam jejak terbaik: ⭐ 5.0 Google (200+ ulasan), lolos audit BDO internasional, 5000+ mahasiswa terlayani, dan 5 mitra eksklusif. Kami mendampingi dari daftar hingga wisuda — bukan sekadar tempat bayar SPP.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-btn"><span class="fq">Di mana lokasi SALUT resmi di Samarinda?</span><i data-lucide="chevron-down" class="w-4 h-4 fq-icon"></i></button>
-        <div class="faq-body"><strong>SALUT Etam Betuah</strong> berlokasi di Jl. Kadrie Oening No. 66A, Air Hitam, Samarinda Ulu, Kota Samarinda, Kalimantan Timur 75124. Jam operasional Senin–Sabtu 08.30–17.00 WITA. WhatsApp aktif 24 jam di 0822-5063-8289. <a href="https://maps.app.goo.gl/FkwAV4UnkdAcQD5UA" target="_blank" rel="noopener">Lihat di Google Maps →</a></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-btn"><span class="fq">Apa perbedaan SALUT dan UPBJJ UT Samarinda?</span><i data-lucide="chevron-down" class="w-4 h-4 fq-icon"></i></button>
-        <div class="faq-body"><strong>UPBJJ</strong> adalah kantor resmi UT di setiap kota besar. <strong>SALUT</strong> (Sentra Layanan Universitas Terbuka) adalah mitra resmi UPBJJ yang melayani mahasiswa di tingkat lokal. <strong>Salut Etam Betuah</strong> adalah SALUT resmi di bawah UPBJJ UT Samarinda — melayani seluruh Kalimantan Timur sejak 2018.</div>
-      </div>
+    <div style="display:flex;flex-direction:column;gap:.625rem">
+      <details style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:1rem 1.125rem;cursor:pointer">
+        <summary style="font-weight:700;color:#1e293b;font-size:.875rem;list-style:none;display:flex;justify-content:space-between;align-items:center">Apakah Salut Etam Betuah lembaga resmi? <span style="color:#3b82f6;font-size:.75rem;font-weight:600;flex-shrink:0;margin-left:.5rem">+ Lihat</span></summary>
+        <p style="margin-top:.625rem;font-size:.825rem;color:#475569;line-height:1.6">Kami adalah mitra layanan resmi Universitas Terbuka yang telah <strong>lolos audit independen BDO</strong> — firma audit multinasional terkemuka. Seluruh proses mengikuti prosedur resmi UT.</p>
+      </details>
+      <details style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:1rem 1.125rem;cursor:pointer">
+        <summary style="font-weight:700;color:#1e293b;font-size:.875rem;list-style:none;display:flex;justify-content:space-between;align-items:center">Bagaimana cara mendaftar kuliah UT di Samarinda? <span style="color:#3b82f6;font-size:.75rem;font-weight:600;flex-shrink:0;margin-left:.5rem">+ Lihat</span></summary>
+        <p style="margin-top:.625rem;font-size:.825rem;color:#475569;line-height:1.6">Chat WhatsApp <strong>0822 5063 8289</strong> atau kunjungi langsung kantor kami. Tersedia jalur Non-RPL (SMA/SMK) dan RPL (D3/pindahan). Tim kami dampingi dari awal hingga NIM aktif.</p>
+      </details>
+      <details style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:1rem 1.125rem;cursor:pointer">
+        <summary style="font-weight:700;color:#1e293b;font-size:.875rem;list-style:none;display:flex;justify-content:space-between;align-items:center">Berapa biaya dan apakah bisa dicicil? <span style="color:#3b82f6;font-size:.75rem;font-weight:600;flex-shrink:0;margin-left:.5rem">+ Lihat</span></summary>
+        <p style="margin-top:.625rem;font-size:.825rem;color:#475569;line-height:1.6">Keanggotaan <strong>Rp 500.000/semester</strong> sudah termasuk semua fasilitas. Biaya kuliah UT per semester Rp 1,5–3,5 juta tergantung prodi. Tersedia <strong>cicilan via Bank BTN</strong>.</p>
+      </details>
+      <details style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:1rem 1.125rem;cursor:pointer">
+        <summary style="font-weight:700;color:#1e293b;font-size:.875rem;list-style:none;display:flex;justify-content:space-between;align-items:center">Bisa urus administrasi dari luar kota? <span style="color:#3b82f6;font-size:.75rem;font-weight:600;flex-shrink:0;margin-left:.5rem">+ Lihat</span></summary>
+        <p style="margin-top:.625rem;font-size:.825rem;color:#475569;line-height:1.6">Ya! Sebagian besar layanan bisa via WhatsApp. Kirim scan dokumen, bayar transfer, dokumen dikirim via ekspedisi ke seluruh Kaltim. WhatsApp aktif <strong>24 jam</strong>.</p>
+      </details>
+      <details style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:1rem 1.125rem;cursor:pointer">
+        <summary style="font-weight:700;color:#1e293b;font-size:.875rem;list-style:none;display:flex;justify-content:space-between;align-items:center">Di mana lokasi SALUT Etam Betuah? <span style="color:#3b82f6;font-size:.75rem;font-weight:600;flex-shrink:0;margin-left:.5rem">+ Lihat</span></summary>
+        <p style="margin-top:.625rem;font-size:.825rem;color:#475569;line-height:1.6"><strong>Jl. Kadrie Oening No. 66A, Air Hitam, Samarinda Ulu</strong>. Buka Senin–Sabtu 08.30–17.00 WITA. WhatsApp 24 jam: 0822-5063-8289. <a href="https://maps.app.goo.gl/FkwAV4UnkdAcQD5UA" target="_blank" rel="noopener noreferrer" style="color:#1e40af">Lihat di Google Maps →</a></p>
+      </details>
+      <details style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:1rem 1.125rem;cursor:pointer">
+        <summary style="font-weight:700;color:#1e293b;font-size:.875rem;list-style:none;display:flex;justify-content:space-between;align-items:center">Apa itu RPL dan siapa yang cocok? <span style="color:#3b82f6;font-size:.75rem;font-weight:600;flex-shrink:0;margin-left:.5rem">+ Lihat</span></summary>
+        <p style="margin-top:.625rem;font-size:.825rem;color:#475569;line-height:1.6"><strong>RPL (Rekognisi Pembelajaran Lampau)</strong> cocok untuk ASN, TNI, Polri, dan profesional berpengalaman. Pengalaman kerja diakui sebagai SKS sehingga kuliah lebih singkat dan efisien.</p>
+      </details>
     </div>
   </div>
 </section>
+
 
 <!-- ================================================================
      KONTAK (compact 2-col)
@@ -2079,32 +1512,6 @@ html { scroll-behavior: smooth; }
      FOOTER (minimal)
      ================================================================ -->
 
-<!-- SEO: SALUT Section - Targeting keyword "salut" -->
-<section id="tentang-salut" style="background:#EFF6FF;padding:3rem 1.5rem" aria-labelledby="salut-heading">
-  <div style="max-width:900px;margin:0 auto">
-    <h2 id="salut-heading" style="font-family:Inter,sans-serif;font-size:1.5rem;font-weight:800;color:#1E3A8A;margin-bottom:1rem;text-align:center">
-      Apa itu SALUT? — Sentra Layanan Universitas Terbuka di Samarinda
-    </h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:1.5rem">
-      <div style="background:#fff;border-radius:12px;padding:1.25rem;border:1px solid #DBEAFE">
-        <h3 style="font-size:1rem;font-weight:700;color:#1E3A8A;margin-bottom:0.5rem">🏢 Apa itu SALUT?</h3>
-        <p style="font-size:0.875rem;color:#374151;line-height:1.7">SALUT adalah singkatan dari <strong>Sentra Layanan Universitas Terbuka</strong>. SALUT berfungsi sebagai kepanjangan tangan UT di setiap kota, memberikan layanan tatap muka kepada mahasiswa. <strong>Salut Etam Betuah</strong> adalah SALUT resmi di Samarinda, Kalimantan Timur.</p>
-      </div>
-      <div style="background:#fff;border-radius:12px;padding:1.25rem;border:1px solid #DBEAFE">
-        <h3 style="font-size:1rem;font-weight:700;color:#1E3A8A;margin-bottom:0.5rem">📍 SALUT Terbaik di Samarinda</h3>
-        <p style="font-size:0.875rem;color:#374151;line-height:1.7"><strong>Salut Etam Betuah</strong> adalah SALUT dengan rating tertinggi di Samarinda — ⭐ 5.0 di Google Maps dengan 200+ ulasan. Satu-satunya SALUT di Kaltim yang lolos audit BDO internasional. Melayani 5000+ mahasiswa sejak 2018.</p>
-      </div>
-      <div style="background:#fff;border-radius:12px;padding:1.25rem;border:1px solid #DBEAFE">
-        <h3 style="font-size:1rem;font-weight:700;color:#1E3A8A;margin-bottom:0.5rem">✅ Layanan SALUT Lengkap</h3>
-        <p style="font-size:0.875rem;color:#374151;line-height:1.7">SALUT Etam Betuah melayani: pendaftaran mahasiswa baru, registrasi semester, herregistrasi, RPL alih kredit, pengambilan modul, ujian UAS/UASKE, konsultasi akademik, dan pendaftaran wisuda — semua bisa via WhatsApp.</p>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:1.5rem">
-      <p style="font-size:0.875rem;color:#6B7280">Cari <strong>SALUT Samarinda</strong>? <strong>SALUT UT Samarinda</strong>? <strong>Sentra Layanan UT Kaltim</strong>? — <strong>Salut Etam Betuah</strong> adalah pilihan terbaik Anda.</p>
-      <a href="#kontak" style="display:inline-block;margin-top:1rem;background:#1E3A8A;color:#fff;padding:0.625rem 1.5rem;border-radius:8px;font-weight:600;font-size:0.875rem;text-decoration:none">Hubungi SALUT Sekarang →</a>
-    </div>
-  </div>
-</section>
 
 </main>
 <footer class="bg-brand-navy border-t border-white/10 py-8">

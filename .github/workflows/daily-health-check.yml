@@ -9,7 +9,7 @@ jobs:
   health-check:
     runs-on: ubuntu-latest
     steps:
-      - name: Check All URLs (14 pages)
+      - name: Check All URLs (16 pages)
         run: |
           FAILED=0
           URLS=(
@@ -26,6 +26,8 @@ jobs:
             "https://salutetambetuah.id/blog/tips-lulus-ut-tepat-waktu-fresh-graduate.html"
             "https://salutetambetuah.id/blog/panduan-registrasi-matkul-ut-2026.html"
             "https://salutetambetuah.id/blog/keuntungan-kuliah-universitas-terbuka.html"
+            "https://salutetambetuah.id/blog/jadwal-wisuda-ut-2026-kaltim.html"
+            "https://salutetambetuah.id/blog/prodi-terpopuler-ut-samarinda-2026.html"
             "https://salutetambetuah.id/kta.html"
           )
           for URL in "${URLS[@]}"; do

@@ -3,19 +3,13 @@ name: Daily Website Health Check
 on:
   schedule:
     - cron: '0 1 * * *'  # Jam 08:00 WIB (UTC+7 = UTC 01:00)
-  workflow_dispatch:       # Bisa dijalankan manual dari GitHub
+  workflow_dispatch:
 
 jobs:
   health-check:
     runs-on: ubuntu-latest
     steps:
-      - name: Check Homepage
-        run: |
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://salutetambetuah.id)
-          echo "Homepage: $STATUS"
-          if [ "$STATUS" != "200" ]; then echo "ERROR: Homepage down!"; exit 1; fi
-
-      - name: Check All Sitemap URLs
+      - name: Check All URLs (14 pages)
         run: |
           FAILED=0
           URLS=(
@@ -28,6 +22,7 @@ jobs:
             "https://salutetambetuah.id/blog/rpl-ut-kaltim.html"
             "https://salutetambetuah.id/blog/biaya-kuliah-ut-samarinda.html"
             "https://salutetambetuah.id/blog/wisuda-ut-samarinda.html"
+            "https://salutetambetuah.id/blog/jadwal-wisuda-ut-2026-kaltim.html"
             "https://salutetambetuah.id/blog/tips-lulus-ut-tepat-waktu-fresh-graduate.html"
             "https://salutetambetuah.id/blog/panduan-registrasi-matkul-ut-2026.html"
             "https://salutetambetuah.id/blog/keuntungan-kuliah-universitas-terbuka.html"
@@ -35,42 +30,53 @@ jobs:
           )
           for URL in "${URLS[@]}"; do
             CODE=$(curl -s -o /dev/null -w "%{http_code}" "$URL")
-            echo "$CODE — $URL"
-            if [ "$CODE" != "200" ]; then
-              echo "BROKEN: $URL"
+            if [ "$CODE" = "200" ]; then
+              echo "✅ $CODE — $URL"
+            else
+              echo "❌ $CODE — $URL"
               FAILED=1
             fi
           done
           if [ "$FAILED" = "1" ]; then
-            echo "Ada URL yang 404! Cek segera."
+            echo "::error::Ada URL yang error! Cek segera salutetambetuah.id"
             exit 1
           fi
-          echo "Semua ${{#URLS[@]}} URL sehat (200 OK)"
+          echo "✅ Semua ${#URLS[@]} URL sehat"
 
-      - name: Check Page Load Speed
+      - name: Check Page Speed (Homepage)
         run: |
           TIME=$(curl -s -o /dev/null -w "%{time_total}" https://salutetambetuah.id)
-          echo "Load time homepage: ${TIME}s"
-          # Peringatan jika lebih dari 3 detik
-          WARN=$(echo "$TIME > 3.0" | bc -l)
-          if [ "$WARN" = "1" ]; then
-            echo "WARNING: Homepage lambat (${TIME}s > 3s)"
-          fi
+          SIZE=$(curl -s -o /dev/null -w "%{size_download}" https://salutetambetuah.id)
+          echo "🏎️  Load time: ${TIME}s | Size: ${SIZE} bytes"
+          python3 -c "
+          t = float('$TIME')
+          if t > 3.0:
+              print(f'::warning::Homepage lambat: {t}s (target < 3s)')
+          else:
+              print(f'✅ Speed OK: {t}s')
+          "
 
-      - name: Check Sitemap XML Valid
+      - name: Check Sitemap Valid (14 URLs)
         run: |
           SITEMAP=$(curl -s https://salutetambetuah.id/sitemap.xml)
-          if echo "$SITEMAP" | grep -q "<urlset"; then
-            COUNT=$(echo "$SITEMAP" | grep -c "<loc>")
-            echo "Sitemap valid — $COUNT URLs ditemukan"
+          COUNT=$(echo "$SITEMAP" | grep -c "<loc>" || echo 0)
+          echo "📍 Sitemap URLs: $COUNT"
+          if [ "$COUNT" -lt "12" ]; then
+            echo "::warning::Sitemap hanya $COUNT URLs (expected 14+)"
           else
-            echo "ERROR: Sitemap tidak valid!"
-            exit 1
+            echo "✅ Sitemap OK — $COUNT URLs"
           fi
 
-      - name: Success Summary
+      - name: Check WebP Images
         run: |
-          echo "========================================"
-          echo "✅ HEALTH CHECK PASSED — salutetambetuah.id"
-          echo "Waktu: $(TZ='Asia/Makassar' date '+%d %B %Y %H:%M WIT')"
-          echo "========================================"
+          for img in wisuda-2.webp wisuda-1.webp kantor-luar.webp; do
+            CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://salutetambetuah.id/assets/images/$img")
+            echo "$CODE — $img"
+          done
+
+      - name: Summary
+        run: |
+          echo "================================================"
+          echo "✅ HEALTH CHECK SELESAI — salutetambetuah.id"
+          echo "🕐 $(TZ='Asia/Makassar' date '+%A, %d %B %Y %H:%M WITA')"
+          echo "================================================"

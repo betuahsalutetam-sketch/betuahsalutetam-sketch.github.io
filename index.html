@@ -1913,25 +1913,40 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.ge
 
 
 <!-- ================================================================
-     TESTIMONI — carousel
+     TESTIMONI — Google Maps Reviews Asli (verified ⭐5.0)
+     Update: 22 Mei 2026 — 8 review terbaik dari Google Maps
      ================================================================ -->
-<section id="testimoni" class="py-14 lg:py-20 bg-white" aria-label="Testimoni Mahasiswa Salut Etam Betuah">
+<style>
+.testi-item{flex:0 0 100%;background:white;border-radius:var(--radius-lg);padding:22px;border:1px solid #E2E8F0;position:relative}
+@media(min-width:768px){.testi-item{flex:0 0 calc(50% - 8px)}}
+.testi-item::before{content:'\201C';position:absolute;top:12px;right:18px;font-size:4rem;color:#EFF6FF;font-family:Georgia,serif;line-height:1}
+.testi-gmaps{display:inline-flex;align-items:center;gap:4px;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:6px;padding:2px 7px;margin-top:10px}
+.testi-verified{font-size:9px;color:#64748B;font-weight:600}
+.local-guide-badge{background:#E8F5E9;color:#2E7D32;font-size:8px;font-weight:700;padding:1px 6px;border-radius:4px;display:inline-block;margin-left:4px}
+</style>
+
+<section id="testimoni" class="py-14 lg:py-20 bg-white" aria-label="Ulasan Google Maps Salut Etam Betuah">
   <div class="max-w-7xl mx-auto px-4 lg:px-6">
+
     <div class="sec-header reveal">
       <div>
-        <div class="sec-label mb-3"><i data-lucide="star" class="w-3 h-3"></i> Testimoni</div>
+        <div class="sec-label mb-3"><i data-lucide="star" class="w-3 h-3"></i> Ulasan Google Maps</div>
         <h2 class="text-2xl lg:text-4xl font-black text-brand-navy">Kata Mereka</h2>
-        <div class="flex items-center gap-2 mt-1">
-          <div class="flex text-amber-400 text-sm">★★★★★</div>
-          <span class="text-sm font-bold text-brand-navy">5.0</span>
-          <a href="https://maps.app.goo.gl/tuReCHw3uPCLJzHCA" target="_blank" class="text-[11px] text-slate-400 hover:text-brand-blue">Google Maps</a>
+        <div class="flex items-center gap-3 mt-2 flex-wrap">
+          <div class="flex text-amber-400 text-base">★★★★★</div>
+          <span class="text-base font-black text-brand-navy">5.0</span>
+          <span class="text-[11px] text-slate-400">· 200+ ulasan terverifikasi</span>
+          <a href="https://maps.app.goo.gl/tuReCHw3uPCLJzHCA" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-[10px] text-blue-600 font-semibold hover:underline">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            Google Maps
+          </a>
         </div>
       </div>
       <div class="flex gap-2">
-        <button id="t-prev" class="w-9 h-9 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors text-brand-navy">
+        <button id="t-prev" class="w-9 h-9 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors text-brand-navy" aria-label="Review sebelumnya">
           <i data-lucide="chevron-left" class="w-4 h-4"></i>
         </button>
-        <button id="t-next" class="w-9 h-9 rounded-full bg-brand-navy text-white flex items-center justify-center hover:bg-blue-900 transition-colors">
+        <button id="t-next" class="w-9 h-9 rounded-full bg-brand-navy text-white flex items-center justify-center hover:bg-blue-900 transition-colors" aria-label="Review berikutnya">
           <i data-lucide="chevron-right" class="w-4 h-4"></i>
         </button>
       </div>
@@ -1939,66 +1954,154 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.ge
 
     <div class="overflow-hidden reveal" id="testi-outer">
       <div class="testi-track" id="testi-track">
-        <!-- 6 reviews -->
+
+        <!-- Review 1: Dhedy Mahakam — paling detail & informatif -->
         <div class="testi-item shadow-card">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-sm font-bold text-white flex-shrink-0">RH</div>
-            <div><div class="text-sm font-bold text-brand-navy">Rahmat Hidayat</div><div class="text-[10px] text-slate-400">Local Guide · 3 bulan lalu</div></div>
-            <div class="ml-auto flex text-amber-400 text-sm">★★★★★</div>
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-sm font-black text-white flex-shrink-0">DM</div>
+            <div class="flex-1 min-w-0">
+              <div class="text-sm font-bold text-brand-navy">Dhedy Mahakam</div>
+              <div class="text-[10px] text-slate-400">1 ulasan · 4 bulan lalu</div>
+            </div>
+            <div class="text-amber-400 text-sm flex-shrink-0">★★★★★</div>
           </div>
-          <p class="text-xs text-slate-600 leading-relaxed">"Pelayanan sangat ramah dan profesional. Tim Salut Etam Betuah membantu saya mendaftar ulang semester baru dengan cepat. Lokasinya strategis dan parkir luas. Sangat direkomendasikan!"</p>
+          <p class="text-xs text-slate-600 leading-relaxed">"Salut Etam Betuah adalah Sentra Layanan Universitas Terbuka di Samarinda yang sangat membantu mahasiswa sebagai pusat layanan akademik dan non-akademik untuk mempermudah mahasiswa, calon mahasiswa, dan masyarakat dalam mengakses pendidikan tinggi jarak jauh, mulai dari pendaftaran, konsultasi, bimbingan belajar, hingga fasilitas pendukung lainnya."</p>
+          <div class="testi-gmaps">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            <span class="testi-verified">Ulasan Google Maps Terverifikasi</span>
+          </div>
         </div>
+
+        <!-- Review 2: Bang Fitri — Local Guide 122 ulasan, disabilitas -->
         <div class="testi-item shadow-card">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-sm font-bold text-white flex-shrink-0">SA</div>
-            <div><div class="text-sm font-bold text-brand-navy">Siti Aminah</div><div class="text-[10px] text-slate-400">8 ulasan · 2 bulan lalu</div></div>
-            <div class="ml-auto flex text-amber-400 text-sm">★★★★★</div>
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-sm font-black text-white flex-shrink-0">BF</div>
+            <div class="flex-1 min-w-0">
+              <div class="text-sm font-bold text-brand-navy flex items-center gap-1 flex-wrap">Bang Fitri <span class="local-guide-badge">Local Guide</span></div>
+              <div class="text-[10px] text-slate-400">122 ulasan · 130 foto · 10 bulan lalu</div>
+            </div>
+            <div class="text-amber-400 text-sm flex-shrink-0">★★★★★</div>
           </div>
-          <p class="text-xs text-slate-600 leading-relaxed">"Tempatnya nyaman, full AC, dan staff-nya komunikatif. Saya yang awam administrasi UT dibimbing dari awal sampai NIM aktif. Terima kasih Salut Etam Betuah!"</p>
+          <p class="text-xs text-slate-600 leading-relaxed">"Saya sangat terkesan dengan komitmen Salut Etam Betuah dalam menyediakan lingkungan yang inklusif dan mendukung bagi penyandang disabilitas. Fasilitas yang disediakan sangat memadai, mulai dari aksesibilitas gedung, ruang kelas, hingga fasilitas pendukung lainnya."</p>
+          <div class="testi-gmaps">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            <span class="testi-verified">Ulasan Google Maps Terverifikasi</span>
+          </div>
         </div>
+
+        <!-- Review 3: irma rosita — 9 ulasan, personal testimony -->
         <div class="testi-item shadow-card">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-sm font-bold text-white flex-shrink-0">BP</div>
-            <div><div class="text-sm font-bold text-brand-navy">Bayu Prasetyo</div><div class="text-[10px] text-slate-400">Local Guide · 5 bulan lalu</div></div>
-            <div class="ml-auto flex text-amber-400 text-sm">★★★★★</div>
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-rose-500 to-pink-600 flex items-center justify-center text-sm font-black text-white flex-shrink-0">IR</div>
+            <div class="flex-1 min-w-0">
+              <div class="text-sm font-bold text-brand-navy">irma rosita</div>
+              <div class="text-[10px] text-slate-400">9 ulasan · 1 foto · 4 bulan lalu</div>
+            </div>
+            <div class="text-amber-400 text-sm flex-shrink-0">★★★★★</div>
           </div>
-          <p class="text-xs text-slate-600 leading-relaxed">"Salut Talks-nya bagus banget, narasumbernya keren. Untuk urusan administrasi UT juga top. Tim selalu update progres via WhatsApp. Recommended buat mahasiswa UT di Samarinda!"</p>
+          <p class="text-xs text-slate-600 leading-relaxed">"Saya pribadi sangat terbantu selama perkuliahan dengan pendampingan dari Salut Etam Betuah. Gedung barunya sangat nyaman dan keren. Sukses selalu untuk Salut Etam Betuah dan pak Ahmad! 🔥🔥🔥"</p>
+          <div class="testi-gmaps">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            <span class="testi-verified">Ulasan Google Maps Terverifikasi</span>
+          </div>
         </div>
+
+        <!-- Review 4: Khusnul Khotimah — bimbingan dari daftar -->
         <div class="testi-item shadow-card">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-sm font-bold text-white flex-shrink-0">DA</div>
-            <div><div class="text-sm font-bold text-brand-navy">Dini Anggraeni</div><div class="text-[10px] text-slate-400">15 ulasan · 1 bulan lalu</div></div>
-            <div class="ml-auto flex text-amber-400 text-sm">★★★★★</div>
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-purple-500 to-violet-600 flex items-center justify-center text-sm font-black text-white flex-shrink-0">KK</div>
+            <div class="flex-1 min-w-0">
+              <div class="text-sm font-bold text-brand-navy">Khusnul Khotimah</div>
+              <div class="text-[10px] text-slate-400">1 ulasan · 4 bulan lalu</div>
+            </div>
+            <div class="text-amber-400 text-sm flex-shrink-0">★★★★★</div>
           </div>
-          <p class="text-xs text-slate-600 leading-relaxed">"Mantap. Saya pindahan kampus lain (alih kredit RPL) dan dibantu pengisian formulir, validasi ijazah, sampai aktif kuliah. Prosesnya transparan dan tidak bertele-tele."</p>
+          <p class="text-xs text-slate-600 leading-relaxed">"Tempatnya sangat nyaman, di Salut Etam Betuah sudah pasti dibimbing dari mulai daftar sampai menjadi mahasiswa/wi. Sangat ramah admin-adminnya, pelayanan yang sangat baik. Good! 🔥🔥🔥"</p>
+          <div class="testi-gmaps">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            <span class="testi-verified">Ulasan Google Maps Terverifikasi</span>
+          </div>
         </div>
+
+        <!-- Review 5: wanda nata — admin fast respon -->
         <div class="testi-item shadow-card">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-rose-500 to-pink-600 flex items-center justify-center text-sm font-bold text-white flex-shrink-0">MF</div>
-            <div><div class="text-sm font-bold text-brand-navy">Muhammad Fadhil</div><div class="text-[10px] text-slate-400">Local Guide · 2 minggu lalu</div></div>
-            <div class="ml-auto flex text-amber-400 text-sm">★★★★★</div>
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-sm font-black text-white flex-shrink-0">WN</div>
+            <div class="flex-1 min-w-0">
+              <div class="text-sm font-bold text-brand-navy">wanda nata</div>
+              <div class="text-[10px] text-slate-400">2 ulasan · 4 bulan lalu</div>
+            </div>
+            <div class="text-amber-400 text-sm flex-shrink-0">★★★★★</div>
           </div>
-          <p class="text-xs text-slate-600 leading-relaxed">"Tempat ujian online ber-AC dan komputernya cepat. Wifi stabil dan pengawasannya tertib. Salut Etam Betuah memang mitra terbaik UT di Samarinda. Lima bintang!"</p>
+          <p class="text-xs text-slate-600 leading-relaxed">"Fasilitas memadai dan baik, pelayanan adminnya fast respon, sangat mudah mahasiswa mendapatkan informasi jika bergabung di SALUT ETAM BETUAH."</p>
+          <div class="testi-gmaps">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            <span class="testi-verified">Ulasan Google Maps Terverifikasi</span>
+          </div>
         </div>
+
+        <!-- Review 6: ANGLER SAMARINDA Ludi — Local Guide, kuliah lancar -->
         <div class="testi-item shadow-card">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-sm font-bold text-white flex-shrink-0">YS</div>
-            <div><div class="text-sm font-bold text-brand-navy">Yusuf Setiawan</div><div class="text-[10px] text-slate-400">7 ulasan · 4 bulan lalu</div></div>
-            <div class="ml-auto flex text-amber-400 text-sm">★★★★★</div>
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-sm font-black text-white flex-shrink-0">AL</div>
+            <div class="flex-1 min-w-0">
+              <div class="text-sm font-bold text-brand-navy flex items-center gap-1 flex-wrap">ANGLER Ludi <span class="local-guide-badge">Local Guide</span></div>
+              <div class="text-[10px] text-slate-400">16 ulasan · 66 foto · 4 bulan lalu</div>
+            </div>
+            <div class="text-amber-400 text-sm flex-shrink-0">★★★★★</div>
           </div>
-          <p class="text-xs text-slate-600 leading-relaxed">"Saya kerja di tambang dan jarang ke kota. Semua urusan registrasi UT bisa diselesaikan via WhatsApp dengan tim Salut. Respon cepat, bukti pembayaran rapi. Sangat puas!"</p>
+          <p class="text-xs text-slate-600 leading-relaxed">"Alhamdulillah terima kasih Salut Etam Betuah. Terima kasih UT. Saya bisa kuliah dengan lancar di sini, pelayanannya memuaskan."</p>
+          <div class="testi-gmaps">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            <span class="testi-verified">Ulasan Google Maps Terverifikasi</span>
+          </div>
         </div>
+
+        <!-- Review 7: Angga Adi saputra — fasilitas & ujian nyaman -->
+        <div class="testi-item shadow-card">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-slate-600 to-slate-800 flex items-center justify-center text-sm font-black text-white flex-shrink-0">AA</div>
+            <div class="flex-1 min-w-0">
+              <div class="text-sm font-bold text-brand-navy">Angga Adi Saputra</div>
+              <div class="text-[10px] text-slate-400">1 ulasan · 4 bulan lalu</div>
+            </div>
+            <div class="text-amber-400 text-sm flex-shrink-0">★★★★★</div>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed">"Salut sangat membantu, tempatnya nyaman fasilitasnya juga sangat baik. Nyaman ujian di sini."</p>
+          <div class="testi-gmaps">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            <span class="testi-verified">Ulasan Google Maps Terverifikasi</span>
+          </div>
+        </div>
+
+        <!-- Review 8: Ahmad Maulana — mantap, ramah, recommended -->
+        <div class="testi-item shadow-card">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-sm font-black text-white flex-shrink-0">AM</div>
+            <div class="flex-1 min-w-0">
+              <div class="text-sm font-bold text-brand-navy">Ahmad Maulana</div>
+              <div class="text-[10px] text-slate-400">1 ulasan · 4 bulan lalu</div>
+            </div>
+            <div class="text-amber-400 text-sm flex-shrink-0">★★★★★</div>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed">"Pelayanan mantap, ramah, dan sangat membantu. Recommended!"</p>
+          <div class="testi-gmaps">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            <span class="testi-verified">Ulasan Google Maps Terverifikasi</span>
+          </div>
+        </div>
+
       </div>
     </div>
 
     <!-- Dots -->
     <div id="testi-dots" class="flex justify-center gap-1.5 mt-5"></div>
 
-    <div class="mt-6 text-center reveal">
+    <div class="mt-7 text-center reveal">
       <a href="https://maps.app.goo.gl/tuReCHw3uPCLJzHCA" target="_blank" rel="noopener"
          class="inline-flex items-center gap-2 border border-slate-200 text-brand-navy text-xs font-semibold px-5 py-2.5 rounded-full hover:bg-slate-50 transition-colors">
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-        Lihat Semua Review di Google Maps
+        Lihat Semua Ulasan di Google Maps (200+)
         <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
       </a>
     </div>
@@ -3073,6 +3176,79 @@ document.querySelectorAll('.counter').forEach(el => cntObs.observe(el));
 }
 </script>
 <!-- ===== VIDEO MODAL ===== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://salutetambetuah.id/#reviews",
+  "name": "SALUT ETAM BETUAH",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "200",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": {"@type": "Person", "name": "Dhedy Mahakam"},
+      "datePublished": "2026-01-22",
+      "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+      "reviewBody": "Salut Etam Betuah adalah Sentra Layanan Universitas Terbuka di Samarinda yang sangat membantu mahasiswa sebagai pusat layanan akademik dan non-akademik untuk mempermudah mahasiswa, calon mahasiswa, dan masyarakat dalam mengakses pendidikan tinggi jarak jauh, mulai dari pendaftaran, konsultasi, bimbingan belajar, hingga fasilitas pendukung lainnya."
+    },
+    {
+      "@type": "Review",
+      "author": {"@type": "Person", "name": "Bang Fitri"},
+      "datePublished": "2025-07-22",
+      "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+      "reviewBody": "Saya sangat terkesan dengan komitmen Salut Etam Betuah dalam menyediakan lingkungan yang inklusif dan mendukung bagi penyandang disabilitas. Fasilitas yang disediakan sangat memadai, mulai dari aksesibilitas gedung, ruang kelas, hingga fasilitas pendukung lainnya."
+    },
+    {
+      "@type": "Review",
+      "author": {"@type": "Person", "name": "irma rosita"},
+      "datePublished": "2026-01-22",
+      "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+      "reviewBody": "Saya pribadi sangat terbantu selama perkuliahan dengan pendampingan dari Salut Etam Betuah. Gedung barunya sangat nyaman dan keren. Sukses selalu untuk Salut Etam Betuah dan pak Ahmad!"
+    },
+    {
+      "@type": "Review",
+      "author": {"@type": "Person", "name": "Khusnul Khotimah"},
+      "datePublished": "2026-01-22",
+      "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+      "reviewBody": "Tempatnya sangat nyaman, di Salut Etam Betuah sudah pasti dibimbing dari mulai daftar sampai menjadi mahasiswa. Sangat ramah admin-adminnya, pelayanan yang sangat baik."
+    },
+    {
+      "@type": "Review",
+      "author": {"@type": "Person", "name": "wanda nata"},
+      "datePublished": "2026-01-22",
+      "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+      "reviewBody": "Fasilitas memadai dan baik, pelayanan adminnya fast respon, sangat mudah mahasiswa mendapatkan informasi jika bergabung di SALUT ETAM BETUAH."
+    },
+    {
+      "@type": "Review",
+      "author": {"@type": "Person", "name": "ANGLER SAMARINDA Ludi"},
+      "datePublished": "2026-01-22",
+      "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+      "reviewBody": "Alhamdulillah terima kasih Salut Etam Betuah. Terima kasih UT. Saya bisa kuliah dengan lancar di sini, pelayanannya memuaskan."
+    },
+    {
+      "@type": "Review",
+      "author": {"@type": "Person", "name": "Angga Adi Saputra"},
+      "datePublished": "2026-01-22",
+      "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+      "reviewBody": "Salut sangat membantu, tempatnya nyaman fasilitasnya juga sangat baik. Nyaman ujian di sini."
+    },
+    {
+      "@type": "Review",
+      "author": {"@type": "Person", "name": "Ahmad Maulana"},
+      "datePublished": "2026-01-22",
+      "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+      "reviewBody": "Pelayanan mantap, ramah, dan sangat membantu. Recommended!"
+    }
+  ]
+}
+</script>
 <div id="video-modal" role="dialog" aria-modal="true" aria-label="Pemutar Video">
   <div id="video-modal-inner">
     <button id="video-modal-close" aria-label="Tutup video">✕</button>

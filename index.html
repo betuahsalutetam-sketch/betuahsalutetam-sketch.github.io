@@ -394,142 +394,104 @@
 <!-- ================================================================
      LAYANAN
      ================================================================ -->
-<section id="layanan" class="py-14 lg:py-20 bg-surface" aria-label="Layanan Salut Etam Betuah UT Samarinda">
+<style>
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:12px;margin-bottom:24px}
+.svc2-card{background:white;border:1px solid #E8F0FB;border-radius:18px;padding:18px 16px;cursor:pointer;transition:all .22s;position:relative;overflow:hidden}
+.svc2-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1E3A8A,#3B82F6);opacity:0;transition:opacity .22s}
+.svc2-card:hover{border-color:#1E3A8A;box-shadow:0 8px 24px rgba(30,58,138,.1);transform:translateY(-2px)}
+.svc2-card:hover::before{opacity:1}
+.svc2-icon{width:42px;height:42px;border-radius:12px;background:#EFF6FF;display:flex;align-items:center;justify-content:center;margin-bottom:10px;transition:background .22s}
+.svc2-card:hover .svc2-icon{background:#1E3A8A}
+.svc2-card:hover .svc2-icon i{color:white!important}
+.svc2-title{font-size:12px;font-weight:700;color:#0F172A;line-height:1.35;margin-bottom:5px}
+.svc2-desc{font-size:11px;color:#64748B;line-height:1.6}
+.svc2-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:7px}
+.svc2-tag{font-size:9px;font-weight:600;background:#F1F5F9;color:#475569;padding:2px 7px;border-radius:4px}
+.fac-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(115px,1fr));gap:9px;margin-top:18px}
+.fac-card{background:white;border:1px solid #E2E8F0;border-radius:12px;padding:12px 10px;display:flex;flex-direction:column;align-items:center;gap:7px;text-align:center;transition:all .2s}
+.fac-card:hover{border-color:#1E3A8A;box-shadow:0 4px 12px rgba(30,58,138,.07)}
+.fac-icon{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center}
+.fac-lbl{font-size:10px;font-weight:600;color:#374151;line-height:1.3}
+.journey-strip{display:flex;overflow-x:auto;padding-bottom:4px;gap:0}
+.journey-strip::-webkit-scrollbar{height:3px;background:#F1F5F9;border-radius:99px}
+.journey-strip::-webkit-scrollbar-thumb{background:#CBD5E1;border-radius:99px}
+.journey-step{flex:1;min-width:100px;text-align:center;padding:12px 8px;position:relative}
+.journey-step::after{content:'';position:absolute;top:20px;right:-1px;width:2px;height:14px;background:#E2E8F0}
+.journey-step:last-child::after{display:none}
+.j-num{width:28px;height:28px;border-radius:50%;background:#EFF6FF;color:#1E3A8A;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 6px}
+.j-title{font-size:10px;font-weight:700;color:#0F172A;line-height:1.3}
+.j-sub{font-size:9px;color:#94A3B8;margin-top:1px;line-height:1.3}
+</style>
+
+<section id="layanan" class="py-14 lg:py-20" style="background:#F8FAFF" aria-label="Layanan Salut Etam Betuah UT Samarinda">
   <div class="max-w-7xl mx-auto px-4 lg:px-6">
     <div class="sec-header reveal">
       <div>
         <div class="sec-label mb-3"><i data-lucide="sparkles" class="w-3 h-3"></i> Layanan Kami</div>
-        <h2 class="text-2xl lg:text-4xl font-black text-brand-navy leading-tight">Layanan Salut Etam Betuah Lengkap</h2>
-        <p class="text-xs text-slate-500 mt-1 max-w-sm">Dari daftar hingga wisuda — semua bisa via WhatsApp</p>
+        <h2 class="text-2xl lg:text-4xl font-black text-brand-navy leading-tight">Semua Urusan UT — Kami yang Handle</h2>
+        <p class="text-xs text-slate-500 mt-1.5 max-w-md">Dari daftar hingga wisuda — selesai di satu tempat, via WhatsApp atau datang langsung.</p>
       </div>
-      <a href="#kontak" class="text-brand-blue hover:underline flex items-center gap-1">
-        Konsultasi <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+      <a href="https://wa.me/6282250638289?text=Halo%20Salut%20Etam%20Betuah%2C%20saya%20ingin%20konsultasi" target="_blank" rel="noopener" class="flex-shrink-0 inline-flex items-center gap-2 bg-brand-navy text-white text-xs font-bold px-5 py-2.5 rounded-full hover:bg-blue-900 transition-colors">
+        <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Konsultasi Gratis
       </a>
     </div>
 
-    <!-- Horizontal scroll cards -->
-    <div class="hscroll-wrap reveal">
-      <div class="hscroll">
-
-        <div class="svc-card" onclick="openWA('Pendaftaran Mahasiswa Baru')">
-          <div class="svc-icon"><i data-lucide="user-plus" class="w-5 h-5 text-brand-blue"></i></div>
-          <div class="svc-title">Pendaftaran Mahasiswa Baru</div>
-          <div class="svc-tags">
-            <span class="svc-tag">Non-RPL</span><span class="svc-tag">RPL</span>
-          </div>
-        </div>
-
-        <div class="svc-card" onclick="openWA('Registrasi/Herregistrasi')">
-          <div class="svc-icon"><i data-lucide="refresh-cw" class="w-5 h-5 text-brand-blue"></i></div>
-          <div class="svc-title">Registrasi / Herregistrasi</div>
-          <div class="svc-tags">
-            <span class="svc-tag">Semester</span><span class="svc-tag">Reaktivasi</span>
-          </div>
-        </div>
-
-        <div class="svc-card" onclick="openWA('Pengambilan Modul')">
-          <div class="svc-icon"><i data-lucide="book-open" class="w-5 h-5 text-brand-blue"></i></div>
-          <div class="svc-title">Pengambilan Modul & Buku</div>
-          <div class="svc-tags">
-            <span class="svc-tag">Langsung</span><span class="svc-tag">Kirim</span>
-          </div>
-        </div>
-
-        <div class="svc-card" onclick="openWA('Pengurusan Dokumen Akademik')">
-          <div class="svc-icon"><i data-lucide="file-text" class="w-5 h-5 text-brand-blue"></i></div>
-          <div class="svc-title">Dokumen Akademik</div>
-          <div class="svc-tags">
-            <span class="svc-tag">SKA</span><span class="svc-tag">Transkrip</span><span class="svc-tag">SKPI</span>
-          </div>
-        </div>
-
-        <div class="svc-card" onclick="openWA('Pelayanan Ujian')">
-          <div class="svc-icon"><i data-lucide="clipboard-check" class="w-5 h-5 text-brand-blue"></i></div>
-          <div class="svc-title">Pelayanan Ujian</div>
-          <div class="svc-tags">
-            <span class="svc-tag">UAS</span><span class="svc-tag">UASKU</span><span class="svc-tag">Susulan</span>
-          </div>
-        </div>
-
-        <div class="svc-card" onclick="openWA('Konsultasi Akademik')">
-          <div class="svc-icon"><i data-lucide="message-square" class="w-5 h-5 text-brand-blue"></i></div>
-          <div class="svc-title">Konsultasi Akademik</div>
-          <div class="svc-tags">
-            <span class="svc-tag">Offline</span><span class="svc-tag">Online</span>
-          </div>
-        </div>
-
-        <div class="svc-card" onclick="openWA('Cetak KRS/Perwalian')">
-          <div class="svc-icon"><i data-lucide="list-checks" class="w-5 h-5 text-brand-blue"></i></div>
-          <div class="svc-title">Cetak KRS & Perwalian</div>
-          <div class="svc-tags">
-            <span class="svc-tag">KRS</span><span class="svc-tag">Perwalian</span>
-          </div>
-        </div>
-
-        <div class="svc-card" onclick="openWA('Pendaftaran Wisuda')">
-          <div class="svc-icon"><i data-lucide="award" class="w-5 h-5 text-brand-blue"></i></div>
-          <div class="svc-title">Pendaftaran Wisuda</div>
-          <div class="svc-tags">
-            <span class="svc-tag">Daftar</span><span class="svc-tag">Persiapan</span>
-          </div>
-        </div>
-
-        <div class="svc-card" onclick="openWA('Cuti Akademik/Perpindahan')">
-          <div class="svc-icon"><i data-lucide="arrow-right-left" class="w-5 h-5 text-brand-blue"></i></div>
-          <div class="svc-title">Cuti & Perpindahan</div>
-          <div class="svc-tags">
-            <span class="svc-tag">Cuti</span><span class="svc-tag">Pindah Prodi</span>
-          </div>
-        </div>
-
-        <!-- padding spacer -->
-        <div class="flex-shrink-0 w-2"></div>
+    <!-- Journey 8 steps -->
+    <div class="reveal mb-2">
+      <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-3">Perjalanan Mahasiswa Bersama Kami</div>
+      <div class="journey-strip bg-white rounded-2xl border border-slate-100 shadow-sm">
+        <div class="journey-step"><div class="j-num">1</div><div class="j-title">Konsultasi</div><div class="j-sub">Gratis, via WA</div></div>
+        <div class="journey-step"><div class="j-num">2</div><div class="j-title">Pilih Prodi</div><div class="j-sub">Dibimbing tim</div></div>
+        <div class="journey-step"><div class="j-num">3</div><div class="j-title">Siapkan Dok.</div><div class="j-sub">Kami bantu cek</div></div>
+        <div class="journey-step"><div class="j-num">4</div><div class="j-title">Daftar UT</div><div class="j-sub">Online/offline</div></div>
+        <div class="journey-step"><div class="j-num">5</div><div class="j-title">NIM Aktif</div><div class="j-sub">Langsung kuliah</div></div>
+        <div class="journey-step"><div class="j-num">6</div><div class="j-title">Bimbingan</div><div class="j-sub">Tiap semester</div></div>
+        <div class="journey-step"><div class="j-num">7</div><div class="j-title">Ujian</div><div class="j-sub">Lab Salut</div></div>
+        <div class="journey-step"><div class="j-num" style="background:#1E3A8A;color:white">🎓</div><div class="j-title">Wisuda!</div><div class="j-sub">Selamat!</div></div>
       </div>
     </div>
 
-    <!-- Fasilitas icons (compact) -->
-    <div class="mt-10 reveal">
-      <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Fasilitas</div>
-      <div class="grid grid-cols-3 sm:grid-cols-5 gap-3">
-        <div class="bg-white rounded-xl p-3.5 flex flex-col items-center gap-2 border border-slate-100 shadow-card text-center">
-          <i data-lucide="monitor" class="w-6 h-6 text-brand-blue"></i>
-          <span class="text-[11px] font-semibold text-slate-600 leading-tight">Lab Komputer AC</span>
-        </div>
-        <div class="bg-white rounded-xl p-3.5 flex flex-col items-center gap-2 border border-slate-100 shadow-card text-center">
-          <i data-lucide="users" class="w-6 h-6 text-brand-blue"></i>
-          <span class="text-[11px] font-semibold text-slate-600 leading-tight">Ruang Konsultasi</span>
-        </div>
-        <div class="bg-white rounded-xl p-3.5 flex flex-col items-center gap-2 border border-slate-100 shadow-card text-center">
-          <i data-lucide="accessibility" class="w-6 h-6 text-brand-blue"></i>
-          <span class="text-[11px] font-semibold text-slate-600 leading-tight">Ruang Disabilitas</span>
-        </div>
-        <div class="bg-white rounded-xl p-3.5 flex flex-col items-center gap-2 border border-slate-100 shadow-card text-center">
-          <i data-lucide="coffee" class="w-6 h-6 text-brand-blue"></i>
-          <span class="text-[11px] font-semibold text-slate-600 leading-tight">Area Rooftop</span>
-        </div>
-        <div class="bg-amber-50 border border-amber-100 rounded-xl p-3.5 flex flex-col items-center gap-2 shadow-card text-center">
-          <i data-lucide="credit-card" class="w-6 h-6 text-amber-600"></i>
-          <span class="text-[11px] font-semibold text-amber-700 leading-tight">SPP Cicil BTN</span>
-        </div>
+    <!-- Service 9 cards grid -->
+    <div class="svc-grid reveal">
+      <div class="svc2-card" onclick="openWA('Pendaftaran Mahasiswa Baru')"><div class="svc2-icon"><i data-lucide="user-plus" class="w-5 h-5 text-brand-blue"></i></div><div class="svc2-title">Pendaftaran Mahasiswa Baru</div><div class="svc2-desc">Daftar kuliah UT dari nol — dokumen, sistem, NIM aktif. Kami dampingi penuh.</div><div class="svc2-tags"><span class="svc2-tag">Non-RPL</span><span class="svc2-tag">RPL</span><span class="svc2-tag">Pindahan</span></div></div>
+      <div class="svc2-card" onclick="openWA('Registrasi/Herregistrasi Semester')"><div class="svc2-icon"><i data-lucide="refresh-cw" class="w-5 h-5 text-brand-blue"></i></div><div class="svc2-title">Registrasi & Herregistrasi</div><div class="svc2-desc">Daftar matkul tiap semester tanpa khawatir ketinggalan deadline.</div><div class="svc2-tags"><span class="svc2-tag">SIPAS</span><span class="svc2-tag">Non-SIPAS</span><span class="svc2-tag">Reaktivasi</span></div></div>
+      <div class="svc2-card" onclick="openWA('Konsultasi Akademik')"><div class="svc2-icon"><i data-lucide="message-square" class="w-5 h-5 text-brand-blue"></i></div><div class="svc2-title">Konsultasi Akademik</div><div class="svc2-desc">Bingung pilih prodi, matkul, atau strategi lulus? Tim kami siap bantu.</div><div class="svc2-tags"><span class="svc2-tag">Offline</span><span class="svc2-tag">WA</span><span class="svc2-tag">Gratis</span></div></div>
+      <div class="svc2-card" onclick="openWA('Pelayanan Ujian UAS')"><div class="svc2-icon"><i data-lucide="clipboard-check" class="w-5 h-5 text-brand-blue"></i></div><div class="svc2-title">Pelayanan Ujian</div><div class="svc2-desc">Lab komputer ber-AC, WiFi stabil — ujian online nyaman dan tertib.</div><div class="svc2-tags"><span class="svc2-tag">UAS</span><span class="svc2-tag">UASKU</span><span class="svc2-tag">TAP</span><span class="svc2-tag">Susulan</span></div></div>
+      <div class="svc2-card" onclick="openWA('Dokumen Akademik')"><div class="svc2-icon"><i data-lucide="file-text" class="w-5 h-5 text-brand-blue"></i></div><div class="svc2-title">Dokumen Akademik</div><div class="svc2-desc">Urus SKA, transkrip, SKPI, legalisir, dan semua dokumen resmi UT.</div><div class="svc2-tags"><span class="svc2-tag">SKA</span><span class="svc2-tag">Transkrip</span><span class="svc2-tag">SKPI</span></div></div>
+      <div class="svc2-card" onclick="openWA('Pengambilan Modul')"><div class="svc2-icon"><i data-lucide="book-open" class="w-5 h-5 text-brand-blue"></i></div><div class="svc2-title">Modul & Bahan Belajar</div><div class="svc2-desc">Ambil modul di kantor atau kami kirim ke alamat Anda di seluruh Kaltim.</div><div class="svc2-tags"><span class="svc2-tag">Ambil Langsung</span><span class="svc2-tag">Dikirim</span></div></div>
+      <div class="svc2-card" onclick="openWA('Pendaftaran Wisuda')"><div class="svc2-icon"><i data-lucide="award" class="w-5 h-5 text-brand-blue"></i></div><div class="svc2-title">Pendaftaran Wisuda</div><div class="svc2-desc">Cek syarat, dokumen, daftar online, bayar — dibantu hingga hari-H wisuda.</div><div class="svc2-tags"><span class="svc2-tag">Cek Syarat</span><span class="svc2-tag">Pendaftaran</span></div></div>
+      <div class="svc2-card" onclick="openWA('Tutorial Tatap Muka TTM')"><div class="svc2-icon"><i data-lucide="users" class="w-5 h-5 text-brand-blue"></i></div><div class="svc2-title">Tutorial Tatap Muka</div><div class="svc2-desc">Kelas bimbingan kelompok akhir pekan — jadwal fleksibel, terbukti tingkatkan nilai.</div><div class="svc2-tags"><span class="svc2-tag">TTM</span><span class="svc2-tag">Weekend</span></div></div>
+      <div class="svc2-card" onclick="openWA('Cuti Akademik dan Perpindahan Prodi')"><div class="svc2-icon"><i data-lucide="arrow-right-left" class="w-5 h-5 text-brand-blue"></i></div><div class="svc2-title">Cuti & Pindah Prodi</div><div class="svc2-desc">Perlu jeda atau ganti program studi? Kami urus prosesnya tanpa ribet.</div><div class="svc2-tags"><span class="svc2-tag">Cuti</span><span class="svc2-tag">Pindah Prodi</span></div></div>
+    </div>
+
+    <!-- Fasilitas 8 cards -->
+    <div class="reveal">
+      <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-3">Fasilitas Gedung</div>
+      <div class="fac-grid">
+        <div class="fac-card"><div class="fac-icon" style="background:#EFF6FF"><i data-lucide="monitor" class="w-5 h-5 text-brand-blue"></i></div><span class="fac-lbl">Lab Komputer AC</span></div>
+        <div class="fac-card"><div class="fac-icon" style="background:#EFF6FF"><i data-lucide="wifi" class="w-5 h-5 text-brand-blue"></i></div><span class="fac-lbl">WiFi Stabil</span></div>
+        <div class="fac-card"><div class="fac-icon" style="background:#ECFDF5"><i data-lucide="accessibility" class="w-5 h-5 text-emerald-600"></i></div><span class="fac-lbl">Ramah Disabilitas</span></div>
+        <div class="fac-card"><div class="fac-icon" style="background:#EFF6FF"><i data-lucide="book" class="w-5 h-5 text-brand-blue"></i></div><span class="fac-lbl">Ruang Baca</span></div>
+        <div class="fac-card"><div class="fac-icon" style="background:#FFFBEB"><i data-lucide="coffee" class="w-5 h-5 text-amber-600"></i></div><span class="fac-lbl">Area Rooftop</span></div>
+        <div class="fac-card"><div class="fac-icon" style="background:#F0FDF4"><i data-lucide="car" class="w-5 h-5 text-green-600"></i></div><span class="fac-lbl">Parkir Luas</span></div>
+        <div class="fac-card"><div class="fac-icon" style="background:#FFF7ED"><i data-lucide="message-circle" class="w-5 h-5 text-orange-600"></i></div><span class="fac-lbl">Ruang Konsultasi</span></div>
+        <div class="fac-card" style="border-color:#FDE68A;background:#FEF9EC"><div class="fac-icon" style="background:#FEF3C7"><i data-lucide="credit-card" class="w-5 h-5 text-amber-600"></i></div><span class="fac-lbl" style="color:#92400E">Cicil SPP BTN</span></div>
       </div>
     </div>
 
-    <!-- Keanggotaan CTA -->
+    <!-- CTA keanggotaan -->
     <div class="mt-8 reveal bg-gradient-to-r from-amber-400 to-yellow-300 rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div>
-        <div class="text-[10px] font-bold text-brand-navy/60 uppercase tracking-wider">Biaya Keanggotaan</div>
+        <div class="text-[10px] font-bold text-brand-navy/60 uppercase tracking-wider mb-1">Biaya Keanggotaan</div>
         <div class="text-2xl font-black text-brand-navy">Rp 500.000<span class="text-base font-semibold">/Semester</span></div>
-        <div class="text-xs text-brand-navy/70 mt-0.5">Sudah termasuk semua fasilitas + keuntungan eksklusif</div>
+        <div class="text-xs text-brand-navy/70 mt-0.5">Semua fasilitas + 5 mitra eksklusif + layanan lengkap</div>
       </div>
-      <a href="https://wa.me/6282250638289?text=Halo%20Salut%20Etam%20Betuah%2C%20saya%20ingin%20daftar%20keanggotaan" target="_blank" rel="noopener"
-         class="flex-shrink-0 bg-brand-navy text-white text-sm font-bold px-6 py-3 rounded-full hover:bg-blue-900 transition-colors whitespace-nowrap">
+      <a href="https://wa.me/6282250638289?text=Halo%20Salut%20Etam%20Betuah%2C%20saya%20ingin%20daftar%20keanggotaan" target="_blank" rel="noopener" class="flex-shrink-0 bg-brand-navy text-white text-sm font-bold px-6 py-3 rounded-full hover:bg-blue-900 transition-colors whitespace-nowrap">
         Daftar Sekarang →
       </a>
     </div>
   </div>
 </section>
-
 
 <!-- ================================================================
      MITRA & PARTNER EKSKLUSIF

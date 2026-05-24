@@ -8,6 +8,7 @@
 <meta name="description" content="Salut UT Samarinda — Salut Etam Betuah, sentra layanan Universitas Terbuka #1 di Kalimantan Timur. Daftar kuliah UT online, RPL alih kredit, registrasi, ujian, wisuda. Rating ⭐ 5.0 Google, lolos Audit BDO, 5000+ mahasiswa terlayani sejak 2018.">
 <meta name="keywords" content="salut etam betuah, salut, salut samarinda, salut ut, ut samarinda, sentra layanan ut samarinda, universitas terbuka samarinda, kuliah ut samarinda, daftar ut samarinda, salut kalimantan timur, salut kaltim, ut kaltim, kuliah jarak jauh samarinda, daftar kuliah sambil kerja, rpl ut samarinda, alih kredit ut, wisuda ut samarinda, kuliah online samarinda, salut etam, betuah ut, sentra layanan universitas terbuka">
 <meta name="author" content="Salut Etam Betuah">
+<meta name="google-site-verification" content="8eb66f398c4e0dce">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="geo.region" content="ID-KI">
 <meta name="geo.placename" content="Samarinda, Kalimantan Timur">
@@ -83,6 +84,9 @@
 <noscript><link rel="stylesheet" href="assets/css/tailwind.min.css"><link rel="stylesheet" href="assets/css/style.css"></noscript>
 <link rel="stylesheet" href="assets/css/tailwind.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
+  <!-- GA4 — ganti G-XXXXXXXXXX dengan Measurement ID Anda -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-XXXXXXXXXX");</script>
 </head>
 
 <body>
@@ -494,177 +498,175 @@
 </section>
 
 <!-- ================================================================
-     MITRA & PARTNER EKSKLUSIF
+     MITRA & PARTNER EKSKLUSIF — Redesign v2.0
      ================================================================ -->
-<section id="mitra" style="padding:56px 0;background:linear-gradient(180deg,#F8FAFC 0%,#ffffff 100%)">
+<style>
+/* ===== MITRA SECTION STYLES ===== */
+.mitra-section{padding:60px 0 56px;background:linear-gradient(180deg,#F8FAFF 0%,#ffffff 100%)}
+.mitra-header{text-align:center;margin-bottom:40px}
+.mitra-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.3);color:#D97706;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 16px;border-radius:99px;margin-bottom:14px}
+/* Logo strip */
+.logo-strip{background:white;border-radius:20px;padding:20px 24px;border:1px solid #E8EFFC;box-shadow:0 2px 12px rgba(30,58,138,.05);margin-bottom:32px;display:flex;align-items:center;justify-content:space-around;flex-wrap:wrap;gap:16px}
+.logo-pill{display:flex;align-items:center;justify-content:center;height:44px;padding:0 16px;filter:grayscale(40%);opacity:.75;transition:all .25s;flex-shrink:0}
+.logo-pill:hover{filter:grayscale(0%);opacity:1}
+.logo-pill img{height:32px;object-fit:contain;max-width:100px}
+.logo-sep{width:1px;height:28px;background:#E2E8F0;flex-shrink:0}
+/* Mitra cards */
+.mitra-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:32px}
+.mitra-card{background:white;border-radius:20px;border:1px solid #E8EFFC;padding:22px;position:relative;overflow:hidden;transition:all .25s;display:flex;flex-direction:column}
+.mitra-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--accent,#1E3A8A)}
+.mitra-card:hover{box-shadow:0 12px 32px rgba(30,58,138,.1);transform:translateY(-3px);border-color:transparent}
+.mitra-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
+.mitra-logo-box{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mitra-logo-box img{width:100%;height:100%;object-fit:contain;border-radius:12px}
+.mitra-badge-cat{font-size:9px;font-weight:700;padding:3px 9px;border-radius:6px;text-transform:uppercase;letter-spacing:.05em;flex-shrink:0;margin-top:2px}
+.mitra-name{font-size:14px;font-weight:800;color:#0F172A;line-height:1.3;margin-bottom:6px}
+.mitra-desc{font-size:12px;color:#64748B;line-height:1.65;flex:1;margin-bottom:14px}
+.mitra-benefits{list-style:none;padding:0;margin:0 0 16px;border-top:1px solid #F1F5F9;padding-top:12px}
+.mitra-benefits li{font-size:11px;color:#374151;padding:3px 0;display:flex;align-items:center;gap:6px;line-height:1.5}
+.mitra-benefits li::before{content:'✓';color:var(--accent,#1E3A8A);font-weight:800;font-size:11px;flex-shrink:0}
+.mitra-discount{display:inline-flex;align-items:center;gap:5px;background:var(--accent-light,#EFF6FF);color:var(--accent,#1E3A8A);font-size:11px;font-weight:800;padding:5px 12px;border-radius:8px;margin-top:auto}
+/* KTA CTA Card */
+.kta-card{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 50%,#2563EB 100%);border-radius:20px;padding:28px;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;overflow:hidden}
+.kta-card::after{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;background:rgba(245,158,11,.15);border-radius:50%}
+/* PKS strip */
+.pks-info{background:linear-gradient(135deg,#EFF6FF,#E0F2FE);border:1px solid #BAE6FD;border-radius:16px;padding:18px 22px;display:flex;align-items:center;gap:16px;margin-top:8px}
+.pks-icon{width:44px;height:44px;background:white;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(30,58,138,.1)}
+</style>
+
+<section id="mitra" class="mitra-section" aria-label="Mitra Eksklusif Salut Etam Betuah">
   <div style="max-width:1280px;margin:0 auto;padding:0 16px">
 
-    <!-- Section header -->
-    <div style="text-align:center;margin-bottom:40px">
-      <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.25);color:#D97706;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 14px;border-radius:99px;margin-bottom:12px">
-        🎁 Keuntungan Eksklusif
-      </div>
-      <h2 style="font-size:clamp(24px,4vw,36px);font-weight:900;color:#1E3A8A;line-height:1.1;margin-bottom:8px">
-        Jadi Anggota Salut,<br>Dapat Banyak Keuntungan!
+    <!-- Header -->
+    <div class="mitra-header">
+      <div class="mitra-badge">🎁 Keuntungan Eksklusif Anggota</div>
+      <h2 style="font-family:'Poppins',system-ui,sans-serif;font-size:clamp(22px,4vw,34px);font-weight:900;color:#0F172A;line-height:1.15;margin-bottom:10px">
+        Jadi Anggota Salut,<br><span style="color:#1E3A8A">Nikmati 5 Keuntungan Eksklusif!</span>
       </h2>
-      <p style="font-size:13px;color:#64748B;max-width:480px;margin:0 auto;line-height:1.7">
-        Keanggotaan Rp 500.000/semester membuka akses ke 5 mitra eksklusif dengan diskon spesial yang tidak bisa didapat di tempat lain.
+      <p style="font-size:13px;color:#64748B;max-width:500px;margin:0 auto;line-height:1.75">
+        Keanggotaan <strong style="color:#1E3A8A">Rp 500.000/semester</strong> membuka akses ke 5 mitra premium dengan diskon yang tidak bisa didapat di tempat lain.
       </p>
     </div>
 
-    <!-- PARTNER LOGOS ROW -->
-    <div style="background:white;border-radius:24px;padding:28px 24px;border:1px solid #E2E8F0;box-shadow:0 4px 20px rgba(30,58,138,.06);margin-bottom:40px">
-      <div style="font-size:11px;font-weight:700;color:#94A3B8;letter-spacing:.08em;text-transform:uppercase;text-align:center;margin-bottom:20px">Mitra Resmi Salut Etam Betuah</div>
-      <div class="partner-logos-row">
-        <div class="partner-logo-item">
-          <img src="assets/images/partners/hotel-gk.png" alt="Hotel Grand Kartika Samarinda" class="partner-logo-img"
-               onerror="this.parentElement.innerHTML='<span style=\'font-size:11px;font-weight:700;color:#DC2626\'>Grand Kartika</span>'">
-        </div>
-        <div class="partner-logos-sep"></div>
-        <div class="partner-logo-item">
-          <img src="assets/images/partners/senyiur.png" alt="Senyiur Hotels & Resorts" class="partner-logo-img"
-               onerror="this.parentElement.innerHTML='<span style=\'font-size:11px;font-weight:700;color:#D97706\'>Senyiur Hotels</span>'">
-        </div>
-        <div class="partner-logos-sep"></div>
-        <div class="partner-logo-item">
-          <img src="assets/images/partners/quest-hotel.png" alt="Quest Hotel Balikpapan" class="partner-logo-img"
-               onerror="this.parentElement.innerHTML='<span style=\'font-size:11px;font-weight:700;color:#7C3AED\'>Quest Hotel</span>'">
-        </div>
-        <div class="partner-logos-sep"></div>
-        <div class="partner-logo-item">
-          <img src="assets/images/partners/btn.png" alt="Bank BTN" class="partner-logo-img"
-               onerror="this.parentElement.innerHTML='<span style=\'font-size:13px;font-weight:900;color:#1D4ED8\'>btn</span>'">
-        </div>
-        <div class="partner-logos-sep"></div>
-        <div class="partner-logo-item">
-          <img src="assets/images/partners/tms-daihatsu.png" alt="TMS Daihatsu Samarinda" class="partner-logo-img"
-               onerror="this.parentElement.innerHTML='<span style=\'font-size:11px;font-weight:700;color:#DC2626\'>TMS Daihatsu</span>'">
-        </div>
-      </div>
+    <!-- Logo strip -->
+    <div class="logo-strip">
+      <div class="logo-pill"><img src="assets/images/partners/hotel-gk.png" alt="Hotel Grand Kartika" onerror="this.parentElement.innerHTML='<span style='font-size:12px;font-weight:800;color:#DC2626'>Grand Kartika</span>'"></div>
+      <div class="logo-sep"></div>
+      <div class="logo-pill"><img src="assets/images/partners/senyiur.png" alt="Senyiur Hotels" onerror="this.parentElement.innerHTML='<span style='font-size:12px;font-weight:800;color:#D97706'>Senyiur Hotels</span>'"></div>
+      <div class="logo-sep"></div>
+      <div class="logo-pill"><img src="assets/images/partners/quest-hotel.png" alt="Quest Hotel Balikpapan" onerror="this.parentElement.innerHTML='<span style='font-size:12px;font-weight:800;color:#7C3AED'>Quest Hotel</span>'"></div>
+      <div class="logo-sep"></div>
+      <div class="logo-pill"><img src="assets/images/partners/btn.png" alt="Bank BTN" onerror="this.parentElement.innerHTML='<span style='font-size:16px;font-weight:900;color:#1D4ED8'>btn</span>'"></div>
+      <div class="logo-sep"></div>
+      <div class="logo-pill"><img src="assets/images/partners/tms-daihatsu.png" alt="TMS Daihatsu" onerror="this.parentElement.innerHTML='<span style='font-size:12px;font-weight:800;color:#DC2626'>TMS Daihatsu</span>'"></div>
     </div>
 
-    <!-- BENEFIT CARDS -->
-    <div class="benefit-grid">
-      <div class="benefit-card" style="--card-accent:#3B82F6">
-        <div class="bc-logo-wrap" style="background:#EFF6FF">
-          <img src="assets/images/partners/btn.png" alt="Bank BTN" class="bc-logo" onerror="this.outerHTML='<span style=\'font-size:18px;font-weight:900;color:#1D4ED8\'>btn</span>'">
+    <!-- 5 Mitra cards + 1 KTA CTA -->
+    <div class="mitra-grid">
+
+      <!-- Bank BTN -->
+      <div class="mitra-card" style="--accent:#1D4ED8;--accent-light:#EFF6FF">
+        <div class="mitra-card-top">
+          <div class="mitra-logo-box" style="background:#EFF6FF"><img src="assets/images/partners/btn.png" alt="Bank BTN" onerror="this.outerHTML='<span style='font-size:20px;font-weight:900;color:#1D4ED8'>btn</span>'"></div>
+          <span class="mitra-badge-cat" style="background:#DBEAFE;color:#1D4ED8">💳 Perbankan</span>
         </div>
-        <div class="bc-badge" style="background:#EFF6FF;color:#1D4ED8">💳 SPP & UKT</div>
-        <h3 class="bc-title">Bank BTN</h3>
-        <p class="bc-desc">SPP/UKT bisa dicicil! Bayar kuliah lebih ringan lewat layanan khusus Bank BTN, langsung di kantor Salut Etam Betuah.</p>
-        <div class="bc-benefit">
-          <div class="cb-item">✅ Pembayaran cicilan UKT</div>
-          <div class="cb-item">✅ Proses cepat & mudah</div>
-          <div class="cb-item">✅ Tidak perlu ke bank</div>
-        </div>
+        <div class="mitra-name">Bank BTN</div>
+        <div class="mitra-desc">Cicil SPP/UKT langsung di kantor Salut — tanpa antre ke bank, proses cepat, tidak butuh jaminan.</div>
+        <ul class="mitra-benefits">
+          <li>Pembayaran cicilan UKT/SPP</li>
+          <li>Proses langsung di kantor Salut</li>
+          <li>Tidak perlu antre di bank</li>
+        </ul>
+        <div class="mitra-discount">💳 Layanan Cicil SPP Eksklusif</div>
       </div>
-      <div class="benefit-card" style="--card-accent:#DC2626">
-        <div class="bc-logo-wrap" style="background:#FEF2F2">
-          <img src="assets/images/partners/hotel-gk.png" alt="Hotel Grand Kartika" class="bc-logo" onerror="this.outerHTML='<span style=\'font-size:12px;font-weight:700;color:#DC2626\'>Grand Kartika</span>'">
+
+      <!-- Hotel Grand Kartika -->
+      <div class="mitra-card" style="--accent:#DC2626;--accent-light:#FEF2F2">
+        <div class="mitra-card-top">
+          <div class="mitra-logo-box" style="background:#FEF2F2"><img src="assets/images/partners/hotel-gk.png" alt="Hotel Grand Kartika" onerror="this.outerHTML='<span style='font-size:11px;font-weight:800;color:#DC2626'>Grand Kartika</span>'"></div>
+          <span class="mitra-badge-cat" style="background:#FEE2E2;color:#DC2626">🏨 Samarinda</span>
         </div>
-        <div class="bc-badge" style="background:#FEF2F2;color:#DC2626">🏨 Hotel Samarinda</div>
-        <h3 class="bc-title">Hotel Grand Kartika Samarinda</h3>
-        <p class="bc-desc">Nginap, nongkrong di resto, atau chill di cafe? Semua ada diskon khusus untuk anggota Salut Etam Betuah!</p>
-        <div class="bc-benefit">
-          <div class="cb-item">✅ Diskon kamar menginap</div>
-          <div class="cb-item">✅ Diskon resto & cafe</div>
-          <div class="cb-item">✅ Cukup tunjukkan KTA</div>
-        </div>
+        <div class="mitra-name">Hotel Grand Kartika Samarinda</div>
+        <div class="mitra-desc">Menginap, makan di restoran, atau santai di cafe — semua ada diskon spesial anggota Salut.</div>
+        <ul class="mitra-benefits">
+          <li>Diskon kamar menginap</li>
+          <li>Diskon restoran & cafe</li>
+          <li>Cukup tunjukkan KTA</li>
+        </ul>
+        <div class="mitra-discount" style="background:#FEF2F2;color:#DC2626">🏨 Diskon Kamar & F&B</div>
       </div>
-      <div class="benefit-card" style="--card-accent:#7C3AED">
-        <div class="bc-logo-wrap" style="background:#F5F3FF">
-          <img src="assets/images/partners/quest-hotel.png" alt="Quest Hotel Balikpapan" class="bc-logo" onerror="this.outerHTML='<span style=\'font-size:12px;font-weight:700;color:#7C3AED\'>Quest Hotel</span>'">
+
+      <!-- Quest Hotel Balikpapan -->
+      <div class="mitra-card" style="--accent:#7C3AED;--accent-light:#F5F3FF">
+        <div class="mitra-card-top">
+          <div class="mitra-logo-box" style="background:#F5F3FF"><img src="assets/images/partners/quest-hotel.png" alt="Quest Hotel Balikpapan" onerror="this.outerHTML='<span style='font-size:11px;font-weight:800;color:#7C3AED'>Quest Hotel</span>'"></div>
+          <span class="mitra-badge-cat" style="background:#EDE9FE;color:#7C3AED">🏨 Balikpapan</span>
         </div>
-        <div class="bc-badge" style="background:#F5F3FF;color:#7C3AED">🏨 Hotel Balikpapan</div>
-        <h3 class="bc-title">Quest Hotel Balikpapan</h3>
-        <p class="bc-desc">Rasakan kenyamanan istirahat di jantung kota Balikpapan dengan pelayanan kelas satu dan fasilitas lengkap.</p>
-        <div class="bc-benefit">
-          <div class="cb-item"><strong>✅ Diskon 30%</strong> untuk menginap</div>
-          <div class="cb-item">✅ Fasilitas lengkap & premium</div>
-          <div class="cb-item">✅ Cocok untuk perjalanan bisnis</div>
-        </div>
+        <div class="mitra-name">Quest Hotel Balikpapan <span style="font-size:10px;color:#7C3AED;font-weight:700">(By Aston)</span></div>
+        <div class="mitra-desc">Hotel bintang 4 di jantung Balikpapan dengan fasilitas premium untuk perjalanan bisnis dan wisata.</div>
+        <ul class="mitra-benefits">
+          <li><strong>Diskon 30%</strong> untuk menginap</li>
+          <li>Fasilitas lengkap & premium</li>
+          <li>Cocok untuk perjalanan bisnis</li>
+        </ul>
+        <div class="mitra-discount" style="background:#EDE9FE;color:#7C3AED">🏨 Diskon <strong>30%</strong> Menginap</div>
       </div>
-      <div class="benefit-card" style="--card-accent:#D97706">
-        <div class="bc-logo-wrap" style="background:#FFFBEB">
-          <img src="assets/images/partners/senyiur.png" alt="Senyiur Group" class="bc-logo" onerror="this.outerHTML='<span style=\'font-size:12px;font-weight:700;color:#D97706\'>Senyiur</span>'">
+
+      <!-- Senyiur Hotels -->
+      <div class="mitra-card" style="--accent:#D97706;--accent-light:#FFFBEB">
+        <div class="mitra-card-top">
+          <div class="mitra-logo-box" style="background:#FFFBEB"><img src="assets/images/partners/senyiur.png" alt="Senyiur Hotels" onerror="this.outerHTML='<span style='font-size:11px;font-weight:800;color:#D97706'>Senyiur</span>'"></div>
+          <span class="mitra-badge-cat" style="background:#FEF3C7;color:#D97706">🌴 Resort</span>
         </div>
-        <div class="bc-badge" style="background:#FFFBEB;color:#D97706">🌴 Hotel & Resort</div>
-        <h3 class="bc-title">Senyiur Hotels & Resorts</h3>
-        <p class="bc-desc">Staycation, dinner romantis, atau acara spesial? Lebih hemat dengan potongan harga eksklusif untuk member Salut!</p>
-        <div class="bc-benefit">
-          <div class="cb-item">✅ Diskon staycation</div>
-          <div class="cb-item">✅ Diskon dinner & event</div>
-          <div class="cb-item">✅ Berlaku untuk keluarga</div>
-        </div>
+        <div class="mitra-name">Senyiur Hotels & Resorts</div>
+        <div class="mitra-desc">Nikmati staycation, dinner spesial, atau acara keluarga lebih hemat dengan keistimewaan anggota Salut.</div>
+        <ul class="mitra-benefits">
+          <li>Diskon staycation eksklusif</li>
+          <li>Diskon dinner & event</li>
+          <li>Berlaku untuk seluruh keluarga</li>
+        </ul>
+        <div class="mitra-discount" style="background:#FFFBEB;color:#D97706">🌴 Diskon Staycation & Dinner</div>
       </div>
-      <div class="benefit-card" style="--card-accent:#DC2626">
-        <div class="bc-logo-wrap" style="background:#FFF1F1">
-          <img src="assets/images/partners/tms-daihatsu.png" alt="TMS Daihatsu Samarinda" class="bc-logo" onerror="this.outerHTML='<span style=\'font-size:12px;font-weight:700;color:#DC2626\'>TMS Daihatsu</span>'">
+
+      <!-- TMS Daihatsu -->
+      <div class="mitra-card" style="--accent:#DC2626;--accent-light:#FFF1F1">
+        <div class="mitra-card-top">
+          <div class="mitra-logo-box" style="background:#FFF1F1"><img src="assets/images/partners/tms-daihatsu.png" alt="TMS Daihatsu" onerror="this.outerHTML='<span style='font-size:11px;font-weight:800;color:#DC2626'>TMS Daihatsu</span>'"></div>
+          <span class="mitra-badge-cat" style="background:#FEE2E2;color:#DC2626">🚗 Otomotif</span>
         </div>
-        <div class="bc-badge" style="background:#FFF1F1;color:#DC2626">🚗 Otomotif</div>
-        <h3 class="bc-title">TMS Daihatsu Samarinda</h3>
-        <p class="bc-desc">Super deal otomotif eksklusif! Hemat besar untuk service maupun pembelian mobil baru Daihatsu di Samarinda.</p>
-        <div class="bc-benefit">
-          <div class="cb-item"><strong>✅ Hemat 50%</strong> biaya service semua tipe</div>
-          <div class="cb-item">✅ Tambahan diskon beli mobil baru</div>
-          <div class="cb-item">✅ Booking via WA Salut</div>
-        </div>
+        <div class="mitra-name">TMS Daihatsu Samarinda</div>
+        <div class="mitra-desc">Servis kendaraan Daihatsu Anda dengan harga sangat hemat — plus bonus diskon pembelian mobil baru!</div>
+        <ul class="mitra-benefits">
+          <li><strong>Hemat 50%</strong> biaya servis semua tipe</li>
+          <li>Diskon tambahan beli mobil baru</li>
+          <li>Booking via WA Salut Etam Betuah</li>
+        </ul>
+        <div class="mitra-discount" style="background:#FFF1F1;color:#DC2626">🚗 Hemat <strong>50%</strong> Biaya Servis</div>
       </div>
-      <div class="benefit-card kta-cta-card">
-        <div style="font-size:48px;margin-bottom:12px">🪪</div>
-        <h3 class="bc-title" style="color:white;font-size:18px">Punya KTA = Dapat Semua!</h3>
-        <p style="font-size:13px;color:rgba(255,255,255,.8);line-height:1.6;margin-bottom:20px">
-          Tunjukkan KTA Salut Etam Betuah di semua mitra dan nikmati semua keuntungan eksklusif di atas.
+
+      <!-- KTA CTA Card -->
+      <div class="kta-card">
+        <div style="font-size:52px;margin-bottom:14px;position:relative;z-index:1">🪪</div>
+        <h3 style="font-family:'Poppins',system-ui,sans-serif;font-size:18px;font-weight:900;color:white;margin-bottom:8px;position:relative;z-index:1">Punya KTA = Dapat Semua!</h3>
+        <p style="font-size:12px;color:rgba(255,255,255,.75);line-height:1.65;margin-bottom:20px;position:relative;z-index:1">
+          Tunjukkan KTA Salut Etam Betuah di semua mitra dan nikmati seluruh keuntungan eksklusif di atas.
         </p>
-        <a href="/kta.html" class="btn-kta">🪪 Buat KTA Sekarang</a>
-        <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:10px">Download langsung · Gratis · Berlaku 6 bulan</div>
+        <a href="/kta.html" style="display:inline-flex;align-items:center;gap:7px;background:#F59E0B;color:#0F172A;font-size:13px;font-weight:800;padding:12px 24px;border-radius:99px;text-decoration:none;position:relative;z-index:1;transition:background .2s" onmouseover="this.style.background='#FBBF24'" onmouseout="this.style.background='#F59E0B'">
+          🪪 Buat KTA Sekarang
+        </a>
+        <div style="font-size:10px;color:rgba(255,255,255,.4);margin-top:10px;position:relative;z-index:1">Download langsung · Gratis · Berlaku 6 bulan</div>
       </div>
+
     </div>
 
-    <!-- PKS PHOTOS -->
-    <div style="margin-top:40px">
-      <div style="text-align:center;margin-bottom:20px">
-        <div style="font-size:11px;font-weight:700;color:#94A3B8;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px">Bukti Kerjasama Resmi</div>
-        <h3 style="font-size:22px;font-weight:800;color:#1E3A8A">Perjanjian Kerjasama (PKS)</h3>
-        <p style="font-size:13px;color:#64748B;margin-top:4px">Semua keuntungan mitra dijamin dengan Perjanjian Kerjasama (PKS) resmi.</p>
+    <!-- PKS info bar -->
+    <div class="pks-info">
+      <div class="pks-icon">
+        <i data-lucide="shield-check" style="width:22px;height:22px;color:#1E3A8A"></i>
       </div>
-      <div class="pks-grid">
-        <div class="pks-card">
-          <div class="pks-img-wrap">
-            <div class="pks-img-bg" style="background-image:url('assets/images/partners/pks-gk-hotel.jpeg')"></div>
-            <img src="assets/images/partners/pks-gk-hotel.jpeg" alt="PKS Salut Etam Betuah dengan Hotel Grand Kartika" class="pks-img"
-                 onerror="this.parentElement.style.background='linear-gradient(135deg,#FEF2F2,#FEE2E2)'">
-            <div class="pks-img-overlay">
-              <div class="pks-overlay-logo">
-                <img src="assets/images/partners/hotel-gk.png" alt="Hotel Grand Kartika" style="height:32px;filter:brightness(0) invert(1)"
-                     onerror="this.style.display='none'">
-              </div>
-            </div>
-          </div>
-          <div class="pks-info">
-            <div style="font-size:10px;font-weight:700;color:#D97706;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">📋 PKS Resmi</div>
-            <div style="font-size:14px;font-weight:800;color:#1E3A8A">Hotel Grand Kartika Samarinda</div>
-            <div style="font-size:12px;color:#64748B;margin-top:4px">Perjanjian kerjasama diskon menginap, restoran & cafe untuk anggota Salut Etam Betuah.</div>
-          </div>
-        </div>
-        <div class="pks-card">
-          <div class="pks-img-wrap">
-            <div class="pks-img-bg" style="background-image:url('assets/images/partners/pks-quest-hotel.jpeg')"></div>
-            <img src="assets/images/partners/pks-quest-hotel.jpeg" alt="PKS Salut Etam Betuah dengan Quest Hotel Balikpapan" class="pks-img"
-                 onerror="this.parentElement.style.background='linear-gradient(135deg,#F5F3FF,#EDE9FE)'">
-            <div class="pks-img-overlay">
-              <div class="pks-overlay-logo">
-                <img src="assets/images/partners/quest-hotel.png" alt="Quest Hotel" style="height:32px;filter:brightness(0) invert(1)"
-                     onerror="this.style.display='none'">
-              </div>
-            </div>
-          </div>
-          <div class="pks-info">
-            <div style="font-size:10px;font-weight:700;color:#7C3AED;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">📋 PKS Resmi</div>
-            <div style="font-size:14px;font-weight:800;color:#1E3A8A">Quest Hotel Balikpapan</div>
-            <div style="font-size:12px;color:#64748B;margin-top:4px">Perjanjian kerjasama diskon 30% menginap di Quest Hotel Balikpapan untuk anggota Salut.</div>
-          </div>
-        </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#0F172A">Dijamin Perjanjian Kerjasama (PKS) Resmi</div>
+        <div style="font-size:11px;color:#64748B;margin-top:2px">Semua keuntungan mitra di atas didukung PKS tertulis yang ditandatangani kedua pihak — bukan sekadar janji lisan.</div>
       </div>
     </div>
 

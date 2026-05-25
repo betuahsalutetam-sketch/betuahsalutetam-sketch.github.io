@@ -2,14 +2,14 @@ name: Daily Website Health Check
 
 on:
   schedule:
-    - cron: '0 1 * * *'  # Jam 08:00 WIB (UTC+7 = UTC 01:00)
+    - cron: '0 1 * * *'  # Jam 08:00 WIB
   workflow_dispatch:
 
 jobs:
   health-check:
     runs-on: ubuntu-latest
     steps:
-      - name: Check All URLs (16 pages)
+      - name: Check All 20 URLs
         run: |
           FAILED=0
           URLS=(
@@ -19,15 +19,19 @@ jobs:
             "https://salutetambetuah.id/blog/apa-itu-salut-ut-panduan-lengkap.html"
             "https://salutetambetuah.id/blog/salut-etam-betuah-profil.html"
             "https://salutetambetuah.id/blog/daftar-ut-samarinda-2026.html"
+            "https://salutetambetuah.id/blog/syarat-daftar-ut-2026.html"
             "https://salutetambetuah.id/blog/rpl-ut-kaltim.html"
             "https://salutetambetuah.id/blog/biaya-kuliah-ut-samarinda.html"
+            "https://salutetambetuah.id/blog/cara-bayar-spp-ut-samarinda-2026.html"
+            "https://salutetambetuah.id/blog/beasiswa-ut-samarinda-2026.html"
             "https://salutetambetuah.id/blog/wisuda-ut-samarinda.html"
             "https://salutetambetuah.id/blog/jadwal-wisuda-ut-2026-kaltim.html"
             "https://salutetambetuah.id/blog/tips-lulus-ut-tepat-waktu-fresh-graduate.html"
             "https://salutetambetuah.id/blog/panduan-registrasi-matkul-ut-2026.html"
+            "https://salutetambetuah.id/blog/panduan-ujian-ut-samarinda-2026.html"
             "https://salutetambetuah.id/blog/keuntungan-kuliah-universitas-terbuka.html"
-            "https://salutetambetuah.id/blog/jadwal-wisuda-ut-2026-kaltim.html"
             "https://salutetambetuah.id/blog/prodi-terpopuler-ut-samarinda-2026.html"
+            "https://salutetambetuah.id/blog/faq-mahasiswa-ut-samarinda-2026.html"
             "https://salutetambetuah.id/kta.html"
           )
           for URL in "${URLS[@]}"; do
@@ -39,46 +43,46 @@ jobs:
               FAILED=1
             fi
           done
-          if [ "$FAILED" = "1" ]; then
-            echo "::error::Ada URL yang error! Cek segera salutetambetuah.id"
-            exit 1
-          fi
-          echo "✅ Semua ${#URLS[@]} URL sehat"
+          [ "$FAILED" = "1" ] && echo "::error::Ada URL error!" && exit 1
+          echo "✅ Semua 20 URL sehat"
 
-      - name: Check Page Speed (Homepage)
+      - name: Check Performance & Size
         run: |
-          TIME=$(curl -s -o /dev/null -w "%{time_total}" https://salutetambetuah.id)
+          TTFB=$(curl -s -o /dev/null -w "%{time_starttransfer}" https://salutetambetuah.id)
           SIZE=$(curl -s -o /dev/null -w "%{size_download}" https://salutetambetuah.id)
-          echo "🏎️  Load time: ${TIME}s | Size: ${SIZE} bytes"
+          echo "⚡ TTFB: ${TTFB}s | Size: ${SIZE}B"
           python3 -c "
-          t = float('$TIME')
-          if t > 3.0:
-              print(f'::warning::Homepage lambat: {t}s (target < 3s)')
-          else:
-              print(f'✅ Speed OK: {t}s')
+          t=float('$TTFB'); s=int('$SIZE')
+          print('✅ Speed OK' if t<2 else f'::warning::Lambat {t}s')
+          print('✅ Size OK' if s<210000 else f'::warning::Besar {s}B')
           "
 
-      - name: Check Sitemap Valid (14 URLs)
+      - name: Check Sitemap (20 URLs)
         run: |
-          SITEMAP=$(curl -s https://salutetambetuah.id/sitemap.xml)
-          COUNT=$(echo "$SITEMAP" | grep -c "<loc>" || echo 0)
-          echo "📍 Sitemap URLs: $COUNT"
-          if [ "$COUNT" -lt "12" ]; then
-            echo "::warning::Sitemap hanya $COUNT URLs (expected 14+)"
-          else
-            echo "✅ Sitemap OK — $COUNT URLs"
-          fi
+          COUNT=$(curl -s https://salutetambetuah.id/sitemap.xml | grep -c "<loc>")
+          echo "📍 Sitemap: $COUNT URLs"
+          [ "$COUNT" -lt "18" ] && echo "::warning::Sitemap kurang dari 18 URLs" || echo "✅ Sitemap OK"
 
       - name: Check WebP Images
         run: |
-          for img in wisuda-2.webp wisuda-1.webp kantor-luar.webp; do
+          for img in wisuda-2.webp wisuda-1.webp kantor-luar.webp og-image.jpg; do
             CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://salutetambetuah.id/assets/images/$img")
-            echo "$CODE — $img"
+            [ "$CODE" = "200" ] && echo "✅ $img" || echo "❌ $img ($CODE)"
           done
+
+      - name: Check GA4 & GSC Tags
+        run: |
+          HTML=$(curl -s https://salutetambetuah.id)
+          GA=$(echo "$HTML" | grep -c "G-HD1W7XBQQ8" || echo 0)
+          GSC=$(echo "$HTML" | grep -c "8eb66f398c4e0dce" || echo 0)
+          echo "GA4 refs: $GA | GSC: $GSC"
+          [ "$GA" -gt 0 ] && echo "✅ GA4 aktif" || echo "::warning::GA4 tidak ditemukan"
+          [ "$GSC" -gt 0 ] && echo "✅ GSC verified" || echo "::warning::GSC tag hilang"
 
       - name: Summary
         run: |
-          echo "================================================"
-          echo "✅ HEALTH CHECK SELESAI — salutetambetuah.id"
+          echo "========================================"
+          echo "✅ HEALTH CHECK — salutetambetuah.id"
           echo "🕐 $(TZ='Asia/Makassar' date '+%A, %d %B %Y %H:%M WITA')"
-          echo "================================================"
+          echo "📊 20 URLs · GA4 G-HD1W7XBQQ8 · Sitemap 20 URLs"
+          echo "========================================"

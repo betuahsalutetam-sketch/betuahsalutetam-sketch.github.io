@@ -44,14 +44,44 @@ jobs:
       - name: Update dateModified in HTML files
         run: |
           TODAY=$(date +%Y-%m-%d)
-          for f in index.html kta.html blog/*.html; do
+          # PROTEKSI: blog/index.html dan blog-section.html DIKECUALIKAN
+          for f in index.html kta.html; do
             [ -f "$f" ] && sed -i "s/\"dateModified\": \"[0-9-]*\"/\"dateModified\": \"$TODAY\"/g" "$f"
           done
-          echo "dateModified: $TODAY"
+          for f in blog/*.html; do
+            fname=$(basename "$f")
+            if [ "$fname" != "index.html" ] && [ "$fname" != "blog-section.html" ]; then
+              sed -i "s/\"dateModified\": \"[0-9-]*\"/\"dateModified\": \"$TODAY\"/g" "$f"
+            fi
+          done
+          echo "dateModified: $TODAY (blog/index.html dikecualikan)"
+
+      - name: PROTEKSI blog/index.html
+        run: |
+          echo "=== CEK INTEGRITAS blog/index.html ==="
+          CARD_COUNT=$(grep -c "card-hover bg-white rounded-2xl overflow-hidden" blog/index.html 2>/dev/null || echo 0)
+          echo "Kartu artikel: $CARD_COUNT"
+          RESTORE=0
+          if [ "$CARD_COUNT" -lt 16 ]; then
+            echo "PERINGATAN: hanya $CARD_COUNT kartu (minimum 16)"
+            RESTORE=1
+          fi
+          for slug in "cara-bayar-spp-ut-samarinda-2026.html" "beasiswa-ut-samarinda-2026.html" "faq-mahasiswa-ut-samarinda-2026.html" "syarat-daftar-ut-2026.html" "panduan-ujian-ut-samarinda-2026.html"; do
+            if ! grep -q "$slug" blog/index.html 2>/dev/null; then
+              echo "HILANG: $slug"
+              RESTORE=1
+            fi
+          done
+          if [ "$RESTORE" = "1" ]; then
+            git checkout HEAD -- blog/index.html
+            echo "blog/index.html di-restore ke versi aman"
+          else
+            echo "blog/index.html OK"
+          fi
 
       - name: Update maintenance log
         run: |
-          printf "\n## %s (%s)\n- Sitemap & dateModified updated\n" \
+          printf "\n## %s (%s)\n- Sitemap & dateModified updated\n- blog/index.html dilindungi\n" \
             "$(date +%Y-%m-%d)" "$(date +%A)" >> MAINTENANCE_LOG.md
 
       - name: Commit and push

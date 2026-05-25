@@ -51,3 +51,7 @@ Log otomatis dari GitHub Actions + Anthropic AI.
 
 ## 2026-05-24 (Sunday)
 - Sitemap & dateModified updated
+
+## 2026-05-25 (Monday)
+- Sitemap & dateModified updated
+- blog/index.html dilindungi

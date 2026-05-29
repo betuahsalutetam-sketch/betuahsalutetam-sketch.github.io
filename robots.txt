@@ -1,47 +1,56 @@
 # ============================================================
 # robots.txt — salutetambetuah.id
-# Sentra Layanan Universitas Terbuka Etam Betuah, Samarinda
-# Update: 22 Mei 2026
+# Salut Etam Betuah | Universitas Terbuka Samarinda
+# #KuliahTerurus #KerjaJalanTerus
+# Update: 2026-05-29
 # ============================================================
 
-# ===== Semua crawler: izinkan seluruh website =====
 User-agent: *
 Allow: /
 
-# Halaman utama & blog — wajib bisa di-crawl
+# ===== Halaman utama — wajib di-crawl =====
 Allow: /index.html
+Allow: /kta.html
 Allow: /blog/
 Allow: /blog/index.html
-Allow: /blog/apa-itu-salut-ut-panduan-lengkap.html
-Allow: /blog/tips-lulus-ut-tepat-waktu-fresh-graduate.html
+
+# ===== Semua blog post — wajib di-crawl =====
+Allow: /blog/salut-etam-betuah-universitas-terbuka-samarinda.html
+Allow: /blog/universitas-terbuka-samarinda-2026.html
 Allow: /blog/salut-ut-samarinda.html
+Allow: /blog/apa-itu-salut-ut-panduan-lengkap.html
 Allow: /blog/salut-etam-betuah-profil.html
 Allow: /blog/daftar-ut-samarinda-2026.html
+Allow: /blog/syarat-daftar-ut-2026.html
 Allow: /blog/rpl-ut-kaltim.html
 Allow: /blog/biaya-kuliah-ut-samarinda.html
+Allow: /blog/cara-bayar-spp-ut-samarinda-2026.html
+Allow: /blog/beasiswa-ut-samarinda-2026.html
 Allow: /blog/wisuda-ut-samarinda.html
-Allow: /kta.html
+Allow: /blog/jadwal-wisuda-ut-2026-kaltim.html
+Allow: /blog/tips-lulus-ut-tepat-waktu-fresh-graduate.html
+Allow: /blog/panduan-registrasi-matkul-ut-2026.html
+Allow: /blog/panduan-ujian-ut-samarinda-2026.html
+Allow: /blog/keuntungan-kuliah-universitas-terbuka.html
+Allow: /blog/prodi-terpopuler-ut-samarinda-2026.html
+Allow: /blog/faq-mahasiswa-ut-samarinda-2026.html
 
-# Assets yang boleh di-crawl (gambar, og-image, logo)
+# ===== Assets =====
 Allow: /assets/images/
-Allow: /assets/images/og-image.jpg
-Allow: /assets/images/logo.png
-Allow: /assets/images/favicon.png
 
-# ===== Folder yang TIDAK perlu di-index =====
+# ===== Tidak perlu di-index =====
 Disallow: /assets/raw/
 Disallow: /assets/audio/
 Disallow: /assets/videos/
 Disallow: /_headers
 Disallow: /_redirects
 Disallow: /*.log$
-Disallow: /*.md$
 
-# ===== Google Image Bot — izinkan foto kegiatan =====
+# ===== Googlebot Image =====
 User-agent: Googlebot-Image
 Allow: /assets/images/
 
-# ===== Bing =====
+# ===== Bingbot =====
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 1

@@ -1354,7 +1354,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.ge
 </div>
 
 <!-- ===== WA FLOAT + KTA BUTTON (DESKTOP) ===== -->
-<div class="wa-float" aria-label="Tombol Cepat">
+<div class="wa-float" aria-label="Tombol Cepat" style="position:fixed;right:16px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:10px;bottom:calc(72px + env(safe-area-inset-bottom) + 8px)">
   <!-- Chatbot (atas) -->
   <button id="chat-fab" class="chatbot-fab" aria-label="Chat asisten Salut">
     <div class="pulse"></div>
@@ -1399,10 +1399,14 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.ge
     <i data-lucide="newspaper" class="w-5 h-5"></i>
     <span class="bi-label">Blog</span>
   </a>
-  <a href="#kontak" class="bnav-item" id="bn-kontak" onclick="setNav('kontak')">
-    <i data-lucide="phone" class="w-5 h-5"></i>
-    <span class="bi-label">Kontak</span>
+  <a href="/kta.html" class="bnav-item" id="bn-kta">
+    <span style="font-size:18px;line-height:1;margin-bottom:2px">🪪</span>
+    <span class="bi-label" style="color:#D97706;font-weight:700">KTA</span>
   </a>
+  <button onclick="document.getElementById('chat-fab').click()" class="bnav-item" id="bn-chat" aria-label="Chatbot Salut">
+    <span style="font-size:18px;line-height:1;margin-bottom:2px">💬</span>
+    <span class="bi-label" style="color:#1E3A8A;font-weight:700">Chat</span>
+  </button>
 </nav>
 
 <!-- ================================================================

@@ -1354,7 +1354,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.ge
 </div>
 
 <!-- ===== WA FLOAT + KTA BUTTON (DESKTOP) ===== -->
-<div class="wa-float" aria-label="Tombol Cepat" style="position:fixed;right:16px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:10px;bottom:calc(72px + env(safe-area-inset-bottom) + 8px)">
+<div class="wa-float" aria-label="Tombol Cepat">
   <!-- Chatbot (atas) -->
   <button id="chat-fab" class="chatbot-fab" aria-label="Chat asisten Salut">
     <div class="pulse"></div>
@@ -1399,14 +1399,10 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.ge
     <i data-lucide="newspaper" class="w-5 h-5"></i>
     <span class="bi-label">Blog</span>
   </a>
-  <a href="/kta.html" class="bnav-item" id="bn-kta">
-    <span style="font-size:18px;line-height:1;margin-bottom:2px">🪪</span>
-    <span class="bi-label" style="color:#D97706;font-weight:700">KTA</span>
+  <a href="#kontak" class="bnav-item" id="bn-kontak" onclick="setNav('kontak')">
+    <i data-lucide="phone" class="w-5 h-5"></i>
+    <span class="bi-label">Kontak</span>
   </a>
-  <button onclick="document.getElementById('chat-fab').click()" class="bnav-item" id="bn-chat" aria-label="Chatbot Salut">
-    <span style="font-size:18px;line-height:1;margin-bottom:2px">💬</span>
-    <span class="bi-label" style="color:#1E3A8A;font-weight:700">Chat</span>
-  </button>
 </nav>
 
 <!-- ================================================================
@@ -2349,6 +2345,26 @@ window.addEventListener('scroll',function(){
   var nav=document.querySelector('nav')||document.getElementById('topnav');
   if(nav){nav.classList.toggle('scrolled',window.scrollY>30)}
 },{ passive:true });
+</script>
+
+<!-- ===== MOBILE KTA + CHAT BUTTONS (di atas bottom nav) ===== -->
+<div id="mobile-action-btns" style="position:fixed;right:12px;z-index:150;display:none;flex-direction:column;gap:8px;bottom:calc(68px + env(safe-area-inset-bottom) + 12px)">
+  <button onclick="document.getElementById('chat-fab').click()" style="display:flex;align-items:center;gap:6px;background:linear-gradient(135deg,#1E3A8A,#2563EB);color:white;border:none;border-radius:24px;padding:10px 16px;font-size:12px;font-weight:700;cursor:pointer;box-shadow:0 4px 16px rgba(30,58,138,.4);font-family:'Inter',sans-serif" aria-label="Buka Chatbot">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    Chat
+  </button>
+  <a href="/kta.html" style="display:flex;align-items:center;gap:6px;background:linear-gradient(135deg,#0F172A,#1E3A8A);color:#FFD700;border-radius:24px;padding:10px 16px;font-size:12px;font-weight:700;text-decoration:none;box-shadow:0 4px 16px rgba(15,23,42,.4)" aria-label="Buat KTA">
+    <span style="font-size:14px">🪪</span> KTA
+  </a>
+</div>
+<script>
+(function(){
+  var el=document.getElementById('mobile-action-btns');
+  if(el && window.innerWidth<1024){el.style.display='flex';}
+  window.addEventListener('resize',function(){
+    if(el){el.style.display=window.innerWidth<1024?'flex':'none';}
+  });
+})();
 </script>
 
 </body>

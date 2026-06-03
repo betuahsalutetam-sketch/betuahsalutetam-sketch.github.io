@@ -34,6 +34,7 @@ Allow: /blog/panduan-ujian-ut-samarinda-2026.html
 Allow: /blog/keuntungan-kuliah-universitas-terbuka.html
 Allow: /blog/prodi-terpopuler-ut-samarinda-2026.html
 Allow: /blog/faq-mahasiswa-ut-samarinda-2026.html
+Allow: /blog/cara-akses-tuton-ut-2026.html
 
 # ===== Assets =====
 Allow: /assets/images/

@@ -11,3 +11,37 @@ body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif}h1,h2,h3,[style*=
 .gal-arrow-right{right:6px}
 .gal-arrow.gal-hide{opacity:0;pointer-events:none}
 @media(max-width:640px){.gal-arrow{width:40px;height:40px}.gal-arrow-left{left:2px}.gal-arrow-right{right:2px}}
+
+/* === POLISH TAHAP 3 — micro-interaction halus (aman, tidak ubah struktur) === */
+/* Reveal animation lebih halus dengan stagger */
+.reveal{transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+/* Kartu layanan & blog: lift halus saat hover */
+.svc-card,.blog-card,.benefit-card{transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s ease}
+/* Tombol CTA utama: shine effect saat hover */
+.btn-primary-hero,.btn-kta{position:relative;overflow:hidden}
+.btn-primary-hero::after,.btn-kta::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.45),transparent);transition:left .6s ease}
+.btn-primary-hero:hover::after,.btn-kta:hover::after{left:130%}
+/* Galeri panah: animasi denyut halus agar menarik perhatian */
+@keyframes gal-pulse{0%,100%{box-shadow:0 4px 16px rgba(15,23,42,.35)}50%{box-shadow:0 4px 22px rgba(30,58,138,.55)}}
+.gal-arrow{animation:gal-pulse 2.8s ease-in-out infinite}
+.gal-arrow:hover{animation:none}
+/* Foto galeri: zoom & brightness halus */
+.gal-card img{transition:transform .45s cubic-bezier(.16,1,.3,1),filter .3s ease}
+.gal-card:hover img{filter:saturate(1.1)}
+/* Section label: garis aksen tumbuh saat masuk layar */
+.section-accent{transition:width .6s cubic-bezier(.16,1,.3,1)}
+/* Link blog di artikel terkait: geser halus */
+.prose a:not(.btn-kta){transition:color .2s ease}
+/* Smooth scroll dengan offset agar tidak ketutup navbar sticky */
+html{scroll-padding-top:80px}
+/* Trust badge: kilau halus */
+.trust-badge-gold{transition:all .3s ease}
+.trust-badge-gold:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(245,158,11,.2)}
+/* FAQ: buka lebih mulus */
+.faq-body.show{animation:faqReveal .3s ease}
+@keyframes faqReveal{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+/* Statistik hero: angka sedikit membesar saat hover */
+.hero-stat{transition:background .25s ease,transform .25s ease}
+.hero-stat:hover{transform:translateY(-3px)}
+/* Mengurangi animasi untuk yang prefer-reduced-motion (aksesibilitas) */
+@media(prefers-reduced-motion:reduce){*,::before,::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}

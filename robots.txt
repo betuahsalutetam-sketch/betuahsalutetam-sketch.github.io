@@ -58,3 +58,4 @@ Crawl-delay: 1
 
 # ===== Sitemap =====
 Sitemap: https://salutetambetuah.id/sitemap.xml
+Allow: /llms.txt

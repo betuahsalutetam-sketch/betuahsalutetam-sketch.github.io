@@ -3,3 +3,11 @@ body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif}h1,h2,h3,[style*=
 .wa-float .kta-float-btn,.wa-float .chatbot-fab{display:none}
 .wa-float{bottom:calc(68px + env(safe-area-inset-bottom) + 12px)}
 }
+/* Galeri panah navigasi besar */
+.gal-arrow{position:absolute;top:calc(50% - 4px);transform:translateY(-50%);width:46px;height:46px;border-radius:50%;background:#1E3A8A;border:2px solid white;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:5;box-shadow:0 4px 16px rgba(15,23,42,.35);transition:all .2s;opacity:.95}
+.gal-arrow:hover{background:#0F172A;transform:translateY(-50%) scale(1.08);opacity:1}
+.gal-arrow:active{transform:translateY(-50%) scale(.96)}
+.gal-arrow-left{left:6px}
+.gal-arrow-right{right:6px}
+.gal-arrow.gal-hide{opacity:0;pointer-events:none}
+@media(max-width:640px){.gal-arrow{width:40px;height:40px}.gal-arrow-left{left:2px}.gal-arrow-right{right:2px}}

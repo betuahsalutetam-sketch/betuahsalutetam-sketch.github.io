@@ -698,17 +698,13 @@
       <button class="ftab" data-gf="video">🎬 Video</button>
     </div>
 
-    <!-- Galeri Nav Buttons -->
-    <div style="display:flex;justify-content:flex-end;gap:8px;margin-bottom:10px">
-      <button id="gal-prev" aria-label="Geser kiri" style="width:38px;height:38px;border-radius:50%;border:1.5px solid #E2E8F0;background:white;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(30,58,138,.08);transition:all .2s" onmouseover="this.style.background='#1E3A8A';this.style.borderColor='#1E3A8A';this.querySelector('svg').style.stroke='white'" onmouseout="this.style.background='white';this.style.borderColor='#E2E8F0';this.querySelector('svg').style.stroke='#1E3A8A'">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E3A8A" stroke-width="2.5" stroke-linecap="round"><path d="m15 18-6-6 6-6"/></svg>
+    <div class="hscroll-wrap reveal" style="position:relative">
+      <button id="gal-prev" aria-label="Geser kiri" class="gal-arrow gal-arrow-left">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
       </button>
-      <button id="gal-next" aria-label="Geser kanan" style="width:38px;height:38px;border-radius:50%;border:1.5px solid #1E3A8A;background:#1E3A8A;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(30,58,138,.25);transition:all .2s" onmouseover="this.style.background='#0F172A';this.style.borderColor='#0F172A'" onmouseout="this.style.background='#1E3A8A';this.style.borderColor='#1E3A8A'">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="m9 18 6-6-6-6"/></svg>
+      <button id="gal-next" aria-label="Geser kanan" class="gal-arrow gal-arrow-right">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
       </button>
-    </div>
-
-    <div class="hscroll-wrap reveal">
       <div class="hscroll" id="gal-hscroll">
 
         <div class="gal-card" data-gcat="wisuda" data-src="assets/images/wisuda-1.webp" data-cap="Wisuda UT Kaltim 2026">
@@ -1546,20 +1542,16 @@ document.querySelectorAll('.ftab').forEach(btn => {
   var btnPrev = document.getElementById('gal-prev');
   var btnNext = document.getElementById('gal-next');
   if (!scr || !btnPrev || !btnNext) return;
-  var STEP = function() { return Math.max(170, scr.offsetWidth * 0.6); };
-  btnNext.addEventListener('click', function() {
-    scr.scrollBy({ left: STEP(), behavior: 'smooth' });
-  });
-  btnPrev.addEventListener('click', function() {
-    scr.scrollBy({ left: -STEP(), behavior: 'smooth' });
-  });
-  // Update tombol state
+  var STEP = function() { return Math.max(220, scr.offsetWidth * 0.7); };
+  btnNext.addEventListener('click', function() { scr.scrollBy({ left: STEP(), behavior: 'smooth' }); });
+  btnPrev.addEventListener('click', function() { scr.scrollBy({ left: -STEP(), behavior: 'smooth' }); });
   function updateBtns() {
-    btnPrev.style.opacity = scr.scrollLeft <= 10 ? '0.35' : '1';
-    btnNext.style.opacity = scr.scrollLeft >= scr.scrollWidth - scr.clientWidth - 10 ? '0.35' : '1';
+    if (scr.scrollLeft <= 10) btnPrev.classList.add('gal-hide'); else btnPrev.classList.remove('gal-hide');
+    if (scr.scrollLeft >= scr.scrollWidth - scr.clientWidth - 10) btnNext.classList.add('gal-hide'); else btnNext.classList.remove('gal-hide');
   }
   scr.addEventListener('scroll', updateBtns, { passive: true });
-  updateBtns();
+  window.addEventListener('resize', updateBtns);
+  setTimeout(updateBtns, 300);
 })();
 
 // ===== GALLERY LIGHTBOX (foto) =====

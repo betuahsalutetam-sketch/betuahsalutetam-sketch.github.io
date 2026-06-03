@@ -2391,5 +2391,40 @@ window.addEventListener('scroll',function(){
 })();
 </script>
 
+<script>
+/* ===== FIX: tutup lightbox galeri (handler robust, global scope) ===== */
+(function(){
+  function closeLightboxNow(){
+    var lb = document.getElementById('lightbox');
+    if(lb){ lb.classList.remove('active'); lb.style.display=''; }
+    document.body.style.overflow = '';
+  }
+  function closeAllMedia(){
+    closeLightboxNow();
+    var vl = document.getElementById('vid-lb');
+    if(vl){ vl.classList.remove('active'); var v=document.getElementById('vl-video'); if(v){try{v.pause();}catch(_){}}}
+    var vm = document.getElementById('video-modal');
+    if(vm){ vm.classList.remove('open'); var p=document.getElementById('video-modal-player'); if(p){try{p.pause();}catch(_){}}}
+    document.body.style.overflow='';
+  }
+  // Pastikan fungsi tersedia secara global (dipakai onclick di HTML)
+  window.closeLB = function(e){
+    if(e && e.target && e.target.id === 'lb-img') return; // jangan tutup saat klik tepat di foto
+    closeLightboxNow();
+  };
+  window.closeAllMedia = closeAllMedia;
+  // Delegasi klik: tombol X, background, atau anak ikon svg/path
+  document.addEventListener('click', function(e){
+    var lb = document.getElementById('lightbox');
+    if(lb && lb.classList.contains('active')){
+      if((e.target.closest && e.target.closest('.lb-close')) || e.target.id === 'lightbox'){
+        e.preventDefault(); closeLightboxNow();
+      }
+    }
+  }, true);
+  // Tombol Escape menutup semua media
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' || e.keyCode === 27) closeAllMedia(); });
+})();
+</script>
 </body>
 </html>

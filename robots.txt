@@ -65,3 +65,4 @@ Sitemap: https://salutetambetuah.id/sitemap.xml
 Allow: /llms.txt
 Allow: /blog/jurusan-universitas-terbuka-samarinda-2026.html
 Allow: /blog/salut-etam-betuah-samarinda.html
+Allow: /blog/biaya-kuliah-ut-samarinda-2026.html

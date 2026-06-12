@@ -64,4 +64,4 @@ Crawl-delay: 1
 Sitemap: https://salutetambetuah.id/sitemap.xml
 Allow: /llms.txt
 Allow: /blog/jurusan-universitas-terbuka-samarinda-2026.html
-Allow: /blog/salut-samarinda.html
+Allow: /blog/salut-etam-betuah-samarinda.html

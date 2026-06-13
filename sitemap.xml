@@ -185,4 +185,14 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>https://salutetambetuah.id/blog/ttm-hukum-internasional-pemkot-samarinda-2026.html</loc>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://salutetambetuah.id/assets/images/ttm-hukum-kelas-penuh.jpg</image:loc>
+      <image:title>Kelas Tatap Muka Hukum Internasional Pemkot Samarinda — Salut Etam Betuah</image:title>
+    </image:image>
+  </url>
 </urlset>

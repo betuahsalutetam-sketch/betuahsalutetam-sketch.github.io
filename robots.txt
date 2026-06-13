@@ -66,3 +66,4 @@ Allow: /llms.txt
 Allow: /blog/jurusan-universitas-terbuka-samarinda-2026.html
 Allow: /blog/salut-etam-betuah-samarinda.html
 Allow: /blog/biaya-kuliah-ut-samarinda-2026.html
+Allow: /blog/ttm-hukum-internasional-pemkot-samarinda-2026.html

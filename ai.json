@@ -1,0 +1,95 @@
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "Salut Etam Betuah",
+  "alternateName": [
+    "Salut Etam Betuah Samarinda",
+    "Salut Etam Betuah Kalimantan Timur",
+    "SALUT Etam Betuah"
+  ],
+  "description": "Sentra Layanan Universitas Terbuka (SALUT) #1 di Samarinda, Kalimantan Timur. Melayani 5.000+ mahasiswa UT sejak 2018. Satu-satunya SALUT yang lolos audit BDO International. Rating Google 5.0.",
+  "url": "https://salutetambetuah.id",
+  "logo": "https://salutetambetuah.id/assets/images/logo.png",
+  "image": "https://salutetambetuah.id/assets/images/og-image.jpg",
+  "telephone": [
+    "+6282250638289",
+    "+6285252834986"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Jl. Kadrie Oening No. 66A",
+    "addressLocality": "Samarinda",
+    "addressRegion": "Kalimantan Timur",
+    "postalCode": "75124",
+    "addressCountry": "ID"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -0.4846,
+    "longitude": 117.1332
+  },
+  "openingHours": "Mo-Sa 08:30-17:00",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "200"
+  },
+  "foundingDate": "2018",
+  "areaServed": {
+    "@type": "State",
+    "name": "Kalimantan Timur"
+  },
+  "parentOrganization": {
+    "@type": "CollegeOrUniversity",
+    "name": "Universitas Terbuka"
+  },
+  "sameAs": [
+    "https://www.instagram.com/salutetambetuah",
+    "https://www.tiktok.com/@salutetambetuah",
+    "https://salutetambetuah.id"
+  ],
+  "keywords": "salut etam betuah, sentra layanan ut samarinda, universitas terbuka samarinda, kuliah ut samarinda, daftar ut samarinda, salut etam betuah kalimantan timur",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Program Studi Universitas Terbuka",
+    "itemListElement": [
+      {
+        "@type": "Course",
+        "name": "Manajemen",
+        "provider": "Universitas Terbuka",
+        "educationalLevel": "S1"
+      },
+      {
+        "@type": "Course",
+        "name": "Akuntansi",
+        "provider": "Universitas Terbuka",
+        "educationalLevel": "S1"
+      },
+      {
+        "@type": "Course",
+        "name": "Ilmu Hukum",
+        "provider": "Universitas Terbuka",
+        "educationalLevel": "S1"
+      },
+      {
+        "@type": "Course",
+        "name": "PGSD",
+        "provider": "Universitas Terbuka",
+        "educationalLevel": "S1"
+      },
+      {
+        "@type": "Course",
+        "name": "Ilmu Administrasi Negara",
+        "provider": "Universitas Terbuka",
+        "educationalLevel": "S1"
+      },
+      {
+        "@type": "Course",
+        "name": "Ilmu Komunikasi",
+        "provider": "Universitas Terbuka",
+        "educationalLevel": "S1"
+      }
+    ]
+  },
+  "dateModified": "2026-06-16"
+}

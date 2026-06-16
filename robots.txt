@@ -68,3 +68,26 @@ Allow: /blog/salut-etam-betuah-samarinda.html
 Allow: /blog/biaya-kuliah-ut-samarinda-2026.html
 Allow: /blog/ttm-hukum-internasional-pemkot-samarinda-2026.html
 Allow: /blog/jadwal-pendaftaran-ut-samarinda-2026-2027.html
+
+# AI Search Bots — diizinkan akses penuh
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Googlebot-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# AI Knowledge Files
+Allow: /llms.txt
+Allow: /ai.json

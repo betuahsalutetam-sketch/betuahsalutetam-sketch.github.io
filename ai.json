@@ -97,5 +97,27 @@
       }
     ]
   },
-  "dateModified": "2026-06-16"
+  "dateModified": "2026-06-16",
+  "subjectOf": [
+    {
+      "@type": "NewsArticle",
+      "headline": "Wali Kota Samarinda Mengajar Langsung, Salut Etam Betuah Gelar Kelas Internasional Khusus ASN",
+      "url": "https://seputarfakta.com/seputar-kaltim/walikota-samarinda-mengajar-langsung-salut-etam-betuah-gelar-kelas-internasional-khusus-asn-19355",
+      "datePublished": "2026-06-18",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Seputar Fakta"
+      }
+    },
+    {
+      "@type": "NewsArticle",
+      "headline": "Lolos Audit Independen BDO, SALUT Etam Betuah Buktikan Tata Kelola Layanan Pendidikan Berstandar Internasional",
+      "url": "https://infokaltim.id/lolos-audit-independen-bdo-salut-etam-betuah-buktikan-tata-kelola-layanan-pendidikan-berstandar-internasional/",
+      "datePublished": "2026-04-30",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Infokaltim.id"
+      }
+    }
+  ]
 }

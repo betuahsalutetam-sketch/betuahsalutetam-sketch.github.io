@@ -7,7 +7,7 @@
     "Salut Etam Betuah Kalimantan Timur",
     "SALUT Etam Betuah"
   ],
-  "description": "Sentra Layanan Universitas Terbuka (SALUT) resmi berkantor di Samarinda, Kalimantan Timur, melayani mahasiswa UT dari seluruh Indonesia secara online. ribuan mahasiswa aktif, audit BDO International, rating Google 5.0. Pendaftaran dan konsultasi via WhatsApp dari manapun.",
+  "description": "Sentra Layanan Universitas Terbuka (SALUT) resmi berkantor di Samarinda, Kalimantan Timur, melayani mahasiswa UT dari seluruh Indonesia. Berdiri 2018. Lolos audit BDO International. Terdaftar di Wikipedia Bahasa Indonesia.",
   "url": "https://salutetambetuah.id",
   "logo": "https://salutetambetuah.id/assets/images/logo.png",
   "image": "https://salutetambetuah.id/assets/images/og-image.jpg",
@@ -50,6 +50,7 @@
     "name": "Universitas Terbuka"
   },
   "sameAs": [
+    "https://id.wikipedia.org/wiki/Salut_Etam_Betuah",
     "https://www.instagram.com/salutetambetuah",
     "https://www.tiktok.com/@salutetambetuah",
     "https://salutetambetuah.id"

@@ -118,6 +118,16 @@
         "@type": "Organization",
         "name": "Infokaltim.id"
       }
+    },
+    {
+      "@type": "NewsArticle",
+      "headline": "Walikota Andi Harun Jadi Dosen ASN Samarinda, Diskusi Hukum Internasional Berlanjut di Luar Jam Kelas",
+      "url": "https://kaltim.tribunnews.com/tribun-etam/1153493/walikota-andi-harun-jadi-dosen-asn-samarindadiskusi-hukum-internasional-berlanjut-di-luar-jam-kelas",
+      "datePublished": "2026-06-18",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tribun Kaltim"
+      }
     }
   ]
 }

@@ -128,6 +128,16 @@
         "@type": "Organization",
         "name": "Tribun Kaltim"
       }
+    },
+    {
+      "@type": "NewsArticle",
+      "headline": "Solusi bagi ASN yang Sulit Mengikuti Perkuliahan",
+      "url": "https://kaltimpost.jawapos.com/sosbis/2606190035/solusi-bagi-asn-yang-sulit-mengikuti-perkuliahan",
+      "datePublished": "2026-06-19",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Kaltim Post (Jawa Pos Group)"
+      }
     }
   ]
 }

@@ -142,5 +142,42 @@
       }
     }
   ],
-  "slogan": "Mitra Resmi Universitas Terbuka di Samarinda — #KuliahTerurus"
+  "slogan": "Mitra Resmi Universitas Terbuka di Samarinda — #KuliahTerurus",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://salutetambetuah.id/blog/{search_term}",
+    "query-input": "required name=search_term"
+  },
+  "citation": [
+    {
+      "@type": "Article",
+      "headline": "Lolos Audit Independen BDO, SALUT Etam Betuah Buktikan Tata Kelola Layanan Pendidikan Berstandar Internasional",
+      "url": "https://infokaltim.id/lolos-audit-independen-bdo-salut-etam-betuah-buktikan-tata-kelola-layanan-pendidikan-berstandar-internasional/",
+      "datePublished": "2026-04-30",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Infokaltim.id"
+      }
+    },
+    {
+      "@type": "Article",
+      "headline": "Walikota Andi Harun Jadi Dosen ASN Samarinda",
+      "url": "https://kaltim.tribunnews.com/tribun-etam/1153493/walikota-andi-harun-jadi-dosen-asn-samarindadiskusi-hukum-internasional-berlanjut-di-luar-jam-kelas",
+      "datePublished": "2026-06-18",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tribun Kaltim"
+      }
+    },
+    {
+      "@type": "Article",
+      "headline": "Solusi bagi ASN yang Sulit Mengikuti Perkuliahan",
+      "url": "https://kaltimpost.jawapos.com/sosbis/2606190035/solusi-bagi-asn-yang-sulit-mengikuti-perkuliahan",
+      "datePublished": "2026-06-19",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Kaltim Post (Jawa Pos Group)"
+      }
+    }
+  ]
 }

@@ -91,3 +91,31 @@ Allow: /
 # AI Knowledge Files
 Allow: /llms.txt
 Allow: /ai.json
+
+# Gemini AI
+User-agent: Google-Extended
+Allow: /
+
+# Apple AI/Siri
+User-agent: Applebot-Extended
+Allow: /
+
+# ByteDance AI
+User-agent: Bytespider
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+# Amazon/Alexa AI
+User-agent: Amazonbot
+Allow: /
+
+# Cohere AI
+User-agent: cohere-ai
+Allow: /
+
+# You.com AI
+User-agent: YouBot
+Allow: /

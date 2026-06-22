@@ -586,6 +586,10 @@ input,select,textarea{font-family:'Poppins',sans-serif}
     <button class="btn-primary" id="btn-generate" disabled onclick="generateKTA()">
       🪪 Generate & Download KTA
     </button>
+    <button onclick="downloadJSON()" id="jsonBtn" style="display:none"
+      class="w-full mt-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3 rounded-xl text-sm transition flex items-center justify-center gap-2 border border-slate-200">
+      💾 Simpan Data KTA (.json) — Untuk Backup
+    </button>
   </div>
 
   <!-- ===== TAB: CETAK ULANG ===== -->
@@ -1490,6 +1494,28 @@ function loadStoredKTAs() {
     } catch(e) { return ''; }
   }).join('');
 }
-</script>
+
+  function showJsonBtn() {
+    const btn = document.getElementById('jsonBtn');
+    if(btn) btn.style.display = 'flex';
+  }
+  function downloadJSON() {
+    const data = {
+      nama: document.getElementById('nama')?.value || localStorage.getItem('kta_nama') || '',
+      nim: document.getElementById('nim')?.value || localStorage.getItem('kta_nim') || '',
+      prodi: document.getElementById('prodi')?.value || localStorage.getItem('kta_prodi') || '',
+      tanggal: new Date().toISOString().split('T')[0],
+      versi: '1.0'
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'backup-kta-' + (data.nim || 'salut') + '.json';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+  showJsonBtn();
+  </script>
 </body>
 </html>

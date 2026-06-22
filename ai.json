@@ -3,11 +3,12 @@
   "@type": "EducationalOrganization",
   "name": "Salut Etam Betuah",
   "alternateName": [
-    "Salut Etam Betuah Samarinda",
+    "Sentra Layanan Universitas Terbuka Etam Betuah",
+    "SALUT Etam Betuah Samarinda",
     "Salut Etam Betuah Kalimantan Timur",
-    "SALUT Etam Betuah"
+    "Mitra Resmi Universitas Terbuka Samarinda"
   ],
-  "description": "Sentra Layanan Universitas Terbuka (SALUT) resmi berkantor di Samarinda, Kalimantan Timur, melayani mahasiswa UT dari seluruh Indonesia. Berdiri 2018. Lolos audit BDO International. Terdaftar di Wikipedia Bahasa Indonesia.",
+  "description": "Salut Etam Betuah adalah Sentra Layanan Universitas Terbuka (SALUT) resmi — mitra resmi UPBJJ UT Samarinda sejak 2018. Melayani mahasiswa Universitas Terbuka dari seluruh Indonesia. Rating Google Maps 5.0 dari 159+ ulasan. Lolos audit BDO International. Diliput Kaltim Post (Jawa Pos Group) dan Tribun Kaltim.",
   "url": "https://salutetambetuah.id",
   "logo": "https://salutetambetuah.id/assets/images/logo.png",
   "image": "https://salutetambetuah.id/assets/images/og-image.jpg",
@@ -140,5 +141,6 @@
         "name": "Kaltim Post (Jawa Pos Group)"
       }
     }
-  ]
+  ],
+  "slogan": "Mitra Resmi Universitas Terbuka di Samarinda — #KuliahTerurus"
 }

@@ -179,5 +179,17 @@
         "name": "Kaltim Post (Jawa Pos Group)"
       }
     }
+  ],
+  "event": [
+    {
+      "@type": "Event",
+      "name": "Kunjungan Sekjen IKA UT Pusat ke Salut Etam Betuah",
+      "description": "Sekjen Ikatan Keluarga Alumni Universitas Terbuka Pusat berkunjung ke Salut Etam Betuah Samarinda dan hadir sebagai narasumber di Podcast Salut Talks",
+      "location": {
+        "@type": "Place",
+        "name": "Salut Etam Betuah — Studio Podcast Salut Talks",
+        "address": "Jl. Kadrie Oening No. 66A, Samarinda"
+      }
+    }
   ]
 }

@@ -155,6 +155,194 @@
       border-radius:4px
     }
   #vt-hscroll::-webkit-scrollbar{display:none}</style>
+
+  <style id="redesign-2026">
+    /* ============================================
+       REDESIGN 2026 — Minimal · Modern · Bold
+    ============================================ */
+
+    /* Global spacing lebih ketat */
+    section.py-14 { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+    section.lg\:py-20 { padding-top: 3.5rem !important; padding-bottom: 3.5rem !important; }
+    section.py-10 { padding-top: 2.5rem !important; padding-bottom: 2.5rem !important; }
+    section.lg\:py-14 { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+
+    /* Surface lebih bersih */
+    .bg-surface, .bg-slate-50 { background-color: #FFFFFF !important; }
+    
+    /* Section headers lebih compact */
+    .sec-header { margin-bottom: 1.5rem !important; }
+
+    /* Sec label lebih clean */
+    .sec-label {
+      font-size: .6rem !important;
+      letter-spacing: .1em !important;
+      padding: 3px 10px !important;
+    }
+
+    /* Heading section lebih ketat */
+    .text-2xl.lg\:text-4xl { 
+      font-size: 1.5rem !important; 
+      letter-spacing: -.03em !important;
+      line-height: 1.15 !important;
+    }
+    @media(min-width:1024px) {
+      .text-2xl.lg\:text-4xl { font-size: 2rem !important; }
+    }
+
+    /* Cards lebih flat dan modern */
+    .svc-card {
+      border-radius: 12px !important;
+      padding: 16px !important;
+      box-shadow: none !important;
+      border: 1.5px solid #E8EDF5 !important;
+    }
+    .svc-card:hover {
+      border-color: #1E3A8A !important;
+      box-shadow: 0 8px 24px rgba(30,58,138,.1) !important;
+    }
+
+    /* Blog cards lebih clean */
+    .blog-card {
+      border-radius: 12px !important;
+      border: 1.5px solid #E8EDF5 !important;
+      box-shadow: none !important;
+    }
+    .blog-card:hover {
+      box-shadow: 0 8px 20px rgba(30,58,138,.08) !important;
+    }
+
+    /* Galeri card border-radius lebih kecil */
+    .gal-card { border-radius: 8px !important; }
+
+    /* FAQ lebih bersih */
+    .faq-item { 
+      border-radius: 10px !important; 
+      border: 1.5px solid #E8EDF5 !important;
+    }
+    .faq-btn .fq { font-size: .82rem !important; }
+
+    /* Testimoni cards */
+    .testi-item {
+      border-radius: 12px !important;
+      border: 1.5px solid #E8EDF5 !important;
+      box-shadow: none !important;
+      padding: 18px !important;
+    }
+
+    /* Hero headline lebih bold */
+    #hero h1 {
+      letter-spacing: -.04em !important;
+      line-height: 1.0 !important;
+    }
+    #hero .text-5xl { font-size: 3.2rem !important; }
+    @media(min-width:640px) { 
+      #hero .sm\:text-6xl { font-size: 4rem !important; }
+    }
+    @media(min-width:1024px) { 
+      #hero .lg\:text-7xl { font-size: 5.5rem !important; }
+    }
+
+    /* Trust bar lebih simpel */
+    .ticker-item {
+      font-size: 10px !important;
+      padding: 10px 20px !important;
+    }
+
+    /* Button WA lebih modern */
+    .btn-primary-hero {
+      border-radius: 10px !important;
+      padding: 14px 24px !important;
+      font-size: 13px !important;
+      letter-spacing: .01em !important;
+    }
+    .btn-ghost-hero {
+      border-radius: 10px !important;
+      padding: 14px 20px !important;
+    }
+
+    /* Kontak section lebih bersih */
+    #kontak { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+
+    /* Mitra section */
+    .partner-logo-item {
+      border-radius: 12px !important;
+      padding: 12px 16px !important;
+    }
+
+    /* Benefit cards */
+    .benefit-card {
+      border-radius: 12px !important;
+      border: 1.5px solid #E8EDF5 !important;
+      box-shadow: none !important;
+    }
+    .benefit-card:hover {
+      box-shadow: 0 8px 20px rgba(30,58,138,.08) !important;
+    }
+
+    /* Section Diliput Media lebih clean */
+    section[class*="py-6"] {
+      padding: 1.25rem 0 !important;
+    }
+
+    /* Audit BDO section */
+    #audit-bdo { padding: 2rem 0 !important; }
+
+    /* PKS cards */
+    .pks-card { 
+      border-radius: 12px !important;
+      border: 1.5px solid #E8EDF5 !important;
+      box-shadow: none !important;
+    }
+    .pks-card:hover {
+      box-shadow: 0 8px 20px rgba(30,58,138,.08) !important;
+    }
+
+    /* Footer lebih clean */
+    footer { padding-top: 2.5rem !important; padding-bottom: 2.5rem !important; }
+
+    /* Remove excessive animations */
+    .float, .float-delay { animation: none !important; }
+    .float-a, .float-b { animation: none !important; }
+    .float-enhanced { animation: none !important; }
+
+    /* Smooth reveal saja */
+    .reveal { 
+      opacity: 0; 
+      transform: translateY(16px); 
+      transition: opacity .5s ease, transform .5s ease !important;
+    }
+    .reveal.in { opacity: 1; transform: translateY(0) !important; }
+
+    /* Typography lebih ketat */
+    body { letter-spacing: -.01em; }
+    p { line-height: 1.7 !important; }
+
+    /* Accent gold lebih vivid */
+    .text-amber-400, .text-brand-yellow { color: #F59E0B !important; }
+    .bg-amber-400, .bg-brand-yellow { background-color: #F59E0B !important; }
+
+    /* CTA button lebih assertif */
+    .btn-kta {
+      border-radius: 10px !important;
+      font-size: 12px !important;
+    }
+
+    /* Scrollbar clean */
+    ::-webkit-scrollbar { width: 4px; height: 4px; }
+    ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 99px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+
+    /* Section dividers subtle */
+    section + section { border-top: 1px solid rgba(0,0,0,.04); }
+
+    /* Kenapa Salut section */
+    #kenapa-salut { padding: 2.5rem 0 3rem !important; }
+
+    /* Video section lebih compact */
+    #video { padding: 2rem 0 !important; }
+    #video-testimoni { padding: 1.5rem 0 !important; }
+  </style>
 </head>
 
 <body>
@@ -218,7 +406,7 @@
         <img src="assets/images/logo.png" alt="Logo Salut Etam Betuah" class="w-9 h-9 object-contain">
         <div class="hidden sm:block">
           <div class="text-xs font-bold text-brand-blue tracking-tight leading-tight">SALUT ETAM BETUAH</div>
-          <div class="text-[9px] text-slate-400 uppercase tracking-widest">Mitra Resmi Universitas Terbuka · Samarinda</div>
+          <div class="text-[9px] text-slate-500 uppercase tracking-widest font-semibold">Mitra Resmi Universitas Terbuka · Samarinda</div>
         </div>
       </a>
       <!-- Desktop links -->
@@ -450,12 +638,12 @@
       <p class="text-center text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">Diliput Media</p>
       <div class="flex flex-wrap items-center justify-center gap-8 md:gap-14">
         <a href="https://kaltimpost.jawapos.com/sosbis/2606190035/solusi-bagi-asn-yang-sulit-mengikuti-perkuliahan" target="_blank" rel="noopener" class="flex flex-col items-center gap-1 group">
-          <span style="font-family:'Poppins',sans-serif;font-size:14px;font-weight:900;color:#B91C1C;letter-spacing:-.02em" class="group-hover:opacity-80 transition">Kaltim Post</span>
+          <span style="font-family:'Poppins',sans-serif;font-size:15px;font-weight:900;color:#B91C1C;letter-spacing:-.03em" class="group-hover:opacity-80 transition">Kaltim Post</span>
           <span class="text-[9px] text-slate-400 font-semibold">Jawa Pos Group</span>
         </a>
         <div class="hidden md:block w-px h-8 bg-slate-200"></div>
         <a href="https://kaltim.tribunnews.com/tribun-etam/1153493/walikota-andi-harun-jadi-dosen-asn-samarindadiskusi-hukum-internasional-berlanjut-di-luar-jam-kelas" target="_blank" rel="noopener" class="flex flex-col items-center gap-1 group">
-          <span style="font-family:'Poppins',sans-serif;font-size:14px;font-weight:900;color:#DC2626;letter-spacing:-.02em" class="group-hover:opacity-80 transition">Tribun Kaltim</span>
+          <span style="font-family:'Poppins',sans-serif;font-size:15px;font-weight:900;color:#DC2626;letter-spacing:-.03em" class="group-hover:opacity-80 transition">Tribun Kaltim</span>
           <span class="text-[9px] text-slate-400 font-semibold">Tribun Network</span>
         </a>
         <div class="hidden md:block w-px h-8 bg-slate-200"></div>
@@ -529,7 +717,7 @@
 .j-sub{font-size:9px;color:#94A3B8;margin-top:1px;line-height:1.3}
 </style>
 
-<section id="layanan" class="py-14 lg:py-20" style="background:#F8FAFF" aria-label="Layanan Salut Etam Betuah UT Samarinda">
+<section id="layanan" class="py-14 lg:py-20" style="background:#FFFFFF" aria-label="Layanan Salut Etam Betuah UT Samarinda">
   <div class="max-w-7xl mx-auto px-4 lg:px-6">
     <div class="sec-header reveal">
       <div>

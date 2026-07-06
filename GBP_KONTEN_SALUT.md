@@ -1,18 +1,18 @@
 # Konten GBP — Salut Etam Betuah
-### Minggu, 5 Juli 2026
+### Senin, 6 Juli 2026
 
 ---
 
 ## Google Posts Hari Ini
 
-### Post 1 — Layanan Pendaftaran UT
+### Post 1 — Pendaftaran Mahasiswa Baru UT
 ```
-Minggu ini Salut Etam Betuah buka layanan pendaftaran Universitas Terbuka. Mau kuliah sambil kerja? Daftar sekarang di Samarinda, Balikpapan, Kutai Kartanegara, Bontang, Berau. 📚✨
+Pendaftaran mahasiswa baru UT sudah dibuka! Kesempatan emas buat yang pengen kuliah sambil kerja atau sibuk. Daftar sekarang juga sebelum kuota penuh. Info lengkap di kantor UT terdekat di kota kalian 📚✨
 ```
 
-### Post 2 — Konsultasi Akademik UT
+### Post 2 — Ajakan Daftar UT untuk Masyarakat Kaltim
 ```
-Bingung milih program studi UT? Minggu ini Salut Etam Betuah siap konsultasi gratis. Kunjungi kantor terdekat di Kalimantan Timur. Buruan sebelum kehabisan tempat! 🎓📖
+Mau melanjutkan pendidikan tapi bingung caranya? UT solusinya gan! Fleksibel, terjangkau, dan sudah terbukti. Buruan daftar Senin ini, jangan sampai ketinggalan slot 🎓💪
 ```
 
 ---
@@ -23,15 +23,15 @@ Halo! Terima kasih sudah berkunjung ke Salut Etam Betuah. Kami senang melayani A
 ```
 
 ## Contoh Review Mahasiswa
-**Samarinda:** Mantap banget! Di Samarinda, susah cari tempat kayak gini. Makan enak, pelayanan ramah, harga terjangkau. Recommended!
-**Luar kota:** Pas lagi kuliah di Balikpapan, teman ajak ke sini. Seriously, best food experience ever. Ayunya juara, nasi putihnya wangi banget.
-**ASN/RPL:** Dari Kutai Kartanegara dateng khusus ke sini. Worth it! Suasana nyaman, makanannya autentik, owner nya baik. Bakal balik lagi!
+**Samarinda:** Pas banget makan di Salut Etam Betuah Samarinda! Makanannya fresh, pelayanannya cepat, dan tempatnya nyaman. Recommended untuk nongkrong bareng temen-temen!
+**Luar kota:** Kuliner terbaik di Balikpapan! Saya sering datang ke Salut Etam Betuah karena menu-nya variatif dan harganya terjangkau. Staff-nya ramah banget, pokoknya top deh!
+**ASN/RPL:** Lagi cari tempat makan enak di Kutai Kartanegara? Salut Etam Betuah jawabannya! Suasananya asik, makanannya lezat, dan bersih. Worth it untuk dikunjungi!
 
 ---
 
 ## Reply Google Maps
-**★★★★★:** Terima kasih atas apresiasi Anda! Kami berkomitmen memberikan pelayanan terbaik untuk semua tamu. Tunggu kunjungan Anda berikutnya! 🙏
-**Keluhan:** Kami mohon maaf atas pengalaman Anda. Kritik Anda sangat berharga untuk perbaikan kami. Silakan hubungi kami langsung untuk solusi lebih lanjut.
+**★★★★★:** Terima kasih atas ulasan bintang 5! Kepuasan Anda adalah prioritas kami. Kami tunggu kunjungan Anda berikutnya di Salut Etam Betuah. Salam hangat!
+**Keluhan:** Mohon maaf atas pengalaman kurang memuaskan Anda. Kami sangat menghargai masukan Anda dan berkomitmen untuk meningkatkan layanan. Hubungi kami untuk diskusi lebih lanjut. Terima kasih.
 
 ---
-*5 Juli 2026 | Auto-generated | salutetambetuah.id | WA: 0822-5063-8289 / 0852-5283-4986*
+*6 Juli 2026 | Auto-generated | salutetambetuah.id | WA: 0822-5063-8289 / 0852-5283-4986*

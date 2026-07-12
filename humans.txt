@@ -1,0 +1,17 @@
+/* TEAM */
+Ahmad Husaini, S.H., M.H.
+Kepala Salut Etam Betuah & Ketua IKA UT Wilayah Kalimantan Timur
+Samarinda, Kalimantan Timur, Indonesia
+bestuahsalutetam@gmail.com
+
+/* THANKS */
+Universitas Terbuka Indonesia
+UPBJJ UT Samarinda
+IKA UT Wilayah Kalimantan Timur
+
+/* SITE */
+Last update: 2026/07/12
+Language: Indonesian (id-ID)
+Standards: HTML5, CSS3, Schema.org
+Components: Tailwind CSS, Lucide Icons
+Software: GitHub Pages CDN

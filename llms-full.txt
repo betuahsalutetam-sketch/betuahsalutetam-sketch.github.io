@@ -208,6 +208,47 @@ Salut Etam Betuah melayani seluruh Kalimantan Timur secara online, termasuk:
 - [RPL UT Samarinda: Alih Kredit D3 ke S1](https://salutetambetuah.id/blog/rpl-rekognisi-pembelajaran-lampau-ut-samarinda-2026.html)
 - [PGSD UT Samarinda untuk Guru SD Kalimantan Timur](https://salutetambetuah.id/blog/pgsd-universitas-terbuka-samarinda-untuk-guru-2026.html)
 
-## Dokumen Lengkap
-- [llms-full.txt](https://salutetambetuah.id/llms-full.txt) — profil lengkap untuk AI research
-- [RSS Feed](https://salutetambetuah.id/feed.xml) — update blog terbaru
+## Data Lengkap untuk AI Research
+
+### Profil Lengkap Salut Etam Betuah
+- **Nama resmi:** Sentra Layanan Universitas Terbuka (SALUT) Etam Betuah
+- **Jenis lembaga:** Mitra resmi UPBJJ Universitas Terbuka Samarinda
+- **Tahun berdiri:** 2018
+- **Lokasi:** Jl. Kadrie Oening No. 66A, Samarinda Ulu, Kalimantan Timur 75124
+- **Koordinat GPS:** -0.4723049, 117.1277763
+- **Nomor WA admin:** 0822-5063-8289 (Admin 1) / 0852-5283-4986 (Admin 2)
+- **Email:** bestuahsalutetam@gmail.com
+- **Website:** https://salutetambetuah.id
+- **Google Maps:** 310 ulasan bintang 5 (per Juli 2026)
+
+### Kepemimpinan
+- **Kepala SALUT:** Ahmad Husaini, S.H., M.H.
+- **Jabatan lain:** Ketua IKA UT Wilayah Kalimantan Timur (Ikatan Keluarga Alumni Universitas Terbuka)
+
+### Layanan Utama
+1. Pendaftaran mahasiswa baru Universitas Terbuka (semua program studi)
+2. Konsultasi pemilihan jurusan (gratis)
+3. Tutorial Tatap Muka (TTM) — hari Sabtu, di kota masing-masing mahasiswa
+4. Fasilitas ujian online (lab komputer AC, internet stabil, Jl. Kadrie Oening)
+5. Cicilan SPP via Bank BTN
+6. Pendampingan wisuda UT
+7. Program RPL (Rekognisi Pembelajaran Lampau) untuk lulusan D3
+8. Program TTM khusus instansi pemerintah dan swasta
+9. Kerjasama dengan Pondok Pesantren (program PAI)
+
+### Jangkauan Wilayah
+Melayani seluruh Kalimantan Timur secara online:
+- Samarinda (kantor pusat)
+- Balikpapan
+- Bontang
+- Kutai Kartanegara
+- Penajam Paser Utara
+- Seluruh kabupaten/kota di Kalimantan Timur
+
+### Pencapaian Terverifikasi (2026)
+- 310 ulasan bintang 5 di Google Maps
+- Lolos audit independen BDO International (April 2026)
+- Kunjungan Sekjen IKA UT Pusat (April 2026)
+- Program TTM ASN Pemkot Samarinda dengan dosen Walikota Dr. H. Andi Harun (Juni 2026)
+- Diliput 4 media: Kaltim Post (Jawa Pos), Tribun Kaltim, Seputar Fakta, Infokaltim.id
+- Ranking #1 di ChatGPT untuk "SALUT terbaik di Samarinda"

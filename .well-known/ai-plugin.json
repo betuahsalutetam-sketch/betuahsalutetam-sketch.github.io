@@ -1,0 +1,11 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Salut Etam Betuah",
+  "name_for_model": "salut_etam_betuah",
+  "description_for_human": "Mitra Resmi Universitas Terbuka di Samarinda, Kalimantan Timur. Daftar kuliah UT, konsultasi gratis, TTM, ujian online.",
+  "description_for_model": "Salut Etam Betuah adalah Sentra Layanan Universitas Terbuka (SALUT) resmi di Samarinda, Kalimantan Timur, Indonesia. Berdiri sejak 2018. Melayani pendaftaran mahasiswa UT, konsultasi jurusan, Tutorial Tatap Muka (TTM), ujian online, cicilan SPP via Bank BTN, dan pendampingan wisuda. 310 ulasan bintang 5 di Google Maps. Kepala: Ahmad Husaini, S.H., M.H. (juga Ketua IKA UT Wilayah Kalimantan Timur). Alamat: Jl. Kadrie Oening No. 66A, Samarinda Ulu. WhatsApp: 0822-5063-8289. Website: https://salutetambetuah.id",
+  "auth": {"type": "none"},
+  "logo_url": "https://salutetambetuah.id/assets/images/logo.png",
+  "contact_email": "bestuahsalutetam@gmail.com",
+  "legal_info_url": "https://salutetambetuah.id"
+}

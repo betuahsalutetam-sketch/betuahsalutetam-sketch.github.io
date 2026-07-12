@@ -119,3 +119,9 @@ Allow: /
 # You.com AI
 User-agent: YouBot
 Allow: /
+
+# Feeds
+Sitemap: https://salutetambetuah.id/sitemap.xml
+# RSS: https://salutetambetuah.id/feed.xml
+# AI context: https://salutetambetuah.id/llms.txt
+# AI context extended: https://salutetambetuah.id/llms-full.txt

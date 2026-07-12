@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Salut Etam Betuah — Blog UT Samarinda</title>
+    <link>https://salutetambetuah.id</link>
+    <description>Panduan kuliah Universitas Terbuka di Samarinda dan Kalimantan Timur dari Salut Etam Betuah, mitra resmi UT sejak 2018.</description>
+    <language>id-ID</language>
+    <lastBuildDate>Fri, 11 Jul 2026 00:00:00 +0800</lastBuildDate>
+    <atom:link href="https://salutetambetuah.id/feed.xml" rel="self" type="application/rss+xml"/>
+    <managingEditor>bestuahsalutetam@gmail.com (Salut Etam Betuah)</managingEditor>
+    <image>
+      <url>https://salutetambetuah.id/assets/images/logo.png</url>
+      <title>Salut Etam Betuah</title>
+      <link>https://salutetambetuah.id</link>
+    </image>
+    <item>
+      <title>PGSD UT Samarinda: Jalan Pintas bagi Guru yang Ingin Punya Ijazah S1</title>
+      <link>https://salutetambetuah.id/blog/pgsd-universitas-terbuka-samarinda-untuk-guru-2026.html</link>
+      <pubDate>Thu, 10 Jul 2026 08:00:00 +0800</pubDate>
+      <guid>https://salutetambetuah.id/blog/pgsd-universitas-terbuka-samarinda-untuk-guru-2026.html</guid>
+      <description>Program S1 PGSD Universitas Terbuka di Samarinda untuk guru honorer, guru aktif, dan calon guru SD di Kalimantan Timur.</description>
+    </item>
+    <item>
+      <title>RPL UT Samarinda: Lulusan D3 Bisa Lanjut S1 dalam 2-3 Semester</title>
+      <link>https://salutetambetuah.id/blog/rpl-rekognisi-pembelajaran-lampau-ut-samarinda-2026.html</link>
+      <pubDate>Thu, 10 Jul 2026 07:00:00 +0800</pubDate>
+      <guid>https://salutetambetuah.id/blog/rpl-rekognisi-pembelajaran-lampau-ut-samarinda-2026.html</guid>
+      <description>RPL UT memungkinkan lulusan D3 dan pekerja berpengalaman melanjutkan S1 lebih cepat di Samarinda via Salut Etam Betuah.</description>
+    </item>
+    <item>
+      <title>Ujian Online UAS UT di Samarinda: Panduan Lengkap 2026</title>
+      <link>https://salutetambetuah.id/blog/ujian-online-uas-ut-samarinda-panduan-lengkap-2026.html</link>
+      <pubDate>Sun, 5 Jul 2026 08:00:00 +0800</pubDate>
+      <guid>https://salutetambetuah.id/blog/ujian-online-uas-ut-samarinda-panduan-lengkap-2026.html</guid>
+      <description>Cara daftar, lokasi, fasilitas lab komputer Salut Etam Betuah, dan tips lulus UAS Universitas Terbuka di Samarinda.</description>
+    </item>
+    <item>
+      <title>Kuliah UT untuk ASN Samarinda: Panduan Lengkap 2026</title>
+      <link>https://salutetambetuah.id/blog/kuliah-ut-untuk-asn-samarinda-2026.html</link>
+      <pubDate>Sat, 4 Jul 2026 08:00:00 +0800</pubDate>
+      <guid>https://salutetambetuah.id/blog/kuliah-ut-untuk-asn-samarinda-2026.html</guid>
+      <description>Panduan kuliah Universitas Terbuka untuk ASN Samarinda dan Kalimantan Timur. Fleksibel, diakui BKN, bisa cicil via BTN.</description>
+    </item>
+    <item>
+      <title>Kunjungan Sekjen IKA UT Pusat ke Salut Etam Betuah</title>
+      <link>https://salutetambetuah.id/blog/kunjungan-sekjen-ika-ut-pusat-salut-etam-betuah-2026.html</link>
+      <pubDate>Mon, 23 Jun 2026 08:00:00 +0800</pubDate>
+      <guid>https://salutetambetuah.id/blog/kunjungan-sekjen-ika-ut-pusat-salut-etam-betuah-2026.html</guid>
+      <description>Sekjen IKA UT Pusat berkunjung ke Salut Etam Betuah Samarinda di sela Wisuda UT Periode 1, April 2026.</description>
+    </item>
+  </channel>
+</rss>

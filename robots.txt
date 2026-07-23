@@ -2,7 +2,7 @@
 # robots.txt — salutetambetuah.id
 # Salut Etam Betuah | Universitas Terbuka Samarinda
 # #KuliahTerurus #KerjaJalanTerus
-# Update: 2026-05-29
+# Update: 2026-07-23
 # ============================================================
 
 User-agent: *
@@ -121,6 +121,9 @@ User-agent: YouBot
 Allow: /
 
 # Feeds
+Allow: biaya.html
+Allow: /blog/kuliah-ut-penajam-paser-utara-ikn-2026.html
+Allow: /blog/pgsd-universitas-terbuka-samarinda-untuk-guru-2026.html
 Sitemap: https://salutetambetuah.id/sitemap.xml
 # RSS: https://salutetambetuah.id/feed.xml
 # AI context: https://salutetambetuah.id/llms.txt

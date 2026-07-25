@@ -1,37 +1,37 @@
 # Konten GBP — Salut Etam Betuah
-### Jumat, 24 Juli 2026
+### Sabtu, 25 Juli 2026
 
 ---
 
 ## Google Posts Hari Ini
 
-### Post 1 — Cerita Sukses Mahasiswa Etam Betuah
+### Post 1 — Jam Layanan Sabtu
 ```
-Jumat ini ada kabar bagus dari anak-anak Etam Betuah! Mereka banyak yang udah sukses kerja di perusahaan besar, bahkan ada yang jadi entrepreneur. Kalian bisa seperti mereka juga! 🎓✨
+Sabtu ini Salut Etam Betuah buka normal dari jam 09.00-17.00. Mau konsultasi langsung atau tanya-tanya, silakan mampir ke Samarinda, Balikpapan, atau cabang terdekat di Kaltim 🏢⏰
 ```
 
-### Post 2 — Testimoni Alumni Etam Betuah
+### Post 2 — Konsultasi Gratis Sabtu
 ```
-Dengar-dengar alumni Etam Betuah dari Samarinda sampe Berau banyak yang naik jabatan. Mereka bilang kuliahnya di sini benar-benar berubah karir mereka. Tertarik ikutan? 💼🚀
+Libur tapi pengen konsultasi? Sabtu ini Salut Etam Betuah tetep layani semua wilayah Kalimantan Timur. Mulai dari Samarinda sampai Berau, siap bantu 💼✨
 ```
 
 ---
 
 ## Template Minta Review (WA)
 ```
-Halo! Terima kasih sudah berkunjung ke Salut Etam Betuah. Kami senang melayani Anda. Bantu kami dengan review di sini ya: https://g.page/r/CcXrBsm7Ua8xEAE/review
+Halo! Terima kasih sudah berkunjung ke Salut Etam Betuah. Kami senang melayani Anda! 😊 Bantu kami berkembang dengan review: https://g.page/r/CcXrBsm7Ua8xEAE/review
 ```
 
 ## Contoh Review Mahasiswa
-**Samarinda:** Mantap banget makan di sini waktu kuliah di Samarinda! Pelayanannya ramah, makanannya segar, dan harganya terjangkau. Recommend untuk teman-teman!
-**Luar kota:** Lagi di Balikpapan, nemu tempat makan enak ini. Porsinya besar, suasananya nyaman, cocok buat hang out sama temen. Bakal balik lagi deh!
-**ASN/RPL:** Dari Kutai Kartanegara, sering main ke sini. Menu makanannya variatif dan lezat. Staff-nya juga helpful. Worth it untuk dikunjungi!
+**Samarinda:** Mantap banget ini tempat di Samarinda! Pelayanannya ramah, makanannya enak, dan harganya terjangkau. Paling cocok buat nongkrong sama teman-teman kuliah.
+**Luar kota:** Kunjung ke Balikpapan, langsung cari Salut Etam Betuah. Suasananya asik, wifi-nya kenceng, buat belajar atau meeting santai cocok banget deh.
+**ASN/RPL:** Di Berau ada tempat keren kayak gini, syukurlah! Minumannya segar, makanannya berkualitas, dan crew-nya helpful. Bakal balik lagi nih next time.
 
 ---
 
 ## Reply Google Maps
-**★★★★★:** Terima kasih atas review bintang 5! Kepuasan Anda adalah prioritas utama kami. Kami tunggu kunjungan Anda berikutnya di Salut Etam Betuah.
-**Keluhan:** Kami mohon maaf atas pengalaman yang kurang memuaskan. Masukan Anda sangat berharga untuk kami tingkatkan layanan. Silakan hubungi kami langsung untuk solusi lebih lanjut.
+**★★★★★:** Terima kasih atas kepercayaan dan rating sempurna! Kami berkomitmen terus memberikan layanan terbaik untuk Anda semua.
+**Keluhan:** Maaf pengalaman Anda kurang memuaskan. Masukan Anda sangat berharga. Kami akan segera perbaiki. Silakan hubungi kami langsung untuk solusi terbaik.
 
 ---
-*24 Juli 2026 | Auto-generated | salutetambetuah.id | WA: 0822-5063-8289 / 0852-5283-4986*
+*25 Juli 2026 | Auto-generated | salutetambetuah.id | WA: 0822-5063-8289 / 0852-5283-4986*

@@ -1,37 +1,37 @@
 # Konten GBP — Salut Etam Betuah
-### Senin, 27 Juli 2026
+### Selasa, 28 Juli 2026
 
 ---
 
 ## Google Posts Hari Ini
 
-### Post 1 — Pendaftaran Mahasiswa Baru UT
+### Post 1 — Layanan UT Universitas Terbuka
 ```
-Hai Kaltim! Pendaftaran mahasiswa baru UT udah dibuka nih. Kesempatan emas buat upgrade skill sambil kerja. Buruan daftar sebelum kuota penuh ya, pids! 📚✨
+Daftar kuliah jarak jauh di UT sekarang, fleksibel sesuai jadwal kerja. Tersedia di Samarinda, Balikpapan, Berau, dan kota besar lainnya se-Kaltim. Info lengkap di kantor cabang terdekat 📚✨
 ```
 
-### Post 2 — Ajakan Daftar UT Kaltim
+### Post 2 — Informasi Pendidikan Kalimantan Timur
 ```
-Senin ini jangan sia-siain, gengs! Daftar kuliah UT sekarang juga. Fleksibel, terjangkau, terakreditasi. Samarinda, Balikpapan, sampai Berau bisa ikutan. Buruan! 🎓💪
+Selasa ini sharing: UT hadir dengan ratusan program studi, akses dari rumah tanpa ribet. Daftar dimulai bulan ini, buruan sebelum kuota habis kawan 🎓💪
 ```
 
 ---
 
 ## Template Minta Review (WA)
 ```
-Halo! Terima kasih sudah berkunjung ke Salut Etam Betuah 🙏 Mohon bantu kami dengan review di Google Maps ya: https://g.page/r/CcXrBsm7Ua8xEAE/review
+Halo! Terima kasih sudah berkunjung ke Salut Etam Betuah. Kami sangat menghargai masukan Anda. Jika Anda puas, mohon tinggalkan review di: https://g.page/r/CcXrBsm7Ua8xEAE/review 😊
 ```
 
 ## Contoh Review Mahasiswa
-**Samarinda:** Waktu kuliah di Samarinda, tempat ini jadi favorit buat ngopi sambil belajar. Suasananya tenang, kopi-nya enak, dan staffnya ramah banget!
-**Luar kota:** Dari Balikpapan mampir ke Samarinda, langsung cari tempat bagus. Salut Etam Betuah not disappointed! Makanannya seger, tempatnya bersih, recommended!
-**ASN/RPL:** Sering ke Kutai Kartanegara, tapi sempet main ke cabang Samarinda. Konsisten enak dan nyaman. Kopi Kalimantan Timur terbaik menurut aku di sini.
+**Samarinda:** Seru banget tempat ini! Di Samarinda jarang ada yang kayak gini. Makanannya enak, suasananya asik, dan pelayanannya ramah. Pasti balik lagi!
+**Luar kota:** Lagi kuliah di Balikpapan, teman ajak ke sini. Worth it! Pilihan menu banyak, harganya terjangkau untuk mahasiswa, dan tempatnya nyaman buat hangout.
+**ASN/RPL:** Habis main dari Berau, singgah di sini. Kualitas makanannya bagus, portion lumayan, dan staff-nya helpful. Rekomendasi deh buat yang ke Kalimantan Timur!
 
 ---
 
 ## Reply Google Maps
-**★★★★★:** Terima kasih atas review bintang 5! Kami berkomitmen memberikan layanan terbaik dan produk berkualitas. Tunggu kunjungan Anda berikutnya!
-**Keluhan:** Terima kasih atas masukan berharganya. Kami sangat menghargai feedback Anda dan akan terus meningkatkan kualitas layanan kami. Kami tunggu kesempatan untuk memberikan pengalaman yang lebih baik.
+**★★★★★:** Terima kasih atas ulasan 5 bintang! Kami senang melayani Anda. Kepuasan pelanggan adalah prioritas utama kami. Tunggu kunjungan Anda berikutnya!
+**Keluhan:** Terima kasih atas masukan berharganya. Kami sangat menyesal jika layanan kami kurang memuaskan. Mohon hubungi kami langsung agar kami bisa memperbaiki. Semoga kesempatan berikutnya lebih baik.
 
 ---
-*27 Juli 2026 | Auto-generated | salutetambetuah.id | WA: 0822-5063-8289 / 0852-5283-4986*
+*28 Juli 2026 | Auto-generated | salutetambetuah.id | WA: 0822-5063-8289 / 0852-5283-4986*

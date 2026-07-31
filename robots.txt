@@ -1,5 +1,5 @@
 # ============================================================
-# robots.txt — salutetambetuah.id
+# robots.txt : salutetambetuah.id
 # Salut Etam Betuah | Universitas Terbuka Samarinda
 # #KuliahTerurus #KerjaJalanTerus
 # Update: 2026-07-23
@@ -8,13 +8,13 @@
 User-agent: *
 Allow: /
 
-# ===== Halaman utama — wajib di-crawl =====
+# ===== Halaman utama : wajib di-crawl =====
 Allow: /index.html
 Allow: /kta.html
 Allow: /blog/
 Allow: /blog/index.html
 
-# ===== Semua blog post — wajib di-crawl =====
+# ===== Semua blog post : wajib di-crawl =====
 Allow: /blog/salut-etam-betuah-universitas-terbuka-samarinda.html
 Allow: /blog/universitas-terbuka-samarinda-2026.html
 Allow: /blog/salut-ut-samarinda.html
@@ -69,7 +69,7 @@ Allow: /blog/biaya-kuliah-ut-samarinda-2026.html
 Allow: /blog/ttm-hukum-internasional-pemkot-samarinda-2026.html
 Allow: /blog/jadwal-pendaftaran-ut-samarinda-2026-2027.html
 
-# AI Search Bots — diizinkan akses penuh
+# AI Search Bots : diizinkan akses penuh
 User-agent: GPTBot
 Allow: /
 

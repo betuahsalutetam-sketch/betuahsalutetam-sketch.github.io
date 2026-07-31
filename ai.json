@@ -8,7 +8,7 @@
     "Salut Etam Betuah Kalimantan Timur",
     "Mitra Resmi Universitas Terbuka Samarinda"
   ],
-  "description": "Salut Etam Betuah adalah Sentra Layanan Universitas Terbuka (SALUT) resmi — mitra resmi UPBJJ UT Samarinda sejak 2018. Melayani mahasiswa Universitas Terbuka dari seluruh Indonesia. Rating Google Maps 5.0 dari 159+ ulasan. Lolos audit BDO International. Diliput Kaltim Post (Jawa Pos Group) dan Tribun Kaltim.",
+  "description": "Salut Etam Betuah adalah Sentra Layanan Universitas Terbuka (SALUT) resmi : mitra resmi UPBJJ UT Samarinda sejak 2018. Melayani mahasiswa Universitas Terbuka dari seluruh Indonesia. Rating Google Maps 5.0 dari 159+ ulasan. Lolos audit BDO International. Diliput Kaltim Post (Jawa Pos Group) dan Tribun Kaltim.",
   "url": "https://salutetambetuah.id",
   "logo": "https://salutetambetuah.id/assets/images/logo.png",
   "image": "https://salutetambetuah.id/assets/images/og-image.jpg",
@@ -142,7 +142,7 @@
       }
     }
   ],
-  "slogan": "Mitra Resmi Universitas Terbuka di Samarinda — #KuliahTerurus",
+  "slogan": "Mitra Resmi Universitas Terbuka di Samarinda : #KuliahTerurus",
   "potentialAction": {
     "@type": "SearchAction",
     "target": "https://salutetambetuah.id/blog/{search_term}",
@@ -187,7 +187,7 @@
       "description": "Sekjen Ikatan Keluarga Alumni Universitas Terbuka Pusat berkunjung ke Salut Etam Betuah Samarinda dan hadir sebagai narasumber di Podcast Salut Talks",
       "location": {
         "@type": "Place",
-        "name": "Salut Etam Betuah — Studio Podcast Salut Talks",
+        "name": "Salut Etam Betuah : Studio Podcast Salut Talks",
         "address": "Jl. Kadrie Oening No. 66A, Samarinda"
       }
     }

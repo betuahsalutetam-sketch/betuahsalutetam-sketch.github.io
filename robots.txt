@@ -14,6 +14,7 @@ Allow: /kta.html
 Allow: /kuliah-ut-balikpapan.html
 Allow: /kuliah-ut-bontang.html
 Allow: /kuliah-ut-kutai-kartanegara.html
+Allow: /blog/beasiswa-ut-kalimantan-timur-2026.html
 Allow: /blog/
 Allow: /blog/index.html
 

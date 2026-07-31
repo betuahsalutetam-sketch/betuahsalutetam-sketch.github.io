@@ -1,4 +1,15 @@
 # ===== REDIRECTS - salutetambetuah.id =====
+# CATATAN PENTING (31 Jul 2026): File ini pakai sintaks Netlify dan
+# TIDAK diproses oleh GitHub Pages (hosting saat ini). File ini dibiarkan
+# sebagai dokumentasi niat redirect saja. Redirect yang benar-benar aktif
+# sekarang berupa file stub HTML (meta refresh + canonical) di:
+#   blog/tips-lulus/index.html -> blog/tips-lulus-ut-tepat-waktu-fresh-graduate.html
+#   blog/daftar-ut/index.html  -> blog/cara-daftar-kuliah-ut-samarinda-2026.html
+#   blog/rpl/index.html        -> blog/rpl-rekognisi-pembelajaran-lampau-ut-samarinda-2026.html
+#   blog_apa-itu-salut-ut-panduan-lengkap.html -> blog/apa-itu-salut-ut-panduan-lengkap.html
+# HTTPS enforcement dan www->non-www harus diatur manual di
+# GitHub repo Settings -> Pages -> Enforce HTTPS, dan di pengaturan DNS/CNAME.
+#
 # Force HTTPS dan redirect www ke non-www
 http://salutetambetuah.id/*  https://salutetambetuah.id/:splat  301!
 http://www.salutetambetuah.id/*  https://salutetambetuah.id/:splat  301!

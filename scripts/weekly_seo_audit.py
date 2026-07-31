@@ -73,24 +73,38 @@ Return HANYA JSON valid, tanpa teks lain:
   "action_minggu_ini": ["aksi 1", "aksi 2", "aksi 3"]
 }}"""
 
-try:
-    resp = client.messages.create(
-        model="claude-haiku-4-5-20251001",
-        max_tokens=1500,
-        messages=[{"role": "user", "content": prompt}]
-    )
-    raw = resp.content[0].text.strip()
-    for marker in ["```json", "```"]:
-        if marker in raw:
-            raw = raw.split(marker)[1].split("```")[0].strip()
-            break
-    audit = json.loads(raw)
-    print(f"✅ AI Audit selesai — Skor SEO: {audit.get('skor_seo', '?')}/100")
-except Exception as e:
-    print(f"⚠️  AI audit error: {e}")
-    audit = {"skor_seo": 0, "ringkasan": "Audit gagal", "kekuatan": [],
-             "masalah": [], "rekomendasi_konten": [], "keyword_target": [],
-             "action_minggu_ini": []}
+import time
+
+audit = None
+last_error = None
+for attempt in range(1, 4):
+    try:
+        resp = client.messages.create(
+            model="claude-haiku-4-5-20251001",
+            max_tokens=1500,
+            messages=[{"role": "user", "content": prompt}]
+        )
+        raw = resp.content[0].text.strip()
+        for marker in ["```json", "```"]:
+            if marker in raw:
+                raw = raw.split(marker)[1].split("```")[0].strip()
+                break
+        audit = json.loads(raw)
+        print(f"✅ AI Audit selesai (percobaan {attempt}) — Skor SEO: {audit.get('skor_seo', '?')}/100")
+        break
+    except Exception as e:
+        last_error = e
+        print(f"⚠️  AI audit error (percobaan {attempt}/3): {e}")
+        if attempt < 3:
+            time.sleep(5 * attempt)
+
+if audit is None:
+    # Semua percobaan gagal. JANGAN publikasikan laporan "0/100 Audit gagal" -
+    # itu jadi catatan publik yang menyesatkan (pernah terjadi 26 Juli 2026).
+    # Lebih baik lewati minggu ini; laporan minggu lalu tetap jadi laporan terakhir.
+    print(f"❌ AI audit gagal total setelah 3 percobaan: {last_error}")
+    print("⏭️  Melewati publikasi laporan minggu ini agar tidak ada skor 0/100 palsu di repo.")
+    exit(0)
 
 # ── Tulis laporan ─────────────────────────────────────────────
 def li(items):

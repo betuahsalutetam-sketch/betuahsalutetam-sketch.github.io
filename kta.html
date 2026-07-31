@@ -481,7 +481,7 @@ input,select,textarea{font-family:'Poppins',sans-serif}
 <div class="page-hero">
   <div class="hero-badge"><span>🪪 KTA Digital 2026</span></div>
   <h1>Kartu Tanda Anggota<br>Salut Etam Betuah</h1>
-  <p>Isi data, upload foto & bukti pembayaran : KTA langsung bisa didownload. Berlaku per semester (6 bulan).</p>
+  <p>Isi data, upload foto & bukti pembayaran : KTA langsung bisa didownload. Berlaku hingga 31 Desember 2026.</p>
 </div>
 
 <!-- TABS -->
@@ -569,6 +569,18 @@ input,select,textarea{font-family:'Poppins',sans-serif}
           <div class="hint">📌 Rp 500.000/semester : Transfer ke rekening Salut Etam Betuah</div>
         </div>
       </div>
+      <div class="form-row" style="margin-top:14px">
+        <div class="form-group">
+          <label>Bulan Bukti Transfer <span class="req">*</span></label>
+          <select id="input-tf-bulan" onchange="validateForm()">
+            <option value="">Pilih bulan transfer</option>
+            <option value="2026-06">Juni 2026</option>
+            <option value="2026-07">Juli 2026</option>
+            <option value="2026-08">Agustus 2026</option>
+          </select>
+          <div class="hint">📌 Periode cetak KTA saat ini hanya menerima bukti transfer keanggotaan Juni, Juli, atau Agustus 2026. Transfer di luar 3 bulan ini tidak bisa digunakan untuk cetak KTA, hubungi admin untuk periode berikutnya.</div>
+        </div>
+      </div>
     </div>
 
     <!-- Checklist -->
@@ -580,6 +592,7 @@ input,select,textarea{font-family:'Poppins',sans-serif}
         <li id="req-prodi"><div class="chk">3</div> Program studi dipilih</li>
         <li id="req-foto"><div class="chk">4</div> Pas foto sudah diupload</li>
         <li id="req-tf"><div class="chk">5</div> Bukti transfer sudah diupload</li>
+        <li id="req-tfbulan"><div class="chk">6</div> Bulan bukti transfer Jun/Jul/Ags 2026</li>
       </ul>
     </div>
 
@@ -676,7 +689,7 @@ input,select,textarea{font-family:'Poppins',sans-serif}
     <div class="info-grid">
       <div class="info-card">
         <div class="ic-icon" style="background:#EFF6FF">🗓️</div>
-        <div><div class="ic-title">Masa Berlaku KTA</div><div class="ic-text">Berlaku per semester: Feb–Jul (hingga 31 Juli) dan Ags–Jan (hingga 31 Januari). Perbarui setiap awal semester baru.</div></div>
+        <div><div class="ic-title">Masa Berlaku KTA</div><div class="ic-text">KTA yang diterbitkan periode ini berlaku hingga 31 Desember 2026. Bukti transfer keanggotaan hanya diterima untuk bulan Juni, Juli, atau Agustus 2026.</div></div>
       </div>
       <div class="info-card">
         <div class="ic-icon" style="background:#FEF3C7">💾</div>
@@ -913,10 +926,14 @@ function handleTF(input) {
 }
 
 // ===== VALIDATE =====
+var TF_BULAN_VALID = ['2026-06', '2026-07', '2026-08'];
+
 function validateForm() {
   const nama  = document.getElementById('input-nama').value.trim();
   const nim   = document.getElementById('input-nim').value.trim();
   const prodi = document.getElementById('input-prodi').value;
+  const tfBulan = document.getElementById('input-tf-bulan').value;
+  const tfBulanOk = TF_BULAN_VALID.indexOf(tfBulan) !== -1;
   const mark = (id, ok) => {
     const el = document.getElementById(id);
     if (ok) { el.classList.add('ok'); el.querySelector('.chk').textContent = '\u2713'; }
@@ -927,8 +944,9 @@ function validateForm() {
   mark('req-prodi', !!prodi);
   mark('req-foto',  !!state.foto);
   mark('req-tf',    !!state.tf);
+  mark('req-tfbulan', tfBulanOk);
   document.getElementById('btn-generate').disabled =
-    !(nama.length>2 && nim.length>5 && prodi && state.foto && state.tf);
+    !(nama.length>2 && nim.length>5 && prodi && state.foto && state.tf && tfBulanOk);
 }
 
 // ===== TOAST =====
@@ -969,20 +987,40 @@ function centerText(ctx, text, cx) {
   return cx - ctx.measureText(text).width / 2;
 }
 
-// ===== SEMESTER EXPIRY SYSTEM =====
-// Semester 1: Februari - Juli (berlaku hingga 31 Juli)
-// Semester 2: Agustus - Januari (berlaku hingga 31 Januari tahun berikutnya)
+// ===== DATABASE MONITORING (Google Sheet) =====
+// KTA didownload dari banyak perangkat berbeda, jadi localStorage saja
+// tidak cukup untuk admin memonitor semua penerbitan KTA secara terpusat.
+// Fungsi ini mengirim catatan setiap KTA yang berhasil digenerate/dicetak
+// ulang ke Google Sheet via Google Apps Script Web App, sehingga admin
+// bisa buka satu Sheet untuk melihat semua histori KTA yang pernah terbit.
+//
+// CARA AKTIFKAN (sekali setup oleh admin):
+// 1. Buat Google Sheet baru, beri judul kolom di baris 1:
+//    Timestamp | NIM | Nama | Prodi | Tahun Masuk | Bulan Bukti TF | Tanggal Download | Berlaku Hingga | Cetak Ulang
+// 2. Buka Extensions > Apps Script, tempel kode di KTA_LOGGER_APPS_SCRIPT.md (lihat repo),
+//    lalu Deploy > New deployment > Web app, akses "Anyone".
+// 3. Copy URL hasil deploy, tempel ke KTA_SHEET_WEBHOOK_URL di bawah ini.
+// Selama KTA_SHEET_WEBHOOK_URL masih kosong, fungsi ini otomatis nonaktif
+// dan tidak mengganggu proses download KTA sama sekali.
+var KTA_SHEET_WEBHOOK_URL = '';
+
+function logKTADownloadToSheet(data) {
+  if (!KTA_SHEET_WEBHOOK_URL) return; // belum di-setup, lewati diam-diam
+  try {
+    fetch(KTA_SHEET_WEBHOOK_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify(data)
+    }).catch(function(e) { console.warn('[KTA log] gagal kirim ke sheet:', e); });
+  } catch (e) { console.warn('[KTA log] error:', e); }
+}
+
+// ===== MASA AKTIF KTA =====
+// Update 31 Juli 2026: seluruh KTA yang digenerate periode ini berlaku
+// hingga 31 Desember 2026 (bukan lagi sistem rolling per-semester).
 function getSemesterExpiry() {
-  var now   = new Date();
-  var month = now.getMonth(); // 0=Jan ... 6=Jul ... 11=Des
-  if (month >= 1 && month <= 6) {
-    // Feb(1) - Jul(6) → berlaku hingga 31 Juli tahun ini
-    return new Date(now.getFullYear(), 6, 31); // July 31
-  } else {
-    // Ags(7) - Jan(0) → berlaku hingga 31 Januari tahun berikutnya
-    var y = (month >= 7) ? now.getFullYear() + 1 : now.getFullYear();
-    return new Date(y, 0, 31); // January 31
-  }
+  return new Date(2026, 11, 31); // 31 Desember 2026
 }
 
 // ===== PURE CANVAS KTA RENDERER (NO html2canvas) =====
@@ -1413,15 +1451,31 @@ async function generateKTA() {
     doc.addImage(bc.toDataURL('image/jpeg',.93), 'JPEG', 0, 0, 93.75, 150);
     doc.save('KTA_Salut_'+nim+'_'+nama.replace(/\s+/g,'_')+'.pdf');
 
+    var tfBulan = document.getElementById('input-tf-bulan').value;
+
     try {
       localStorage.setItem('kta_'+nim, JSON.stringify({
         nim:nim, nama:nama,
         prodi: document.getElementById('input-prodi').value,
         foto: state.foto,
+        tfBulan: tfBulan,
         downloadDate: now.toISOString(),
         expiryDate:   expiry.toISOString()
       }));
     } catch(e) {}
+
+    // Catat ke database pusat (Google Sheet) agar admin bisa monitor semua
+    // KTA yang sudah didownload, lintas perangkat/pengguna.
+    logKTADownloadToSheet({
+      nim: nim,
+      nama: nama,
+      prodi: document.getElementById('input-prodi').value,
+      tahunMasuk: document.getElementById('input-tahun').value,
+      tfBulan: tfBulan,
+      downloadDate: now.toISOString(),
+      expiryDate: expiry.toISOString(),
+      isReprint: window._isReprintFlow ? 'ya' : 'tidak'
+    });
 
     document.getElementById('genOverlay').classList.remove('show');
     showToast('\u2705 KTA berhasil didownload! Cek folder Downloads.', 'success');
@@ -1463,8 +1517,11 @@ async function downloadReprintKTA() {
   document.getElementById('input-nama').value  = data.nama;
   document.getElementById('input-nim').value   = data.nim;
   document.getElementById('input-prodi').value = data.prodi;
+  if (data.tfBulan) document.getElementById('input-tf-bulan').value = data.tfBulan;
   state.tf = true; validateForm();
+  window._isReprintFlow = true;
   await generateKTA();
+  window._isReprintFlow = false;
 }
 
 // ===== STORED KTAs =====

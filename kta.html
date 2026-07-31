@@ -1002,7 +1002,7 @@ function centerText(ctx, text, cx) {
 // 3. Copy URL hasil deploy, tempel ke KTA_SHEET_WEBHOOK_URL di bawah ini.
 // Selama KTA_SHEET_WEBHOOK_URL masih kosong, fungsi ini otomatis nonaktif
 // dan tidak mengganggu proses download KTA sama sekali.
-var KTA_SHEET_WEBHOOK_URL = '';
+var KTA_SHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbzNs0WpFf6858a96Erlk83Kj7Da21JwrI7qfCyaIQK35KTzlQoCPot1V8t3HOeVE0o/exec';
 
 function logKTADownloadToSheet(data) {
   if (!KTA_SHEET_WEBHOOK_URL) return; // belum di-setup, lewati diam-diam

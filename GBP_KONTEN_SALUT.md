@@ -1,37 +1,37 @@
 # Konten GBP — Salut Etam Betuah
-### Senin, 3 Agustus 2026
+### Selasa, 4 Agustus 2026
 
 ---
 
 ## Google Posts Hari Ini
 
-### Post 1 — Pendaftaran Mahasiswa Baru UT
+### Post 1 — Layanan UT Salut Etam Betuah
 ```
-Senin ini pembukaan pendaftaran mahasiswa baru UT untuk wilayah Samarinda, Balikpapan, Kutai Kartanegara, Bontang, Berau dan sekitarnya. Jangan sampai kehabisan kuota ya! 📚✍️
+Selasa ini ada yang perlu konsultasi pendidikan jarak jauh? Salut Etam Betuah buka layanan UT untuk semua wilayah Kaltim. Datang langsung atau hubungi untuk info lebih detail 📚
 ```
 
-### Post 2 — Pendaftaran Mahasiswa Baru UT
+### Post 2 — Info Pendaftaran UT Kaltim
 ```
-Mulai Senin, pendaftaran mahasiswa baru UT sudah dibuka untuk seluruh Kalimantan Timur. Ambil kesempatan ini, apalagi buat yang pengen lanjut kuliah sambil kerja 🎓📋
+Mau kuliah sambil kerja? Salut Etam Betuah hadirkan solusi pendidikan UT di Samarinda, Balikpapan, Berau, dan seluruh Kalimantan Timur. Daftar sekarang juga 🎓
 ```
 
 ---
 
 ## Template Minta Review (WA)
 ```
-Halo! Terima kasih sudah berkunjung ke Salut Etam Betuah. Kami senang melayani Anda. Jika puas, bantu kami dengan review: https://g.page/r/CcXrBsm7Ua8xEAE/review 🙏
+Halo! Terima kasih sudah berkunjung ke Salut Etam Betuah. Kami senang melayani Anda. Jika puas, bantu kami dengan review di: https://g.page/r/CcXrBsm7Ua8xEAE/review 😊
 ```
 
 ## Contoh Review Mahasiswa
-**Samarinda:** Seru banget main ke Salut Etam Betuah di Samarinda! Tempatnya asri, makanannya enak, dan staff-nya ramah. Recommended untuk hangout bareng teman!
-**Luar kota:** Pas liburan ke Balikpapan, aku mampir ke Salut Etam Betuah. Konsepnya unik, bersih, dan harganya terjangkau buat mahasiswa. Bakal balik lagi!
-**ASN/RPL:** Berkunjung ke Salut Etam Betuah di Kutai Kartanegara, suasananya tenang, pelayanan cepat, dan menu variasinya banyak. 10/10 puas!
+**Samarinda:** Saya mahasiswa dari Samarinda, pertama kali coba Salut Etam Betuah dan langsung ketagihan! Pelayanannya ramah banget, makanannya segar dan enak. Recommended buat temen-temen!
+**Luar kota:** Makan di Balikpapan, tempatnya nyaman dan bersih. Staff-nya cepat tanggap pesanan kami. Harga terjangkau buat ukuran porsi yang gede. Puas deh!
+**ASN/RPL:** Dari Kutai Kartanegara, akhirnya bisa cobain Salut Etam Betuah. Rasa autentik Kalimantan Timur, suasana asri, dan pelayanan yang memuaskan. Balik lagi pasti!
 
 ---
 
 ## Reply Google Maps
-**★★★★★:** Terima kasih atas dukungan luar biasa Anda! Kami berkomitmen memberikan pengalaman terbaik. Tunggu kunjungan Anda berikutnya di Salut Etam Betuah!
-**Keluhan:** Mohon maaf atas pengalaman kurang memuaskan Anda. Kami sangat menghargai masukan Anda dan akan segera perbaiki. Hubungi kami langsung untuk solusi terbaik. Terima kasih.
+**★★★★★:** Terima kasih atas apresiasi Anda! Kami berkomitmen memberikan layanan terbaik dan kualitas konsisten. Kami tunggu kunjungan Anda berikutnya.
+**Keluhan:** Terima kasih atas masukan berharga. Kami akan perbaiki kekurangan tersebut untuk memberikan pengalaman lebih baik. Silakan hubungi kami langsung untuk diskusi lebih lanjut.
 
 ---
-*3 Agustus 2026 | Auto-generated | salutetambetuah.id | WA: 0822-5063-8289 / 0852-5283-4986*
+*4 Agustus 2026 | Auto-generated | salutetambetuah.id | WA: 0822-5063-8289 / 0852-5283-4986*

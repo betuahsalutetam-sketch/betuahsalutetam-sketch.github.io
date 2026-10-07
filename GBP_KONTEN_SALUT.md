@@ -1,37 +1,37 @@
 # Konten GBP — Salut Etam Betuah
-### Selasa, 6 Oktober 2026
+### Rabu, 7 Oktober 2026
 
 ---
 
 ## Google Posts Hari Ini
 
-### Post 1 — Layanan UT Salut Etam Betuah
+### Post 1 — Pembukaan RPL ASN
 ```
-Selasa ini di Salut Etam Betuah, Universitas Terbuka buka pendaftaran mahasiswa baru. Dari Samarinda sampai Berau, bisa kuliah sambil kerja. Daftar sekarang juga! 📚✨
+Rabu ini, Salut Etam Betuah buka pendaftaran RPL untuk ASN dan karyawan se-Kalimantan Timur. Saatnya ngurus sertifikasi kompetensi yang selama ini ditunda-tunda. Daftar sekarang juga! 📋✅
 ```
 
-### Post 2 — Info Kaltim & Pendidikan Jarak Jauh
+### Post 2 — Info RPL Kalimantan Timur
 ```
-Kaltim terus berkembang, pendidikan jarak jauh makin mudah diakses. Salut Etam Betuah siap layani mahasiswa UT dari seluruh provinsi. Yuk belajar bareng! 🌟📖
+Dari Samarinda sampai Berau, RPL Salut Etam Betuah hadir untuk ASN dan karyawan. Rabu ini udah bisa daftar, jangan sampai kehabisan slot. Proses cepat, sertifikat resmi! 🚀📜
 ```
 
 ---
 
 ## Template Minta Review (WA)
 ```
-Halo! Terima kasih sudah berkunjung ke Salut Etam Betuah 🙏 Kami tunggu review Anda di sini ya: https://g.page/r/CcXrBsm7Ua8xEAE/review
+Halo! 👋 Terima kasih sudah berkunjung ke Salut Etam Betuah. Kami tunggu review Anda untuk terus berkembang lebih baik. Klik link berikut: https://g.page/r/CcXrBsm7Ua8xEAE/review
 ```
 
 ## Contoh Review Mahasiswa
-**Samarinda:** Seru banget! Pertama kali ke Salut Etam Betuah di Samarinda, makanannya enak, suasananya asik buat ngumpul sama temen. Recommended!
-**Luar kota:** Pas kuliah di Balikpapan, sering main ke sini. Menu tradisionalnya top, harganya juga terjangkau untuk mahasiswa. Mantap deh!
-**ASN/RPL:** Di Kutai Kartanegara, tempat ini jadi favorit keluarga kami. Pelayanannya ramah, porsinya besar, puas!
+**Samarinda:** Asik banget makan di Salut Etam Betuah Samarinda! Makanannya enak, suasananya nyaman, dan pelayanannya ramah. Puas deh, bakal balik lagi 😊
+**Luar kota:** Pertama kali coba Salut Etam Betuah di Balikpapan, recommended! Porsinya banyak, harganya terjangkau, dan tempat bersih. Worth it banget untuk nongkrong bareng temen 👍
+**ASN/RPL:** Salut Etam Betuah Bontang adalah hidden gem! Makanannya fresh, minumnya seger, dan staff-nya helpful. Bener-bener puas jadi pelanggan setia 💯
 
 ---
 
 ## Reply Google Maps
-**★★★★★:** Terima kasih atas apresiasi Anda! Kami berkomitmen memberikan pelayanan terbaik dan hidangan berkualitas untuk setiap kunjungan Anda. Sampai jumpa lagi!
-**Keluhan:** Kami sangat menyesal dengan pengalaman Anda. Masukan Anda sangat berharga untuk kami tingkatkan. Silakan hubungi kami langsung agar dapat diselesaikan dengan baik.
+**★★★★★:** Terima kasih atas apresiasi Anda! Komitmen kami adalah memberikan layanan terbaik. Kami tunggu kunjungan Anda berikutnya di Salut Etam Betuah.
+**Keluhan:** Mohon maaf atas kekecewaan Anda. Feedback Anda sangat berharga bagi kami untuk perbaikan. Kami harap dapat memberikan pengalaman lebih baik di kunjungan berikutnya.
 
 ---
-*6 Oktober 2026 | Auto-generated | salutetambetuah.id | WA: 0822-5063-8289 / 0852-5283-4986*
+*7 Oktober 2026 | Auto-generated | salutetambetuah.id | WA: 0822-5063-8289 / 0852-5283-4986*

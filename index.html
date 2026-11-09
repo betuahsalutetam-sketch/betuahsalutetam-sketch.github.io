@@ -407,7 +407,7 @@
 <!-- LIGHTBOXES -->
 <div id="lightbox" class="lightbox" onclick="closeLB(event)">
   <button class="lb-close" onclick="closeLB(event)" aria-label="Tutup"><i data-lucide="x" class="w-5 h-5"></i></button>
-  <img id="lb-img" src="" alt="">
+  <img loading="lazy" decoding="async" id="lb-img" src="" alt="">
   <div id="lb-cap" class="lightbox-caption"></div>
 </div>
 <div id="vid-lb" class="video-lightbox" onclick="closeVid(event)">
@@ -425,7 +425,7 @@
     <div class="bg-white/95 backdrop-blur-xl rounded-2xl px-5 py-3 flex items-center justify-between border border-slate-100/80 shadow-card">
       <!-- Logo -->
       <a href="#hero" class="flex items-center gap-2.5">
-        <img src="assets/images/logo.png" alt="Logo Salut Etam Betuah" class="w-9 h-9 object-contain">
+        <img loading="lazy" decoding="async" width="512" height="512" src="assets/images/logo.webp" alt="Logo Salut Etam Betuah" class="w-9 h-9 object-contain">
         <div class="hidden sm:block">
           <div class="text-xs font-bold text-brand-blue tracking-tight leading-tight">SALUT ETAM BETUAH</div>
           <div class="text-[9px] text-slate-500 uppercase tracking-widest font-semibold">Mitra Resmi Universitas Terbuka · Samarinda</div>
@@ -480,7 +480,7 @@
       <div id="hero-mobile-photo" class="hero-fadein" style="position:relative;height:230px;border-radius:22px;overflow:hidden;margin-bottom:12px">
         <picture>
           <source srcset="assets/images/wisuda-2.webp" type="image/webp">
-          <img src="assets/images/wisuda-2.webp" fetchpriority="high" loading="eager" decoding="async" alt="Wisudawan Universitas Terbuka Kalimantan Timur di Salut Etam Betuah" style="width:100%;height:100%;object-fit:cover;object-position:center top">
+          <img width="1121" height="1138" src="assets/images/wisuda-2.webp" fetchpriority="high" loading="eager" decoding="async" alt="Wisudawan Universitas Terbuka Kalimantan Timur di Salut Etam Betuah" style="width:100%;height:100%;object-fit:cover;object-position:center top">
         </picture>
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(6,13,31,.85) 0%,rgba(6,13,31,.1) 55%)"></div>
         <div style="position:absolute;bottom:14px;left:14px;right:14px;display:flex;gap:8px">
@@ -568,7 +568,7 @@
         <div style="position:absolute;inset:0;border-radius:28px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.5)">
           <picture>
             <source srcset="assets/images/wisuda-2.webp" type="image/webp">
-            <img src="assets/images/wisuda-2.webp" fetchpriority="high" loading="eager" decoding="async"
+            <img width="1121" height="1138" src="assets/images/wisuda-2.webp" fetchpriority="high" loading="eager" decoding="async"
                  alt="Wisudawan Universitas Terbuka Kalimantan Timur"
                  style="width:100%;height:100%;object-fit:cover;object-position:center top"
                  onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#1E3A8A,#2563EB)'">
@@ -694,7 +694,7 @@
     <a href="https://infokaltim.id/lolos-audit-independen-bdo-salut-etam-betuah-buktikan-tata-kelola-layanan-pendidikan-berstandar-internasional/" target="_blank" rel="noopener"
        class="flex items-center gap-4 group">
       <div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-blue-100 transition-colors">
-        <img loading="lazy" src="assets/images/logo-bdo.webp" alt="Logo BDO" class="w-8 h-8 object-contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <img width="360" height="360" loading="lazy" src="assets/images/logo-bdo.webp" alt="Logo BDO" class="w-8 h-8 object-contain" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <i data-lucide="shield-check" class="w-6 h-6 text-brand-blue hidden"></i>
       </div>
       <div class="flex-1 min-w-0">
@@ -864,15 +864,15 @@
 
     <!-- Logo strip -->
     <div class="logo-strip">
-      <div class="logo-pill"><img loading="lazy" src="assets/images/partners/hotel-gk.png" alt="Hotel Grand Kartika" onerror="this.parentElement.innerHTML='<span style='font-size:12px;font-weight:800;color:#DC2626'>Grand Kartika</span>'"></div>
+      <div class="logo-pill"><img width="360" height="199" loading="lazy" src="assets/images/partners/hotel-gk.webp" alt="Hotel Grand Kartika" onerror="this.parentElement.innerHTML='<span style='font-size:12px;font-weight:800;color:#DC2626'>Grand Kartika</span>'"></div>
       <div class="logo-sep"></div>
-      <div class="logo-pill"><img loading="lazy" src="assets/images/partners/senyiur.png" alt="Senyiur Hotels" onerror="this.parentElement.innerHTML='<span style='font-size:12px;font-weight:800;color:#D97706'>Senyiur Hotels</span>'"></div>
+      <div class="logo-pill"><img width="320" height="286" loading="lazy" src="assets/images/partners/senyiur.webp" alt="Senyiur Hotels" onerror="this.parentElement.innerHTML='<span style='font-size:12px;font-weight:800;color:#D97706'>Senyiur Hotels</span>'"></div>
       <div class="logo-sep"></div>
-      <div class="logo-pill"><img loading="lazy" src="assets/images/partners/quest-hotel.png" alt="Quest Hotel Balikpapan" onerror="this.parentElement.innerHTML='<span style='font-size:12px;font-weight:800;color:#7C3AED'>Quest Hotel</span>'"></div>
+      <div class="logo-pill"><img width="400" height="133" loading="lazy" src="assets/images/partners/quest-hotel.webp" alt="Quest Hotel Balikpapan" onerror="this.parentElement.innerHTML='<span style='font-size:12px;font-weight:800;color:#7C3AED'>Quest Hotel</span>'"></div>
       <div class="logo-sep"></div>
-      <div class="logo-pill"><img loading="lazy" src="assets/images/partners/btn.png" alt="Bank BTN" onerror="this.parentElement.innerHTML='<span style='font-size:16px;font-weight:900;color:#1D4ED8'>btn</span>'"></div>
+      <div class="logo-pill"><img width="259" height="194" loading="lazy" src="assets/images/partners/btn.webp" alt="Bank BTN" onerror="this.parentElement.innerHTML='<span style='font-size:16px;font-weight:900;color:#1D4ED8'>btn</span>'"></div>
       <div class="logo-sep"></div>
-      <div class="logo-pill"><img loading="lazy" src="assets/images/partners/tms-daihatsu.png" alt="TMS Daihatsu" onerror="this.parentElement.innerHTML='<span style='font-size:12px;font-weight:800;color:#DC2626'>TMS Daihatsu</span>'"></div>
+      <div class="logo-pill"><img width="240" height="210" loading="lazy" src="assets/images/partners/tms-daihatsu.webp" alt="TMS Daihatsu" onerror="this.parentElement.innerHTML='<span style='font-size:12px;font-weight:800;color:#DC2626'>TMS Daihatsu</span>'"></div>
     </div>
 
     <!-- 5 Mitra cards + 1 KTA CTA -->
@@ -881,7 +881,7 @@
       <!-- Bank BTN -->
       <div class="mitra-card" style="--accent:#1D4ED8;--accent-light:#EFF6FF">
         <div class="mitra-card-top">
-          <div class="mitra-logo-box" style="background:#EFF6FF"><img loading="lazy" src="assets/images/partners/btn.png" alt="Bank BTN" onerror="this.outerHTML='<span style='font-size:20px;font-weight:900;color:#1D4ED8'>btn</span>'"></div>
+          <div class="mitra-logo-box" style="background:#EFF6FF"><img width="259" height="194" loading="lazy" src="assets/images/partners/btn.webp" alt="Bank BTN" onerror="this.outerHTML='<span style='font-size:20px;font-weight:900;color:#1D4ED8'>btn</span>'"></div>
           <span class="mitra-badge-cat" style="background:#DBEAFE;color:#1D4ED8">💳 Perbankan</span>
         </div>
         <div class="mitra-name">Bank BTN</div>
@@ -897,7 +897,7 @@
       <!-- Hotel Grand Kartika -->
       <div class="mitra-card" style="--accent:#DC2626;--accent-light:#FEF2F2">
         <div class="mitra-card-top">
-          <div class="mitra-logo-box" style="background:#FEF2F2"><img loading="lazy" src="assets/images/partners/hotel-gk.png" alt="Hotel Grand Kartika" onerror="this.outerHTML='<span style='font-size:11px;font-weight:800;color:#DC2626'>Grand Kartika</span>'"></div>
+          <div class="mitra-logo-box" style="background:#FEF2F2"><img width="360" height="199" loading="lazy" src="assets/images/partners/hotel-gk.webp" alt="Hotel Grand Kartika" onerror="this.outerHTML='<span style='font-size:11px;font-weight:800;color:#DC2626'>Grand Kartika</span>'"></div>
           <span class="mitra-badge-cat" style="background:#FEE2E2;color:#DC2626">🏨 Samarinda</span>
         </div>
         <div class="mitra-name">Hotel Grand Kartika Samarinda</div>
@@ -913,7 +913,7 @@
       <!-- Quest Hotel Balikpapan -->
       <div class="mitra-card" style="--accent:#7C3AED;--accent-light:#F5F3FF">
         <div class="mitra-card-top">
-          <div class="mitra-logo-box" style="background:#F5F3FF"><img loading="lazy" src="assets/images/partners/quest-hotel.png" alt="Quest Hotel Balikpapan" onerror="this.outerHTML='<span style='font-size:11px;font-weight:800;color:#7C3AED'>Quest Hotel</span>'"></div>
+          <div class="mitra-logo-box" style="background:#F5F3FF"><img width="400" height="133" loading="lazy" src="assets/images/partners/quest-hotel.webp" alt="Quest Hotel Balikpapan" onerror="this.outerHTML='<span style='font-size:11px;font-weight:800;color:#7C3AED'>Quest Hotel</span>'"></div>
           <span class="mitra-badge-cat" style="background:#EDE9FE;color:#7C3AED">🏨 Balikpapan</span>
         </div>
         <div class="mitra-name">Quest Hotel Balikpapan <span style="font-size:10px;color:#7C3AED;font-weight:700">(By Aston)</span></div>
@@ -929,7 +929,7 @@
       <!-- Senyiur Hotels -->
       <div class="mitra-card" style="--accent:#D97706;--accent-light:#FFFBEB">
         <div class="mitra-card-top">
-          <div class="mitra-logo-box" style="background:#FFFBEB"><img loading="lazy" src="assets/images/partners/senyiur.png" alt="Senyiur Hotels" onerror="this.outerHTML='<span style='font-size:11px;font-weight:800;color:#D97706'>Senyiur</span>'"></div>
+          <div class="mitra-logo-box" style="background:#FFFBEB"><img width="320" height="286" loading="lazy" src="assets/images/partners/senyiur.webp" alt="Senyiur Hotels" onerror="this.outerHTML='<span style='font-size:11px;font-weight:800;color:#D97706'>Senyiur</span>'"></div>
           <span class="mitra-badge-cat" style="background:#FEF3C7;color:#D97706">🌴 Resort</span>
         </div>
         <div class="mitra-name">Senyiur Hotels & Resorts</div>
@@ -945,7 +945,7 @@
       <!-- TMS Daihatsu -->
       <div class="mitra-card" style="--accent:#DC2626;--accent-light:#FFF1F1">
         <div class="mitra-card-top">
-          <div class="mitra-logo-box" style="background:#FFF1F1"><img loading="lazy" src="assets/images/partners/tms-daihatsu.png" alt="TMS Daihatsu" onerror="this.outerHTML='<span style='font-size:11px;font-weight:800;color:#DC2626'>TMS Daihatsu</span>'"></div>
+          <div class="mitra-logo-box" style="background:#FFF1F1"><img width="240" height="210" loading="lazy" src="assets/images/partners/tms-daihatsu.webp" alt="TMS Daihatsu" onerror="this.outerHTML='<span style='font-size:11px;font-weight:800;color:#DC2626'>TMS Daihatsu</span>'"></div>
           <span class="mitra-badge-cat" style="background:#FEE2E2;color:#DC2626">🚗 Otomotif</span>
         </div>
         <div class="mitra-name">TMS Daihatsu Samarinda</div>
@@ -1055,127 +1055,127 @@
       <div class="hscroll" id="gal-hscroll">
 
         <div class="gal-card" data-gcat="wisuda" data-src="assets/images/wisuda-1.webp" data-cap="Wisuda UT Kaltim 2026">
-          <img src="assets/images/wisuda-1.webp" alt="Wisuda UT Kaltim 2026" loading="lazy">
+          <img width="828" height="1104" src="assets/images/wisuda-1.webp" alt="Wisuda UT Kaltim 2026" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎓 Wisuda</span><span class="text-xs font-bold text-white">Wisuda UT Kaltim 2026</span></div>
         </div>
         <div class="gal-card" data-gcat="wisuda" data-src="assets/images/wisuda-2.webp" data-cap="Wisudawan Periode 1">
-          <img src="assets/images/wisuda-2.webp" alt="Wisudawan Periode 1" loading="lazy">
+          <img width="1121" height="1138" src="assets/images/wisuda-2.webp" alt="Wisudawan Periode 1" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎓 Wisuda</span><span class="text-xs font-bold text-white">Wisudawan Periode 1</span></div>
         </div>
         <div class="gal-card" data-gcat="wisuda" data-src="assets/images/wisuda-3.webp" data-cap="Pemberian Beasiswa IKA">
-          <img src="assets/images/wisuda-3.webp" alt="Pemberian Beasiswa IKA" loading="lazy">
+          <img width="1122" height="841" src="assets/images/wisuda-3.webp" alt="Pemberian Beasiswa IKA" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎓 Wisuda</span><span class="text-xs font-bold text-white">Pemberian Beasiswa IKA</span></div>
         </div>
         <div class="gal-card" data-gcat="wisuda" data-src="assets/images/wisuda-bersama.webp" data-cap="Wisuda Bersama Keluarga UT">
-          <img src="assets/images/wisuda-bersama.webp" alt="Wisuda Bersama" loading="lazy">
+          <img width="780" height="1040" src="assets/images/wisuda-bersama.webp" alt="Wisuda Bersama" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎓 Wisuda</span><span class="text-xs font-bold text-white">Wisuda Bersama</span></div>
         </div>
         <div class="gal-card" data-gcat="talks" data-src="assets/images/salut-talks-1.webp" data-cap="Podcast Salut Talks">
-          <img src="assets/images/salut-talks-1.webp" alt="Podcast Salut Talks" loading="lazy">
+          <img width="1200" height="793" src="assets/images/salut-talks-1.webp" alt="Podcast Salut Talks" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎤 Salut Talks</span><span class="text-xs font-bold text-white">Diskusi Interaktif</span></div>
         </div>
         <div class="gal-card" data-gcat="talks" data-src="assets/images/salut-talks-2.webp" data-cap="Diskusi Tim Salut Talks">
-          <img src="assets/images/salut-talks-2.webp" alt="Diskusi Tim" loading="lazy">
+          <img width="1200" height="898" src="assets/images/salut-talks-2.webp" alt="Diskusi Tim" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎤 Salut Talks</span><span class="text-xs font-bold text-white">Podcast Salut Talks</span></div>
         </div>
         <div class="gal-card" data-gcat="talks" data-src="assets/images/salut-talks-3.webp" data-cap="Workshop Praktisi">
-          <img src="assets/images/salut-talks-3.webp" alt="Workshop Praktisi" loading="lazy">
+          <img width="1173" height="879" src="assets/images/salut-talks-3.webp" alt="Workshop Praktisi" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎤 Salut Talks</span><span class="text-xs font-bold text-white">Workshop Praktisi</span></div>
         </div>
         <div class="gal-card" data-gcat="talks" data-src="assets/images/salut-talks-5.webp" data-cap="Pelatihan Public Speaking">
-          <img src="assets/images/salut-talks-5.webp" alt="Pelatihan Public Speaking" loading="lazy">
+          <img width="1173" height="879" src="assets/images/salut-talks-5.webp" alt="Pelatihan Public Speaking" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎤 Salut Talks</span><span class="text-xs font-bold text-white">Public Speaking</span></div>
         </div>
         <div class="gal-card" data-gcat="sosprom" data-src="assets/images/sosprom-1.webp" data-cap="Sosialisasi ke SMA">
-          <img src="assets/images/sosprom-1.webp" alt="Sosialisasi ke SMA" loading="lazy">
+          <img width="1200" height="900" src="assets/images/sosprom-1.webp" alt="Sosialisasi ke SMA" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">📣 Sosprom</span><span class="text-xs font-bold text-white">Sosialisasi ke SMA</span></div>
         </div>
         <div class="gal-card" data-gcat="sosprom" data-src="assets/images/sosprom-2.webp" data-cap="Promosi UT di Sekolah">
-          <img src="assets/images/sosprom-2.webp" alt="Promosi UT" loading="lazy">
+          <img width="879" height="1172" src="assets/images/sosprom-2.webp" alt="Promosi UT" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">📣 Sosprom</span><span class="text-xs font-bold text-white">Promosi di Sekolah</span></div>
         </div>
         <div class="gal-card" data-gcat="ujian" data-src="assets/images/ujian-1.webp" data-cap="UAS di Lab Komputer">
-          <img src="assets/images/ujian-1.webp" alt="UAS di Lab Komputer" loading="lazy">
+          <img width="1200" height="900" src="assets/images/ujian-1.webp" alt="UAS di Lab Komputer" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">📝 Ujian</span><span class="text-xs font-bold text-white">Lab Komputer</span></div>
         </div>
         <div class="gal-card" data-gcat="ujian" data-src="assets/images/ujian-2.webp" data-cap="Lab Ujian Modern">
-          <img src="assets/images/ujian-2.webp" alt="Lab Ujian Modern" loading="lazy">
+          <img width="1200" height="899" src="assets/images/ujian-2.webp" alt="Lab Ujian Modern" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">📝 Ujian</span><span class="text-xs font-bold text-white">Lab Modern</span></div>
         </div>
         <div class="gal-card" data-gcat="kunjungan" data-src="assets/images/wawali-samarinda.webp" data-cap="Bersama Wakil Walikota Samarinda">
-          <img src="assets/images/wawali-samarinda.webp" alt="Wakil Walikota Samarinda" loading="lazy">
+          <img width="596" height="981" src="assets/images/wawali-samarinda.webp" alt="Wakil Walikota Samarinda" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🤝 Kunjungan</span><span class="text-xs font-bold text-white">Wakil Walikota Samarinda</span></div>
         </div>
         <div class="gal-card" data-gcat="kunjungan" data-src="assets/images/kunjungan-1.webp" data-cap="Bersama Rektor UT">
-          <img src="assets/images/kunjungan-1.webp" alt="Bersama Rektor UT" loading="lazy">
+          <img width="860" height="1147" src="assets/images/kunjungan-1.webp" alt="Bersama Rektor UT" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🤝 Kunjungan</span><span class="text-xs font-bold text-white">Bersama Rektor UT</span></div>
         </div>
 
         <!-- ===== FOTO BARU ===== -->
         <div class="gal-card" data-gcat="sosprom" data-src="assets/images/sosprom-smk12.webp" data-cap="Sosprom SMK 12 Samarinda">
-          <img src="assets/images/sosprom-smk12.webp" alt="Kegiatan Sosprom SMK 12" loading="lazy">
+          <img width="1200" height="675" src="assets/images/sosprom-smk12.webp" alt="Kegiatan Sosprom SMK 12" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">📣 Sosprom</span><span class="text-xs font-bold text-white">Sosprom SMK 12 Samarinda</span></div>
         </div>
         <div class="gal-card" data-gcat="sosprom" data-src="assets/images/sosprom-sma-budiluhur.webp" data-cap="Sosprom SMA Budi Luhur">
-          <img src="assets/images/sosprom-sma-budiluhur.webp" alt="Sosprom SMA Budi Luhur" loading="lazy">
+          <img width="1200" height="900" src="assets/images/sosprom-sma-budiluhur.webp" alt="Sosprom SMA Budi Luhur" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">📣 Sosprom</span><span class="text-xs font-bold text-white">Sosprom SMA Budi Luhur</span></div>
         </div>
         <div class="gal-card" data-gcat="kuliah" data-src="assets/images/kuliah-ttm-1.webp" data-cap="Kuliah Tatap Muka UT Samarinda">
-          <img src="assets/images/kuliah-ttm-1.webp" alt="Kuliah Tatap Muka UT" loading="lazy">
+          <img width="675" height="1200" src="assets/images/kuliah-ttm-1.webp" alt="Kuliah Tatap Muka UT" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">📚 Kuliah TTM</span><span class="text-xs font-bold text-white">Kuliah Tatap Muka UT</span></div>
         </div>
         <div class="gal-card" data-gcat="kuliah" data-src="assets/images/kuliah-ttm-display.webp" data-cap="Sesi Kuliah, Dosen Tamu">
-          <img src="assets/images/kuliah-ttm-display.webp" alt="Display Kuliah Tatap Muka" loading="lazy">
+          <img width="1200" height="900" src="assets/images/kuliah-ttm-display.webp" alt="Display Kuliah Tatap Muka" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">📚 Kuliah TTM</span><span class="text-xs font-bold text-white">Sesi Kuliah Dosen Tamu</span></div>
         </div>
         
         <!-- TTM Hukum Internasional Pemkot Samarinda, Juni 2026 -->
         <div class="gal-card" data-gcat="ttm" data-src="assets/images/ttm-hukum-kelas-penuh.webp" data-cap="Kelas TTM Hukum Internasional, Pemkot Samarinda">
-          <img src="assets/images/ttm-hukum-kelas-penuh.webp" alt="Kelas Tatap Muka Hukum Internasional ASN Pemkot Samarinda" loading="lazy">
+          <img width="1200" height="802" src="assets/images/ttm-hukum-kelas-penuh.webp" alt="Kelas Tatap Muka Hukum Internasional ASN Pemkot Samarinda" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎓 TTM Khusus</span><span class="text-xs font-bold text-white">TTM Hukum, Pemkot Samarinda</span></div>
         </div>
         <div class="gal-card" data-gcat="ttm" data-src="assets/images/ttm-hukum-dosen-mengajar.webp" data-cap="Dr. H. Andi Harun mengajar Hukum Internasional">
-          <img src="assets/images/ttm-hukum-dosen-mengajar.webp" alt="Dr. H. Andi Harun Walikota Samarinda mengajar UT" loading="lazy">
+          <img width="1200" height="900" src="assets/images/ttm-hukum-dosen-mengajar.webp" alt="Dr. H. Andi Harun Walikota Samarinda mengajar UT" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎓 TTM Khusus</span><span class="text-xs font-bold text-white">Dr. H. Andi Harun, Dosen UT</span></div>
         </div>
         <div class="gal-card" data-gcat="ttm" data-src="assets/images/ttm-hukum-dosen-presentasi.webp" data-cap="Sesi presentasi Hukum Internasional">
-          <img src="assets/images/ttm-hukum-dosen-presentasi.webp" alt="Presentasi Hukum Internasional UT Samarinda" loading="lazy">
+          <img width="1200" height="900" src="assets/images/ttm-hukum-dosen-presentasi.webp" alt="Presentasi Hukum Internasional UT Samarinda" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎓 TTM Khusus</span><span class="text-xs font-bold text-white">Presentasi Hukum Internasional</span></div>
         </div>
         <div class="gal-card" data-gcat="ttm" data-src="assets/images/ttm-hukum-peserta-ujian-1.webp" data-cap="Peserta TTM ASN Pemkot Samarinda">
-          <img src="assets/images/ttm-hukum-peserta-ujian-1.webp" alt="Peserta kelas tatap muka Hukum ASN Samarinda" loading="lazy">
+          <img width="1200" height="802" src="assets/images/ttm-hukum-peserta-ujian-1.webp" alt="Peserta kelas tatap muka Hukum ASN Samarinda" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎓 TTM Khusus</span><span class="text-xs font-bold text-white">ASN Pemkot, Peserta TTM</span></div>
         </div>
         <div class="gal-card" data-gcat="ttm" data-src="assets/images/ttm-hukum-peserta-ujian-2.webp" data-cap="Kelas penuh TTM Hukum Internasional BKPSDM">
-          <img src="assets/images/ttm-hukum-peserta-ujian-2.webp" alt="Kelas TTM Hukum Internasional penuh di BKPSDM Samarinda" loading="lazy">
+          <img width="1200" height="801" src="assets/images/ttm-hukum-peserta-ujian-2.webp" alt="Kelas TTM Hukum Internasional penuh di BKPSDM Samarinda" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎓 TTM Khusus</span><span class="text-xs font-bold text-white">Kelas Penuh, BKPSDM</span></div>
         </div>
         <div class="gal-card" data-gcat="ttm" data-src="assets/images/ttm-hukum-dosen-close.webp" data-cap="Dr. H. Andi Harun, Dosen Fakultas Hukum UT">
-          <img src="assets/images/ttm-hukum-dosen-close.webp" alt="Dr. Andi Harun dosen hukum universitas terbuka samarinda" loading="lazy">
+          <img width="1200" height="801" src="assets/images/ttm-hukum-dosen-close.webp" alt="Dr. Andi Harun dosen hukum universitas terbuka samarinda" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎓 TTM Khusus</span><span class="text-xs font-bold text-white">Dr. H. Andi Harun, Hukum UT</span></div>
         </div>
         <div class="gal-card" data-gcat="ttm kunjungan" data-src="assets/images/ttm-hukum-bersama-depan-layar.webp" data-cap="Ahmad Husaini & Dr. Andi Harun, TTM Hukum Internasional">
-          <img src="assets/images/ttm-hukum-bersama-depan-layar.webp" alt="Ahmad Husaini Salut Etam Betuah bersama Dr. Andi Harun" loading="lazy">
+          <img width="1200" height="900" src="assets/images/ttm-hukum-bersama-depan-layar.webp" alt="Ahmad Husaini Salut Etam Betuah bersama Dr. Andi Harun" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🤝 Kunjungan</span><span class="text-xs font-bold text-white">Salut & Walikota Samarinda</span></div>
         </div>
         <div class="gal-card" data-gcat="ttm kunjungan" data-src="assets/images/ttm-hukum-kepala-salut-dosen.webp" data-cap="Kepala Salut Etam Betuah bersama Dosen UT">
-          <img src="assets/images/ttm-hukum-kepala-salut-dosen.webp" alt="Ahmad Husaini SH MH Kepala Salut Etam Betuah bersama dosen UT" loading="lazy">
+          <img width="1200" height="900" src="assets/images/ttm-hukum-kepala-salut-dosen.webp" alt="Ahmad Husaini SH MH Kepala Salut Etam Betuah bersama dosen UT" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🤝 Kunjungan</span><span class="text-xs font-bold text-white">Kepala Salut & Dosen UT</span></div>
         </div>
         <div class="gal-card" data-gcat="ttm kunjungan" data-src="assets/images/ttm-hukum-bkpsdm-kunjungan.webp" data-cap="Ahmad Husaini di BKPSDM Kota Samarinda">
-          <img src="assets/images/ttm-hukum-bkpsdm-kunjungan.webp" alt="Salut Etam Betuah kunjungan ke BKPSDM Kota Samarinda" loading="lazy">
+          <img width="900" height="1200" src="assets/images/ttm-hukum-bkpsdm-kunjungan.webp" alt="Salut Etam Betuah kunjungan ke BKPSDM Kota Samarinda" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🤝 Kunjungan</span><span class="text-xs font-bold text-white">Kunjungan ke BKPSDM</span></div>
         </div>
         <div class="gal-card" data-gcat="ttm" data-src="assets/images/ttm-hukum-setup-ruangan.webp" data-cap="Persiapan ruangan TTM Hukum Internasional BKPSDM">
-          <img src="assets/images/ttm-hukum-setup-ruangan.webp" alt="Persiapan ruangan TTM Hukum Internasional Pemkot Samarinda" loading="lazy">
+          <img width="1200" height="900" src="assets/images/ttm-hukum-setup-ruangan.webp" alt="Persiapan ruangan TTM Hukum Internasional Pemkot Samarinda" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎓 TTM Khusus</span><span class="text-xs font-bold text-white">Persiapan Ruangan TTM</span></div>
         </div>
         <div class="gal-card" data-gcat="ttm" data-src="assets/images/ttm-hukum-peserta-komputer-1.webp" data-cap="Peserta TTM mengerjakan tugas di BKPSDM">
-          <img src="assets/images/ttm-hukum-peserta-komputer-1.webp" alt="ASN Pemkot Samarinda mengikuti TTM Hukum Internasional UT" loading="lazy">
+          <img width="1200" height="802" src="assets/images/ttm-hukum-peserta-komputer-1.webp" alt="ASN Pemkot Samarinda mengikuti TTM Hukum Internasional UT" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">🎓 TTM Khusus</span><span class="text-xs font-bold text-white">Peserta Aktif, TTM Hukum</span></div>
         </div>
         <div class="gal-card" data-gcat="kuliah" data-src="assets/images/kuliah-ttm-display2.webp" data-cap="Kuliah TTM, Hukum Internasional">
-          <img src="assets/images/kuliah-ttm-display2.webp" alt="Kuliah Hukum Internasional" loading="lazy">
+          <img width="900" height="1200" src="assets/images/kuliah-ttm-display2.webp" alt="Kuliah Hukum Internasional" loading="lazy">
           <div class="gal-overlay"><span class="text-[9px] font-bold text-amber-300">📚 Kuliah TTM</span><span class="text-xs font-bold text-white">Kuliah Hukum Internasional</span></div>
         </div>
 
@@ -1741,7 +1741,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.ge
   <div class="max-w-7xl mx-auto px-4 lg:px-6">
     <div class="flex flex-col md:flex-row items-center justify-between gap-5">
       <div class="flex items-center gap-3">
-        <img src="assets/images/logo.png" alt="Logo Salut Etam Betuah" class="w-9 h-9 object-contain bg-white rounded-full p-1">
+        <img loading="lazy" decoding="async" width="512" height="512" src="assets/images/logo.webp" alt="Logo Salut Etam Betuah" class="w-9 h-9 object-contain bg-white rounded-full p-1">
         <div>
           <div class="text-white font-bold text-sm">Salut Etam Betuah</div>
           <div class="text-blue-300/60 text-[10px]">Mitra Resmi UT Samarinda · Est. 2018</div>
@@ -2386,53 +2386,6 @@ document.querySelectorAll('.counter').forEach(el => cntObs.observe(el));
 </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Salut Etam Betuah", "description": "Salut Etam Betuah adalah SALUT #1 Kalimantan Timur, mitra resmi Universitas Terbuka di Samarinda sejak 2018. Melayani ribuan mahasiswa UT dari Samarinda, Balikpapan, Bontang, dan Kutai Kartanegara. 464 ulasan bintang 5 Google. Kepala: Ahmad Husaini, S.H., M.H.", "url": "https://salutetambetuah.id", "telephone": "+6282250638289", "address": {"@type": "PostalAddress", "streetAddress": "Jl. Kadrie Oening No. 66A", "addressLocality": "Samarinda", "addressRegion": "Kalimantan Timur", "postalCode": "75124", "addressCountry": "ID"}, "aggregateRating": {"@type": "AggregateRating", "ratingValue": "5.0", "bestRating": "5", "worstRating": "1", "reviewCount": "464"}, "review": [{"@type": "Review", "author": {"@type": "Person", "name": "Rahmat Hidayat"}, "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"}, "reviewBody": "Pelayanan sangat ramah dan profesional. Tim Salut Etam Betuah membantu saya mendaftar ulang semester baru dengan cepat."}, {"@type": "Review", "author": {"@type": "Person", "name": "Muhammad Fadhil"}, "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"}, "reviewBody": "Tempat ujian online ber-AC dan komputernya cepat. Salut Etam Betuah memang mitra terbaik UT di Samarinda."}], "alternateName": ["Salut Etam Betuah Samarinda", "Salut Etam Betuah Kalimantan Timur", "Sentra Layanan UT Samarinda", "Salut UT Samarinda Etam Betuah", "SALUT Etam Betuah"], "keywords": "salut etam betuah, SALUT resmi UT Samarinda samarinda, sentra layanan ut samarinda, salut ut samarinda, kuliah ut samarinda, daftar ut samarinda", "sameAs": ["https://id.wikipedia.org/wiki/Salut_Etam_Betuah", "https://www.instagram.com/salutetambetuah", "https://www.tiktok.com/@salutetambetuah"], "areaServed": [{"@type": "State", "name": "Kalimantan Timur"}, {"@type": "City", "name": "Samarinda"}, {"@type": "City", "name": "Balikpapan"}, {"@type": "City", "name": "Bontang"}, {"@type": "City", "name": "Kutai Kartanegara"}], "hasMap": "https://maps.google.com/?q=Salut+Etam+Betuah+Samarinda", "slogan": "SALUT #1 Kalimantan Timur, #KuliahTerurus", "award": "Lolos Audit Independen BDO International, April 2026 (Sumber: Infokaltim.id)", "foundingDate": "2018", "founder": {"@type": "Person", "name": "Ahmad Husaini, S.H., M.H.", "jobTitle": ["Kepala Salut Etam Betuah", "Ketua IKA UT Wilayah Kalimantan Timur"]}, "knowsAbout": ["Universitas Terbuka", "Pendidikan Jarak Jauh", "Pendaftaran UT", "Tutorial Tatap Muka UT", "Ujian Online UT", "Wisuda Universitas Terbuka"], "currenciesAccepted": "IDR", "paymentAccepted": "Cash, Transfer Bank, Tabungan BTN", "contactPoint": [{"@type": "ContactPoint", "telephone": "+62-822-5063-8289", "contactType": "customer service", "availableLanguage": "Indonesian", "contactOption": "TollFree", "areaServed": "ID"}, {"@type": "ContactPoint", "telephone": "+62-852-5283-4986", "contactType": "customer service", "availableLanguage": "Indonesian", "areaServed": "ID"}], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Layanan Salut Etam Betuah", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Pendaftaran Mahasiswa Baru UT"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Konsultasi Jurusan UT"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Tutorial Tatap Muka (TTM)"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Fasilitas Ujian Online UT"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Pendampingan Wisuda UT"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Program Tabungan SPP via Bank BTN"}}]}, "disambiguatingDescription": "Salut Etam Betuah adalah Sentra Layanan Universitas Terbuka (SALUT) resmi yang berkantor di Samarinda, Kalimantan Timur - berbeda dari UPBJJ UT Samarinda yang merupakan kantor resmi UT. Salut Etam Betuah adalah mitra layanan yang membantu mahasiswa mendaftar dan menjalani perkuliahan UT.", "identifier": {"@type": "PropertyValue", "name": "Kode Mitra UT", "value": "SALUT Etam Betuah - Mitra Resmi UPBJJ UT Samarinda sejak 2018"}, "potentialAction": [{"@type": "ContactAction", "target": "https://wa.me/6282250638289", "name": "Hubungi via WhatsApp"}]}</script>
 <!-- SEO: HowTo Schema, cara daftar UT via Salut Etam Betuah -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "HowTo",
-  "name": "Cara Daftar Kuliah UT Samarinda via Salut Etam Betuah",
-  "description": "Panduan lengkap mendaftar Universitas Terbuka di Samarinda melalui Salut Etam Betuah, sentra layanan UT terpercaya di Kalimantan Timur.",
-  "image": "https://salutetambetuah.id/assets/images/og-image.jpg",
-  "totalTime": "PT30M",
-  "estimatedCost": {"@type": "MonetaryAmount", "currency": "IDR", "value": "500000"},
-  "supply": [
-    {"@type": "HowToSupply", "name": "KTP / Identitas Diri"},
-    {"@type": "HowToSupply", "name": "Ijazah SMA/SMK atau D3"},
-    {"@type": "HowToSupply", "name": "Foto 3x4"},
-    {"@type": "HowToSupply", "name": "Email Aktif"}
-  ],
-  "step": [
-    {
-      "@type": "HowToStep",
-      "position": 1,
-      "name": "Hubungi Salut Etam Betuah via WhatsApp",
-      "text": "Chat WhatsApp 0822-5063-8289 atau kunjungi salutetambetuah.id untuk konsultasi gratis dengan admin Salut Etam Betuah.",
-      "url": "https://salutetambetuah.id/#kontak"
-    },
-    {
-      "@type": "HowToStep",
-      "position": 2,
-      "name": "Pilih Jalur Pendaftaran",
-      "text": "Pilih Non-RPL (lulusan SMA/SMK) atau RPL (D3/pengalaman kerja). Salut Etam Betuah akan bantu menentukan jalur terbaik untuk Anda.",
-      "url": "https://salutetambetuah.id/#layanan"
-    },
-    {
-      "@type": "HowToStep",
-      "position": 3,
-      "name": "Siapkan Dokumen Persyaratan",
-      "text": "Siapkan KTP, ijazah, foto 3x4, dan email aktif. Tim Salut Etam Betuah akan membantu pengecekan kelengkapan dokumen.",
-      "url": "https://salutetambetuah.id/#layanan"
-    },
-    {
-      "@type": "HowToStep",
-      "position": 4,
-      "name": "Daftar dan Aktifkan NIM",
-      "text": "Isi formulir pendaftaran UT online didampingi admin Salut Etam Betuah hingga NIM aktif dan akun e-learning terdaftar.",
-      "url": "https://salutetambetuah.id/#kontak"
-    }
-  ]
-}
-</script>
 <!-- SEO: Organization dengan semua keyword anchor -->
 <script type="application/ld+json">
 {

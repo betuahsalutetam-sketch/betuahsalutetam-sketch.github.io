@@ -8,6 +8,7 @@
   "robots": "index,follow,max-image-preview:large,max-snippet:-1",
   "h1_count": 1,
   "schema_types": [
+   "BreadcrumbList",
    "CollectionPage",
    "ItemList",
    "ListItem",
@@ -36,8 +37,8 @@
    "Question",
    "WebPage"
   ],
-  "approx_word_count": 676,
-  "content_hash": "99044dedebea"
+  "approx_word_count": 702,
+  "content_hash": "e069c718d963"
  },
  "blog/apa-itu-salut-ut-panduan-lengkap.html": {
   "title": "Apa itu SALUT UT? Panduan Sentra Layanan UT 2026",
@@ -58,8 +59,8 @@
    "Question",
    "WebPage"
   ],
-  "approx_word_count": 995,
-  "content_hash": "2ff0c4754252"
+  "approx_word_count": 1026,
+  "content_hash": "737c222d873c"
  },
  "blog/beasiswa-ut-kalimantan-timur-2026.html": {
   "title": "Beasiswa UT Kalimantan Timur 2026: Gratispol & Cara Daftar",
@@ -79,8 +80,8 @@
    "Organization",
    "Question"
   ],
-  "approx_word_count": 666,
-  "content_hash": "861c2d45b592"
+  "approx_word_count": 695,
+  "content_hash": "97ddf438515e"
  },
  "blog/beasiswa-ut-samarinda-2026.html": {
   "title": "Beasiswa UT Samarinda 2026: KIP Kuliah & Cara Daftar",
@@ -101,8 +102,8 @@
    "Question",
    "WebPage"
   ],
-  "approx_word_count": 867,
-  "content_hash": "4eabd5de64c1"
+  "approx_word_count": 899,
+  "content_hash": "18ea68d3ed77"
  },
  "blog/biaya-kuliah-ut-samarinda-2026.html": {
   "title": "Biaya Kuliah UT Samarinda 2026: SPP, Tabungan BTN",
@@ -123,8 +124,8 @@
    "Question",
    "WebPage"
   ],
-  "approx_word_count": 603,
-  "content_hash": "f607671dc395"
+  "approx_word_count": 638,
+  "content_hash": "eb1b5f969bbc"
  },
  "blog/biaya-kuliah-ut-samarinda.html": {
   "title": "Biaya Kuliah UT Samarinda: SPP, Keanggotaan & Tabungan",
@@ -145,8 +146,8 @@
    "Question",
    "WebPage"
   ],
-  "approx_word_count": 800,
-  "content_hash": "7ffe7e6e0723"
+  "approx_word_count": 833,
+  "content_hash": "7772302a74bc"
  },
  "blog/blog-section.html": {
   "title": "",
@@ -173,16 +174,14 @@
    "Article",
    "BreadcrumbList",
    "FAQPage",
-   "HowTo",
-   "HowToStep",
    "ImageObject",
    "ListItem",
    "Organization",
    "Question",
    "WebPage"
   ],
-  "approx_word_count": 811,
-  "content_hash": "9f16cf0be125"
+  "approx_word_count": 839,
+  "content_hash": "823f54bda773"
  },
  "blog/cara-bayar-spp-ut-samarinda-2026.html": {
   "title": "Cara Bayar SPP UT Samarinda 2026 via BTN & ATM",
@@ -203,8 +202,8 @@
    "Question",
    "WebPage"
   ],
-  "approx_word_count": 878,
-  "content_hash": "68a6e813e74e"
+  "approx_word_count": 910,
+  "content_hash": "ff605c39bd13"
  },
  "blog/cara-daftar-kuliah-ut-balikpapan-bontang-kutai-kartanegara-2026.html": {
   "title": "Daftar UT dari Balikpapan, Bontang, Kukar 2026",
@@ -225,8 +224,8 @@
    "Organization",
    "Question"
   ],
-  "approx_word_count": 814,
-  "content_hash": "92781e4041ea"
+  "approx_word_count": 846,
+  "content_hash": "fb7f6981d6e5"
  },
  "blog/cara-daftar-kuliah-ut-samarinda-2026.html": {
   "title": "Cara Daftar Kuliah UT Samarinda 2026: Panduan Online",
@@ -241,23 +240,20 @@
    "Article",
    "BreadcrumbList",
    "FAQPage",
-   "HowTo",
-   "HowToStep",
    "ImageObject",
    "ListItem",
-   "MonetaryAmount",
    "Organization",
    "Question",
    "WebPage"
   ],
-  "approx_word_count": 696,
-  "content_hash": "1ed2d35f9d58"
+  "approx_word_count": 725,
+  "content_hash": "01f0b80438a9"
  },
  "blog/daftar-ut-samarinda-2026.html": {
   "title": "Daftar UT Samarinda 2026: Panduan Cara Daftar",
   "title_len": 45,
-  "description": "Panduan daftar kuliah UT Samarinda 2026: syarat, dokumen, langkah-langkah, biaya, dan jadwal pendaftaran.",
-  "desc_len": 105,
+  "description": "Cara daftar kuliah UT Samarinda 2026 langkah demi langkah: syarat dan dokumen, biaya, jadwal pendaftaran, serta bantuan pendaftaran lewat WhatsApp.",
+  "desc_len": 147,
   "canonical": "https://salutetambetuah.id/blog/daftar-ut-samarinda-2026.html",
   "robots": "index, follow, max-image-preview:large, max-snippet:-1",
   "h1_count": 1,
@@ -266,16 +262,14 @@
    "Article",
    "BreadcrumbList",
    "FAQPage",
-   "HowTo",
-   "HowToStep",
    "ImageObject",
    "ListItem",
    "Organization",
    "Question",
    "WebPage"
   ],
-  "approx_word_count": 1007,
-  "content_hash": "7bf2024f9c33"
+  "approx_word_count": 1038,
+  "content_hash": "0226f94c8241"
  },
  "blog/daftar-ut/index.html": {
   "title": "Redirect",
@@ -292,8 +286,8 @@
  "blog/faq-mahasiswa-ut-samarinda-2026.html": {
   "title": "FAQ Mahasiswa UT Samarinda 2026: 30 Pertanyaan",
   "title_len": 46,
-  "description": "30 pertanyaan sering ditanya seputar kuliah UT Samarinda: biaya, cara daftar, jadwal ujian, RPL, dan wisuda.",
-  "desc_len": 108,
+  "description": "30 pertanyaan yang paling sering diajukan mahasiswa UT Samarinda: biaya, cara daftar, jadwal ujian, RPL, wisuda, dan layanan Salut Etam Betuah.",
+  "desc_len": 143,
   "canonical": "https://salutetambetuah.id/blog/faq-mahasiswa-ut-samarinda-2026.html",
   "robots": "index, follow, max-image-preview:large, max-snippet:-1",
   "h1_count": 1,
@@ -308,8 +302,8 @@
    "Question",
    "WebPage"
   ],
-  "approx_word_count": 1486,
-  "content_hash": "1794e89be01a"
+  "approx_word_count": 1517,
+  "content_hash": "5fd73f32eaba"
  },
  "blog/index.html": {
   "title": "Blog Salut Etam Betuah, Tips & Panduan Kuliah UT Samarinda",
@@ -352,14 +346,14 @@
    "Question",
    "WebPage"
   ],
-  "approx_word_count": 622,
-  "content_hash": "e63a3fff6d6a"
+  "approx_word_count": 650,
+  "content_hash": "4784e62afaac"
  },
  "blog/jadwal-wisuda-ut-2026-kaltim.html": {
   "title": "Jadwal Wisuda UT 2026 Kaltim: Syarat & Biaya",
   "title_len": 44,
-  "description": "Jadwal wisuda UT 2026 di Kalimantan Timur: syarat pendaftaran, biaya, dokumen, dan tips persiapan hari-H.",
-  "desc_len": 105,
+  "description": "Jadwal wisuda UT 2026 di Kalimantan Timur: syarat pendaftaran, biaya, dokumen yang disiapkan, dan tips persiapan hari wisuda untuk lulusan UT Samarinda.",
+  "desc_len": 152,
   "canonical": "https://salutetambetuah.id/blog/jadwal-wisuda-ut-2026-kaltim.html",
   "robots": "index, follow, max-image-preview:large, max-snippet:-1",
   "h1_count": 1,
@@ -376,8 +370,8 @@
    "Question",
    "WebPage"
   ],
-  "approx_word_count": 1020,
-  "content_hash": "0473dc4fc675"
+  "approx_word_count": 1050,
+  "content_hash": "2bde2328ab32"
  },
  "blog/jurusan-universitas-terbuka-samarinda-2026.html": {
   "title": "Daftar Jurusan Universitas Terbuka 2026 + Akreditasi",
@@ -398,8 +392,8 @@
    "Question",
    "WebPage"
   ],
-  "approx_word_count": 1064,
-  "content_hash": "1af33d3d8ecc"
+  "approx_word_count": 1092,
+  "content_hash": "8b53b16229f9"
  },
  "blog/kerjasama-ponpes-nurul-amin-pendidikan-agama-islam-2026.html": {
   "title": "Kerjasama UT dengan Ponpes Nurul Amin Samarinda",
@@ -421,8 +415,8 @@
    "PostalAddress",
    "Question"
   ],
-  "approx_word_count": 767,
-  "content_hash": "9129b6e96e07"
+  "approx_word_count": 794,
+  "content_hash": "5edab6efed05"
  },
  "blog/keuntungan-kuliah-universitas-terbuka.html": {
   "title": "5 Keuntungan Kuliah UT vs Kampus Reguler 2026",
@@ -443,8 +437,8 @@
    "Question",
    "WebPage"
   ],
-  "approx_word_count": 713,
-  "content_hash": "d11d5bf134e4"
+  "approx_word_count": 746,
+  "content_hash": "d230734667bb"
  },
  "blog/kuliah-sambil-kerja-samarinda-2026.html": {
   "title": "Kuliah Sambil Kerja di Samarinda 2026: Panduan UT",
@@ -465,8 +459,8 @@
    "Question",
    "WebPage"
   ],
-  "approx_word_count": 628,
-  "content_hash": "b9edbcab231b"
+  "approx_word_count": 657,
+  "content_hash": "775010fcbaf0"
  },
  "blog/kuliah-ut-penajam-paser-utara-ikn-2026.html": {
   "title": "Kuliah UT dari Penajam Paser Utara & IKN 2026",
@@ -489,14 +483,14 @@
    "Question",
    "State"
   ],
-  "approx_word_count": 976,
-  "content_hash": "1e562e3b60ad"
+  "approx_word_count": 1006,
+  "content_hash": "ef19fa18911d"
  },
  "blog/kuliah-ut-untuk-asn-samarinda-2026.html": {
   "title": "Kuliah UT untuk ASN Samarinda: Panduan 2026",
   "title_len": 43,
-  "description": "Panduan kuliah UT untuk ASN Samarinda dan Kaltim. Fleksibel, diakui BKN, bisa tabung via BTN.",
-  "desc_len": 93,
+  "description": "Panduan kuliah UT untuk ASN di Samarinda dan Kaltim: jadwal fleksibel, ijazah diakui BKN, TTM akhir pekan, dan program tabungan SPP lewat Bank BTN.",
+  "desc_len": 147,
   "canonical": "https://salutetambetuah.id/blog/kuliah-ut-untuk-asn-samarinda-2026.html",
   "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
   "h1_count": 1,
@@ -511,14 +505,14 @@
    "Person",
    "Question"
   ],
-  "approx_word_count": 821,
-  "content_hash": "6276a01af475"
+  "approx_word_count": 852,
+  "content_hash": "13997f5084c9"
  },
  "blog/kunjungan-sekjen-ika-ut-pusat-salut-etam-betuah-2026.html": {
   "title": "Sekjen IKA UT Pusat Kunjungi Salut Etam Betuah",
   "title_len": 46,
-  "description": "Sekjen IKA UT Pusat berkunjung ke kantor Salut Etam Betuah Samarinda di sela Wisuda UT Periode 1, April 2026.",
-  "desc_len": 109,
+  "description": "Sekjen IKA UT Pusat mengunjungi kantor Salut Etam Betuah Samarinda di sela Wisuda UT Periode 1, April 2026, dan hadir sebagai narasumber Salut Talks.",
+  "desc_len": 149,
   "canonical": "https://salutetambetuah.id/blog/kunjungan-sekjen-ika-ut-pusat-salut-etam-betuah-2026.html",
   "robots": "index,follow,max-image-preview:large,max-snippet:-1",
   "h1_count": 1,
@@ -533,8 +527,8 @@
    "Question",
    "VideoObject"
   ],
-  "approx_word_count": 606,
-  "content_hash": "653c928f53af"
+  "approx_word_count": 632,
+  "content_hash": "e022a0576c53"
  },
  "blog/lokasi-ujian-uas-ut-samarinda-juni-juli-2026.html": {
   "title": "Lokasi & Jadwal UAS UT Samarinda Juni-Juli 2026",
@@ -554,8 +548,8 @@
    "Organization",
    "Question"
   ],
-  "approx_word_count": 788,
-  "content_hash": "fc0c81e1f1e8"
+  "approx_word_count": 817,
+  "content_hash": "d7eaa8e04a19"
  },
  "blog/panduan-registrasi-matkul-ut-2026.html": {
   "title": "Panduan Registrasi Mata Kuliah UT 2026",
@@ -576,8 +570,8 @@
    "Question",
    "WebPage"
   ],
-  "approx_word_count": 848,
-  "content_hash": "da957d340605"
+  "approx_word_count": 877,
+  "content_hash": "e492fd40a68d"
  },
  "blog/panduan-ujian-ut-samarinda-2026.html": {
   "title": "Panduan Ujian UT Samarinda 2026: UAS, TAP, Online",
@@ -598,8 +592,8 @@
    "Question",
    "WebPage"
   ],
-  "approx_word_count": 1913,
-  "content_hash": "e95956872038"
+  "approx_word_count": 1942,
+  "content_hash": "d9fe7831023f"
  },
  "blog/perbandingan-salut-ut-samarinda-kalimantan-timur-2026.html": {
   "title": "Perbandingan SALUT UT Samarinda 2026",
@@ -619,8 +613,8 @@
    "Organization",
    "Question"
   ],
-  "approx_word_count": 841,
-  "content_hash": "b821dc4989bc"
+  "approx_word_count": 870,
+  "content_hash": "847f12764869"
  },
  "blog/pgsd-universitas-terbuka-samarinda-untuk-guru-2026.html": {
   "title": "PGSD UT Samarinda 2026 untuk Guru Kalimantan Timur",
@@ -635,23 +629,20 @@
    "Article",
    "BreadcrumbList",
    "FAQPage",
-   "HowTo",
-   "HowToStep",
    "ImageObject",
    "ListItem",
-   "MonetaryAmount",
    "Organization",
    "Person",
    "Question"
   ],
-  "approx_word_count": 941,
-  "content_hash": "76c91c20ed5f"
+  "approx_word_count": 971,
+  "content_hash": "254f62b10b64"
  },
  "blog/prodi-terpopuler-ut-samarinda-2026.html": {
   "title": "Prodi Terpopuler UT Samarinda 2026",
   "title_len": 34,
-  "description": "10 prodi terpopuler UT Samarinda 2026: Manajemen, Akuntansi, Hukum, Administrasi Negara, PGSD, dan lainnya.",
-  "desc_len": 107,
+  "description": "10 program studi UT paling diminati di Samarinda 2026: Manajemen, Akuntansi, Ilmu Hukum, Administrasi Negara, PGSD, dan lainnya. Cari yang cocok untuk Anda.",
+  "desc_len": 156,
   "canonical": "https://salutetambetuah.id/blog/prodi-terpopuler-ut-samarinda-2026.html",
   "robots": "index, follow, max-image-preview:large, max-snippet:-1",
   "h1_count": 1,
@@ -666,8 +657,8 @@
    "Question",
    "WebPage"
   ],
-  "approx_word_count": 1012,
-  "content_hash": "755a9015a96a"
+  "approx_word_count": 1046,
+  "content_hash": "911d66e1d0c5"
  },
  "blog/prodi-ut-untuk-asn-karyawan-2026.html": {
   "title": "Prodi UT Terbaik untuk ASN & Karyawan 2026",
@@ -688,8 +679,8 @@
    "Question",
    "WebPage"
   ],
-  "approx_word_count": 496,
-  "content_hash": "c5096ed701ca"
+  "approx_word_count": 522,
+  "content_hash": "a78a1a776590"
  },
  "blog/rpl-rekognisi-pembelajaran-lampau-ut-samarinda-2026.html": {
   "title": "RPL UT Samarinda 2026: Alih Kredit D3 ke S1",
@@ -709,14 +700,14 @@
    "Organization",
    "Question"
   ],
-  "approx_word_count": 796,
-  "content_hash": "56879df2117e"
+  "approx_word_count": 823,
+  "content_hash": "4921097885fb"
  },
  "blog/rpl-ut-kaltim.html": {
   "title": "RPL UT Kaltim 2026: Panduan Alih Kredit",
   "title_len": 39,
-  "description": "Panduan RPL UT Kaltim 2026: alih kredit D3 ke S1, pengakuan pengalaman kerja, syarat, dan prosedur lengkap.",
-  "desc_len": 107,
+  "description": "Panduan RPL UT Kaltim 2026: alih kredit D3 ke S1, pengakuan pengalaman kerja, syarat, dan prosedur pendaftaran lewat Salut Etam Betuah Samarinda.",
+  "desc_len": 145,
   "canonical": "https://salutetambetuah.id/blog/rpl-ut-kaltim.html",
   "robots": "index, follow, max-image-preview:large, max-snippet:-1",
   "h1_count": 1,
@@ -731,8 +722,8 @@
    "Question",
    "WebPage"
   ],
-  "approx_word_count": 973,
-  "content_hash": "e57d40334408"
+  "approx_word_count": 1007,
+  "content_hash": "096966fc6ff5"
  },
  "blog/rpl/index.html": {
   "title": "Redirect",
@@ -764,8 +755,8 @@
    "Organization",
    "Question"
   ],
-  "approx_word_count": 442,
-  "content_hash": "fa067bd3f626"
+  "approx_word_count": 472,
+  "content_hash": "2b9362155dca"
  },
  "blog/salut-etam-betuah-profil.html": {
   "title": "Profil Lengkap Salut Etam Betuah, Mitra UT Kaltim",
@@ -786,8 +777,8 @@
    "Question",
    "WebPage"
   ],
-  "approx_word_count": 876,
-  "content_hash": "480a0945c3fd"
+  "approx_word_count": 911,
+  "content_hash": "9eced7a1bab8"
  },
  "blog/salut-etam-betuah-samarinda.html": {
   "title": "Salut Etam Betuah Samarinda: Sentra Layanan UT #1",
@@ -800,17 +791,21 @@
   "schema_types": [
    "AggregateRating",
    "Answer",
+   "Article",
    "BreadcrumbList",
    "FAQPage",
    "GeoCoordinates",
+   "ImageObject",
    "ListItem",
    "LocalBusiness",
+   "Organization",
    "PostalAddress",
    "Question",
-   "State"
+   "State",
+   "WebPage"
   ],
-  "approx_word_count": 1003,
-  "content_hash": "959ebd41e78b"
+  "approx_word_count": 1032,
+  "content_hash": "1e8c93415652"
  },
  "blog/salut-etam-betuah-universitas-terbuka-samarinda.html": {
   "title": "Salut Etam Betuah: Daftar Kuliah UT Samarinda 2026",
@@ -833,8 +828,8 @@
    "State",
    "WebPage"
   ],
-  "approx_word_count": 901,
-  "content_hash": "9be030d325d3"
+  "approx_word_count": 935,
+  "content_hash": "9893092b222b"
  },
  "blog/salut-terbaik-kalimantan-timur-ut-2026.html": {
   "title": "SALUT Terbaik Kalimantan Timur 2026",
@@ -857,8 +852,8 @@
    "PostalAddress",
    "Question"
   ],
-  "approx_word_count": 787,
-  "content_hash": "76dd8a029a89"
+  "approx_word_count": 816,
+  "content_hash": "c1c3293bfdab"
  },
  "blog/salut-terbaik-samarinda-ut-2026.html": {
   "title": "SALUT Rating 5.0 Google Maps Samarinda 2026",
@@ -878,8 +873,8 @@
    "Organization",
    "Question"
   ],
-  "approx_word_count": 785,
-  "content_hash": "2ce1910eecb4"
+  "approx_word_count": 815,
+  "content_hash": "40acdcf2cf21"
  },
  "blog/salut-ut-samarinda.html": {
   "title": "Salut UT Samarinda: Mengenal Sentra Layanan UT",
@@ -900,8 +895,8 @@
    "Question",
    "WebPage"
   ],
-  "approx_word_count": 1008,
-  "content_hash": "1b79291eaded"
+  "approx_word_count": 1042,
+  "content_hash": "4f41bdf4eb17"
  },
  "blog/siaran-pers-ttm-hukum-pemkot-samarinda-2026.html": {
   "title": "Siaran Pers: Walikota Samarinda Mengajar di UT",
@@ -920,8 +915,8 @@
    "Organization",
    "Place"
   ],
-  "approx_word_count": 543,
-  "content_hash": "2f8755e5b030"
+  "approx_word_count": 571,
+  "content_hash": "0f7b8e2597d5"
  },
  "blog/syarat-daftar-ut-2026.html": {
   "title": "Syarat Daftar UT 2026: Dokumen & Persyaratan",
@@ -942,14 +937,14 @@
    "Question",
    "WebPage"
   ],
-  "approx_word_count": 1675,
-  "content_hash": "427535f8df7d"
+  "approx_word_count": 1705,
+  "content_hash": "3d60e3e3b59b"
  },
  "blog/testimoni-alumni-kuliah-sambil-kerja-ut-samarinda-2026.html": {
   "title": "Testimoni Alumni: Kuliah UT Sambil Kerja Samarinda",
   "title_len": 50,
-  "description": "Cerita nyata alumni UT Samarinda yang lulus sambil bekerja penuh waktu: ASN, guru honorer, karyawan swasta.",
-  "desc_len": 107,
+  "description": "Cerita alumni UT Samarinda yang lulus sambil bekerja penuh waktu: ASN, guru honorer, dan karyawan swasta. Baca pengalaman mereka sebelum Anda mendaftar.",
+  "desc_len": 152,
   "canonical": "https://salutetambetuah.id/blog/testimoni-alumni-kuliah-sambil-kerja-ut-samarinda-2026.html",
   "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
   "h1_count": 1,
@@ -964,8 +959,8 @@
    "Organization",
    "Question"
   ],
-  "approx_word_count": 665,
-  "content_hash": "627de8cc9a8d"
+  "approx_word_count": 689,
+  "content_hash": "c70da845fd47"
  },
  "blog/tips-lulus-ut-tepat-waktu-fresh-graduate.html": {
   "title": "7 Tips Lulus Kuliah UT Tepat Waktu 2026",
@@ -986,8 +981,8 @@
    "Question",
    "WebPage"
   ],
-  "approx_word_count": 1298,
-  "content_hash": "8aa55047dcab"
+  "approx_word_count": 1329,
+  "content_hash": "0e721b9bd4b5"
  },
  "blog/tips-lulus/index.html": {
   "title": "Redirect",
@@ -1021,8 +1016,8 @@
    "PostalAddress",
    "WebPage"
   ],
-  "approx_word_count": 793,
-  "content_hash": "ddc5032224a1"
+  "approx_word_count": 822,
+  "content_hash": "b983b43e3b15"
  },
  "blog/ttm-khusus-instansi-pemerintah-samarinda-2026.html": {
   "title": "TTM Khusus Instansi: Solusi Kuliah UT untuk ASN",
@@ -1043,8 +1038,8 @@
    "Person",
    "Question"
   ],
-  "approx_word_count": 774,
-  "content_hash": "a95f6d68891e"
+  "approx_word_count": 801,
+  "content_hash": "2fa0eac3e5f1"
  },
  "blog/ujian-online-uas-ut-samarinda-panduan-lengkap-2026.html": {
   "title": "Panduan Ujian Online UAS UT Samarinda 2026",
@@ -1064,8 +1059,8 @@
    "Organization",
    "Question"
   ],
-  "approx_word_count": 784,
-  "content_hash": "6334c3f84122"
+  "approx_word_count": 814,
+  "content_hash": "38c482d04598"
  },
  "blog/universitas-terbuka-samarinda-2026.html": {
   "title": "Universitas Terbuka Samarinda 2026 | Salut Etam Betuah",
@@ -1086,8 +1081,8 @@
    "Question",
    "WebPage"
   ],
-  "approx_word_count": 657,
-  "content_hash": "c2c9a6fea8ba"
+  "approx_word_count": 684,
+  "content_hash": "d83dbd5167fc"
  },
  "blog/ut-vs-kuliah-biasa-2026.html": {
   "title": "UT vs Kuliah Biasa 2026: Mana yang Cocok?",
@@ -1108,8 +1103,8 @@
    "Question",
    "WebPage"
   ],
-  "approx_word_count": 613,
-  "content_hash": "b3a1631acfda"
+  "approx_word_count": 642,
+  "content_hash": "85e04480611f"
  },
  "blog/wisuda-ut-samarinda.html": {
   "title": "Wisuda UT Samarinda 2026: Panduan Pendaftaran",
@@ -1130,8 +1125,8 @@
    "Question",
    "WebPage"
   ],
-  "approx_word_count": 1122,
-  "content_hash": "0e2c2e46ec54"
+  "approx_word_count": 1149,
+  "content_hash": "9d609091b65c"
  },
  "blog_apa-itu-salut-ut-panduan-lengkap.html": {
   "title": "Redirect",
@@ -1171,14 +1166,10 @@
    "FAQPage",
    "GeoCoordinates",
    "GovernmentOrganization",
-   "HowTo",
-   "HowToStep",
-   "HowToSupply",
    "ImageObject",
    "ItemList",
    "ListItem",
    "LocalBusiness",
-   "MonetaryAmount",
    "Offer",
    "OfferCatalog",
    "OpeningHoursSpecification",
@@ -1240,14 +1231,14 @@
    "Service",
    "WebPage"
   ],
-  "approx_word_count": 469,
-  "content_hash": "a7b58e8b1539"
+  "approx_word_count": 673,
+  "content_hash": "3617f3de75a9"
  },
  "kuliah-ut-bontang.html": {
   "title": "Kuliah UT dari Bontang 2026: Tanpa ke Samarinda",
   "title_len": 47,
-  "description": "Warga Bontang bisa kuliah S1 UT tanpa pindah ke Samarinda. Daftar online, TTM fleksibel, ujian dari Bontang.",
-  "desc_len": 108,
+  "description": "Warga Bontang bisa kuliah S1 UT tanpa pindah ke Samarinda. Daftar online, ikut TTM fleksibel, ujian dari Bontang. Chat WhatsApp untuk konsultasi gratis.",
+  "desc_len": 152,
   "canonical": "https://salutetambetuah.id/kuliah-ut-bontang.html",
   "robots": "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
   "h1_count": 1,
@@ -1265,8 +1256,8 @@
    "Service",
    "WebPage"
   ],
-  "approx_word_count": 469,
-  "content_hash": "2107175e9758"
+  "approx_word_count": 664,
+  "content_hash": "073c823061ac"
  },
  "kuliah-ut-kutai-kartanegara.html": {
   "title": "Kuliah UT dari Kutai Kartanegara 2026",
@@ -1290,8 +1281,8 @@
    "Service",
    "WebPage"
   ],
-  "approx_word_count": 480,
-  "content_hash": "096c2d520cac"
+  "approx_word_count": 673,
+  "content_hash": "9baed7114f13"
  },
  "mitra-section.html": {
   "title": "",

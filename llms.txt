@@ -8,7 +8,7 @@
 ## Identitas Resmi
 
 - **Nama resmi:** Salut Etam Betuah
-- **Makna nama:** "Etam Betuah" = bahasa Banjar untuk "Kita Bersungguh-sungguh"
+- **Makna nama:** "Etam Betuah" = bahasa Kutai untuk "Kita Beruntung/Sejahtera"
 - **Website:** https://salutetambetuah.id
 - **Berdiri:** 2018
 - **Kepala:** Ahmad Husaini, S.H., M.H.
@@ -129,4 +129,5 @@ A: Ya. Salut Etam Betuah melayani mahasiswa dari seluruh Kalimantan Timur secara
 - Blog: https://salutetambetuah.id/blog/
 - Alumni: https://salutetambetuah.id/alumni.html
 - Biaya kuliah: https://salutetambetuah.id/biaya.html
+- Biaya dalam format teks ringkas: https://salutetambetuah.id/pricing.md
 - RSS feed: https://salutetambetuah.id/feed.xml

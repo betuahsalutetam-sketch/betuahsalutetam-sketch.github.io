@@ -35,26 +35,10 @@ jobs:
           GOOGLE_PLACE_ID: ${{ secrets.GOOGLE_PLACE_ID }}
         run: python3 scripts/daily_maintenance.py
 
-      - name: Update sitemap lastmod
+      - name: Update lastmod dan dateModified dari riwayat git
         run: |
-          TODAY=$(date +%Y-%m-%d)
-          [ -f sitemap.xml ] && sed -i "s|<lastmod>[0-9-]*</lastmod>|<lastmod>$TODAY</lastmod>|g" sitemap.xml
-          echo "sitemap: $TODAY"
-
-      - name: Update dateModified in HTML files
-        run: |
-          TODAY=$(date +%Y-%m-%d)
-          # PROTEKSI: blog/index.html dan blog-section.html DIKECUALIKAN
-          for f in index.html kta.html; do
-            [ -f "$f" ] && sed -i "s/\"dateModified\": \"[0-9-]*\"/\"dateModified\": \"$TODAY\"/g" "$f"
-          done
-          for f in blog/*.html; do
-            fname=$(basename "$f")
-            if [ "$fname" != "index.html" ] && [ "$fname" != "blog-section.html" ]; then
-              sed -i "s/\"dateModified\": \"[0-9-]*\"/\"dateModified\": \"$TODAY\"/g" "$f"
-            fi
-          done
-          echo "dateModified: $TODAY (blog/index.html dikecualikan)"
+          # Tanggal diambil dari perubahan isi yang sebenarnya, bukan tanggal hari ini
+          python3 scripts/update_lastmod.py
 
       - name: PROTEKSI blog/index.html
         run: |

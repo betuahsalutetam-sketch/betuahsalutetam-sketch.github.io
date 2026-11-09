@@ -75,7 +75,7 @@
 
 ## Fakta SEO dan Digital
 
-- 44 artikel blog terindeks Google (per Juli 2026)
+- 46 artikel blog di sitemap (per November 2026)
 - 49 URL situs, semua sehat, 0 error
 - 13 schema markup di homepage (FAQPage, LocalBusiness, Course, VideoObject, HowTo, dll)
 - 16 AI bot dikonfigurasi di robots.txt (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, dll)

@@ -9,9 +9,10 @@ Terakhir diperbarui: 9 November 2026. Rincian per program studi ada di https://s
 
 ## Biaya kuliah Universitas Terbuka
 - Ditetapkan per SKS oleh Universitas Terbuka dan sama untuk semua kota domisili
-- Rata-rata Rp 60.000 sampai Rp 100.000 per SKS, tergantung program studi
-- Mahasiswa dengan 15 SKS per semester membayar sekitar Rp 900.000 sampai Rp 1.500.000
-- Total biaya S1 selama 8 semester berkisar Rp 7 juta sampai Rp 12 juta, tergantung program studi dan jumlah SKS
+- Dua sistem: SIPAS (paket per semester) dan Non-SIPAS (per SKS)
+- SIPAS: sekitar Rp 1,5 juta sampai Rp 3,5 juta per semester, tergantung program studi
+- Non-SIPAS: rata-rata Rp 60.000 sampai Rp 100.000 per SKS; 15 SKS sekitar Rp 900.000 sampai Rp 1.500.000 per semester
+- Total S1 Non-SIPAS selama 8 semester berkisar Rp 7 juta sampai Rp 12 juta; total SIPAS mengikuti biaya paket per semester
 
 ## Cara membayar
 - Program tabungan SPP/UKT lewat Bank BTN, diproses di kantor Salut Etam Betuah

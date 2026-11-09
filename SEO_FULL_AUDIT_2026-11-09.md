@@ -18,7 +18,7 @@ Cakupan: 60 berkas HTML, sitemap, robots.txt, llms.txt, workflow GitHub Actions.
 
 ## Belum bisa diperbaiki dari repo
 - `_headers` dan `_redirects` memakai sintaks Netlify, jadi header keamanan (HSTS, CSP) tidak berlaku di GitHub Pages. Jalan keluarnya: Cloudflare di depan domain.
-- Angka biaya per semester bertentangan: biaya.html dan llms.txt menyebut sekitar Rp 900.000 sampai 1.500.000 untuk 15 SKS, sedangkan beranda dan chatbot menyebut Rp 1,5 sampai 3,5 juta. Pemilik perlu memutuskan angka yang benar.
+- Angka biaya per semester (selesai): kedua angka benar karena UT punya dua sistem. SIPAS (paket) sekitar Rp 1,5 sampai 3,5 juta per semester, Non-SIPAS per SKS sekitar Rp 900.000 sampai 1.500.000 untuk 15 SKS. Seluruh situs kini menyebut keduanya
 - Penulis artikel masih Organization. Byline orang dengan profil penulis akan memperkuat E-E-A-T.
 - Halaman tips lulus UT masih memuat `cdn.tailwindcss.com`. Ganti dengan `assets/css/tailwind.min.css` seperti halaman lain agar render lebih cepat.
 

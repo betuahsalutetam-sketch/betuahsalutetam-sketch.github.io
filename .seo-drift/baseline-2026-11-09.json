@@ -37,8 +37,8 @@
    "Question",
    "WebPage"
   ],
-  "approx_word_count": 702,
-  "content_hash": "e069c718d963"
+  "approx_word_count": 746,
+  "content_hash": "8829c82599db"
  },
  "blog/apa-itu-salut-ut-panduan-lengkap.html": {
   "title": "Apa itu SALUT UT? Panduan Sentra Layanan UT 2026",
@@ -124,8 +124,8 @@
    "Question",
    "WebPage"
   ],
-  "approx_word_count": 638,
-  "content_hash": "eb1b5f969bbc"
+  "approx_word_count": 656,
+  "content_hash": "28056bab017f"
  },
  "blog/biaya-kuliah-ut-samarinda.html": {
   "title": "Biaya Kuliah UT Samarinda: SPP, Keanggotaan & Tabungan",
@@ -202,8 +202,8 @@
    "Question",
    "WebPage"
   ],
-  "approx_word_count": 910,
-  "content_hash": "ff605c39bd13"
+  "approx_word_count": 912,
+  "content_hash": "1ac13e063847"
  },
  "blog/cara-daftar-kuliah-ut-balikpapan-bontang-kutai-kartanegara-2026.html": {
   "title": "Daftar UT dari Balikpapan, Bontang, Kukar 2026",
@@ -804,8 +804,8 @@
    "State",
    "WebPage"
   ],
-  "approx_word_count": 1032,
-  "content_hash": "1e8c93415652"
+  "approx_word_count": 1038,
+  "content_hash": "ee5f52f067ec"
  },
  "blog/salut-etam-betuah-universitas-terbuka-samarinda.html": {
   "title": "Salut Etam Betuah: Daftar Kuliah UT Samarinda 2026",
@@ -913,6 +913,7 @@
    "ListItem",
    "NewsArticle",
    "Organization",
+   "Person",
    "Place"
   ],
   "approx_word_count": 571,
@@ -1190,8 +1191,8 @@
    "WebPage",
    "WebSite"
   ],
-  "approx_word_count": 2337,
-  "content_hash": "85448fcc3409"
+  "approx_word_count": 2349,
+  "content_hash": "47d7b81d08af"
  },
  "kta.html": {
   "title": "KTA Salut Etam Betuah : Download Kartu Tanda Anggota Gratis",
@@ -1231,8 +1232,8 @@
    "Service",
    "WebPage"
   ],
-  "approx_word_count": 673,
-  "content_hash": "3617f3de75a9"
+  "approx_word_count": 684,
+  "content_hash": "e0e3096d730d"
  },
  "kuliah-ut-bontang.html": {
   "title": "Kuliah UT dari Bontang 2026: Tanpa ke Samarinda",
@@ -1256,8 +1257,8 @@
    "Service",
    "WebPage"
   ],
-  "approx_word_count": 664,
-  "content_hash": "073c823061ac"
+  "approx_word_count": 675,
+  "content_hash": "ec7e7e64792c"
  },
  "kuliah-ut-kutai-kartanegara.html": {
   "title": "Kuliah UT dari Kutai Kartanegara 2026",
@@ -1281,8 +1282,8 @@
    "Service",
    "WebPage"
   ],
-  "approx_word_count": 673,
-  "content_hash": "9baed7114f13"
+  "approx_word_count": 684,
+  "content_hash": "5ab9310ba406"
  },
  "mitra-section.html": {
   "title": "",
